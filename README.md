@@ -4,6 +4,6 @@ This repository provides resources for working with the INSPIRE Soil (SO) data m
 Repository developerd by the WG within
 User story name: UC2-CREA-Cycle2;
 Main Topic: Provide an improved soil geopackage, tested with 3 datasets, in soilwise repository;
-Key words US:data models, vocabs;
+Key words US: data models, vocabs;
 UC Partner: CREA;
-Problem Owner: Giovanni / Andrea;
+Problem Owner: Giovanni / Andrea.
