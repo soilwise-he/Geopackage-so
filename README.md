@@ -7,7 +7,7 @@ The template is available on [GitHub](https://github.com/ejpsoil/inspire_soil_gp
 
 ---
 The data model **currently under development** can be viewed at:
-🔗 https://dbdiagram.io/d/INSPIRE_V2-6825af7c5b2fc4582fba405d
+🔗 https://dbdiagram.io/d/INSPIRE_SO_STA2-68930e9bdd90d17865ab666b
 
 ---
 
