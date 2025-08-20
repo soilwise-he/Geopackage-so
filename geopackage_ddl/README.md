@@ -1,9 +1,10 @@
 The `sql` folder contains the informatic code which is behind the INSPIRE Soil Geopackage.  
-Using the SQL code in the `create.sql` file, you can recreate the Geopackage containing the full INSPIRE Soil structure.
+Using the SQL code provided in the SQL files, you can recreate the GeoPackage containing the complete INSPIRE Soil data structure.
+
 
 ---
 The data model **currently under development** can be viewed at:
-🔗 https://dbdiagram.io/d/INSPIRE_V2-6825af7c5b2fc4582fba405d
+🔗 https://dbdiagram.io/d/INSPIRE_SO_STA2-68930e9bdd90d17865ab666b
 
 ---
 
@@ -11,15 +12,27 @@ The data model **currently under development** can be viewed at:
 
 To do this:  
 1. Open the empty GeoPackage model available at [http://www.geopackage.org/data/empty.gpkg](http://www.geopackage.org/data/empty.gpkg) using a database manager (e.g., DBeaver).  
-2. Execute the SQL instructions from the `create.sql` file in the query window.  
 
-- The `create.sql` file includes:  
-    - **Data Definition Language (DDL):** Instructions to create tables and their relationships.  
-    - **Data Manipulation Language (DML):** Instructions to populate the `codelist` table with the necessary codelists required for its functionality.  
 
-- Some constraints have been managed through both form management and trigger creation, in order to:
-    - assist user data entry.  
-    - ensures data integrity in case of massive data entry.
+2. Execute the SQL instructions using the provided SQL files:
+
+- `DDL_SO.sql`
+    - Contains Data Definition Language (DDL) statements.
+    - Used to create the full INSPIRE Soil database structure, including tables and relationships.
+
+- `DDL_PRAGMA_SO.sql`
+    - Implements custom triggers to enforce foreign key constraints.
+    - Ensures referential integrity even when PRAGMA foreign_keys = OFF.
+     - Acts as a fallback mechanism for environments where foreign key enforcement is not enabled by default.
+
+- `META_SO.sql`
+    - Includes instructions to populate GeoPackage metadata (non-INSPIRE format).
+    - Supports metadata integration for both reading and writing operations.
+
+- `DML_SO.sql`
+    - Contains Data Manipulation Language (DML) statements.
+    - Populates the codelist table with required values for correct functionality.
+
 
 ---
 
@@ -47,239 +60,1075 @@ Some names in the code need to be changed for it to work correctly, as described
 
 ---
 
-## Trigger  
 
-A **Trigger** is procedural code that is automatically executed in response to certain events, for maintaining the integrity of the information in the database. 
-
-Below is the list of triggers implemented for the INSPIRE SO data model, along with a brief description of their functionalities.  
+# 📄 Database Structure Report
 
 
-**SOILSITE**
-- "soilsiteguid" - INSERT - manages the creation of the GUID in INSERT
-- "soilsiteguidupdate" - UPDATE - prevents the modification of the GUID in UPDATE
-- "i_ceckvalidperiodsoilsite" - INSERT - checks that the validfrom date should always be previous than or equal to validto
-- "u_ceckvalidperiodsoilsite" - UPDATE - checks that the validfrom date should always be previous than or equal to validto
-- "i_ceckvalidversionsoilsite" - INSERT - checks that beginlifespanversion should always be previous than or equal to endlifespanversion
-- "i_soilinvestigationpurpose" - INSERT - checks that only valid values from the CODELIST soilinvestigationpurposevalue are entered in the "soilinvestigationpurpose" field
-- "u_soilinvestigationpurpose" - UPDATE - checks that only valid values from the CODELIST soilinvestigationpurposevalue are entered in the "soilinvestigationpurpose" field
-- "u_begin_today_soilsite" - UPDATE - checks that, upon updating the table, beginlifespanversion is updated to today
-- "u_begin_today_soilsite_error" - UPDATE - checks that, upon updating, Endlifespanversion is after today
 
-**SOILPLOT**
-- "soilplotguid" - INSERT - manages the creation of the GUID in INSERT
-- "soilplotguidupdate" - UPDATE - prevents the modification of the GUID in UPDATE
-- "i_ceckvalidversionsoilplot" - INSERT - checks that the beginlifespanversion should always be previous than or equal to endlifespanversion
-- "i_soilplottype" - INSERT - checks that only valid values from the CODELIST soilplottypevalue are entered in the "soilplottype" field
-- "u_soilplottype" - UPDATE - checks that only valid values from the CODELIST soilplottypevalue are entered in the "soilplottype" field
-- "u_begin_today_soilplot" - UPDATE - checks that, upon updating the table, beginlifespanversion is updated to today
-- "u_begin_today_soilplot_error" - UPDATE - checks that, upon updating, Endlifespanversion is after today
+## 🗂️ Table: `codelist`
 
-**SOILPROFILE**
-- "soilprofileguid" - INSERT - manages the creation of the GUID in INSERT
-- "soilprofileguidupdate" - UPDATE - prevents the modification of the GUID in UPDATE
-- "i_ceckvalidperiodsoilprofile" - INSERT - checks that the validfrom date should always be previous than or equal to validto.
-- "u_ceckvalidperiodsoilprofile" - UPDATE - checks that the validfrom date should always be previous than or equal to validto.
-- "i_ceckvalidversionsoilprofile" - INSERT - checks that the beginlifespanversion should always be previous than or equal to endlifespanversion
-- "i_ceckprofileLocation" - INSERT - checks that in the soilprofile table, in the case of a Derived profile, the foreign key for soilplot is NULL
-- "u_ceckprofileLocation" - UPDATE - checks that in the soilprofile table, in the case of a Derived profile, the foreign key for soilplot is NULL
-- "i_ceckprofileLocationobserved" - INSERT - checks that in the soilprofile table, in the case of an Observed profile, the foreign key for soilplot is NOT NULL
-- "u_ceckprofileLocationobserved" - UPDATE - checks that in the soilprofile table, in the case of an Observed profile, the foreign key for soilplot is NOT NULL
-- "i_wrbreferencesoilgroup" - INSERT - check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbreferencesoilgroup" field
-- "u_wrbreferencesoilgroup" - UPDATE - check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbreferencesoilgroup" field
-- "u_begin_today_soilprofile" - UPDATE - checks that, upon updating the table, beginlifespanversion is updated to today
-- "u_begin_today_soilprofile_error" - UPDATE - checks that, upon updating, Endlifespanversion is after today
-- "i_wrbproversion" - INSERT - checks that only valid values from the CODELIST wrbversion are entered in the "wrbversion" field
-- "u_wrbproversion" - UPDATE - checks that only valid values from the CODELIST wrbversion are entered in the "wrbversion" field
+### Columns
 
-**OTHERSOILNAMETYPE**
-- "i_soilname" - INSERT - Checks that only valid values from the CODELIST othersoilnametypevalue are entered in the "soilname" field
-- "u_soilname" - UPDATE - Checks that only valid values from the CODELIST othersoilnametypevalue are entered in the "soilname" field
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `TEXT` |  | Codelist Voice Uri, and Primary Key of the Table. |
+| `label` | `TEXT` |  | A word or phrase used to name or describe something, often to identify or classify it. |
+| `definition` | `TEXT` |  | A clear explanation of the meaning of a word or concept. |
+| `collection` | `TEXT` |  | Structured set of related elements, which share common characteristics and are managed with unique and persistent identifiers. |
+| `featuretype` | `TEXT` |  | FIn case of codelists belonging to Properties, indicate the Feature Of Interest to which they can be applied. |
+| `phenomenon` | `TEXT` |  | The type of phenomenon it belongs to, whether Chemical, Physical or Biological. |
+| `featuretype_phenomenon` | `TEXT` |  | Working field, is the concatenation of the fields "featuretype" and "phenomenon". |
+| `parent` | `TEXT` |  | Indicates the level of the hierarchically superior codelist to which it belongs. |
 
-**ISDERIVEDFROM**
-- "i_checkisderived" - INSERT - Checks if the value of isderived in soilprofile is equal to 1 because the value of the "base_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type "derived".
-- "u_checkisderived" - UPDATE - Checks if the value of isderived in soilprofile is equal to 1 because the value of the "base_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type "derived".
-- "i_checkisobserved" - INSERT - Checks if the value of isderived in soilprofile is equal to 0 because the value of the "related_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type "observed"
-- "u_checkisobserved" - UPDATE - Checks if the value of isderived in soilprofile is equal to 0 because the value of the "related_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type "observed"
+### Relationships (as child)
+- None
 
-**SOILBODY**
-- "soilbodyguid" - INSERT - Manages the creation of the GUID in INSERT
-- "soilbodyguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_ceckvalidversionsoilbody" - INSERT - Checks that the beginlifespanversion should always be previous than or equal to endlifespanversion
-- "u_begin_today_soilbody" - UPDATE - Checks that, upon updating the table, beginlifespanversion is updated to today
-- "u_begin_today_soilbody_error" - UPDATE - Checks that, upon updating, Endlifespanversion is after today
+### Referenced by (as parent)
+- None
 
-**DERIVEDPROFILEPRESENCEINSOLIBODY**
-- “i_cecklowervaluesum” - INSERT - Checks that the sum of "lowervalue" for a soilbody does not exceed 100%
-- “u_cecklowervaluesum” - UPDATE - Checks that the sum of "lowervalue" for a soilbody does not exceed 100%
-- "i_checkisderived_soilbody" - INSERT - Checks that the soilprofile is of type Derived
-- "u_checkisderived_soilbody" - UPDATE - Checks that the soilprofile is of type Derived
+### Indexes
 
-**SOILDERIVEDOBJECT**
-- "soilderivedobjectguid" - INSERT - Manages the creation of the GUID in INSERT
-- "soilderivedobjectguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_codelist_ft_ph` | No | `featuretype_phenomenon` | `c` | No |
+| `idx_codelist_phenomenon` | No | `phenomenon` | `c` | No |
+| `idx_codelist_featuretype` | No | `featuretype` | `c` | No |
+| `idx_codelist_collection` | No | `collection` | `c` | No |
+| `idx_codelist_id` | No | `id` | `c` | No |
 
-**ISBASEDONOBSERVEDSOILPROFILE**
-- "i_checkisobserved_dobj" - INSERT - Checks if the value of isderived in soilprofile is equal to 1
-- "u_checkisobserved_dobj" - UPDATE - Checks if the value of isderived in soilprofile is equal to 1
+### Triggers
+- None
 
-**PROFILEELEMENT**
-- "profileelementguid" - INSERT - Manages the creation of the GUID in INSERT
-- "profileelementguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_ceckvalidversionprofileelement" - INSERT - Checks that the beginlifespanversion should always be previous than or equal to endlifespanversion
-- "i_ceckvaliddeepprofileelement" - INSERT - Checks that the value of profileelementdepthrange_uppervalue is always less than the value of profileelementdepthrange_lowervalue
-- "u_ceckvaliddeepprofileelement" - UPDATE - Checks that the value of profileelementdepthrange_uppervalue is always less than the value of profileelementdepthrange_lowervalue
-- "i_checkgeogenicfieldsnull" - INSERT - checks that if in the “layertype” field the value is different from “geogenic” the values ​​in the “layerrocktype”, “layergenesisprocess”, “layergenesisenviroment” and “layergenesisprocessstate” fields are null
-- "u_checkgeogenicfieldsnull" - INUPDATE - checks that if in the “layertype” field the value is different from “geogenic” the values ​​in the “layerrocktype”, “layergenesisprocess”, “layergenesisenviroment” and “layergenesisprocessstate” fields are null
-- "i_ceckhorizonfields" - INSERT - If we have a HORIZON, the values of the fields "layertype," "layerrocktype," "layergenesisprocess," "layergenesisenviroment," and "layergenesisprocessstate" must be NULL
-- "u_ceckhorizonfields" - UPDATE - If we have a HORIZON, the values of the fields "layertype," "layerrocktype," "layergenesisprocess," "layergenesisenviroment," and "layergenesisprocessstate" must be NULL
-- "i_layertype" - INSERT - Checks that only valid values from the CODELIST layertypevalue are entered in the "layertype" field
-- "u_layertype" - UPDATE - Checks that only valid values from the CODELIST layertypevalue are entered in the "layertype" field
-- "i_layergenesisenviroment" - INSERT - Checks that only valid values from the CODELIST eventenvironmentvalue are entered in the "layergenesisenviroment" field
-- "u_layergenesisenviroment" - UPDATE - Checks that only valid values from the CODELIST eventenvironmentvalue are entered in the "layergenesisenviroment" field
-- "i_layergenesisprocess" - INSERT - Checks that only valid values from the CODELIST eventprocessvalue are entered in the "layergenesisprocess" field
-- "u_layergenesisprocess" - UPDATE - Checks that only valid values from the CODELIST eventprocessvalue are entered in the "layergenesisprocess" field
-- "i_layergenesisprocessstate" - INSERT - Checks that only valid values from the CODELIST layergenesisprocessstatevalue are entered in the "layergenesisprocessstate" field
-- "u_layergenesisprocessstate" - UPDATE - Checks that only valid values from the CODELIST layergenesisprocessstatevalue are entered in the "layergenesisprocessstate" field
-- "i_layerrocktype" - INSERT - Checks that only valid values from the CODELIST lithologyvalue are entered in the "layerrocktype" field
-- "u_layerrocktype" - UPDATE - Checks that only valid values from the CODELIST lithologyvalue are entered in the "layerrocktype" field
-- "i_check_depth_range" - INSERT - checks that at least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue is not null.
-- "u_check_depth_range" - UPDATE - checks that at least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue is not null.
-- "u_begin_today_profileelement" - UPDATE - Checks that, upon updating the table, beginlifespanversion is updated to today
-- "u_begin_today_profileelement_error" - UPDATE - Checks that, upon updating, Endlifespanversion is after today
+---
 
-**PARTICLESIZEFRACTIONTYPE**
-- "i_check_fraction_sum" - INSERT - checks that the sum of "fractioncontent" does not exceed 100. 
-- "u_check_fraction_sum" - UPDATE - checks that the sum of "fractioncontent" does not exceed 100.
-- "i_check_particlesize_overlap"  - INSERT - checks that the new range should not overlap or touch an existing range for the sameidprofileelement.
-- "u_check_particlesize_overlap"  - UPDATE - checks that the new range should not overlap or touch an existing range for the sameidprofileelement.
 
-**FAOHORIZONNOTATIONTYPE**
-- "i_ceckfaoprofileelementtype" - INSERT - Checks that the profileelementtype is = 1, meaning that it is a HORIZON
-- "u_ceckfaoprofileelementtype" - UPDATE - Checks that the profileelementtype is = 1, meaning that it is a HORIZON
-- "i_faohorizonmaster_1" - INSERT - Checks that only valid values from the CODELIST faohorizonmastervalue are entered in the "faohorizonmaster_1" field
-- "u_faohorizonmaster_1" - UPDATE - Checks that only valid values from the CODELIST faohorizonmastervalue are entered in the "faohorizonmaster_1" field
-- "i_faohorizonmaster_2" - INSERT - Checks that only valid values from the CODELIST faohorizonmastervalue are entered in the "faohorizonmaster_2" field
-- "u_faohorizonmaster_2" - UPDATE - Checks that only valid values from the CODELIST faohorizonmastervalue are entered in the "faohorizonmaster_2" field
-- "i_faohorizonsubordinate_1" - INSERT - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_1" field
-- "u_faohorizonsubordinate_1" - UPDATE - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_1" field
-- "i_faohorizonsubordinate_2" - INSERT - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_2" field
-- "u_faohorizonsubordinate_2" - UPDATE - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_2" field
-- "i_faohorizonsubordinate_3" - INSERT - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_3" field
-- "u_faohorizonsubordinate_3" - UPDATE - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_3" field
-- "i_faoprime" - INSERT - Checks that only valid values from the CODELIST faoprimevalue are entered in the "faoprime" field
-- "u_faoprime" - UPDATE - Checks that only valid values from the CODELIST faoprimevalue are entered in the "faoprime" field
 
-**OTHERHORIZONNOTATIONTYPE**
-- "otherhorizonnotationtypeguid" - INSERT - Manages the creation of the GUID in INSERT
-- "otherhorizonnotationtypeguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_otherhorizonnotationtype" - INSERT - Checks that only valid values from the CODELIST otherhorizonnotationtypevalue are entered in the "horizonnotation" field
-- "u_otherhorizonnotationtype" - UPDATE - Checks that only valid values from the CODELIST otherhorizonnotationtypevalue are entered in the "horizonnotation" field
-- "i_diagnostichorizon" - INSERT - Checks that only valid values from the CODELIST wrbdiagnostichorizon (in case OtherHorizonNotationTypeValue = "WRB") are entered in the "diagnostichorizon" field
-- "u_diagnostichorizon" - UPDATE - Checks that only valid values from the CODELIST wrbdiagnostichorizon (in case OtherHorizonNotationTypeValue = "WRB") are entered in the "diagnostichorizon" field
+## 🗂️ Table: `derivedprofilepresenceinsoilbody`
 
-**OTHERHORIZON_PROFILEELEMENT**
-- "i_ceckothprofileelementtype" - INSERT - Checks that in the profileelement table, the profileelementtype is = 0, meaning that it is an HORIZON
-- "u_ceckothprofileelementtype" - UPDATE - Checks that in the profileelement table, the profileelementtype is = 0, meaning that it is an HORIZON
+### Columns
 
-**WRBQUALIFIERGROUPTYPE**
-- "wrbqualifiergrouptypeguid" - INSERT - Manages the creation of the GUID in INSERT
-- "wrbqualifiergrouptypeguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_wrbqualifier" - INSERT - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbqualifier" field
-- "u_wrbqualifier" - UPDATE - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbqualifier" field
-- "i_qualifierplace" - INSERT - Checks that only valid values from the CODELIST wrbqualifierplacevalue are entered in the "qualifierplace" field
-- "u_qualifierplace" - UPDATE - Checks that only valid values from the CODELIST wrbqualifierplacevalue are entered in the "qualifierplace" field
-- "i_wrbspecifier_1" - INSERT - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbspecifier_1" field
-- "u_wrbspecifier_1" - UPDATE - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbspecifier_1" field
-- "i_wrbspecifier_2" - INSERT -Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbspecifier_2" field
-- "u_wrbspecifier_2" - UPDATE - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbspecifier_2" field
-- "i_wrbqualversion" - INSERT - Checks that only valid values from the CODELIST wrbversion are entered in the "wrbversion" field
-- "u_wrbqualversion" - UPDATE - Checks that only valid values from the CODELIST wrbversion are entered in the "wrbversion" field
-- "i_unique_wrbqualifiergrouptype" - INSERT - Check that there are no duplicate rows
-- "u_unique_wrbqualifiergrouptype" - UPDATE - Check that there are no duplicate rows
-- "i_check_specifiers_not_equal" - INSERT - Checks that wrbspecifier_1 and wrbspecifier_2 are not equal and that if wrbspecifier_2 is not NULL, wrbspecifier_1 must also not be NULL
-- "u_check_specifiers_not_equal" - UPDATE - checks that wrbspecifier_1 and wrbspecifier_2 are not equal and that if wrbspecifier_2 is not NULL, wrbspecifier_1 must also not be NULL
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `idsoilbody` | `TEXT` | NOT NULL | Foreign key to the SoilBody table. |
+| `idsoilprofile` | `TEXT` | NOT NULL | Foreign key to the SoilProfile table, guidkey field. |
+| `lowervalue` | `REAL` |  | Upper value. |
+| `uppervalue` | `REAL` |  | Lower value. |
 
-**WRBQUALIFIERGROUP_PROFILE**
-- "i_check_wrbversion_match" - INSERT - Check for each row that  soilprofile and wrbqualifiergrouptype have the same version as WRB
-- "u_check_wrbversion_match" - UPDATE - Check for each row that  soilprofile and wrbqualifiergrouptype have the same version as WRB
-- "i_check_qualifier_position_unique" - INSERT - Check if an idwrbqualifiergrouptype and qualifierposition record already exists for the same soilprofile
-- "u_check_qualifier_position_unique" - UPDATE - Check if an idwrbqualifiergrouptype and qualifierposition record already exists for the same soilprofile
+### Relationships (as child)
+- `derivedprofilepresenceinsoilbody.idsoilprofile` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilprofile` cascades to `derivedprofilepresenceinsoilbody`.
+- `derivedprofilepresenceinsoilbody.idsoilbody` → `soilbody.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilbody` cascades to `derivedprofilepresenceinsoilbody`.
 
-**DATASTREAM**
-- "datastreamguid" - INSERT - Manages the creation of the GUID in INSERT
-- "datastreamguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_soilprofile_obspro" INSERT - Checks that in the "foi" field of the "observableproperty" defined by the inserted link, there is the value "soilprofile."
-- "u_soilprofile_obspro" UPDATE - Checks that in the "foi" field of the "observableproperty" defined by the inserted link, there is the value "soilprofile."
-- "i_soilsite_obspro" INSERT - Checks that in the "foi" field of the "observableproperty" defined by the inserted link, there is the value "soilsite."
-- "u_soilsite_obspro" UPDATE - Checks that in the "foi" field of the "observableproperty" defined by the inserted link, there is the value "soilsite."
-- "i_profileelement_obspro" INSERT - Checks that in the "foi" field of the "observableproperty" defined by the inserted link, there is the value "profileelement."
-- "u_profileelement_obspro" UPDATE – Checks that in the "foi" field of the "observableproperty" defined by the inserted link, there is the value "profileelement."
-- "i_soilderivedobject_obspro" INSERT - Checks that in the "foi" field of the "observableproperty" defined by the inserted link, there is the value "soilderivedobject."
-- "u_soilderivedobject_obspro" UPDATE - Checks that in the "foi" field of the "observableproperty" defined by the inserted link, there is the value "soilderivedobject."
+### Referenced by (as parent)
+- None
 
-**OBSERVATION**
-- "observationguid" - INSERT - Manages the creation of the GUID in INSERT
-- "observationguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_ceckvalidperiodobservation" INSERT - Checks that the result time is earlier than the valid time
-- "u_ceckvalidperiodobservation" UPDATE - Checks that the result time is earlier than the valid time
-- "i_controlresultvalue" INSERT - Checks that the value is within the Min and Max of the domain specified in the properties.
-- "u_controlresultvalue" UPDATE - Checks that the value is within the Min and Max of the domain specified in the properties.
-- "i_check_result_value_uri" INSERT – Checks that only one of the fields "result_value" and "result_uri" is populated.
-- "u_check_result_value_uri" UPDATE - Checks that only one of the fields "result_value" and "result_uri" is populated.
+### Indexes
 
-**DATASTREAMCOLLECTION**
-- "datastreamcollectionguid" - INSERT - Manages the creation of the GUID in INSERT
-- "datastreamcollectionguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_ceckvalidphetimedatastreamcollection" INSERT - Checks that the "beginphenomenontime" field is earlier than the "endphenomenontime" field
-- "u_ceckvalidphetimedatastreamcollection" UPDATE - Checks that the "beginphenomenontime" field is earlier than the "endphenomenontime" field
-- "i_ceckvalidrestimedatastreamcollectionINSERT" - Checks that the "beginresulttime" field is earlier than the "endresulttime" field
-- "u_ceckvalidrestimedatastreamcollectionUPDATE" - Checks that the "beginresulttime" field is earlier than the "endresulttime" field
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_derivedprofilepresenceinsoilbody_pair` | No | `idsoilbody`, `idsoilprofile` | `c` | No |
+| `idx_derivedprofilepresenceinsoilbody_idsoilprofile` | No | `idsoilprofile` | `c` | No |
+| `idx_derivedprofilepresenceinsoilbody_idsoilbody` | No | `idsoilbody` | `c` | No |
+| `sqlite_autoindex_derivedprofilepresenceinsoilbody_1` | Yes | `idsoilbody`, `idsoilprofile` | `u` | No |
 
-**UNITOFMEASURE**
-- "uomguid" - INSERT - Manages the creation of the GUID in INSERT
-- "uomguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+### Triggers
+- **i_cecklowervaluesum** — Before Insert, RAISE: `Table derivedprofilepresenceinsoilbody: sum of lowervalue exceeds 100 for the same idsoilbody`
+- **u_cecklowervaluesum** — Before Update, RAISE: `Table derivedprofilepresenceinsoilbody: sum of lowervalue exceeds 100 for the same idsoilbody`
+- **i_checkisderived_soilbody** — Before Insert, RAISE: `Table derivedprofilepresenceinsoilbody:  Attention, the value of the "idsoilprofile" field  cannot be inserted because profile is not of type derived`
+- **u_checkisderived_soilbody** — Before Update, RAISE: `Table derivedprofilepresenceinsoilbody:  Attention, the value of the "idsoilprofile" field  cannot be inserted because profile is not of type derived`
+- **derivedprofilepresenceinsoilbody_idsoilprofile_fk_ins** — Before Insert, RAISE: `FK violation: derivedprofilepresenceinsoilbody(idsoilprofile) not found in soilprofile(guidkey)`
+- **derivedprofilepresenceinsoilbody_idsoilprofile_fk_upd** — Before Update, RAISE: `FK violation: derivedprofilepresenceinsoilbody(idsoilprofile) not found in soilprofile(guidkey)`
+- **derivedprofilepresenceinsoilbody_idsoilbody_fk_ins** — Before Insert, RAISE: `FK violation: derivedprofilepresenceinsoilbody(idsoilbody) not found in soilbody(guidkey)`
+- **derivedprofilepresenceinsoilbody_idsoilbody_fk_upd** — Before Update, RAISE: `FK violation: derivedprofilepresenceinsoilbody(idsoilbody) not found in soilbody(guidkey)`
 
-**OBSERVABLEPROPERTY**
-- "observablepropertyguid" - INSERT - Manages the creation of the GUID in INSERT
-- "observablepropertyguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_foi" INSERT - Checks that only valid values from the FOIType are entered in the "foi" field, identifying which type of Feature Of Interest that particular ObservableProperty should be associated with.
-- "u_foi" UPDATE - Checks that only valid values from the FOIType are entered in the "foi" field, identifying which type of Feature Of Interest that particular ObservableProperty should be associated with.
-- "i_phenomenonType" INSERT - Checks that only valid values from the CODELIST "PhenomenonType" are entered in the "phenomenontype" field.
-- "u_phenomenonType" UPDATE - Checks that only valid values from the CODELIST "PhenomenonType" are entered in the "phenomenontype" field.
-- "i_basephenomenon" INSERT - Checks that only valid values from the CODELIST are entered in the "basephenomenon" field, with respect to the values entered in the "foi" and "phenomenontype" fields.
--"u_basephenomenon" UPDATE - Checks that only valid values from the CODELIST are entered in the "basephenomenon" field, with respect to the values entered in the "foi" and "phenomenontype" fields.
-- "i_ceckdomain" INSERT - Checks that the "domain_max" field is always greater than the "domain_min" field.
-- "u_ceckdomain" UPDATE - Checks that the "domain_max" field is always greater than the "domain_min" field.
-- "i_ceckdomain_code" INSERT - Checks that in case the "domain_typeofvalue" field takes the value 'result_value', the value of the "domain_code" field is null.
-- "u_ceckdomain_code" UPDATE - Checks that in case the "domain_typeofvalue" field takes the value 'result_value', the value of the "domain_code" field is null.
-- "i_ceckdomain_value" INSERT - Checks that in case the "domain_typeofvalue" field takes the value result_uri, the values of the "domain_min" and "domain_max" fields are null.
-- "u_ceckdomain_value" UPDATE - Checks that in case the "domain_typeofvalue" field takes the value result_uri, the values of the "domain_min" and "domain_max" fields are null.
+---
 
-**SENSOR**
-- "sensorguid" - INSERT - Manages the creation of the GUID in INSERT
-- "sensorguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+## 🗂️ Table: `faohorizonnotationtype`
 
-**THING**
-- "thingguid" - INSERT - Manages the creation of the GUID in INSERT
-- "thingguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+### Columns
 
-**PROCESS**
-- "processguid" - INSERT - Manages the creation of the GUID in INSERT
-- "processguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `faohorizondiscontinuity` | `INTEGER` |  | Number used to indicate a discontinuity in the horizon notation. |
+| `faohorizonmaster_1` | `TEXT` | NOT NULL | First Symbol of the master part of the horizon notation. |
+| `faohorizonmaster_2` | `TEXT` |  | Second Symbol of the master part of the horizon notation. |
+| `faohorizonsubordinate_1` | `TEXT` |  | First Designations of subordinate distinctions and features within the master horizons and layers are based on profile characteristics observable in the field and are applied during the description of the soil at the site. |
+| `faohorizonsubordinate_2` | `TEXT` |  | Second Designations of subordinate distinctions and features within the master horizons and layers are based on profile characteristics observable in the field and are applied during the description of the soil at the site. |
+| `faohorizonsubordinate_3` | `TEXT` |  | Third Designations of subordinate distinctions and features within the master horizons and layers are based on profile characteristics observable in the field and are applied during the description of the soil at the site. |
+| `faohorizonvertical` | `INTEGER` |  |  |
+| `faoprime` | `TEXT` | NOT NULL | A prime and double prime may be used to connotate master horizon symbol of the lower of two respectively three horizons having identical Arabic-numeral prefixes and letter combinations. |
+| `isoriginalclassification` | `BOOLEAN` | NOT NULL, DEFAULT 0 | Boolean value to indicate whether the FAO horizon notation was the original notation to describe the horizon. |
+| `idprofileelement` | `TEXT` |  | Foreign key to the ProfileElement table,  guidkey field. |
 
-**DOCUMENTCITATION**
-- "documentcitationguid" - INSERT - Manages the creation of the GUID in INSERT
-- "documentcitationguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+### Relationships (as child)
+- `faohorizonnotationtype.idprofileelement` → `profileelement.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `profileelement` cascades to `faohorizonnotationtype`.
 
-**PROCESSPARAMETER**
-- "i_name" INSERT - Checks that only valid values from the CODELIST "ProcessParameterNameValue" are entered in the "name" field.
-- "u_name" UPDATE - Checks that only valid values from the CODELIST "ProcessParameterNameValue" are entered in the "name" field.
+### Referenced by (as parent)
+- None
 
-**RELATEDPARTY**
-- "relatedpartyguid" - INSERT - Manages the creation of the GUID in INSERT
-- "relatedpartyguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_role" INSERT - Checks that only valid values from the CODELIST "ResponsiblePartyRole" are entered in the "role" field.
-- "u_role" UPDATE - Checks that only valid values from the CODELIST "ResponsiblePartyRole" are entered in the "role" field.
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_faohorizonnotationtype_idprofileelement` | No | `idprofileelement` | `c` | No |
+| `sqlite_autoindex_faohorizonnotationtype_1` | Yes | `idprofileelement` | `u` | No |
+
+### Triggers
+- **i_checkfaoprofileelementtype** — Before Insert, RAISE: `Table faohorizonnotationtype: The associated profileelement must have profileelementtype = 0 (HORIZON)`
+- **u_ceckfaoprofileelementtype** — Before Update, RAISE: `Table faohorizonnotationtype: The associated profileelement must have profileelementtype = 0 (HORIZON)`
+- **i_faohorizonmaster_1** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonmaster. Must be present in id of faohorizonmastervalue codelist.`
+- **u_faohorizonmaster_1** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonmaster. Must be present in id of faohorizonmastervalue codelist.`
+- **i_faohorizonmaster_2** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonmaster. Must be present in id of faohorizonmastervalue codelist.`
+- **u_faohorizonmaster_2** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonmaster. Must be present in id of faohorizonmastervalue codelist.`
+- **i_faohorizonsubordinate_1** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
+- **u_faohorizonsubordinate_1** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
+- **i_faohorizonsubordinate_2** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
+- **u_faohorizonsubordinate_2** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
+- **i_faohorizonsubordinate_3** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
+- **u_faohorizonsubordinate_3** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
+- **i_faoprime** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faoprime. Must be present in id of faoprimevalue codelist.`
+- **u_faoprime** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faoprime. Must be present in id of faoprimevalue codelist.`
+- **faohorizonnotationtype_idprofileelement_fk_ins** — Before Insert, RAISE: `FK violation: faohorizonnotationtype(idprofileelement) not found in profileelement(guidkey)`
+- **faohorizonnotationtype_idprofileelement_fk_upd** — Before Update, RAISE: `FK violation: faohorizonnotationtype(idprofileelement) not found in profileelement(guidkey)`
+
+---
+
+## 🗂️ Table: `feature`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | A unique, read-only attribute that serves as an identifier for the entity. |
+| `name` | `TEXT` | NOT NULL | A property provides a label for Feature entity, commonly a descriptive name. |
+| `definition` | `TEXT` |  | The URI the defines this FeatureType. Dereferencing this URI SHOULD result in a representation of the definition of the FeatureType. |
+| `description` | `TEXT` |  | The description about the Feature. |
+| `encodingtype` | `TEXT` | NOT NULL | The encoding type of the feature property. |
+| `feature_soilsite` | `TEXT` |  | The detailed description of the feature Soil Site. The data type is defined by encodingType. |
+| `feature_soilprofile` | `TEXT` |  | The detailed description of the feature Soil Profile. The data type is defined by encodingType. |
+| `feature_profileelement` | `TEXT` |  | The detailed description of the feature Profile Element. The data type is defined by encodingType. |
+| `feature_soilderivedobject` | `TEXT` |  | The detailed description of the feature Soil Derived Object. The data type is defined by encodingType. |
+| `properties` | `TEXT` |  | mime type: 'application/json'. A JSON Object containing user-annotated properties as key-value pairs. |
+| `idfeaturetype` | `INTEGER` |  |  |
+
+### Relationships (as child)
+- `feature.idfeaturetype` → `featuretype.id` (**ON UPDATE** CASCADE, **ON DELETE** SET NULL)
+- `feature.feature_soilderivedobject` → `soilderivedobject.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** SET NULL)
+- `feature.feature_profileelement` → `profileelement.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** SET NULL)
+- `feature.feature_soilprofile` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** SET NULL)
+- `feature.feature_soilsite` → `soilsite.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** SET NULL)
+
+### Referenced by (as parent)
+- `datastream.idfeature` → `feature.id` (**ON UPDATE** NO ACTION, **ON DELETE** NO ACTION)
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_feature_idfeaturetype` | No | `idfeaturetype` | `c` | No |
+| `idx_feature_feature_soilderivedobject` | No | `feature_soilderivedobject` | `c` | No |
+| `idx_feature_feature_profileelement` | No | `feature_profileelement` | `c` | No |
+| `idx_feature_feature_soilprofile` | No | `feature_soilprofile` | `c` | No |
+| `idx_feature_feature_soilsite` | No | `feature_soilsite` | `c` | No |
+| `sqlite_autoindex_feature_4` | Yes | `feature_soilderivedobject` | `u` | No |
+| `sqlite_autoindex_feature_3` | Yes | `feature_profileelement` | `u` | No |
+| `sqlite_autoindex_feature_2` | Yes | `feature_soilprofile` | `u` | No |
+| `sqlite_autoindex_feature_1` | Yes | `feature_soilsite` | `u` | No |
+
+### Triggers
+- **feature_datastream_fk_restrict_del** — Before Delete, RAISE: `FK violation: cannot DELETE feature because child rows exist in datastream`
+- **feature_datastream_fk_restrict_upd** — Before Update, RAISE: `FK violation: cannot UPDATE feature key because child rows exist in datastream`
+- **feature_idfeaturetype_fk_ins** — Before Insert, RAISE: `FK violation: feature(idfeaturetype) not found in featuretype(id)`
+- **feature_idfeaturetype_fk_upd** — Before Update, RAISE: `FK violation: feature(idfeaturetype) not found in featuretype(id)`
+- **feature_feature_soilderivedobject_fk_ins** — Before Insert, RAISE: `FK violation: feature(feature_soilderivedobject) not found in soilderivedobject(guidkey)`
+- **feature_feature_soilderivedobject_fk_upd** — Before Update, RAISE: `FK violation: feature(feature_soilderivedobject) not found in soilderivedobject(guidkey)`
+- **feature_feature_profileelement_fk_ins** — Before Insert, RAISE: `FK violation: feature(feature_profileelement) not found in profileelement(guidkey)`
+- **feature_feature_profileelement_fk_upd** — Before Update, RAISE: `FK violation: feature(feature_profileelement) not found in profileelement(guidkey)`
+- **feature_feature_soilprofile_fk_ins** — Before Insert, RAISE: `FK violation: feature(feature_soilprofile) not found in soilprofile(guidkey)`
+- **feature_feature_soilprofile_fk_upd** — Before Update, RAISE: `FK violation: feature(feature_soilprofile) not found in soilprofile(guidkey)`
+- **feature_feature_soilsite_fk_ins** — Before Insert, RAISE: `FK violation: feature(feature_soilsite) not found in soilsite(guidkey)`
+- **feature_feature_soilsite_fk_upd** — Before Update, RAISE: `FK violation: feature(feature_soilsite) not found in soilsite(guidkey)`
+
+---
+
+## 🗂️ Table: `featuretype`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | A unique, read-only attribute that serves as an identifier for the entity. |
+| `name` | `TEXT` | NOT NULL | A property provides a label for Feature entity, commonly a descriptive name. |
+| `definition` | `TEXT` |  | The URI the defines this FeatureType. Dereferencing this URI SHOULD result in a representation of the definition of the FeatureType. |
+| `description` | `TEXT` |  | The description about the Feature. |
+| `properties` | `TEXT` |  | mime type: 'application/json'. A JSON Object containing user-annotated properties as key-value pairs. |
+
+### Relationships (as child)
+- None
+
+### Referenced by (as parent)
+- `feature.idfeaturetype` → `featuretype.id` (**ON UPDATE** CASCADE, **ON DELETE** SET NULL)
+
+### Indexes
+- None
+
+### Triggers
+- **featuretype_feature_fk_setnull_del** — After Delete
+- **featuretype_feature_fk_cascade_upd** — After Update
+
+---
+
+## 🗂️ Table: `isbasedonobservedsoilprofile`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `idsoilderivedobject` | `TEXT` | NOT NULL | Foreign key to the SoilDerivedObject table, guidkey field. |
+| `idsoilprofile` | `TEXT` | NOT NULL | Foreign key to the SoilProfile table, guidkey field. |
+
+### Relationships (as child)
+- `isbasedonobservedsoilprofile.idsoilprofile` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilprofile` cascades to `isbasedonobservedsoilprofile`.
+- `isbasedonobservedsoilprofile.idsoilderivedobject` → `soilderivedobject.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilderivedobject` cascades to `isbasedonobservedsoilprofile`.
+
+### Referenced by (as parent)
+- None
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_isbasedonobservedsoilprofile_pair` | No | `idsoilderivedobject`, `idsoilprofile` | `c` | No |
+| `idx_isbasedonobservedsoilprofile_idsoilprofile` | No | `idsoilprofile` | `c` | No |
+| `idx_isbasedonobservedsoilprofile_idsoilderivedobject` | No | `idsoilderivedobject` | `c` | No |
+| `sqlite_autoindex_isbasedonobservedsoilprofile_1` | Yes | `idsoilderivedobject`, `idsoilprofile` | `u` | No |
+
+### Triggers
+- **i_checkisobserved_dobj** — Before Insert, RAISE: `Table isbasedonobservedsoilprofile :  Attention, the value of the "idsoilprofile" field  cannot be inserted because profile is not of type observed`
+- **u_checkisobserved_dobj** — Before Update, RAISE: `Table isbasedonobservedsoilprofile :  Attention, the value of the "idsoilprofile" field  cannot be inserted because profile is not of type observed`
+- **isbasedonobservedsoilprofile_idsoilprofile_fk_ins** — Before Insert, RAISE: `FK violation: isbasedonobservedsoilprofile(idsoilprofile) not found in soilprofile(guidkey)`
+- **isbasedonobservedsoilprofile_idsoilprofile_fk_upd** — Before Update, RAISE: `FK violation: isbasedonobservedsoilprofile(idsoilprofile) not found in soilprofile(guidkey)`
+- **isbasedonobservedsoilprofile_idsoilderivedobject_fk_ins** — Before Insert, RAISE: `FK violation: isbasedonobservedsoilprofile(idsoilderivedobject) not found in soilderivedobject(guidkey)`
+- **isbasedonobservedsoilprofile_idsoilderivedobject_fk_upd** — Before Update, RAISE: `FK violation: isbasedonobservedsoilprofile(idsoilderivedobject) not found in soilderivedobject(guidkey)`
+
+---
+
+## 🗂️ Table: `isbasedonsoilbody`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `idsoilderivedobject` | `TEXT` | NOT NULL | Foreign key to the SoilDerivedObject table, guidkey field. |
+| `idsoilbody` | `TEXT` | NOT NULL | Foreign key to the SoilBody table, guidkey field. |
+
+### Relationships (as child)
+- `isbasedonsoilbody.idsoilbody` → `soilbody.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilbody` cascades to `isbasedonsoilbody`.
+- `isbasedonsoilbody.idsoilderivedobject` → `soilderivedobject.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilderivedobject` cascades to `isbasedonsoilbody`.
+
+### Referenced by (as parent)
+- None
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_isbasedonsoilbody_pair` | No | `idsoilderivedobject`, `idsoilbody` | `c` | No |
+| `idx_isbasedonsoilbody_idsoilbody` | No | `idsoilbody` | `c` | No |
+| `idx_isbasedonsoilbody_idsoilderivedobject` | No | `idsoilderivedobject` | `c` | No |
+| `sqlite_autoindex_isbasedonsoilbody_1` | Yes | `idsoilderivedobject`, `idsoilbody` | `u` | No |
+
+### Triggers
+- **isbasedonsoilbody_idsoilbody_fk_ins** — Before Insert, RAISE: `FK violation: isbasedonsoilbody(idsoilbody) not found in soilbody(guidkey)`
+- **isbasedonsoilbody_idsoilbody_fk_upd** — Before Update, RAISE: `FK violation: isbasedonsoilbody(idsoilbody) not found in soilbody(guidkey)`
+- **isbasedonsoilbody_idsoilderivedobject_fk_ins** — Before Insert, RAISE: `FK violation: isbasedonsoilbody(idsoilderivedobject) not found in soilderivedobject(guidkey)`
+- **isbasedonsoilbody_idsoilderivedobject_fk_upd** — Before Update, RAISE: `FK violation: isbasedonsoilbody(idsoilderivedobject) not found in soilderivedobject(guidkey)`
+
+---
+
+## 🗂️ Table: `isbasedonsoilderivedobject`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `base_id` | `TEXT` | NOT NULL | Foreign key to the SoilDerivedObject table, guidkey field. - Base SoilDerivedObject. |
+| `related_id` | `TEXT` | NOT NULL | Foreign key to the SoilDerivedObject table, guidkey field. - Derived SoilDerivedObject. |
+
+### Relationships (as child)
+- `isbasedonsoilderivedobject.related_id` → `soilderivedobject.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilderivedobject` cascades to `isbasedonsoilderivedobject`.
+- `isbasedonsoilderivedobject.base_id` → `soilderivedobject.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilderivedobject` cascades to `isbasedonsoilderivedobject`.
+
+### Referenced by (as parent)
+- None
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_isbasedonsoilderivedobject_pair` | No | `base_id`, `related_id` | `c` | No |
+| `idx_isbasedonsoilderivedobject_related_id` | No | `related_id` | `c` | No |
+| `idx_isbasedonsoilderivedobject_base_id` | No | `base_id` | `c` | No |
+| `sqlite_autoindex_isbasedonsoilderivedobject_1` | Yes | `base_id`, `related_id` | `u` | No |
+
+### Triggers
+- **isbasedonsoilderivedobject_related_id_fk_ins** — Before Insert, RAISE: `FK violation: isbasedonsoilderivedobject(related_id) not found in soilderivedobject(guidkey)`
+- **isbasedonsoilderivedobject_related_id_fk_upd** — Before Update, RAISE: `FK violation: isbasedonsoilderivedobject(related_id) not found in soilderivedobject(guidkey)`
+- **isbasedonsoilderivedobject_base_id_fk_ins** — Before Insert, RAISE: `FK violation: isbasedonsoilderivedobject(base_id) not found in soilderivedobject(guidkey)`
+- **isbasedonsoilderivedobject_base_id_fk_upd** — Before Update, RAISE: `FK violation: isbasedonsoilderivedobject(base_id) not found in soilderivedobject(guidkey)`
+
+---
+
+## 🗂️ Table: `isderivedfrom`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `base_id` | `TEXT` | NOT NULL | Foreign key to the SoilProfile table, guidkey field. - Observed Soil Profile. |
+| `related_id` | `TEXT` | NOT NULL | Foreign key to the SoilProfile table, guidkey field. - Derived Soil Profile. |
+
+### Relationships (as child)
+- `isderivedfrom.related_id` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilprofile` cascades to `isderivedfrom`.
+- `isderivedfrom.base_id` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilprofile` cascades to `isderivedfrom`.
+
+### Referenced by (as parent)
+- None
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_isderivedfrom_base_related` | No | `base_id`, `related_id` | `c` | No |
+| `idx_isderivedfrom_related_id` | No | `related_id` | `c` | No |
+| `idx_isderivedfrom_base_id` | No | `base_id` | `c` | No |
+| `sqlite_autoindex_isderivedfrom_1` | Yes | `base_id`, `related_id` | `u` | No |
+
+### Triggers
+- **i_checkisderived** — Before Insert, RAISE: `Table isderivedfrom:  Attention, the value of the "base_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type derived`
+- **u_checkisderived** — Before Update, RAISE: `Table isderivedfrom:  Attention, the value of the "base_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type derived`
+- **i_checkisobserved** — Before Insert, RAISE: `Table isderivedfrom:  Attention, the value of the "related_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type observed`
+- **u_checkisobserved** — Before Update, RAISE: `Table isderivedfrom:  Attention, the value of the "related_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type observed`
+- **isderivedfrom_related_id_fk_ins** — Before Insert, RAISE: `FK violation: isderivedfrom(related_id) not found in soilprofile(guidkey)`
+- **isderivedfrom_related_id_fk_upd** — Before Update, RAISE: `FK violation: isderivedfrom(related_id) not found in soilprofile(guidkey)`
+- **isderivedfrom_base_id_fk_ins** — Before Insert, RAISE: `FK violation: isderivedfrom(base_id) not found in soilprofile(guidkey)`
+- **isderivedfrom_base_id_fk_upd** — Before Update, RAISE: `FK violation: isderivedfrom(base_id) not found in soilprofile(guidkey)`
+
+---
+
+## 🗂️ Table: `otherhorizon_profileelement`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `idprofileelement` | `TEXT` | NOT NULL | Foreign key to the ProfileElement table, guidkey field. |
+| `idotherhorizonnotationtype` | `TEXT` | NOT NULL | Foreign key to the OtherhorizonNotationType table, guidkey field. |
+
+### Relationships (as child)
+- `otherhorizon_profileelement.idotherhorizonnotationtype` → `otherhorizonnotationtype.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `otherhorizonnotationtype` cascades to `otherhorizon_profileelement`.
+- `otherhorizon_profileelement.idprofileelement` → `profileelement.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `profileelement` cascades to `otherhorizon_profileelement`.
+
+### Referenced by (as parent)
+- None
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_otherhorizon_profileelement_pair` | No | `idprofileelement`, `idotherhorizonnotationtype` | `c` | No |
+| `idx_otherhorizon_profileelement_idotherhorizonnotationtype` | No | `idotherhorizonnotationtype` | `c` | No |
+| `idx_otherhorizon_profileelement_idprofileelement` | No | `idprofileelement` | `c` | No |
+| `sqlite_autoindex_otherhorizon_profileelement_1` | Yes | `idprofileelement`, `idotherhorizonnotationtype` | `u` | No |
+
+### Triggers
+- **i_ceckothprofileelementtype** — Before Insert, RAISE: `Table otherhorizon_profileelement: The associated profileelement must have profileelementtype = 0 (HORIZON)`
+- **u_ceckothprofileelementtype** — Before Update, RAISE: `Table otherhorizon_profileelement: The associated profileelement must have profileelementtype = 0 (HORIZON)`
+- **otherhorizon_profileelement_idotherhorizonnotationtype_fk_ins** — Before Insert, RAISE: `FK violation: otherhorizon_profileelement(idotherhorizonnotationtype) not found in otherhorizonnotationtype(guidkey)`
+- **otherhorizon_profileelement_idotherhorizonnotationtype_fk_upd** — Before Update, RAISE: `FK violation: otherhorizon_profileelement(idotherhorizonnotationtype) not found in otherhorizonnotationtype(guidkey)`
+- **otherhorizon_profileelement_idprofileelement_fk_ins** — Before Insert, RAISE: `FK violation: otherhorizon_profileelement(idprofileelement) not found in profileelement(guidkey)`
+- **otherhorizon_profileelement_idprofileelement_fk_upd** — Before Update, RAISE: `FK violation: otherhorizon_profileelement(idprofileelement) not found in profileelement(guidkey)`
+
+---
+
+## 🗂️ Table: `otherhorizonnotationtype`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `guidkey` | `TEXT` |  | Universally unique identifier. |
+| `horizonnotation` | `TEXT` | NOT NULL | Notation characterizing the soil horizon according to a specified classification system. |
+| `diagnostichorizon` | `TEXT` |  | Codelist wrbdiagnostichorizonvalue. |
+| `isoriginalclassification` | `BOOLEAN` | NOT NULL, DEFAULT 0 | Boolean value to indicate whether the specified horizon notation system was the original notation system to describe the horizon. |
+| `otherhorizonnotation` | `TEXT` |  |  |
+
+### Relationships (as child)
+- None
+
+### Referenced by (as parent)
+- `otherhorizon_profileelement.idotherhorizonnotationtype` → `otherhorizonnotationtype.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `sqlite_autoindex_otherhorizonnotationtype_1` | Yes | `guidkey` | `u` | No |
+
+### Triggers
+- **otherhorizonnotationtypeguid** — After Insert
+- **otherhorizonnotationtypeguidupdate** — After Update
+- **i_otherhorizonnotationtype** — Before Insert, RAISE: `Table otherhorizonnotationtype: Invalid value for horizonnotation. Must be present in id of otherhorizonnotationtypevalue codelist.`
+- **u_otherhorizonnotationtype** — Before Update, RAISE: `Table otherhorizonnotationtype: Invalid value for horizonnotation. Must be present in id of otherhorizonnotationtypevalue codelist.`
+- **i_diagnostichorizon** — Before Insert, RAISE: `Table otherhorizonnotationtype: Invalid value for diagnostichorizon. Must be present in the relativecodelist.`
+- **u_diagnostichorizon** — Before Update, RAISE: `Table otherhorizonnotationtype: Invalid value for diagnostichorizon. Must be present in the relativecodelist.`
+- **otherhorizonnotationtype_otherhorizon_profileelement_fk_cascade_del** — After Delete
+- **otherhorizonnotationtype_otherhorizon_profileelement_fk_cascade_upd** — After Update
+
+---
+
+## 🗂️ Table: `othersoilnametype`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `othersoilname_type` | `TEXT` | NOT NULL | Name of the soil profile according to a specific classification scheme. |
+| `othersoilname_class` | `TEXT` |  | Specific classification scheme. |
+| `isoriginalclassification` | `BOOLEAN` | NOT NULL, DEFAULT 0 | Boolean value to indicate whether the specified classification scheme was the original classification scheme to describe the profile. |
+| `othersoilname` | `TEXT` |  | Foreign key to the SoilProfile table, guidkey field. |
+
+### Relationships (as child)
+- `othersoilnametype.othersoilname` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilprofile` cascades to `othersoilnametype`.
+
+### Referenced by (as parent)
+- None
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_othersoilnametype_othersoilname` | No | `othersoilname` | `c` | No |
+
+### Triggers
+- **i_soilname** — Before Insert, RAISE: `Table othersoilnametype: Invalid value for othersoilname_type. Must be present in id of othersoilnametypevalue codelist.`
+- **u_soilname** — Before Update, RAISE: `Table othersoilnametype: Invalid value for othersoilname_type. Must be present in id of othersoilnametypevalue codelist.`
+- **othersoilnametype_othersoilname_fk_ins** — Before Insert, RAISE: `FK violation: othersoilnametype(othersoilname) not found in soilprofile(guidkey)`
+- **othersoilnametype_othersoilname_fk_upd** — Before Update, RAISE: `FK violation: othersoilnametype(othersoilname) not found in soilprofile(guidkey)`
+
+---
+
+## 🗂️ Table: `particlesizefractiontype`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `fractioncontent` | `REAL` | NOT NULL | Percentage of the defined fraction. |
+| `particlesize_lower` | `INTEGER` | NOT NULL |  |
+| `particlesize_upper` | `INTEGER` | NOT NULL |  |
+| `idprofileelement` | `TEXT` | NOT NULL | Foreign key to the ProfileElement table, guidkey field. |
+
+### Relationships (as child)
+- `particlesizefractiontype.idprofileelement` → `profileelement.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `profileelement` cascades to `particlesizefractiontype`.
+
+### Referenced by (as parent)
+- None
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_particlesizefractiontype_idprofileelement` | No | `idprofileelement` | `c` | No |
+
+### Triggers
+- **i_check_fraction_sum** — Before Insert, RAISE: `The sum of fractioncontent for idprofileelement cannot exceed 100`
+- **u_check_fraction_sum** — Before Update, RAISE: `The sum of fractioncontent for idprofileelement cannot exceed 100`
+- **i_check_particlesize_overlap** — Before Insert, RAISE: `New range overlaps with or touches an existing range for the same idprofileelement`
+- **u_check_particlesize_overlap** — Before Update, RAISE: `New range overlaps with or touches an existing range for the same idprofileelement`
+- **particlesizefractiontype_idprofileelement_fk_ins** — Before Insert, RAISE: `FK violation: particlesizefractiontype(idprofileelement) not found in profileelement(guidkey)`
+- **particlesizefractiontype_idprofileelement_fk_upd** — Before Update, RAISE: `FK violation: particlesizefractiontype(idprofileelement) not found in profileelement(guidkey)`
+
+---
+
+## 🗂️ Table: `profileelement`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `guidkey` | `TEXT` |  | Universally unique identifier. |
+| `inspireid_localid` | `TEXT` |  | A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier. |
+| `inspireid_namespace` | `TEXT` |  | Namespace uniquely identifying the data source of the spatial object. |
+| `inspireid_versionid` | `TEXT` |  | The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique. |
+| `profileelementdepthrange_uppervalue` | `INTEGER` |  | Upper depth of the profile element (layer or horizon) measured from the surface of a soil profile (in cm). |
+| `profileelementdepthrange_lowervalue` | `INTEGER` |  | Lower depth of the profile element (layer or horizon) measured from the surface of a soil profile (in cm). |
+| `beginlifespanversion` | `DATETIME` | NOT NULL, DEFAULT strftime('%Y-%m-%dT%H:%M:%fZ', 'now') | Date and time at which this version of the spatial object was inserted or changed in the spatial data set. |
+| `endlifespanversion` | `DATETIME` |  | Date and time at which this version of the spatial object was superseded or retired in the spatial data set. |
+| `layertype` | `TEXT` |  | Assignation of a layer according to the concept that fits its kind. |
+| `layerrocktype` | `TEXT` |  | Type of the material in which the layer developed. |
+| `layergenesisprocess` | `TEXT` |  | Last non-pedogenic process (geologic or anthropogenic) that coined the material composition and internal structure of the layer. |
+| `layergenesisenviroment` | `TEXT` |  | Setting in which the last non-pedogenic process (geologic or anthropogenic) that coined the material composition and internal structure of the layer took place. |
+| `layergenesisprocessstate` | `TEXT` |  | Indication whether the process specified in layerGenesisProcess is on-going or seized in the past. |
+| `profileelementtype` | `BOOLEAN` | NOT NULL, DEFAULT 0 | Boolean value to indicate whether the record is of Horizon or Layer type. |
+| `ispartof` | `TEXT` | NOT NULL | Foreign key to the SoilProfile table, guidkey field. |
+
+### Relationships (as child)
+- `profileelement.ispartof` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilprofile` cascades to `profileelement`.
+
+### Referenced by (as parent)
+- `faohorizonnotationtype.idprofileelement` → `profileelement.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `feature.feature_profileelement` → `profileelement.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** SET NULL)
+- `otherhorizon_profileelement.idprofileelement` → `profileelement.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `particlesizefractiontype.idprofileelement` → `profileelement.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_profileelement_ispartof` | No | `ispartof` | `c` | No |
+| `sqlite_autoindex_profileelement_1` | Yes | `guidkey` | `u` | No |
+
+### Triggers
+- **profileelementguid** — After Insert
+- **profileelementguidupdate** — After Update
+- **i_ceckvalidversionprofileelement** — Before Insert, RAISE: `Table profileelement: beginlifespanversion must be less than endlifespanversion`
+- **i_ceckvaliddeepprofileelement** — Before Insert, RAISE: `Table profileelement: profileelementdepthrange_uppervalue must be less than profileelementdepthrange_lowervalue`
+- **u_ceckvaliddeepprofileelement** — Before Update, RAISE: `Table profileelement: profileelementdepthrange_uppervalue must be less than profileelementdepthrange_lowervalue`
+- **i_checkgeogenicfieldsnull** — Before Insert, RAISE: `layerrocktype must be NULL when LayerTypeValue is not "geogenic".`
+- **u_checkgeogenicfieldsnotnull** — Before Update, RAISE: `layerrocktype must be NULL when LayerTypeValue is not "geogenic".`
+- **i_ceckhorizonfields** — Before Insert, RAISE: `layertype must be NULL when profilelement is "HORIZON".`
+- **u_ceckhorizonfields** — Before Update, RAISE: `layertype must be NULL when profilelement is "HORIZON".`
+- **i_layertype** — Before Insert, RAISE: `Table profileelement: Invalid value for layertype. Must be present in id of layertypevalue codelist.`
+- **u_layertype** — Before Update, RAISE: `Table profileelement: Invalid value for layertype. Must be present in id of layertypevalue codelist.`
+- **i_layergenesisenviroment** — Before Insert, RAISE: `Table profileelement: Invalid value for layergenesisenviroment. Must be present in id of eventenvironmentvalue codelist.`
+- **u_layergenesisenviroment** — Before Update, RAISE: `Table profileelement: Invalid value for layergenesisenviroment. Must be present in id of eventenvironmentvalue codelist.`
+- **i_layergenesisprocess** — Before Insert, RAISE: `Table profileelement: Invalid value for layergenesisprocess. Must be present in id of  eventprocessvalue codelist.`
+- **u_layergenesisprocess** — Before Update, RAISE: `Table profileelement: Invalid value for layergenesisprocess. Must be present in id of eventprocessvalue codelist.`
+- **i_layergenesisprocessstate** — Before Insert, RAISE: `Table profileelement: Invalid value for layergenesisprocessstate. Must be present in id of layergenesisprocessstatevalue codelist.`
+- **u_layergenesisprocessstate** — Before Update, RAISE: `Table profileelement: Invalid value for layergenesisprocessstate. Must be present in id of layergenesisprocessstatevalue codelist.`
+- **i_layerrocktype** — Before Insert, RAISE: `Table profileelement: Invalid value for layerrocktype. Must be present in id of lithologyvalue codelist .`
+- **u_layerrocktype** — Before Update, RAISE: `Table profileelement: Invalid value for layerrocktype. Must be present in id of lithologyvalue codelist.`
+- **i_check_depth_range** — Before Insert, RAISE: `At least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue must not be null`
+- **u_check_depth_range** — Before Update, RAISE: `At least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue must not be null`
+- **u_begin_today_profileelement** — After Update
+- **u_begin_today_profileelement_error** — After Update, RAISE: `If you change record endlifespanversion must be greater than today`
+- **profileelement_faohorizonnotationtype_fk_cascade_del** — After Delete
+- **profileelement_faohorizonnotationtype_fk_cascade_upd** — After Update
+- **profileelement_feature_fk_setnull_del** — After Delete
+- **profileelement_feature_fk_cascade_upd** — After Update
+- **profileelement_otherhorizon_profileelement_fk_cascade_del** — After Delete
+- **profileelement_otherhorizon_profileelement_fk_cascade_upd** — After Update
+- **profileelement_particlesizefractiontype_fk_cascade_del** — After Delete
+- **profileelement_particlesizefractiontype_fk_cascade_upd** — After Update
+- **profileelement_ispartof_fk_ins** — Before Insert, RAISE: `FK violation: profileelement(ispartof) not found in soilprofile(guidkey)`
+- **profileelement_ispartof_fk_upd** — Before Update, RAISE: `FK violation: profileelement(ispartof) not found in soilprofile(guidkey)`
+
+---
+
+## 🗂️ Table: `soilbody`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `guidkey` | `TEXT` |  | Universally unique identifier. |
+| `inspireid_localid` | `TEXT` |  | A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier. |
+| `inspireid_namespace` | `TEXT` |  | Namespace uniquely identifying the data source of the spatial object. |
+| `inspireid_versionid` | `TEXT` |  | The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique. |
+| `beginlifespanversion` | `DATETIME` | NOT NULL, DEFAULT strftime('%Y-%m-%dT%H:%M:%fZ', 'now') | Date and time at which this version of the spatial object was inserted or changed in the spatial data set. |
+| `endlifespanversion` | `DATETIME` |  | Date and time at which this version of the spatial object was superseded or retired in the spatial data set. |
+| `soilbodylabel` | `TEXT` | NOT NULL | Label to identify the soil body according to the specified reference framework (metadata). |
+
+### Relationships (as child)
+- None
+
+### Referenced by (as parent)
+- `derivedprofilepresenceinsoilbody.idsoilbody` → `soilbody.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `isbasedonsoilbody.idsoilbody` → `soilbody.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `soilbody_geom.idsoilbody` → `soilbody.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `sqlite_autoindex_soilbody_1` | Yes | `guidkey` | `u` | No |
+
+### Triggers
+- **soilbodyguid** — After Insert
+- **soilbodyguidupdate** — After Update
+- **i_ceckvalidversionsoilbody** — Before Insert, RAISE: `Table soilbody: beginlifespanversion must be less than endlifespanversion`
+- **u_begin_today_soilbody** — After Update
+- **u_begin_today_soilbody_error** — After Update, RAISE: `If you change record endlifespanversion must be greater than today`
+- **soilbody_derivedprofilepresenceinsoilbody_fk_cascade_del** — After Delete
+- **soilbody_derivedprofilepresenceinsoilbody_fk_cascade_upd** — After Update
+- **soilbody_isbasedonsoilbody_fk_cascade_del** — After Delete
+- **soilbody_isbasedonsoilbody_fk_cascade_upd** — After Update
+- **soilbody_soilbody_geom_fk_cascade_del** — After Delete
+- **soilbody_soilbody_geom_fk_cascade_upd** — After Update
+
+---
+
+## 🗂️ Table: `soilbody_geom`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `geom` | `MULTIPOLYGON` | NOT NULL | Geometry. |
+| `idsoilbody` | `TEXT` | NOT NULL | Foreign key to the SoilBody table. |
+
+### Relationships (as child)
+- `soilbody_geom.idsoilbody` → `soilbody.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilbody` cascades to `soilbody_geom`.
+
+### Referenced by (as parent)
+- None
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_soilbody_geom_idsoilbody` | No | `idsoilbody` | `c` | No |
+| `idx_soiBody_geom` | No | `geom` | `c` | No |
+
+### Triggers
+- **soilbody_geom_idsoilbody_fk_ins** — Before Insert, RAISE: `FK violation: soilbody_geom(idsoilbody) not found in soilbody(guidkey)`
+- **soilbody_geom_idsoilbody_fk_upd** — Before Update, RAISE: `FK violation: soilbody_geom(idsoilbody) not found in soilbody(guidkey)`
+
+---
+
+## 🗂️ Table: `soilderivedobject`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `guidkey` | `TEXT` |  | Universally unique identifier. |
+| `inspireid_localid` | `TEXT` |  | A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier. |
+| `inspireid_namespace` | `TEXT` |  | Namespace uniquely identifying the data source of the spatial object. |
+| `inspireid_versionid` | `TEXT` |  | The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique. |
+| `accessuri` | `TEXT` |  | SoilDerivedObject URI. |
+| `geometry` | `POLYGON` |  | Geometry. |
+
+### Relationships (as child)
+- None
+
+### Referenced by (as parent)
+- `feature.feature_soilderivedobject` → `soilderivedobject.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** SET NULL)
+- `isbasedonobservedsoilprofile.idsoilderivedobject` → `soilderivedobject.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `isbasedonsoilbody.idsoilderivedobject` → `soilderivedobject.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `isbasedonsoilderivedobject.related_id` → `soilderivedobject.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `isbasedonsoilderivedobject.base_id` → `soilderivedobject.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_soilderivedobject_geom` | No | `geometry` | `c` | No |
+| `sqlite_autoindex_soilderivedobject_1` | Yes | `guidkey` | `u` | No |
+
+### Triggers
+- **soilderivedobjectguid** — After Insert
+- **soilderivedobjectguidupdate** — After Update
+- **soilderivedobject_feature_fk_setnull_del** — After Delete
+- **soilderivedobject_feature_fk_cascade_upd** — After Update
+- **soilderivedobject_isbasedonobservedsoilprofile_fk_cascade_del** — After Delete
+- **soilderivedobject_isbasedonobservedsoilprofile_fk_cascade_upd** — After Update
+- **soilderivedobject_isbasedonsoilbody_fk_cascade_del** — After Delete
+- **soilderivedobject_isbasedonsoilbody_fk_cascade_upd** — After Update
+- **soilderivedobject_isbasedonsoilderivedobject_fk_cascade_del** — After Delete
+- **soilderivedobject_isbasedonsoilderivedobject_fk_cascade_upd** — After Update
+
+---
+
+## 🗂️ Table: `soilplot`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `guidkey` | `TEXT` |  |  |
+| `soilplotlocation` | `POINT` | NOT NULL | Geometry. |
+| `inspireid_localid` | `TEXT` |  |  |
+| `inspireid_namespace` | `TEXT` |  |  |
+| `inspireid_versionid` | `TEXT` |  |  |
+| `soilplottype` | `TEXT` | NOT NULL |  |
+| `beginlifespanversion` | `DATETIME` | NOT NULL, DEFAULT strftime('%Y-%m-%dT%H:%M:%fZ', 'now') |  |
+| `endlifespanversion` | `DATETIME` |  |  |
+| `locatedon` | `TEXT` |  | Foreign key to the SoilSite table, guidkey field. |
+
+### Relationships (as child)
+- `soilplot.locatedon` → `soilsite.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** NO ACTION)
+
+### Referenced by (as parent)
+- `soilprofile.location` → `soilplot.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_soilplot_locatedon` | No | `locatedon` | `c` | No |
+| `idx_soilplot_geom` | No | `soilplotlocation` | `c` | No |
+| `sqlite_autoindex_soilplot_1` | Yes | `guidkey` | `u` | No |
+
+### Triggers
+- **soilplotguid** — After Insert
+- **soilplotguidupdate** — After Update
+- **i_ceckvalidversionsoilplot** — Before Insert, RAISE: `Table soilplot: beginlifespanversion must be less than endlifespanversion`
+- **i_soilplottype** — Before Insert, RAISE: `Table soilplot: Invalid value for soilplottype. Must be present in id of  soilplottypevalue codelist.`
+- **u_soilplottype** — Before Update, RAISE: `Table soilplot: Invalid value for soilplottype. Must be present in id of soilplottypevalue codelist.`
+- **u_begin_today_soilplot** — After Update
+- **u_begin_today_soilplot_error** — After Update, RAISE: `If you change record endlifespanversion must be greater than today`
+- **soilplot_locatedon_fk_ins** — Before Insert, RAISE: `FK violation: soilplot(locatedon) not found in soilsite(guidkey)`
+- **soilplot_locatedon_fk_upd** — Before Update, RAISE: `FK violation: soilplot(locatedon) not found in soilsite(guidkey)`
+- **soilplot_soilprofile_fk_cascade_del** — After Delete
+- **soilplot_soilprofile_fk_cascade_upd** — After Update
+
+---
+
+## 🗂️ Table: `soilprofile`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `guidkey` | `TEXT` |  | Universally unique identifier. |
+| `inspireid_localid` | `TEXT` |  | A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier. |
+| `inspireid_namespace` | `TEXT` |  | Namespace uniquely identifying the data source of the spatial object. |
+| `inspireid_versionid` | `TEXT` |  | The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique. |
+| `localidentifier` | `TEXT` |  | Unique identifier of the soil profile given by the data provider of the dataset. |
+| `beginlifespanversion` | `DATETIME` | NOT NULL, DEFAULT strftime('%Y-%m-%dT%H:%M:%fZ', 'now') | Date and time at which this version of the spatial object was inserted or changed in the spatial data set. |
+| `endlifespanversion` | `DATETIME` |  | Date and time at which this version of the spatial object was superseded or retired in the spatial data set. |
+| `validfrom` | `DATETIME` | NOT NULL, DEFAULT strftime('%Y-%m-%dT%H:%M:%fZ', 'now') | The time when the phenomenon started to exist in the real world. |
+| `validto` | `DATETIME` |  | The time from which the phenomenon no longer exists in the real world. |
+| `isderived` | `BOOLEAN` | NOT NULL, DEFAULT 0 | Boolean value to indicate whether the record is of Derived or Observed type. |
+| `wrbversion` | `TEXT` |  | Indicates the WRB classification version. |
+| `wrbreferencesoilgroup` | `TEXT` |  | First level of classification of the World Reference Base for Soil Resources. |
+| `isoriginalclassification` | `BOOLEAN` | NOT NULL, DEFAULT 1 | Boolean value to indicate whether the WRB classification system was the original classification system to describe the soil profile. |
+| `location` | `TEXT` |  | Foreign key to the SoilPlot table, guidkey field. |
+
+### Relationships (as child)
+- `soilprofile.location` → `soilplot.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilplot` cascades to `soilprofile`.
+
+### Referenced by (as parent)
+- `derivedprofilepresenceinsoilbody.idsoilprofile` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `feature.feature_soilprofile` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** SET NULL)
+- `isbasedonobservedsoilprofile.idsoilprofile` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `isderivedfrom.related_id` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `isderivedfrom.base_id` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `othersoilnametype.othersoilname` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `profileelement.ispartof` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+- `wrbqualifiergroup_profile.idsoilprofile` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_soilprofile_location` | No | `location` | `c` | No |
+| `sqlite_autoindex_soilprofile_2` | Yes | `location` | `u` | No |
+| `sqlite_autoindex_soilprofile_1` | Yes | `guidkey` | `u` | No |
+
+### Triggers
+- **soilprofileguid** — After Insert
+- **soilprofileguidupdate** — After Update
+- **i_ceckvalidperiodsoilprofile** — Before Insert, RAISE: `Table soilprofile: validto must be less than validfrom`
+- **u_ceckvalidperiodsoilprofile** — Before Update, RAISE: `Table soilprofile: validto must be less than validfrom`
+- **i_ceckvalidversionsoilprofile** — Before Insert, RAISE: `Table soilprofile: beginlifespanversion must be less than endlifespanversion`
+- **i_ceckprofileLocation** — Before Insert, RAISE: `Table soilprofile:  For DERIVED profile  (isderived = 1), location must be NULL`
+- **u_ceckprofileLocation** — Before Update, RAISE: `Table soilprofile:  For DERIVED profile  (isderived = 1), location must be NULL`
+- **i_ceckprofileLocationobserved** — Before Insert, RAISE: `Table soilprofile:  For OBSERVED profile  (isderived = 0), location must be NOT NULL`
+- **u_ceckprofileLocationobserved** — Before Insert, RAISE: `Table soilprofile:  For OBSERVED profile  (isderived = 0), location must be NOT NULL`
+- **i_wrbreferencesoilgroup** — Before Insert, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
+- **u_wrbreferencesoilgroup** — Before Update, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
+- **u_begin_today_soilprofile** — After Update
+- **u_begin_today_soilprofile_error** — After Update, RAISE: `If you change record endlifespanversion must be greater than today`
+- **i_wrbproversion** — Before Insert, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.`
+- **u_wrbproversion** — Before Update, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.`
+- **soilprofile_derivedprofilepresenceinsoilbody_fk_cascade_del** — After Delete
+- **soilprofile_derivedprofilepresenceinsoilbody_fk_cascade_upd** — After Update
+- **soilprofile_feature_fk_setnull_del** — After Delete
+- **soilprofile_feature_fk_cascade_upd** — After Update
+- **soilprofile_isbasedonobservedsoilprofile_fk_cascade_del** — After Delete
+- **soilprofile_isbasedonobservedsoilprofile_fk_cascade_upd** — After Update
+- **soilprofile_isderivedfrom_fk_cascade_del** — After Delete
+- **soilprofile_isderivedfrom_fk_cascade_upd** — After Update
+- **soilprofile_othersoilnametype_fk_cascade_del** — After Delete
+- **soilprofile_othersoilnametype_fk_cascade_upd** — After Update
+- **soilprofile_profileelement_fk_cascade_del** — After Delete
+- **soilprofile_profileelement_fk_cascade_upd** — After Update
+- **soilprofile_location_fk_ins** — Before Insert, RAISE: `FK violation: soilprofile(location) not found in soilplot(guidkey)`
+- **soilprofile_location_fk_upd** — Before Update, RAISE: `FK violation: soilprofile(location) not found in soilplot(guidkey)`
+- **soilprofile_wrbqualifiergroup_profile_fk_cascade_del** — After Delete
+- **soilprofile_wrbqualifiergroup_profile_fk_cascade_upd** — After Update
+
+---
+
+## 🗂️ Table: `soilsite`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `guidkey` | `TEXT` |  | Universally unique identifier |
+| `geometry` | `POLYGON` | NOT NULL | Geometry. |
+| `inspireid_localid` | `TEXT` |  | A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier. |
+| `inspireid_namespace` | `TEXT` |  | Namespace uniquely identifying the data source of the spatial object. |
+| `inspireid_versionid` | `TEXT` |  | The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique. |
+| `soilinvestigationpurpose` | `TEXT` | NOT NULL | Indication why a survey was conducted. |
+| `validfrom` | `DATETIME` | NOT NULL, DEFAULT strftime('%Y-%m-%dT%H:%M:%fZ', 'now') | The time when the phenomenon started to exist in the real world. |
+| `validto` | `DATETIME` |  | The time from which the phenomenon no longer exists in the real world. |
+| `beginlifespanversion` | `DATETIME` | NOT NULL, DEFAULT strftime('%Y-%m-%dT%H:%M:%fZ', 'now') | Date and time at which this version of the spatial object was inserted or changed in the spatial data set. |
+| `endlifespanversion` | `DATETIME` |  | Date and time at which this version of the spatial object was superseded or retired in the spatial data set. |
+
+### Relationships (as child)
+- None
+
+### Referenced by (as parent)
+- `feature.feature_soilsite` → `soilsite.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** SET NULL)
+- `soilplot.locatedon` → `soilsite.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** NO ACTION)
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_soilsite_geom` | No | `geometry` | `c` | No |
+| `sqlite_autoindex_soilsite_1` | Yes | `guidkey` | `u` | No |
+
+### Triggers
+- **soilsiteguid** — After Insert
+- **soilsiteguidupdate** — After Update
+- **i_ceckvalidperiodsoilsite** — Before Insert, RAISE: `Table soilsite: validto must be less than validfrom`
+- **u_ceckvalidperiodsoilsite** — Before Update, RAISE: `Table soilsite: validto must be less than validfrom`
+- **i_ceckvalidversionsoilsite** — Before Insert, RAISE: `Table soilsite: beginlifespanversion must be less than endlifespanversion`
+- **i_soilinvestigationpurpose** — Before Insert, RAISE: `Table soilsite: Invalid value for soilinvestigationpurpose. Must be present in id of soilinvestigationpurposevalue codelist.`
+- **u_soilinvestigationpurpose** — Before Update, RAISE: `Table soilsite: Invalid value for soilinvestigationpurpose. Must be present in id of soilinvestigationpurposevalue codelist.`
+- **u_begin_today_soilsite** — After Update
+- **u_begin_today_soilsite_error** — After Update, RAISE: `If you change record endlifespanversion must be greater than today`
+- **soilsite_feature_fk_setnull_del** — After Delete
+- **soilsite_feature_fk_cascade_upd** — After Update
+- **soilsite_soilplot_fk_restrict_del** — Before Delete, RAISE: `FK violation: cannot DELETE soilsite because child rows exist in soilplot`
+- **soilsite_soilplot_fk_cascade_upd** — After Update
+
+---
+
+## 🗂️ Table: `wrbqualifiergroup_profile`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `idsoilprofile` | `TEXT` | NOT NULL | Foreign key to the SaoilProfile table, guidkey field. |
+| `idwrbqualifiergrouptype` | `TEXT` | NOT NULL | Foreign key to the WrbqualifierGroupType table, guidkey field. |
+| `qualifierposition` | `INTEGER` | NOT NULL | Number to indicate the position of a qualifier with regard to the WRB reference soil group (RSG) it belongs to and with regard to its placement to that (RSG) i.e. as a prefix or a suffix. |
+
+### Relationships (as child)
+- `wrbqualifiergroup_profile.idwrbqualifiergrouptype` → `wrbqualifiergrouptype.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `wrbqualifiergrouptype` cascades to `wrbqualifiergroup_profile`.
+- `wrbqualifiergroup_profile.idsoilprofile` → `soilprofile.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+  - *Note:* delete on `soilprofile` cascades to `wrbqualifiergroup_profile`.
+
+### Referenced by (as parent)
+- None
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `idx_wrbqualifiergroup_profile_pair` | No | `idsoilprofile`, `idwrbqualifiergrouptype` | `c` | No |
+| `idx_wrbqualifiergroup_profile_idwrbqualifiergrouptype` | No | `idwrbqualifiergrouptype` | `c` | No |
+| `idx_wrbqualifiergroup_profile_idsoilprofile` | No | `idsoilprofile` | `c` | No |
+| `sqlite_autoindex_wrbqualifiergroup_profile_1` | Yes | `idsoilprofile`, `idwrbqualifiergrouptype` | `u` | No |
+
+### Triggers
+- **i_check_wrbversion_match** — Before Insert, RAISE: `Mismatch in wrbversion values.`
+- **u_check_wrbversion_match** — Before Update, RAISE: `Mismatch in wrbversion values.`
+- **i_check_qualifier_position_unique** — Before Insert, RAISE: `qualifierposition must be unique for each qualifierplace within the same soilprofile`
+- **u_check_qualifier_position_unique** — Before Update, RAISE: `qualifierposition must be unique for each qualifierplace within the same soilprofile`
+- **wrbqualifiergroup_profile_idwrbqualifiergrouptype_fk_ins** — Before Insert, RAISE: `FK violation: wrbqualifiergroup_profile(idwrbqualifiergrouptype) not found in wrbqualifiergrouptype(guidkey)`
+- **wrbqualifiergroup_profile_idwrbqualifiergrouptype_fk_upd** — Before Update, RAISE: `FK violation: wrbqualifiergroup_profile(idwrbqualifiergrouptype) not found in wrbqualifiergrouptype(guidkey)`
+- **wrbqualifiergroup_profile_idsoilprofile_fk_ins** — Before Insert, RAISE: `FK violation: wrbqualifiergroup_profile(idsoilprofile) not found in soilprofile(guidkey)`
+- **wrbqualifiergroup_profile_idsoilprofile_fk_upd** — Before Update, RAISE: `FK violation: wrbqualifiergroup_profile(idsoilprofile) not found in soilprofile(guidkey)`
+
+---
+
+## 🗂️ Table: `wrbqualifiergrouptype`
+
+### Columns
+
+| Name | Type | Constraints | Description |
+|------|------|-------------|-------------|
+| `id` | `INTEGER` | PRIMARY KEY | Primary Key of the Table. |
+| `guidkey` | `TEXT` |  | Universally unique identifier. |
+| `wrbversion` | `TEXT` | NOT NULL, DEFAULT 'https://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue' | Indicates the WRB classification version. |
+| `qualifierplace` | `TEXT` | NOT NULL | Attribute to indicate the placement of the Qualifier with regard to the WRB reference soil group (RSG). The placement can be in front of the RSG i.e. prefix or it can be behind the RSG i.e. suffix. |
+| `wrbqualifier` | `TEXT` | NOT NULL | Name element of WRB, 2nd level of classification. |
+| `wrbspecifier_1` | `TEXT` |  | First code that indicates the degree of expression of a qualifier or the depth range of which the qualifier applies. |
+| `wrbspecifier_2` | `TEXT` |  | Second code that indicates the degree of expression of a qualifier or the depth range of which the qualifier applies. |
+
+### Relationships (as child)
+- None
+
+### Referenced by (as parent)
+- `wrbqualifiergroup_profile.idwrbqualifiergrouptype` → `wrbqualifiergrouptype.guidkey` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
+
+### Indexes
+
+| Name | Unique | Columns | Origin | Partial |
+|------|--------|---------|--------|---------|
+| `sqlite_autoindex_wrbqualifiergrouptype_2` | Yes | `wrbversion`, `qualifierplace`, `wrbqualifier`, `wrbspecifier_1`, `wrbspecifier_2` | `u` | No |
+| `sqlite_autoindex_wrbqualifiergrouptype_1` | Yes | `guidkey` | `u` | No |
+
+### Triggers
+- **wrbqualifiergrouptypeguid** — After Insert
+- **wrbqualifiergrouptypeguidupdate** — After Update
+- **i_wrbqualifier** — Before Insert, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
+- **u_wrbqualifier** — Before Update, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
+- **i_qualifierplace** — Before Insert, RAISE: `Table wrbqualifiergrouptype: Invalid value for qualifierplace. Must be present in id of wrbqualifierplacevalue codelist.`
+- **u_qualifierplace** — Before Update, RAISE: `Table wrbqualifiergrouptype: Invalid value for qualifierplace. Must be present in id of wrbqualifierplacevalue codelist.`
+- **i_wrbspecifier_1** — Before Insert, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
+- **u_wrbspecifier_1** — Before Update, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
+- **i_wrbspecifier_2** — Before Insert, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
+- **u_wrbspecifier_2** — Before Update, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
+- **i_wrbqualversion** — Before Insert, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.`
+- **u_wrbqualversion** — Before Update, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.`
+- **i_unique_wrbqualifiergrouptype** — Before Insert, RAISE: `Duplicate entry found for wrbversion, qualifierplace, wrbqualifier, wrbspecifier_1, wrbspecifier_2.`
+- **u_unique_wrbqualifiergrouptype** — Before Update, RAISE: `Duplicate entry found for wrbversion, qualifierplace, wrbqualifier, wrbspecifier_1, wrbspecifier_2.`
+- **i_check_specifiers_not_equal** — Before Insert, RAISE: `wrbspecifier_1 and wrbspecifier_2 must not be equal`
+- **u_check_specifiers_not_equal** — Before Update, RAISE: `wrbspecifier_1 and wrbspecifier_2 must not be equal`
+- **wrbqualifiergrouptype_wrbqualifiergroup_profile_fk_cascade_del** — After Delete
+- **wrbqualifiergrouptype_wrbqualifiergroup_profile_fk_cascade_upd** — After Update
+
+---
+
+
+Relationships (child → parent):
+-------------------------------
+[datastream].idfeature  -->  [feature].id  (ON UPDATE NO ACTION, ON DELETE NO ACTION)
+[derivedprofilepresenceinsoilbody].idsoilprofile  -->  [soilprofile].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[derivedprofilepresenceinsoilbody].idsoilbody  -->  [soilbody].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[faohorizonnotationtype].idprofileelement  -->  [profileelement].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[feature].idfeaturetype  -->  [featuretype].id  (ON UPDATE CASCADE, ON DELETE SET NULL)
+[feature].feature_soilderivedobject  -->  [soilderivedobject].guidkey  (ON UPDATE CASCADE, ON DELETE SET NULL)
+[feature].feature_profileelement  -->  [profileelement].guidkey  (ON UPDATE CASCADE, ON DELETE SET NULL)
+[feature].feature_soilprofile  -->  [soilprofile].guidkey  (ON UPDATE CASCADE, ON DELETE SET NULL)
+[feature].feature_soilsite  -->  [soilsite].guidkey  (ON UPDATE CASCADE, ON DELETE SET NULL)
+[isbasedonobservedsoilprofile].idsoilprofile  -->  [soilprofile].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[isbasedonobservedsoilprofile].idsoilderivedobject  -->  [soilderivedobject].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[isbasedonsoilbody].idsoilbody  -->  [soilbody].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[isbasedonsoilbody].idsoilderivedobject  -->  [soilderivedobject].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[isbasedonsoilderivedobject].related_id  -->  [soilderivedobject].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[isbasedonsoilderivedobject].base_id  -->  [soilderivedobject].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[isderivedfrom].related_id  -->  [soilprofile].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[isderivedfrom].base_id  -->  [soilprofile].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[otherhorizon_profileelement].idotherhorizonnotationtype  -->  [otherhorizonnotationtype].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[otherhorizon_profileelement].idprofileelement  -->  [profileelement].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[othersoilnametype].othersoilname  -->  [soilprofile].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[particlesizefractiontype].idprofileelement  -->  [profileelement].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[profileelement].ispartof  -->  [soilprofile].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilbody_geom].idsoilbody  -->  [soilbody].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilplot].locatedon  -->  [soilsite].guidkey  (ON UPDATE CASCADE, ON DELETE NO ACTION)
+[soilprofile].location  -->  [soilplot].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[wrbqualifiergroup_profile].idwrbqualifiergrouptype  -->  [wrbqualifiergrouptype].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[wrbqualifiergroup_profile].idsoilprofile  -->  [soilprofile].guidkey  (ON UPDATE CASCADE, ON DELETE CASCADE)
+
+Reverse relationships (parent → children):
+------------------------------------------
+[feature].id  -->  [datastream].idfeature  (ON UPDATE NO ACTION, ON DELETE NO ACTION)
+[featuretype].id  -->  [feature].idfeaturetype  (ON UPDATE CASCADE, ON DELETE SET NULL)
+[otherhorizonnotationtype].guidkey  -->  [otherhorizon_profileelement].idotherhorizonnotationtype  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[profileelement].guidkey  -->  [faohorizonnotationtype].idprofileelement  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[profileelement].guidkey  -->  [feature].feature_profileelement  (ON UPDATE CASCADE, ON DELETE SET NULL)
+[profileelement].guidkey  -->  [otherhorizon_profileelement].idprofileelement  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[profileelement].guidkey  -->  [particlesizefractiontype].idprofileelement  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilbody].guidkey  -->  [derivedprofilepresenceinsoilbody].idsoilbody  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilbody].guidkey  -->  [isbasedonsoilbody].idsoilbody  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilbody].guidkey  -->  [soilbody_geom].idsoilbody  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilderivedobject].guidkey  -->  [feature].feature_soilderivedobject  (ON UPDATE CASCADE, ON DELETE SET NULL)
+[soilderivedobject].guidkey  -->  [isbasedonobservedsoilprofile].idsoilderivedobject  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilderivedobject].guidkey  -->  [isbasedonsoilbody].idsoilderivedobject  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilderivedobject].guidkey  -->  [isbasedonsoilderivedobject].related_id  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilderivedobject].guidkey  -->  [isbasedonsoilderivedobject].base_id  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilplot].guidkey  -->  [soilprofile].location  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilprofile].guidkey  -->  [derivedprofilepresenceinsoilbody].idsoilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilprofile].guidkey  -->  [feature].feature_soilprofile  (ON UPDATE CASCADE, ON DELETE SET NULL)
+[soilprofile].guidkey  -->  [isbasedonobservedsoilprofile].idsoilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilprofile].guidkey  -->  [isderivedfrom].related_id  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilprofile].guidkey  -->  [isderivedfrom].base_id  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilprofile].guidkey  -->  [othersoilnametype].othersoilname  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilprofile].guidkey  -->  [profileelement].ispartof  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilprofile].guidkey  -->  [wrbqualifiergroup_profile].idsoilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
+[soilsite].guidkey  -->  [feature].feature_soilsite  (ON UPDATE CASCADE, ON DELETE SET NULL)
+[soilsite].guidkey  -->  [soilplot].locatedon  (ON UPDATE CASCADE, ON DELETE NO ACTION)
+[wrbqualifiergrouptype].guidkey  -->  [wrbqualifiergroup_profile].idwrbqualifiergrouptype  (ON UPDATE CASCADE, ON DELETE CASCADE)
+
+Legend:
+  * column name prefixed with '*' denotes PRIMARY KEY in table boxes.
+  * arrow 'child --> parent' indicates a many-to-one relationship.
+  * arrow 'parent --> child' indicates the reverse view of the same FK.
+
+---
+
+## Cascade Summary
+- Deleting from `otherhorizonnotationtype` may delete rows in:
+  - `otherhorizon_profileelement`
+- Deleting from `profileelement` may delete rows in:
+  - `faohorizonnotationtype`
+  - `otherhorizon_profileelement`
+  - `particlesizefractiontype`
+- Deleting from `soilbody` may delete rows in:
+  - `derivedprofilepresenceinsoilbody`
+  - `isbasedonsoilbody`
+  - `soilbody_geom`
+- Deleting from `soilderivedobject` may delete rows in:
+  - `isbasedonobservedsoilprofile`
+  - `isbasedonsoilbody`
+  - `isbasedonsoilderivedobject`
+- Deleting from `soilplot` may delete rows in:
+  - `soilprofile`
+- Deleting from `soilprofile` may delete rows in:
+  - `derivedprofilepresenceinsoilbody`
+  - `isbasedonobservedsoilprofile`
+  - `isderivedfrom`
+  - `othersoilnametype`
+  - `profileelement`
+  - `wrbqualifiergroup_profile`
+- Deleting from `wrbqualifiergrouptype` may delete rows in:
+  - `wrbqualifiergroup_profile`
 
 ---
 

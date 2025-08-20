@@ -29,7 +29,7 @@ This repository provides resources for working with the **INSPIRE Soil (SO)** da
 
 
 > **Note**:  
-QGIS version **3.32.3-Lima** or higher is required.
+QGIS version **3.44.0-Solothurn** or higher is required.
 
 ---
 

@@ -23,18 +23,6 @@ Includes SQL scripts for:
 - **DDL (Data Definition Language)**: creation of the GeoPackage schema.
 - **DML (Data Manipulation Language)**: population of the `Codelist` support table.
 
-### /postgresql_ddl/
-Includes SQL scripts for:
-- **DDL**: creation of the schema in a **PostgreSQL/PostGIS** environment.
-- **DML**: population of the `Codelist` table.
-
-> **Note**:  
-We are also developing the GeoPackage structure in **PostgreSQL** format to support a more robust, server-based deployment.  
-While PostgreSQL is not the primary focus and is not extensively tested, we periodically perform full data migrations (e.g., for the Sicily dataset) to ensure compatibility and detect potential issues.
-
-### /qgis_modeler/
-Contains a **QGIS model** for automated layer loading.
-
 ### /qgis_style/
 Includes **custom attribute forms and styles** to enhance data entry and visualization in QGIS.
 

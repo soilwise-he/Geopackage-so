@@ -1,0 +1,283 @@
+---
+-- title: "Howto: produce a GeoPackage template for INSPIRE Soil data"
+-- date: 20/08/2025
+-- author: Andrea Lachi - andrea.lachi@crea.gov.it
+---
+
+-- gpkg_metadata Table Definition SQL
+
+CREATE TABLE gpkg_metadata (
+  id INTEGER CONSTRAINT m_pk PRIMARY KEY ASC NOT NULL,
+  md_scope TEXT NOT NULL DEFAULT 'dataset',
+  md_standard_uri TEXT NOT NULL,
+  mime_type TEXT NOT NULL DEFAULT 'text/xml',
+  metadata TEXT NOT NULL DEFAULT ''
+);
+
+
+ --gpkg_metadata_reference Table Definition SQL
+
+CREATE TABLE gpkg_metadata_reference (
+  reference_scope TEXT NOT NULL,
+  table_name TEXT,
+  column_name TEXT,
+  row_id_value INTEGER,
+  timestamp DATETIME NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+  md_file_id INTEGER NOT NULL,
+  md_parent_id INTEGER,
+  CONSTRAINT crmr_mfi_fk FOREIGN KEY (md_file_id) REFERENCES gpkg_metadata(id),
+  CONSTRAINT crmr_mpi_fk FOREIGN KEY (md_parent_id) REFERENCES gpkg_metadata(id)
+);
+
+
+-- To enable reading and writing metadata in the GeoPackage:
+-- Insert the GeoPackage file and ensure metadata support is enabled.
+
+INSERT INTO gpkg_extensions (table_name, column_name, extension_name, definition, scope) VALUES ('gpkg_metadata', null, 'gpkg_metadata', 'http://www.geopackage.org/spec120/#extension_metadata', 'read-write');
+INSERT INTO gpkg_extensions (table_name, column_name, extension_name, definition, scope) VALUES ('gpkg_metadata_reference', null, 'gpkg_metadata', 'http://www.geopackage.org/spec120/#extension_metadata', 'read-write');
+
+-- To save metadata into the GeoPackage:
+-- Open the Metadata tab.
+-- At the bottom, click the "Metadata" button.
+-- Select "Save to Default Location".
+
+
+-------------------------------------------------------------------------------
+-- Field-level metadata (WORKS):
+-- Used for describing individual fields.
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+-- Already created for inserting MIME type JSON in DDL_SO.sql
+-------------------------------------------------------------------------------
+/*
+CREATE TABLE gpkg_data_columns (
+  table_name TEXT NOT NULL,
+  column_name TEXT NOT NULL,
+  name TEXT,
+  title TEXT,
+  description TEXT,
+  mime_type TEXT,
+  constraint_name TEXT,
+  CONSTRAINT pk_gdc PRIMARY KEY (table_name, column_name),
+  CONSTRAINT gdc_tn UNIQUE (table_name, name)
+);
+*/
+
+-- non si usa ma mettere
+CREATE TABLE gpkg_data_column_constraints (
+  constraint_name TEXT NOT NULL,
+  constraint_type TEXT NOT NULL, -- 'range' | 'enum' | 'glob'
+  value TEXT,
+  min NUMERIC,
+  min_is_inclusive BOOLEAN, -- 0 = false, 1 = true
+  max NUMERIC,
+  max_is_inclusive BOOLEAN, -- 0 = false, 1 = true
+  description TEXT,
+  CONSTRAINT gdcc_ntv UNIQUE (constraint_name, constraint_type, value)
+);
+
+
+
+INSERT INTO gpkg_extensions (table_name, column_name, extension_name, definition, scope) VALUES ('gpkg_data_columns', null, 'gpkg_schema', 'http://www.geopackage.org/spec121/#extension_schema', 'read-write');
+INSERT INTO gpkg_extensions (table_name, column_name, extension_name, definition, scope) VALUES ('gpkg_data_column_constraints', null, 'gpkg_schema', 'http://www.geopackage.org/spec121/#extension_schema', 'read-write');
+
+-- SOIL SITE --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'guidkey', 'Guidkey', 'Guidkey', 'Universally unique identifier', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'inspireid_localid', 'Inspire Id Local Id', 'Inspire Id Local Id', 'A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'inspireid_namespace', 'Inspire Id Namespace', 'Inspire Id Namespace', 'Namespace uniquely identifying the data source of the spatial object.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'inspireid_versionid', 'Inspire Id Version Id', 'Inspire Id Version Id', 'The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'soilinvestigationpurpose', 'Soil Investigation Purpose', 'Soil Investigation Purpose', 'Indication why a survey was conducted.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'validfrom', 'Valid From', 'Valid From', 'The time when the phenomenon started to exist in the real world.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'validto', 'Valid To', 'Valid To', 'The time from which the phenomenon no longer exists in the real world.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'beginlifespanversion', 'Begin Lifespan Version', 'Begin Lifespan Version', 'Date and time at which this version of the spatial object was inserted or changed in the spatial data set.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'endlifespanversion', 'End Lifespan Version', 'End Lifespan Version', 'Date and time at which this version of the spatial object was superseded or retired in the spatial data set.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilsite', 'geometry', 'Geometry', 'Geometry', 'Geometry.', null, null);
+
+-- SOIL PLOT --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilplot', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilplot', 'guidkey ', 'Guidkey', 'Guidkey', 'Universally unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilplot', 'inspireid_localid ', 'Inspire Id Local Id', 'Inspire Id Local Id', 'A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilplot', 'inspireid_namespace ', 'Inspire Id Namespace', 'Inspire Id Namespace', 'Namespace uniquely identifying the data source of the spatial object.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilplot', 'inspireid_versionid ', 'Inspire Id Version Id', 'Inspire Id Version Id', 'The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilplot', 'soilplottype ', 'Soil Plot Type ', 'Soil Plot Type ', 'Gives information on what kind of plot the observation of the soil is made on.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilplot', 'beginlifespanversion ', 'Begin Lifespan Version', 'Begin Lifespan Version', 'Date and time at which this version of the spatial object was inserted or changed in the spatial data set.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilplot', 'endlifespanversion ', 'End Lifespan Version', 'End Lifespan Version', 'Date and time at which this version of the spatial object was superseded or retired in the spatial data set.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilplot', 'locatedon', 'Located On', 'Located On', 'Foreign key to the SoilSite table, guidkey field.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilplot', 'soilplotlocation', 'Soil Plot Location', 'Soil Plot Location', 'Geometry.', null, null);
+
+-- SOIL PROFILE --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'guidkey', 'Guidkey', 'Guidkey', 'Universally unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'inspireid_localid', 'Inspire Id Local Id', 'Inspire Id Local Id', 'A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'inspireid_namespace', 'Inspire Id Namespace', 'Inspire Id Namespace', 'Namespace uniquely identifying the data source of the spatial object.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'inspireid_versionid', 'Inspire Id Version Id', 'Inspire Id Version Id', 'The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'localidentifier', 'Local Identifier', 'Local Identifier', 'Unique identifier of the soil profile given by the data provider of the dataset.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'beginlifespanversion', 'Begin Lifespan Version', 'Begin Lifespan Version', 'Date and time at which this version of the spatial object was inserted or changed in the spatial data set.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'endlifespanversion', 'End Lifespan Version', 'End Lifespan Version', 'Date and time at which this version of the spatial object was superseded or retired in the spatial data set.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'validfrom', 'Valid From', 'Valid From', 'The time when the phenomenon started to exist in the real world.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'validto', 'Valid To', 'Valid To', 'The time from which the phenomenon no longer exists in the real world.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'isderived', 'Is Derived', 'Is Derived', 'Boolean value to indicate whether the record is of Derived or Observed type.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'wrbversion', 'Wrb Version', 'Wrb Version', 'Indicates the WRB classification version.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'wrbreferencesoilgroup', 'Wrb Reference Soil Group', 'Wrb Reference Soil Group', 'First level of classification of the World Reference Base for Soil Resources.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'isoriginalclassification', 'Is Original Classification', 'Is Original Classification', 'Boolean value to indicate whether the WRB classification system was the original classification system to describe the soil profile.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilprofile', 'location', 'Location', 'Location', 'Foreign key to the SoilPlot table, guidkey field.', null, null);
+
+-- OTHER SOIL NAME TYPE --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('othersoilnametype', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('othersoilnametype', 'othersoilname_type', 'Other Soil Name Type', 'Other Soil Name Type', 'Name of the soil profile according to a specific classification scheme.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('othersoilnametype', 'othersoilname_class', 'Other Soil Name Class', 'Other Soil Name Class', 'Specific classification scheme.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('othersoilnametype', 'isoriginalclassification', 'Is Original Classification', 'Is Original Classification', 'Boolean value to indicate whether the specified classification scheme was the original classification scheme to describe the profile.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('othersoilnametype', 'othersoilname', 'Other Soil Name', 'Other Soil Name', 'Foreign key to the SoilProfile table, guidkey field.', null, null);
+
+-- IS DERIVED FROM --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isderivedfrom', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isderivedfrom', 'base_id', 'Base Id', 'Base Id', 'Foreign key to the SoilProfile table, guidkey field. - Observed Soil Profile.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isderivedfrom', 'related_id', 'Related Id', 'Related Id', 'Foreign key to the SoilProfile table, guidkey field. - Derived Soil Profile.', null, null);
+
+--SOIL BODY --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody', 'guidkey', 'Guidkey', 'Guidkey', 'Universally unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody', 'inspireid_localid', 'Inspire Id Local Id', 'Inspire Id Local Id', 'A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody', 'inspireid_namespace', 'Inspire Id Namespace', 'Inspire Id Namespace', 'Namespace uniquely identifying the data source of the spatial object.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody', 'inspireid_versionid', 'Inspire Id Version Id', 'Inspire Id Version Id', 'The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody', 'beginlifespanversion', 'Begin Lifespan Version', 'Begin Lifespan Version', 'Date and time at which this version of the spatial object was inserted or changed in the spatial data set.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody', 'endlifespanversion', 'End Lifespan Version', 'End Lifespan Version', 'Date and time at which this version of the spatial object was superseded or retired in the spatial data set.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody', 'soilbodylabel', 'Soil Body Label', 'Soil Body Label', 'Label to identify the soil body according to the specified reference framework (metadata).', null, null);
+
+--SOIL BODY GEOM --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody_geom', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody_geom', 'idsoilbody', 'Id Soil Body', 'Id Soil Body', 'Foreign key to the SoilBody table.', '', null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilbody_geom', 'geom', 'Geom', 'Geom', 'Geometry.', null, null);
+
+--DERIVED PROFILE PRESENCE IN SOIL BODY --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('derivedprofilepresenceinsoilbody', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('derivedprofilepresenceinsoilbody', 'idsoilbody', 'Id Soil Body', 'Id Soil Body', 'Foreign key to the SoilBody table.', ' ', null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('derivedprofilepresenceinsoilbody', 'idsoilprofile', 'Id Soil Profile', 'Id Soil Profile', 'Foreign key to the SoilProfile table, guidkey field.', ' ', null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('derivedprofilepresenceinsoilbody', 'lowervalue', 'Lower Value', 'Lower Value', 'Upper value.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('derivedprofilepresenceinsoilbody', 'uppervalue', 'Upper Value', 'Upper Value', 'Lower value.', null, null);
+
+--SOIL DERIVED OBJECT-- 
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilderivedobject', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilderivedobject', 'guidkey', 'Guidkey', 'Guidkey', 'Universally unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilderivedobject', 'inspireid_localid', 'Inspire Id Local Id', 'Inspire Id Local Id', 'A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilderivedobject', 'inspireid_namespace', 'Inspire Id Namespace', 'Inspire Id Namespace', 'Namespace uniquely identifying the data source of the spatial object.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilderivedobject', 'inspireid_versionid', 'Inspire Id Version Id', 'Inspire Id Version Id', 'The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilderivedobject', 'accessuri', 'Access Uri', 'Access Uri', 'SoilDerivedObject URI.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('soilderivedobject', 'geometry', 'Geometry.', 'Geometry.', 'Geometry.', null, null);
+
+--IS BASED ON OBSERVED SOIL PROFILE--
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isbasedonobservedsoilprofile', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isbasedonobservedsoilprofile', 'idsoilderivedobject', 'Id Soil Derived Object', 'Id Soil Derived Object', 'Foreign key to the SoilDerivedObject table, guidkey field.', ' ', null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isbasedonobservedsoilprofile', 'idsoilprofile', 'Id Soil Profile', 'Id Soil Profile', 'Foreign key to the SoilProfile table, guidkey field.', '', null);
+
+--IS BASED ON SOIL BODY--
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isbasedonsoilbody', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isbasedonsoilbody', 'idsoilderivedobject', 'Id Soil Derived Object', 'Id Soil Derived Object', 'Foreign key to the SoilDerivedObject table, guidkey field.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isbasedonsoilbody', 'idsoilbody', 'Id Soil Body', 'Id Soil Body', 'Foreign key to the SoilBody table, guidkey field.', null, null);
+
+--IS BASED ON SOIL DERIVED OBJECT--
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isbasedonsoilderivedobject', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isbasedonsoilderivedobject', 'base_id', 'Base Id', 'Base Id', 'Foreign key to the SoilDerivedObject table, guidkey field. - Base SoilDerivedObject.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('isbasedonsoilderivedobject', 'related_id', 'Related Id', 'Related Id', 'Foreign key to the SoilDerivedObject table, guidkey field. - Derived SoilDerivedObject.', null, null);
+
+--PROFILE ELEMENT--
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'guidkey', 'Guidkey', 'Guidkey', 'Universally unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'inspireid_localid', 'Inspire Id Local Id', 'Inspire Id Local Id', 'A local identifier, assigned by the data provider. The local identifier is unique within the namespace, that is no other spatial object carries the same unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'inspireid_namespace', 'Inspire Id Namespace', 'Inspire Id Namespace', 'Namespace uniquely identifying the data source of the spatial object.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'inspireid_versionid', 'Inspire Id Version Id', 'Inspire Id Version Id', 'The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'profileelementdepthrange_uppervalue', 'Profile Element Depth Range Upper Value', 'Profile Element Depth Range Upper Value', 'Upper depth of the profile element (layer or horizon) measured from the surface of a soil profile (in cm).', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'profileelementdepthrange_lowervalue', 'Profile Element Depth Aange Lower Value', 'Profile Element Depth Aange Lower Value', 'Lower depth of the profile element (layer or horizon) measured from the surface of a soil profile (in cm).', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'beginlifespanversion', 'Begin Lifespan Version', 'Begin Lifespan Version', 'Date and time at which this version of the spatial object was inserted or changed in the spatial data set.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'endlifespanversion', 'End Lifespan Version', 'End Lifespan Version', 'Date and time at which this version of the spatial object was superseded or retired in the spatial data set.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'layertype', 'Layer Type', 'Layer Type', 'Assignation of a layer according to the concept that fits its kind.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'layerrocktype', 'Layer Rock Type', 'Layer Rock Type', 'Type of the material in which the layer developed.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'layergenesisprocess', 'Layer Genesis Process', 'Layer Genesis Process', 'Last non-pedogenic process (geologic or anthropogenic) that coined the material composition and internal structure of the layer.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'layergenesisenviroment', 'Layer Genesis Enviroment', 'Layer Genesis Enviroment', 'Setting in which the last non-pedogenic process (geologic or anthropogenic) that coined the material composition and internal structure of the layer took place.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'layergenesisprocessstate', 'Layer Genesisp Pocess State', 'Layer Genesisp Pocess State', 'Indication whether the process specified in layerGenesisProcess is on-going or seized in the past.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'profileelementtype', 'Profile Element Type', 'Profile Element Type', 'Boolean value to indicate whether the record is of Horizon or Layer type.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('profileelement', 'ispartof', 'Is Part Of', 'Is Part Of', 'Foreign key to the SoilProfile table, guidkey field.', ' ', null);
+
+--PARTICLE SIZE FRACTION--
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('particlesizefractiontype', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('particlesizefractiontype', 'fractioncontent', 'Fraction Content', 'Fraction Content', 'Percentage of the defined fraction.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('particlesizefractiontype', 'pariclesize_upper', 'Pariclesize Upper', 'Pariclesize Upper', 'Upper limit of the particle size of the defined fraction (expressed in µm).', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('particlesizefractiontype', 'pariclesize_lower', 'Pariclesize Lower', 'Pariclesize Lower', 'Lower limit of the particle size of the defined fraction (expressed in µm).', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('particlesizefractiontype', 'idprofileelement', 'Id Profile Element', 'Id Profile Element', 'Foreign key to the ProfileElement table, guidkey field.', '', null);
+
+--FAO HORIZON NOTATION TYPE--
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'faohorizondiscontinuity', 'Fao Horizon Discontinuity', 'Fao Horizon Discontinuity', 'Number used to indicate a discontinuity in the horizon notation.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'faohorizonmaster_1', 'First Fao Horizon Master', 'First Fao Horizon Master', 'First Symbol of the master part of the horizon notation.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'faohorizonmaster_2', 'Second Fao Horizon Master', 'Second Fao Horizon Master', 'Second Symbol of the master part of the horizon notation.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'faohorizonsubordinate_1', 'First Fao Horizon Subordinate', 'First Fao Horizon Subordinate', 'First Designations of subordinate distinctions and features within the master horizons and layers are based on profile characteristics observable in the field and are applied during the description of the soil at the site.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'faohorizonsubordinate_2', 'Second Fao Horizon Subordinate', 'Second Fao Horizon Subordinate', 'Second Designations of subordinate distinctions and features within the master horizons and layers are based on profile characteristics observable in the field and are applied during the description of the soil at the site.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'faohorizonsubordinate_3', 'Third Fao Horizon Subordinate', 'Third Fao Horizon Subordinate', 'Third Designations of subordinate distinctions and features within the master horizons and layers are based on profile characteristics observable in the field and are applied during the description of the soil at the site.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'faohorizonverical', 'Fao Horizon Verical', 'Fao Horizon Verical', 'Order number of the vertical subdivision in the horizon notation.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'faoprime', 'Fao Prime', 'Fao Prime', 'A prime and double prime may be used to connotate master horizon symbol of the lower of two respectively three horizons having identical Arabic-numeral prefixes and letter combinations.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'isoriginalclassification', 'Is Original Classification', 'Is Original Classification', 'Boolean value to indicate whether the FAO horizon notation was the original notation to describe the horizon.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('faohorizonnotationtype', 'idprofileelement', 'Id Profile Element', 'Id Profile Element', 'Foreign key to the ProfileElement table,  guidkey field.', '', null);
+
+--OTHER HORIZON NOTATION TYPE--
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('otherhorizonnotationtype', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('otherhorizonnotationtype', 'guidkey', 'Guidkey', 'Guidkey', 'Universally unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('otherhorizonnotationtype', 'horizonnotation', 'Horizon Notation', 'Horizon Notation', 'Notation characterizing the soil horizon according to a specified classification system.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('otherhorizonnotationtype', 'diagnostichorizon', 'Diagnostic Horizon', 'Diagnostic Horizon', 'Codelist wrbdiagnostichorizonvalue.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('otherhorizonnotationtype', 'isoriginalclassification', 'Is Original Classification', 'Is Original Classification', 'Boolean value to indicate whether the specified horizon notation system was the original notation system to describe the horizon.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('otherhorizonnotationtype', 'otherhorizonnotation', 'Other Horizon Notation', 'Other Horizon Notation', null, null, null);
+
+--OTHER HORIZON PROFILE ELEMENT--
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('otherhorizon_profileelement', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('otherhorizon_profileelement', 'idprofileelement', 'Id Profile Element', 'Id Profile Element', 'Foreign key to the ProfileElement table, guidkey field.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('otherhorizon_profileelement', 'idotherhorizonnotationtype', 'Id Other Horizon Notation Type', 'Id Other Horizon Notation Type', 'Foreign key to the OtherhorizonNotationType table, guidkey field.', null, null);
+
+--WRB QUALIFIER GROUP TYPE --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergrouptype', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergrouptype', 'guidkey', 'Guidkey', 'Guidkey', 'Universally unique identifier.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergrouptype', 'qualifierplace', 'Qualifier Place', 'Qualifier Place', 'Attribute to indicate the placement of the Qualifier with regard to the WRB reference soil group (RSG). The placement can be in front of the RSG i.e. prefix or it can be behind the RSG i.e. suffix.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergrouptype', 'wrbspecifier_1', 'First Wrb Specifier', 'First Wrb Specifier', 'First code that indicates the degree of expression of a qualifier or the depth range of which the qualifier applies.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergrouptype', 'wrbspecifier_2', 'Second Wrb Specifier', 'Second Wrb Specifier', 'Second code that indicates the degree of expression of a qualifier or the depth range of which the qualifier applies.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergrouptype', 'wrbversion', 'Wrb Version', 'Wrb Version', 'Indicates the WRB classification version.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergrouptype', 'wrbqualifier', 'Wrb Qualifier', 'Wrb Qualifier', 'Name element of WRB, 2nd level of classification.', null, null);
+
+--WRB QUALIFIER GROUP PROFILE --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergroup_profile', 'id', 'Id', 'Identifier', 'Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergroup_profile', 'idsoilprofile', 'Id Soil Profile', 'Id Soil Profile', 'Foreign key to the SaoilProfile table, guidkey field.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergroup_profile', 'idwrbqualifiergrouptype', 'Id Wrb Qualifier Group Type', 'Id Wrb Qualifier Group Type', 'Foreign key to the WrbqualifierGroupType table, guidkey field.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('wrbqualifiergroup_profile', 'qualifierposition', 'Qualifier Position', 'Qualifier Position', 'Number to indicate the position of a qualifier with regard to the WRB reference soil group (RSG) it belongs to and with regard to its placement to that (RSG) i.e. as a prefix or a suffix.', null, null);
+
+
+--CODELIST--
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('codelist', 'id', 'Id', 'Identifier', 'Codelist Voice Uri, and Primary Key of the Table.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('codelist', 'label', 'Label', 'Label', 'A word or phrase used to name or describe something, often to identify or classify it.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('codelist', 'definition', 'Definition', 'Definition', 'A clear explanation of the meaning of a word or concept.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('codelist', 'collection', 'Collection', 'Collection', 'Structured set of related elements, which share common characteristics and are managed with unique and persistent identifiers.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('codelist', 'featuretype', 'Feature Type', 'Feature Type', 'FIn case of codelists belonging to Properties, indicate the Feature Of Interest to which they can be applied.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('codelist', 'phenomenon', 'Phenomenon', 'Phenomenon', 'The type of phenomenon it belongs to, whether Chemical, Physical or Biological.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('codelist', 'featuretype_phenomenon', 'Feature Type Phenomenon', 'Feature Type Phenomenon', 'Working field, is the concatenation of the fields "featuretype" and "phenomenon".', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('codelist', 'parent', 'Parent', 'Parent', 'Indicates the level of the hierarchically superior codelist to which it belongs.', null, null);
+
+
+
+--FEATURE TYPE--
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('featuretype', 'id', 'Id', 'Identifier', 'A unique, read-only attribute that serves as an identifier for the entity.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('featuretype', 'name', 'Name', 'Name', 'A property provides a label for Feature entity, commonly a descriptive name.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('featuretype', 'definition', 'Definition', 'Definition', 'The URI the defines this FeatureType. Dereferencing this URI SHOULD result in a representation of the definition of the FeatureType.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('featuretype', 'description', 'Description', 'Description', 'The description about the Feature.', null, null);
+--INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('featuretype', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', null, null);
+
+
+--FEATURE --
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'id', 'Id', 'Identifier', 'A unique, read-only attribute that serves as an identifier for the entity.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'name', 'Name', 'Name', 'A property provides a label for Feature entity, commonly a descriptive name.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'definition', 'Definition', 'Definition', 'The URI the defines this FeatureType. Dereferencing this URI SHOULD result in a representation of the definition of the FeatureType.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'description', 'Description', 'Description', 'The description about the Feature.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'encodingtype', 'Encodingtype', 'Encodingtype', 'The encoding type of the feature property.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'feature_soilsite', 'Feature Soil Site', 'Feature Soil Site', 'The detailed description of the feature Soil Site. The data type is defined by encodingType.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'feature_soilprofile', 'Feature Soil Profile', 'Feature Soil Profile', 'The detailed description of the feature Soil Profile. The data type is defined by encodingType.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'feature_profileelement', 'Feature Profile Element', 'Feature Profile Element', 'The detailed description of the feature Profile Element. The data type is defined by encodingType.', null, null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'feature_soilderivedobject', 'Feature Soil Derived Object', 'Feature Soil Derived Object', 'The detailed description of the feature Soil Derived Object. The data type is defined by encodingType.', null, null);
+--INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', null, null);
+
