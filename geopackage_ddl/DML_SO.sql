@@ -1359,3 +1359,15 @@ INSERT INTO "codelist" (id, label, definition, collection, featuretype, phenomen
 INSERT INTO "codelist" (id, label, definition, collection, featuretype, phenomenon, featuretype_phenomenon, parent) VALUES ('application/geo+json', 'GeoJSON', 'GeoJSON', 'encodingType', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, featuretype, phenomenon, featuretype_phenomenon, parent) VALUES ('application/geopose+json', 'GeoPose', 'GeoPose', 'encodingType', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, featuretype, phenomenon, featuretype_phenomenon, parent) VALUES ('text/plain', 'WKT', 'WKT', 'encodingType', null, null, null, null);
+
+-- ResultType
+-- PARAMETER Datatstream
+-- STA2
+-- https://hylkevds.github.io/23-019/23-019.html#location-encodingType-value-codes
+
+
+INSERT INTO "codelist" (id, label, definition, collection, featuretype, phenomenon, featuretype_phenomenon, parent) VALUES ('Quantity', 'Quantity', 'Quantity', 'resultType', null, null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, featuretype, phenomenon, featuretype_phenomenon, parent) VALUES ('Category', 'Category', 'Category',  'resultType', null, null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, featuretype, phenomenon, featuretype_phenomenon, parent) VALUES ('Boolean', 'Boolean', 'Boolean', 'resultType', null, null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, featuretype, phenomenon, featuretype_phenomenon, parent) VALUES ('Count', 'Count', 'Count',  'resultType', null, null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, featuretype, phenomenon, featuretype_phenomenon, parent) VALUES ('Text', 'Text', 'Text',  'resultType', null, null, null, null);

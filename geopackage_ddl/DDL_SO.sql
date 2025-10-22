@@ -2389,24 +2389,26 @@ END;
 CREATE TABLE  feature (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    definition TEXT, --URI -- sembra funzionare, ma non accetta i null
+    definition TEXT, --URI
     description TEXT,
     encodingtype TEXT NOT NULL, -- encodingType values
+    --
     feature_soilsite TEXT,
     feature_soilprofile TEXT,
     feature_profileelement TEXT,
     feature_soilderivedobject TEXT,
+    --
     properties  TEXT, --JSON
     idfeaturetype INTEGER,
-    FOREIGN KEY (feature_soilsite) REFERENCES soilsite (guidkey) ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY (feature_soilprofile) REFERENCES soilprofile (guidkey) ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY (feature_profileelement) REFERENCES profileelement (guidkey) ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY (feature_soilderivedobject) REFERENCES soilderivedobject (guidkey) ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY (idfeaturetype) REFERENCES featuretype (id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (feature_soilsite) REFERENCES soilsite (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (feature_soilprofile) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (feature_profileelement) REFERENCES profileelement (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (feature_soilderivedobject) REFERENCES soilderivedobject (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (idfeaturetype) REFERENCES featuretype (id) ON DELETE CASCADE ON UPDATE CASCADE,
     UNIQUE (feature_soilsite),
     UNIQUE (feature_soilprofile),
     UNIQUE (feature_profileelement),
-    UNIQUE (feature_soilderivedobject),
+    UNIQUE (feature_soilderivedobject),      
 
     -- Only one among Soil Site, Soil Profile, Profile Element, and Soil Derived Object can be populated.
     CHECK (
@@ -2416,26 +2418,46 @@ CREATE TABLE  feature (
         (feature_soilderivedobject IS NOT NULL)) IN (0, 1)
     ),
 
+    -- Validate that column `definition` is a well-formed URI
+    -- URL with http/https/ftp scheme and a non-empty authority
     CHECK (
-    definition IS NULL
-    OR (
-        -- dev’essere testo non vuoto
-        typeof(definition) = 'text'
-        AND length(trim(definition)) > 0
-        -- niente spazi
-        AND instr(definition, ' ') = 0
-        -- normalizzo per sicurezza il confronto sullo schema
-        AND (
-            lower(definition) GLOB 'http://*.*'
-            OR lower(definition) GLOB 'https://*.*'
-            OR lower(definition) GLOB 'ftp://*.*'
-        )
-        -- deve contenere "://"
-        AND instr(definition, '://') > 0
-        -- il dominio non deve terminare con un punto
-        AND substr(definition, -1, 1) <> '.'
-      )
-    ),
+        definition IS NULL OR (
+            typeof(definition) = 'text'
+            AND trim(definition) = definition          -- no leading or trailing spaces
+            AND length(definition) > 0
+            -- no whitespace characters allowed
+            AND instr(definition, ' ') = 0
+            AND instr(definition, char(9)) = 0         -- TAB
+            AND instr(definition, char(10)) = 0        -- LF
+            AND instr(definition, char(13)) = 0        -- CR
+
+            -- scheme: case-insensitive prefix check
+            AND (
+            lower(substr(definition, 1, 7)) = 'http://'
+            OR lower(substr(definition, 1, 8)) = 'https://'
+            OR lower(substr(definition, 1, 6)) = 'ftp://'
+            )
+
+            -- must contain "://" and at least one character in the authority (no "http:///...")
+            AND instr(definition, '://') > 0
+            AND substr(definition, instr(definition, '://') + 3, 1) <> '/'
+
+            -- extract the authority (up to the first '/' or end of string) and ensure it does not end with '.'
+            AND substr(
+                CASE
+                    WHEN instr(substr(definition, instr(definition,'://')+3), '/') > 0
+                    THEN substr(
+                        substr(definition, instr(definition,'://')+3),
+                        1,
+                        instr(substr(definition, instr(definition,'://')+3), '/') - 1
+                        )
+                    ELSE substr(definition, instr(definition,'://')+3)
+                END,
+                -1, 1
+                ) <> '.'
+            )
+        ),
+
 
     CHECK (
             encodingtype IN (
@@ -2505,26 +2527,45 @@ CREATE TABLE  featuretype (
     description TEXT,
     properties  TEXT, --JSON
 
+    -- Validate that column `definition` is a well-formed URI
+    -- URL with http/https/ftp scheme and a non-empty authority
     CHECK (
-    definition IS NULL
-    OR (
-        -- dev’essere testo non vuoto
-        typeof(definition) = 'text'
-        AND length(trim(definition)) > 0
-        -- niente spazi
-        AND instr(definition, ' ') = 0
-        -- normalizzo per sicurezza il confronto sullo schema
-        AND (
-            lower(definition) GLOB 'http://*.*'
-            OR lower(definition) GLOB 'https://*.*'
-            OR lower(definition) GLOB 'ftp://*.*'
+        definition IS NULL OR (
+            typeof(definition) = 'text'
+            AND trim(definition) = definition          -- no leading or trailing spaces
+            AND length(definition) > 0
+            -- no whitespace characters allowed
+            AND instr(definition, ' ') = 0
+            AND instr(definition, char(9)) = 0         -- TAB
+            AND instr(definition, char(10)) = 0        -- LF
+            AND instr(definition, char(13)) = 0        -- CR
+
+            -- scheme: case-insensitive prefix check
+            AND (
+            lower(substr(definition, 1, 7)) = 'http://'
+            OR lower(substr(definition, 1, 8)) = 'https://'
+            OR lower(substr(definition, 1, 6)) = 'ftp://'
+            )
+
+            -- must contain "://" and at least one character in the authority (no "http:///...")
+            AND instr(definition, '://') > 0
+            AND substr(definition, instr(definition, '://') + 3, 1) <> '/'
+
+            -- extract the authority (up to the first '/' or end of string) and ensure it does not end with '.'
+            AND substr(
+                CASE
+                    WHEN instr(substr(definition, instr(definition,'://')+3), '/') > 0
+                    THEN substr(
+                        substr(definition, instr(definition,'://')+3),
+                        1,
+                        instr(substr(definition, instr(definition,'://')+3), '/') - 1
+                        )
+                    ELSE substr(definition, instr(definition,'://')+3)
+                END,
+                -1, 1
+                ) <> '.'
+            )
         )
-        -- deve contenere "://"
-        AND instr(definition, '://') > 0
-        -- il dominio non deve terminare con un punto
-        AND substr(definition, -1, 1) <> '.'
-      )
-    )
 );
 
 
@@ -2571,34 +2612,197 @@ CREATE TABLE datastream
     name text NOT NULL, 
     definition TEXT,
     description TEXT,
-    resulttype TEXT NOT NULL,
-    resultEncoding TEXT,
+    --
+    type TEXT NOT NULL, 
+    codespace TEXT,
+    iduom INTEGER,
+    value_min REAL,
+    value_max REAL,
+    --
     observedarea POLYGON,
     phenomenontime_start DATETIME, 
     phenomenontime_end DATETIME,
     resulttime_start DATETIME,
     resulttime_end DATETIME,
     properties TEXT,
-    idfeature INTEGER,  -- It is not clear whether the presence of at least one between UltimateFeatureOfInterest and ProximateFeatureOfInterest is mandatory.
-    --thing_id INTEGER NOT NULL,  
-    --sensor_id INTEGER NOT NULL,
-    --observedproperty_id INTEGER NOT NULL,
 
-     --CHECK (definition IS NULL OR definition REGEXP '^(https?|ftp)://[^\s/$.?#].[^\s]*$'), -- URI validation
-    FOREIGN KEY (idfeature) REFERENCES feature (id)  --verify cascade
-    --FOREIGN KEY (thing_id) REFERENCES thing (id),  --verify cascade
-    --FOREIGN KEY (sensor_id) REFERENCES sensor (id),  --verify cascade
-    --FOREIGN KEY (observedproperty_id) REFERENCES observedproperty (id)  --verify cascade
+    -- FK block
+    idfeature INTEGER,  -- It is not clear whether the presence of at least one between UltimateFeatureOfInterest and ProximateFeatureOfInterest is mandatory.
+    idthing INTEGER NOT NULL,
+    idsensor INTEGER NOT NULL,
+    idobservedproperty INTEGER NOT NULL,
+    
+
+    --CONSTRAINT chk_phenomenontime
+    CHECK (
+        (phenomenontime_start IS NULL AND phenomenontime_end IS NULL)
+        OR
+        (
+            phenomenontime_start IS NOT NULL
+            AND phenomenontime_end IS NOT NULL
+            AND phenomenontime_end > phenomenontime_start
+        )
+    ),
+
+    --CONSTRAINT chk_resulttime
+    CHECK (
+        (resulttime_start IS NULL AND resulttime_end IS NULL)
+        OR
+        (
+            resulttime_start IS NOT NULL
+            AND resulttime_end IS NOT NULL
+            AND resulttime_end > resulttime_start
+        )
+    ),
+
+ -- Allow only the two values 'Quantity' and 'Category' for 'type'.
+    --CONSTRAINT chk_type_values    
+    CHECK (type IN (
+            'Quantity', 
+            'Category',
+            'Boolean',
+            'Count',
+            'Text')
+        ),
+
+    --CONSTRAINT chk_type_combos
+    CHECK (
+        (
+            type = 'Quantity'
+            AND iduom    IS NOT NULL
+            AND codespace IS NULL
+        )
+        OR
+        (
+            type = 'Category'
+            AND iduom     IS NULL
+            AND codespace IS NOT NULL
+            AND value_min IS NULL
+            AND value_max IS NULL
+        )
+		 OR
+        (
+            type = 'Boolean'
+            AND iduom     IS NULL
+            AND codespace IS NULL
+            AND value_min IS NULL
+            AND value_max IS NULL
+        )
+		 OR
+        (
+            type = 'Count'
+            AND iduom     IS NULL
+            AND codespace IS NULL
+        )
+         OR
+        (
+            type = 'Text'
+            AND iduom     IS NULL
+            AND codespace IS NULL
+            AND value_min IS NULL
+            AND value_max IS NULL
+        )
+    ),
+
+    --CONSTRAINT chk_minmax_order
+    CHECK (
+        value_min IS NULL
+        OR value_max IS NULL
+        OR value_max > value_min
+    ),
+
+    -- Validate that column `definition` is a well-formed URI
+    -- URL with http/https/ftp scheme and a non-empty authority
+    CHECK (
+        definition IS NULL OR (
+            typeof(definition) = 'text'
+            AND trim(definition) = definition          -- no leading or trailing spaces
+            AND length(definition) > 0
+            -- no whitespace characters allowed
+            AND instr(definition, ' ') = 0
+            AND instr(definition, char(9)) = 0         -- TAB
+            AND instr(definition, char(10)) = 0        -- LF
+            AND instr(definition, char(13)) = 0        -- CR
+
+            -- scheme: case-insensitive prefix check
+            AND (
+            lower(substr(definition, 1, 7)) = 'http://'
+            OR lower(substr(definition, 1, 8)) = 'https://'
+            OR lower(substr(definition, 1, 6)) = 'ftp://'
+            )
+
+            -- must contain "://" and at least one character in the authority (no "http:///...")
+            AND instr(definition, '://') > 0
+            AND substr(definition, instr(definition, '://') + 3, 1) <> '/'
+
+            -- extract the authority (up to the first '/' or end of string) and ensure it does not end with '.'
+            AND substr(
+                CASE
+                    WHEN instr(substr(definition, instr(definition,'://')+3), '/') > 0
+                    THEN substr(
+                        substr(definition, instr(definition,'://')+3),
+                        1,
+                        instr(substr(definition, instr(definition,'://')+3), '/') - 1
+                        )
+                    ELSE substr(definition, instr(definition,'://')+3)
+                END,
+                -1, 1
+                ) <> '.'
+            )
+        ),
+
+    -- Validate that column `codespace` is a well-formed URI
+    -- URL with http/https/ftp scheme and a non-empty authority
+    CHECK (
+        codespace IS NULL OR (
+            typeof(codespace) = 'text'
+            AND trim(codespace) = codespace          -- no leading or trailing spaces
+            AND length(codespace) > 0
+            -- no whitespace characters allowed
+            AND instr(codespace, ' ') = 0
+            AND instr(codespace, char(9)) = 0         -- TAB
+            AND instr(codespace, char(10)) = 0        -- LF
+            AND instr(codespace, char(13)) = 0        -- CR
+
+            -- scheme: case-insensitive prefix check
+            AND (
+            lower(substr(codespace, 1, 7)) = 'http://'
+            OR lower(substr(codespace, 1, 8)) = 'https://'
+            OR lower(substr(codespace, 1, 6)) = 'ftp://'
+            )
+
+            -- must contain "://" and at least one character in the authority (no "http:///...")
+            AND instr(codespace, '://') > 0
+            AND substr(codespace, instr(codespace, '://') + 3, 1) <> '/'
+
+            -- extract the authority (up to the first '/' or end of string) and ensure it does not end with '.'
+            AND substr(
+                CASE
+                    WHEN instr(substr(codespace, instr(codespace,'://')+3), '/') > 0
+                    THEN substr(
+                        substr(codespace, instr(codespace,'://')+3),
+                        1,
+                        instr(substr(codespace, instr(codespace,'://')+3), '/') - 1
+                        )
+                    ELSE substr(codespace, instr(codespace,'://')+3)
+                END,
+                -1, 1
+                ) <> '.'
+            )
+        ),
+
+    
+    FOREIGN KEY (iduom) REFERENCES unitofmeasure (id) ON DELETE CASCADE   ON UPDATE CASCADE,
+    FOREIGN KEY (idfeature) REFERENCES feature (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (idthing) REFERENCES thing (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (idsensor) REFERENCES sensor (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (idobservedproperty) REFERENCES observedproperty (id) ON DELETE CASCADE ON UPDATE CASCADE
+    
 );
 
 
-
 -- JSON mime type ---------------------------------------------------------------------------------------
-INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('datastream  ', 'resulttype', null, null, 'key/value Json', 'application/json', null);
--- JSON mime type ---------------------------------------------------------------------------------------
-INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('datastream  ', 'resultEncoding', null, null, 'key/value Json', 'application/json', null);
--- JSON mime type ---------------------------------------------------------------------------------------
-INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('datastream  ', 'properties', null, null, 'key/value Json', 'application/json', null);
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('datastream', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', 'application/json', null);
 
 
 -- spatial index
@@ -2640,7 +2844,7 @@ INSERT INTO gpkg_geometry_columns (
 ) VALUES (
   'datastream', -- table name
   'observedarea', -- geometry column name
-  'MULTIPOLYGON', -- geometry type
+  'POLYGON', -- geometry type
   3035, -- EPSG spatial reference system code
   0, -- if the geometry has a Z coordinate (0 = no, 1 = yes, 2 = optional)
   0 -- if the geometry has a M coordinate (0 = no, 1 = yes, 2 = optional)
@@ -2648,31 +2852,840 @@ INSERT INTO gpkg_geometry_columns (
 
 -- Trigger datastream ---------------------------------------------------------------------------------------
 
-CREATE TRIGGER i_check_definition_url
+
+
+
+/* 
+██    ██ ███    ██ ██ ████████  ██████  ███████ ███    ███ ███████  █████  ███████ ██    ██ ██████  ███████ 
+██    ██ ████   ██ ██    ██    ██    ██ ██      ████  ████ ██      ██   ██ ██      ██    ██ ██   ██ ██      
+██    ██ ██ ██  ██ ██    ██    ██    ██ █████   ██ ████ ██ █████   ███████ ███████ ██    ██ ██████  █████   
+██    ██ ██  ██ ██ ██    ██    ██    ██ ██      ██  ██  ██ ██      ██   ██      ██ ██    ██ ██   ██ ██      
+ ██████  ██   ████ ██    ██     ██████  ██      ██      ██ ███████ ██   ██ ███████  ██████  ██   ██ ███████ 
+ */
+
+
+-- Table  unitofmeasure ---------------------------------------------------------------------------------------
+CREATE TABLE unitofmeasure 
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    code TEXT ,
+    label TEXT,
+    symbol TEXT
+);
+
+-- Contents unitofmeasure ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'unitofmeasure', -- table name
+  'attributes', -- data type
+  't_uom', -- unique table identifier
+  'unitofmeasure  Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger unitofmeasure ---------------------------------------------------------------------------------------
+
+
+
+
+
+/*
+ ██████  ██████  ███████ ███████ ██████  ██    ██ ███████ ██████  ██████  ██████   ██████  ██████  ███████ ██████  ████████ ██    ██ 
+██    ██ ██   ██ ██      ██      ██   ██ ██    ██ ██      ██   ██ ██   ██ ██   ██ ██    ██ ██   ██ ██      ██   ██    ██     ██  ██  
+██    ██ ██████  ███████ █████   ██████  ██    ██ █████   ██   ██ ██████  ██████  ██    ██ ██████  █████   ██████     ██      ████   
+██    ██ ██   ██      ██ ██      ██   ██  ██  ██  ██      ██   ██ ██      ██   ██ ██    ██ ██      ██      ██   ██    ██       ██    
+ ██████  ██████  ███████ ███████ ██   ██   ████   ███████ ██████  ██      ██   ██  ██████  ██      ███████ ██   ██    ██       ██    
+*/
+
+-- Table sensor ---------------------------------------------------------------------------------------
+CREATE TABLE  observedproperty
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    name text NOT NULL, 
+    definition TEXT NOT NULL,
+    description TEXT,
+    properties TEXT
+
+    -- Validate that column `definition` is a well-formed URI
+    -- URL with http/https/ftp scheme and a non-empty authority
+    CHECK (
+        definition IS NULL OR (
+            typeof(definition) = 'text'
+            AND trim(definition) = definition          -- no leading or trailing spaces
+            AND length(definition) > 0
+            -- no whitespace characters allowed
+            AND instr(definition, ' ') = 0
+            AND instr(definition, char(9)) = 0         -- TAB
+            AND instr(definition, char(10)) = 0        -- LF
+            AND instr(definition, char(13)) = 0        -- CR
+
+            -- scheme: case-insensitive prefix check
+            AND (
+            lower(substr(definition, 1, 7)) = 'http://'
+            OR lower(substr(definition, 1, 8)) = 'https://'
+            OR lower(substr(definition, 1, 6)) = 'ftp://'
+            )
+
+            -- must contain "://" and at least one character in the authority (no "http:///...")
+            AND instr(definition, '://') > 0
+            AND substr(definition, instr(definition, '://') + 3, 1) <> '/'
+
+            -- extract the authority (up to the first '/' or end of string) and ensure it does not end with '.'
+            AND substr(
+                CASE
+                    WHEN instr(substr(definition, instr(definition,'://')+3), '/') > 0
+                    THEN substr(
+                        substr(definition, instr(definition,'://')+3),
+                        1,
+                        instr(substr(definition, instr(definition,'://')+3), '/') - 1
+                        )
+                    ELSE substr(definition, instr(definition,'://')+3)
+                END,
+                -1, 1
+                ) <> '.'
+            )
+        )
+
+);
+
+
+
+-- JSON mime type ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('observedproperty', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', 'application/json', null);
+
+
+-- Contents observedproperty ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'observedproperty', -- table name
+  'attributes', -- data type
+  't_obsprsta', -- unique table identifier
+  'observedproperty Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+
+-- Trigger abservedproperty ---------------------------------------------------------------------------------------
+
+
+
+
+
+
+/*
+███████ ███████ ███    ██ ███████  ██████  ██████  
+██      ██      ████   ██ ██      ██    ██ ██   ██ 
+███████ █████   ██ ██  ██ ███████ ██    ██ ██████  
+     ██ ██      ██  ██ ██      ██ ██    ██ ██   ██ 
+███████ ███████ ██   ████ ███████  ██████  ██   ██ 
+*/
+
+-- Table sensor ---------------------------------------------------------------------------------------
+CREATE TABLE  sensor
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    name text NOT NULL, 
+    definition TEXT,
+    description TEXT,
+    encodingtype TEXT, -- ValueCode -- codelist encodingTypevalue
+    metadata TEXT,
+    properties TEXT,
+
+    
+    -- Business rule enforced at the table level:
+    -- 1) If metadata IS NOT NULL -> encodingType must be 'PDF' or 'HTML'
+    -- 2) If metadata IS NULL     -> encodingType must be NULL
+    CHECK (
+        (metadata IS NOT NULL AND encodingtype IN ('PDF','HTML'))
+        OR
+        (metadata IS NULL AND encodingtype IS NULL)
+    ),
+
+    -- Validate that column `definition` is a well-formed URI
+    -- URL with http/https/ftp scheme and a non-empty authority
+    CHECK (
+        definition IS NULL OR (
+            typeof(definition) = 'text'
+            AND trim(definition) = definition          -- no leading or trailing spaces
+            AND length(definition) > 0
+            -- no whitespace characters allowed
+            AND instr(definition, ' ') = 0
+            AND instr(definition, char(9)) = 0         -- TAB
+            AND instr(definition, char(10)) = 0        -- LF
+            AND instr(definition, char(13)) = 0        -- CR
+
+            -- scheme: case-insensitive prefix check
+            AND (
+            lower(substr(definition, 1, 7)) = 'http://'
+            OR lower(substr(definition, 1, 8)) = 'https://'
+            OR lower(substr(definition, 1, 6)) = 'ftp://'
+            )
+
+            -- must contain "://" and at least one character in the authority (no "http:///...")
+            AND instr(definition, '://') > 0
+            AND substr(definition, instr(definition, '://') + 3, 1) <> '/'
+
+            -- extract the authority (up to the first '/' or end of string) and ensure it does not end with '.'
+            AND substr(
+                CASE
+                    WHEN instr(substr(definition, instr(definition,'://')+3), '/') > 0
+                    THEN substr(
+                        substr(definition, instr(definition,'://')+3),
+                        1,
+                        instr(substr(definition, instr(definition,'://')+3), '/') - 1
+                        )
+                    ELSE substr(definition, instr(definition,'://')+3)
+                END,
+                -1, 1
+                ) <> '.'
+            )
+        )
+
+);
+
+
+-- JSON mime type ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('sensor', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', 'application/json', null);
+
+-- Contents sensor ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'sensor', -- table name
+  'attributes', -- data type
+  't_sen', -- unique table identifier
+  'sensor Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger sensor ---------------------------------------------------------------------------------------
+-- ToDo check if encodingtype Values in in codelist encodingtypevalue
+
+
+
+
+/*
+████████ ██   ██ ██ ███    ██  ██████  
+   ██    ██   ██ ██ ████   ██ ██       
+   ██    ███████ ██ ██ ██  ██ ██   ███ 
+   ██    ██   ██ ██ ██  ██ ██ ██    ██ 
+   ██    ██   ██ ██ ██   ████  ██████
+*/
+
+-- Table sensor ---------------------------------------------------------------------------------------
+CREATE TABLE  thing
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    name text NOT NULL, 
+    definition TEXT,
+    description TEXT,
+    properties TEXT
+
+    -- Validate that column `definition` is a well-formed URI
+    -- URL with http/https/ftp scheme and a non-empty authority
+    CHECK (
+        definition IS NULL OR (
+            typeof(definition) = 'text'
+            AND trim(definition) = definition          -- no leading or trailing spaces
+            AND length(definition) > 0
+            -- no whitespace characters allowed
+            AND instr(definition, ' ') = 0
+            AND instr(definition, char(9)) = 0         -- TAB
+            AND instr(definition, char(10)) = 0        -- LF
+            AND instr(definition, char(13)) = 0        -- CR
+
+            -- scheme: case-insensitive prefix check
+            AND (
+            lower(substr(definition, 1, 7)) = 'http://'
+            OR lower(substr(definition, 1, 8)) = 'https://'
+            OR lower(substr(definition, 1, 6)) = 'ftp://'
+            )
+
+            -- must contain "://" and at least one character in the authority (no "http:///...")
+            AND instr(definition, '://') > 0
+            AND substr(definition, instr(definition, '://') + 3, 1) <> '/'
+
+            -- extract the authority (up to the first '/' or end of string) and ensure it does not end with '.'
+            AND substr(
+                CASE
+                    WHEN instr(substr(definition, instr(definition,'://')+3), '/') > 0
+                    THEN substr(
+                        substr(definition, instr(definition,'://')+3),
+                        1,
+                        instr(substr(definition, instr(definition,'://')+3), '/') - 1
+                        )
+                    ELSE substr(definition, instr(definition,'://')+3)
+                END,
+                -1, 1
+                ) <> '.'
+            )
+        )
+
+);
+
+
+-- JSON mime type ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('thing', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', 'application/json', null);
+
+-- Contents thing ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'thing', -- table name
+  'attributes', -- data type
+  't_thi', -- unique table identifier
+  'thing Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+
+-- Trigger thing ---------------------------------------------------------------------------------------
+
+
+
+
+
+
+/*
+ ██████  ██████  ███████ ███████ ██████  ██    ██  █████  ████████ ██  ██████  ███    ██
+██    ██ ██   ██ ██      ██      ██   ██ ██    ██ ██   ██    ██    ██ ██    ██ ████   ██
+██    ██ ██████  ███████ █████   ██████  ██    ██ ███████    ██    ██ ██    ██ ██ ██  ██
+██    ██ ██   ██      ██ ██      ██   ██  ██  ██  ██   ██    ██    ██ ██    ██ ██  ██ ██
+ ██████  ██████  ███████ ███████ ██   ██   ████   ██   ██    ██    ██  ██████  ██   ████  
+*/
+
+-- Table observation ---------------------------------------------------------------------------------------
+CREATE TABLE  observation
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    phenomenontime_start DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL,
+    phenomenontime_end DATETIME,
+    result_text TEXT ,
+    result_real REAL ,
+    result_boolean BOOLEAN ,
+    resulttime DATETIME,
+    validtime_start DATETIME,
+    validtime_end DATETIME,
+    properties TEXT,
+    iddatastream INTEGER NOT NULL,
+
+    --CONSTRAINT chk_validtime
+    CHECK (
+        (validtime_start IS NULL AND validtime_end IS NULL)
+        OR
+        (
+            validtime_start IS NOT NULL
+            AND validtime_end IS NOT NULL
+            AND validtime_end > validtime_start
+        )
+    ),
+
+    FOREIGN KEY (iddatastream) REFERENCES datastream(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+-- JSON mime type ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('observation', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', 'application/json', null);
+
+-- Contents  codelist -----------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'observation', -- table name
+  'attributes', -- data type
+  'obssta_cod', -- unique table identifier
+  'observationt Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL, 
+  NULL,
+  NULL,
+  NULL,
+  NULL -- EPSG spatial reference system code
+);
+
+
+-- Trigger observation + datastream ---------------------------------------------------------------------------------------
+
+-- =========================================================
+-- 1) Keep datastream.phenomenontime_* synchronized with
+--    its observations:
+--    - datastream.phenomenontime_start = MIN(observation.phenomenontime_start)
+--    - datastream.phenomenontime_end   = MAX(observation.phenomenontime_end) (NULLs ignored)
+--    These AFTER triggers recompute the range on INSERT/UPDATE/DELETE.
+-- =========================================================
+CREATE TRIGGER observation_ai_recalc_ds_times
+AFTER INSERT ON observation
+FOR EACH ROW
+BEGIN
+  -- When a new observation arrives, recompute the phenomenon time range for the
+  -- corresponding datastream from all its observations. MIN/MAX naturally ignore NULLs.
+  UPDATE datastream
+  SET phenomenontime_start = (
+        SELECT MIN(phenomenontime_start)
+        FROM observation
+        WHERE iddatastream = NEW.iddatastream
+      ),
+      phenomenontime_end = (
+        SELECT MAX(phenomenontime_end)
+        FROM observation
+        WHERE iddatastream = NEW.iddatastream
+      )
+  WHERE id = NEW.iddatastream;
+END;
+
+
+CREATE TRIGGER observation_au_recalc_ds_times
+AFTER UPDATE OF phenomenontime_start, phenomenontime_end, iddatastream ON observation
+FOR EACH ROW
+BEGIN
+  -- Recompute for the "new" datastream referenced after the update.
+  UPDATE datastream
+  SET phenomenontime_start = (
+        SELECT MIN(phenomenontime_start)
+        FROM observation
+        WHERE iddatastream = NEW.iddatastream
+      ),
+      phenomenontime_end = (
+        SELECT MAX(phenomenontime_end)
+        FROM observation
+        WHERE iddatastream = NEW.iddatastream
+      )
+  WHERE id = NEW.iddatastream;
+
+  -- If the row was moved to a different datastream, also recompute the old one.
+  UPDATE datastream
+  SET phenomenontime_start = (
+        SELECT MIN(phenomenontime_start)
+        FROM observation
+        WHERE iddatastream = OLD.iddatastream
+      ),
+      phenomenontime_end = (
+        SELECT MAX(phenomenontime_end)
+        FROM observation
+        WHERE iddatastream = OLD.iddatastream
+      )
+  WHERE id = OLD.iddatastream
+    AND OLD.iddatastream <> NEW.iddatastream;
+END;
+
+
+CREATE TRIGGER observation_ad_recalc_ds_times
+AFTER DELETE ON observation
+FOR EACH ROW
+BEGIN
+  -- When an observation is removed, recompute from remaining observations.
+  UPDATE datastream
+  SET phenomenontime_start = (
+        SELECT MIN(phenomenontime_start)
+        FROM observation
+        WHERE iddatastream = OLD.iddatastream
+      ),
+      phenomenontime_end = (
+        SELECT MAX(phenomenontime_end)
+        FROM observation
+        WHERE iddatastream = OLD.iddatastream
+      )
+  WHERE id = OLD.iddatastream;
+END;
+
+
+-- =========================================================
+-- 2) Datastream-level integrity rules
+--    - NEW RULE (general): if both bounds are provided, require value_min ≤ value_max
+--    - NEW RULE (Count-specific): if provided, value_min/value_max must be integers
+--      (we accept numerically integral values like 3.0).
+-- =========================================================
+
+-- General bounds consistency: if both limits exist, min must not exceed max.
+CREATE TRIGGER datastream_bi_bounds_consistency
 BEFORE INSERT ON datastream
 FOR EACH ROW
-WHEN NOT (
-    (NEW.definition LIKE 'http://%' OR NEW.definition LIKE 'https://%')
-    AND NEW.definition LIKE '%.%' -- there must be at least one point in the domain
-    AND LENGTH(NEW.definition) > 10 -- to avoid things like "http://x"
-)
 BEGIN
-    SELECT RAISE(ABORT, 'The definition field does not appear to be a valid URL');
+  SELECT CASE
+    WHEN NEW.value_min IS NOT NULL
+         AND NEW.value_max IS NOT NULL
+         AND NEW.value_min > NEW.value_max
+    THEN RAISE(ABORT, 'Datastream bounds: value_min must be less than or equal to value_max when both are provided.')
+  END;
 END;
 
 
-CREATE TRIGGER u_check_definition_url
-BEFORE UPDATE ON datastream
+CREATE TRIGGER datastream_bu_bounds_consistency
+BEFORE UPDATE OF value_min, value_max ON datastream
 FOR EACH ROW
-WHEN NOT (
-    (NEW.definition LIKE 'http://%' OR NEW.definition LIKE 'https://%')
-    AND NEW.definition LIKE '%.%' -- there must be at least one point in the domain
-    AND LENGTH(NEW.definition) > 10 -- to avoid things like "http://x"
-)
 BEGIN
-    SELECT RAISE(ABORT, 'The definition field does not appear to be a valid URL');
+  SELECT CASE
+    WHEN NEW.value_min IS NOT NULL
+         AND NEW.value_max IS NOT NULL
+         AND NEW.value_min > NEW.value_max
+    THEN RAISE(ABORT, 'Datastream bounds: value_min must be less than or equal to value_max when both are provided.')
+  END;
 END;
 
+-- Count-specific: if type = 'Count' and bounds are provided, they must be integral in value.
+CREATE TRIGGER datastream_bi_count_bounds_are_integers
+BEFORE INSERT ON datastream
+FOR EACH ROW
+BEGIN
+  -- For Count, value_min must be an integer in value (3 == CAST(3 AS INTEGER); 3.5 would fail).
+  SELECT CASE
+    WHEN NEW.type = 'Count'
+         AND NEW.value_min IS NOT NULL
+         AND NEW.value_min <> CAST(NEW.value_min AS INTEGER)
+    THEN RAISE(ABORT, 'Type Count: value_min must be an integer (numerically integral).')
+  END;
+
+  -- For Count, value_max must be an integer in value.
+  SELECT CASE
+    WHEN NEW.type = 'Count'
+         AND NEW.value_max IS NOT NULL
+         AND NEW.value_max <> CAST(NEW.value_max AS INTEGER)
+    THEN RAISE(ABORT, 'Type Count: value_max must be an integer (numerically integral).')
+  END;
+END;
+
+CREATE TRIGGER datastream_bu_count_bounds_are_integers
+BEFORE UPDATE OF type, value_min, value_max ON datastream
+FOR EACH ROW
+BEGIN
+  -- Re-apply the same checks when changing the type or bounds.
+  SELECT CASE
+    WHEN NEW.type = 'Count'
+         AND NEW.value_min IS NOT NULL
+         AND NEW.value_min <> CAST(NEW.value_min AS INTEGER)
+    THEN RAISE(ABORT, 'Type Count: value_min must be an integer (numerically integral).')
+  END;
+
+  SELECT CASE
+    WHEN NEW.type = 'Count'
+         AND NEW.value_max IS NOT NULL
+         AND NEW.value_max <> CAST(NEW.value_max AS INTEGER)
+    THEN RAISE(ABORT, 'Type Count: value_max must be an integer (numerically integral).')
+  END;
+END;
+
+
+-- =========================================================
+-- 3) Observation-level rules by datastream.type
+--    This enforces result_* shapes and, for Quantity/Count, the bounds checks (NEW RULE #2).
+--    Two BEFORE triggers (INSERT/UPDATE) ensure data is validated prior to write.
+--    - Quantity   : result_real NOT NULL; result_text/result_boolean NULL; enforce [min, max] if present
+--    - Category   : result_text NOT NULL; others NULL; result_text ∈ codelist.id where codelist.collection = datastream.codespace
+--    - Boolean    : result_boolean ∈ {0,1} NOT NULL; others NULL
+--    - Count      : result_real NOT NULL & integer; others NULL; enforce [min, max] if present
+--    - Text       : result_text NOT NULL; others NULL
+-- =========================================================
+
+
+CREATE TRIGGER observation_bi_type_constraints
+BEFORE INSERT ON observation
+FOR EACH ROW
+BEGIN
+  -- ------------------------------
+  -- QUANTITY
+  -- ------------------------------
+  -- Shape: only result_real (NOT NULL); text and boolean must be NULL.
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
+         AND NOT (NEW.result_real IS NOT NULL
+                  AND NEW.result_text IS NULL
+                  AND NEW.result_boolean IS NULL)
+    THEN RAISE(ABORT, 'Type Quantity: result_real must be NOT NULL; result_text and result_boolean must be NULL.')
+  END;
+
+  -- Bounds: if a lower bound exists, value must be >= value_min.
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
+         AND (SELECT value_min FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
+         AND NEW.result_real < (SELECT value_min FROM datastream WHERE id = NEW.iddatastream)
+    THEN RAISE(ABORT, 'Type Quantity: result_real is below value_min.')
+  END;
+
+  -- Bounds: if an upper bound exists, value must be <= value_max.
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
+         AND (SELECT value_max FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
+         AND NEW.result_real > (SELECT value_max FROM datastream WHERE id = NEW.iddatastream)
+    THEN RAISE(ABORT, 'Type Quantity: result_real exceeds value_max.')
+  END;
+
+  -- ------------------------------
+  -- CATEGORY
+  -- ------------------------------
+  -- Shape: only result_text (NOT NULL); real and boolean must be NULL.
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Category'
+         AND NOT (NEW.result_text IS NOT NULL
+                  AND NEW.result_real IS NULL
+                  AND NEW.result_boolean IS NULL)
+    THEN RAISE(ABORT, 'Type Category: result_text must be NOT NULL; result_real and result_boolean must be NULL.')
+  END;
+
+  -- Membership: result_text must exist as codelist.id within the collection equal to datastream.codespace.
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Category'
+         AND NOT EXISTS (
+           SELECT 1
+           FROM codelist c
+           WHERE c.collection = (SELECT codespace FROM datastream WHERE id = NEW.iddatastream)
+             AND c.id = NEW.result_text
+         )
+    THEN RAISE(ABORT, 'Type Category: result_text must exist in codelist.id for the collection equal to the datastream codespace.')
+  END;
+
+  -- ------------------------------
+  -- BOOLEAN
+  -- ------------------------------
+  -- Shape: only result_boolean (0/1) NOT NULL; text and real must be NULL.
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Boolean'
+         AND NOT (NEW.result_boolean IS NOT NULL
+                  AND NEW.result_boolean IN (0,1)
+                  AND NEW.result_text IS NULL
+                  AND NEW.result_real IS NULL)
+    THEN RAISE(ABORT, 'Type Boolean: result_boolean must be 0 or 1; result_text and result_real must be NULL.')
+  END;
+
+  -- ------------------------------
+  -- COUNT
+  -- ------------------------------
+  -- Shape: only result_real (NOT NULL) and it must be an integer in value; text and boolean must be NULL.
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
+         AND NOT (NEW.result_real IS NOT NULL
+                  AND NEW.result_text IS NULL
+                  AND NEW.result_boolean IS NULL
+                  AND NEW.result_real = CAST(NEW.result_real AS INTEGER))
+    THEN RAISE(ABORT, 'Type Count: result_real must be an integer; result_text and result_boolean must be NULL.')
+  END;
+
+  -- Bounds: if a lower bound exists, value must be >= value_min.
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
+         AND (SELECT value_min FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
+         AND NEW.result_real < (SELECT value_min FROM datastream WHERE id = NEW.iddatastream)
+    THEN RAISE(ABORT, 'Type Count: result_real is below value_min.')
+  END;
+
+  -- Bounds: if an upper bound exists, value must be <= value_max.
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
+         AND (SELECT value_max FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
+         AND NEW.result_real > (SELECT value_max FROM datastream WHERE id = NEW.iddatastream)
+    THEN RAISE(ABORT, 'Type Count: result_real exceeds value_max.')
+  END;
+
+  -- ------------------------------
+  -- TEXT
+  -- ------------------------------
+  -- Shape: only result_text (NOT NULL); real and boolean must be NULL.
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Text'
+         AND NOT (NEW.result_text IS NOT NULL
+                  AND NEW.result_real IS NULL
+                  AND NEW.result_boolean IS NULL)
+    THEN RAISE(ABORT, 'Type Text: result_text must be NOT NULL; result_real and result_boolean must be NULL.')
+  END;
+END;
+
+
+CREATE TRIGGER observation_bu_type_constraints
+BEFORE UPDATE OF result_text, result_real, result_boolean, iddatastream ON observation
+FOR EACH ROW
+BEGIN
+  -- Apply the same rules on UPDATE to protect both changes to result_* fields
+  -- and movements across datastreams.
+
+  -- QUANTITY: shape
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
+         AND NOT (NEW.result_real IS NOT NULL
+                  AND NEW.result_text IS NULL
+                  AND NEW.result_boolean IS NULL)
+    THEN RAISE(ABORT, 'Type Quantity: result_real must be NOT NULL; result_text and result_boolean must be NULL.')
+  END;
+  -- QUANTITY: bounds
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
+         AND (SELECT value_min FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
+         AND NEW.result_real < (SELECT value_min FROM datastream WHERE id = NEW.iddatastream)
+    THEN RAISE(ABORT, 'Type Quantity: result_real is below value_min.')
+  END;
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
+         AND (SELECT value_max FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
+         AND NEW.result_real > (SELECT value_max FROM datastream WHERE id = NEW.iddatastream)
+    THEN RAISE(ABORT, 'Type Quantity: result_real exceeds value_max.')
+  END;
+
+  -- CATEGORY: shape
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Category'
+         AND NOT (NEW.result_text IS NOT NULL
+                  AND NEW.result_real IS NULL
+                  AND NEW.result_boolean IS NULL)
+    THEN RAISE(ABORT, 'Type Category: result_text must be NOT NULL; result_real and result_boolean must be NULL.')
+  END;
+  -- CATEGORY: membership
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Category'
+         AND NOT EXISTS (
+           SELECT 1
+           FROM codelist c
+           WHERE c.collection = (SELECT codespace FROM datastream WHERE id = NEW.iddatastream)
+             AND c.id = NEW.result_text
+         )
+    THEN RAISE(ABORT, 'Type Category: result_text must exist in codelist.id for the collection equal to the datastream codespace.')
+  END;
+
+  -- BOOLEAN
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Boolean'
+         AND NOT (NEW.result_boolean IS NOT NULL
+                  AND NEW.result_boolean IN (0,1)
+                  AND NEW.result_text IS NULL
+                  AND NEW.result_real IS NULL)
+    THEN RAISE(ABORT, 'Type Boolean: result_boolean must be 0 or 1; result_text and result_real must be NULL.')
+  END;
+
+  -- COUNT: shape
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
+         AND NOT (NEW.result_real IS NOT NULL
+                  AND NEW.result_text IS NULL
+                  AND NEW.result_boolean IS NULL
+                  AND NEW.result_real = CAST(NEW.result_real AS INTEGER))
+    THEN RAISE(ABORT, 'Type Count: result_real must be an integer; result_text and result_boolean must be NULL.')
+  END;
+  -- COUNT: bounds
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
+         AND (SELECT value_min FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
+         AND NEW.result_real < (SELECT value_min FROM datastream WHERE id = NEW.iddatastream)
+    THEN RAISE(ABORT, 'Type Count: result_real is below value_min.')
+  END;
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
+         AND (SELECT value_max FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
+         AND NEW.result_real > (SELECT value_max FROM datastream WHERE id = NEW.iddatastream)
+    THEN RAISE(ABORT, 'Type Count: result_real exceeds value_max.')
+  END;
+
+  -- TEXT
+  SELECT CASE
+    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Text'
+         AND NOT (NEW.result_text IS NOT NULL
+                  AND NEW.result_real IS NULL
+                  AND NEW.result_boolean IS NULL)
+    THEN RAISE(ABORT, 'Type Text: result_text must be NOT NULL; result_real and result_boolean must be NULL.')
+  END;
+END;
+
+
+-- This trigger runs BEFORE updating value_min or value_max on datastream.
+-- It prevents tightening the bounds in such a way that existing observations
+-- for the same datastream (of type Quantity or Count) would fall outside the new range.
+CREATE TRIGGER datastream_bu_bounds_validate_observations
+BEFORE UPDATE OF value_min, value_max ON datastream
+FOR EACH ROW
+BEGIN
+  -- Only enforce for numeric series (Quantity or Count).
+  -- If a new lower bound is provided, all existing observations must be >= value_min.
+  SELECT CASE
+    WHEN NEW.type IN ('Quantity', 'Count')
+         AND NEW.value_min IS NOT NULL
+         AND EXISTS (
+           SELECT 1
+           FROM observation o
+           WHERE o.iddatastream = NEW.id
+             AND o.result_real IS NOT NULL
+             AND o.result_real < NEW.value_min
+         )
+    THEN RAISE(ABORT, 'Bounds update rejected: some existing observations have result_real below the new value_min.')
+  END;
+
+  -- If a new upper bound is provided, all existing observations must be <= value_max.
+  SELECT CASE
+    WHEN NEW.type IN ('Quantity', 'Count')
+         AND NEW.value_max IS NOT NULL
+         AND EXISTS (
+           SELECT 1
+           FROM observation o
+           WHERE o.iddatastream = NEW.id
+             AND o.result_real IS NOT NULL
+             AND o.result_real > NEW.value_max
+         )
+    THEN RAISE(ABORT, 'Bounds update rejected: some existing observations have result_real above the new value_max.')
+  END;
+END;
 
 
 /* 
@@ -2724,55 +3737,94 @@ INSERT INTO gpkg_contents (
 );
 
 
----------------------------------------------------------------- 
-----------------------------  INDEX ---------------------------- 
----------------------------------------------------------------- 
+------------------------------------------------------------------------------------------- 
+-------------------------------------  INDEXES -------------------------------------------- 
+------------------------------------------------------------------------------------------- 
 
+/* =======================================================================
+   INDEXES (NON-GEOMETRIC)
+    - Excludes indexes on geometric columns (geometry, soilplotlocation, geom, observedarea)
+    - Includes indexes useful for foreign keys and join/lookup fields
+    - Avoids redundant indexes already covered by UNIQUE constraints
+   ======================================================================= */
 
-CREATE INDEX IF NOT EXISTS idx_soilplot_locatedon                          ON soilplot(locatedon);
-CREATE INDEX IF NOT EXISTS idx_soilprofile_location                        ON soilprofile(location);
-CREATE INDEX IF NOT EXISTS idx_othersoilnametype_othersoilname             ON othersoilnametype(othersoilname);
-CREATE INDEX IF NOT EXISTS idx_isderivedfrom_base_id                       ON isderivedfrom(base_id);
-CREATE INDEX IF NOT EXISTS idx_isderivedfrom_related_id                    ON isderivedfrom(related_id);
-CREATE INDEX IF NOT EXISTS idx_soilbody_geom_idsoilbody                    ON soilbody_geom(idsoilbody);
-CREATE INDEX IF NOT EXISTS idx_derivedprofilepresenceinsoilbody_idsoilbody ON derivedprofilepresenceinsoilbody(idsoilbody);
+-- soilplot
+CREATE INDEX IF NOT EXISTS idx_soilplot_locatedon ON soilplot(locatedon);
+
+-- othersoilnametype
+CREATE INDEX IF NOT EXISTS idx_othersoilnametype_othersoilname ON othersoilnametype(othersoilname);
+
+-- isderivedfrom
+CREATE INDEX IF NOT EXISTS idx_isderivedfrom_base_id    ON isderivedfrom(base_id);
+CREATE INDEX IF NOT EXISTS idx_isderivedfrom_related_id ON isderivedfrom(related_id);
+
+-- soilbody_geom (index on a non-geometric foreign key)
+CREATE INDEX IF NOT EXISTS idx_soilbody_geom_idsoilbody ON soilbody_geom(idsoilbody);
+
+-- derivedprofilepresenceinsoilbody
+CREATE INDEX IF NOT EXISTS idx_derivedprofilepresenceinsoilbody_idsoilbody  ON derivedprofilepresenceinsoilbody(idsoilbody);
 CREATE INDEX IF NOT EXISTS idx_derivedprofilepresenceinsoilbody_idsoilprofile ON derivedprofilepresenceinsoilbody(idsoilprofile);
+
+-- isbasedonobservedsoilprofile
 CREATE INDEX IF NOT EXISTS idx_isbasedonobservedsoilprofile_idsoilderivedobject ON isbasedonobservedsoilprofile(idsoilderivedobject);
-CREATE INDEX IF NOT EXISTS idx_isbasedonobservedsoilprofile_idsoilprofile  ON isbasedonobservedsoilprofile(idsoilprofile);
-CREATE INDEX IF NOT EXISTS idx_isbasedonsoilbody_idsoilderivedobject       ON isbasedonsoilbody(idsoilderivedobject);
-CREATE INDEX IF NOT EXISTS idx_isbasedonsoilbody_idsoilbody                ON isbasedonsoilbody(idsoilbody);
-CREATE INDEX IF NOT EXISTS idx_isbasedonsoilderivedobject_base_id          ON isbasedonsoilderivedobject(base_id);
-CREATE INDEX IF NOT EXISTS idx_isbasedonsoilderivedobject_related_id       ON isbasedonsoilderivedobject(related_id);
-CREATE INDEX IF NOT EXISTS idx_profileelement_ispartof                     ON profileelement(ispartof);
-CREATE INDEX IF NOT EXISTS idx_particlesizefractiontype_idprofileelement   ON particlesizefractiontype(idprofileelement);
-CREATE INDEX IF NOT EXISTS idx_faohorizonnotationtype_idprofileelement     ON faohorizonnotationtype(idprofileelement);
-CREATE INDEX IF NOT EXISTS idx_otherhorizon_profileelement_idprofileelement ON otherhorizon_profileelement(idprofileelement);
+CREATE INDEX IF NOT EXISTS idx_isbasedonobservedsoilprofile_idsoilprofile       ON isbasedonobservedsoilprofile(idsoilprofile);
+
+-- isbasedonsoilbody
+CREATE INDEX IF NOT EXISTS idx_isbasedonsoilbody_idsoilderivedobject ON isbasedonsoilbody(idsoilderivedobject);
+CREATE INDEX IF NOT EXISTS idx_isbasedonsoilbody_idsoilbody          ON isbasedonsoilbody(idsoilbody);
+
+-- isbasedonsoilderivedobject
+CREATE INDEX IF NOT EXISTS idx_isbasedonsoilderivedobject_base_id    ON isbasedonsoilderivedobject(base_id);
+CREATE INDEX IF NOT EXISTS idx_isbasedonsoilderivedobject_related_id ON isbasedonsoilderivedobject(related_id);
+
+-- profileelement
+CREATE INDEX IF NOT EXISTS idx_profileelement_ispartof ON profileelement(ispartof);
+
+-- particlesizefractiontype
+CREATE INDEX IF NOT EXISTS idx_particlesizefractiontype_idprofileelement ON particlesizefractiontype(idprofileelement);
+
+-- otherhorizon_profileelement
+CREATE INDEX IF NOT EXISTS idx_otherhorizon_profileelement_idprofileelement         ON otherhorizon_profileelement(idprofileelement);
 CREATE INDEX IF NOT EXISTS idx_otherhorizon_profileelement_idotherhorizonnotationtype ON otherhorizon_profileelement(idotherhorizonnotationtype);
-CREATE INDEX IF NOT EXISTS idx_wrbqualifiergroup_profile_idsoilprofile     ON wrbqualifiergroup_profile(idsoilprofile);
+
+-- wrbqualifiergroup_profile
+CREATE INDEX IF NOT EXISTS idx_wrbqualifiergroup_profile_idsoilprofile         ON wrbqualifiergroup_profile(idsoilprofile);
 CREATE INDEX IF NOT EXISTS idx_wrbqualifiergroup_profile_idwrbqualifiergrouptype ON wrbqualifiergroup_profile(idwrbqualifiergrouptype);
-CREATE INDEX IF NOT EXISTS idx_feature_feature_soilsite                    ON feature(feature_soilsite);
-CREATE INDEX IF NOT EXISTS idx_feature_feature_soilprofile                 ON feature(feature_soilprofile);
-CREATE INDEX IF NOT EXISTS idx_feature_feature_profileelement              ON feature(feature_profileelement);
-CREATE INDEX IF NOT EXISTS idx_feature_feature_soilderivedobject           ON feature(feature_soilderivedobject);
-CREATE INDEX IF NOT EXISTS idx_feature_idfeaturetype                       ON feature(idfeaturetype);
-CREATE INDEX IF NOT EXISTS idx_datastream_idfeature                        ON datastream(idfeature);
---CREATE INDEX IF NOT EXISTS idx_datastream_thing_id                         ON datastream(thing_id);
---CREATE INDEX IF NOT EXISTS idx_datastream_sensor_id                        ON datastream(sensor_id);
---CREATE INDEX IF NOT EXISTS idx_datastream_observedproperty_id              ON datastream(observedproperty_id);
 
-CREATE INDEX IF NOT EXISTS idx_isderivedfrom_base_related                   ON isderivedfrom(base_id, related_id);
-CREATE INDEX IF NOT EXISTS idx_derivedprofilepresenceinsoilbody_pair        ON derivedprofilepresenceinsoilbody(idsoilbody, idsoilprofile);
-CREATE INDEX IF NOT EXISTS idx_isbasedonobservedsoilprofile_pair            ON isbasedonobservedsoilprofile(idsoilderivedobject, idsoilprofile);
-CREATE INDEX IF NOT EXISTS idx_isbasedonsoilbody_pair                        ON isbasedonsoilbody(idsoilderivedobject, idsoilbody);
-CREATE INDEX IF NOT EXISTS idx_isbasedonsoilderivedobject_pair               ON isbasedonsoilderivedobject(base_id, related_id);
-CREATE INDEX IF NOT EXISTS idx_otherhorizon_profileelement_pair              ON otherhorizon_profileelement(idprofileelement, idotherhorizonnotationtype);
-CREATE INDEX IF NOT EXISTS idx_wrbqualifiergroup_profile_pair                ON wrbqualifiergroup_profile(idsoilprofile, idwrbqualifiergrouptype);
--- Se interroghi spesso per più chiavi in feature/datastream, valuta anche:
--- CREATE INDEX IF NOT EXISTS idx_feature_allrefs                               ON feature(feature_soilsite, feature_soilprofile, feature_profileelement, feature_soilderivedobject, idfeaturetype);
--- CREATE INDEX IF NOT EXISTS idx_datastream_allrefs                            ON datastream(idfeature, thing_id, sensor_id, observedproperty_id);
+-- feature
+CREATE INDEX IF NOT EXISTS idx_feature_idfeaturetype ON feature(idfeaturetype);
 
-CREATE INDEX IF NOT EXISTS idx_codelist_id                 ON codelist(id);
-CREATE INDEX IF NOT EXISTS idx_codelist_collection         ON codelist(collection);
-CREATE INDEX IF NOT EXISTS idx_codelist_featuretype        ON codelist(featuretype);
-CREATE INDEX IF NOT EXISTS idx_codelist_phenomenon         ON codelist(phenomenon);
-CREATE INDEX IF NOT EXISTS idx_codelist_ft_ph              ON codelist(featuretype_phenomenon);
+-- datastream (FK e lookup)
+CREATE INDEX IF NOT EXISTS idx_datastream_idfeature        ON datastream(idfeature);
+CREATE INDEX IF NOT EXISTS idx_datastream_idthing          ON datastream(idthing);
+CREATE INDEX IF NOT EXISTS idx_datastream_idsensor         ON datastream(idsensor);
+CREATE INDEX IF NOT EXISTS idx_datastream_iduom            ON datastream(iduom);
+CREATE INDEX IF NOT EXISTS idx_datastream_observedproperty_id ON datastream(idobservedproperty);
+
+-- observation (FK vs datastream)
+CREATE INDEX IF NOT EXISTS idx_observation_iddatastream ON observation(iddatastream);
+
+/*
+-- Optional codelist (frequent lookupsi)
+CREATE INDEX IF NOT EXISTS idx_codelist_id              ON codelist(id);
+CREATE INDEX IF NOT EXISTS idx_codelist_collection      ON codelist(collection);
+CREATE INDEX IF NOT EXISTS idx_codelist_featuretype     ON codelist(featuretype);
+CREATE INDEX IF NOT EXISTS idx_codelist_phenomenon      ON codelist(phenomenon);
+CREATE INDEX IF NOT EXISTS idx_codelist_ft_ph           ON codelist(featuretype_phenomenon);
+*/
+
+/* -----------------------------------------------------------------------
+   Optional (enable only if needed for heavy loads/frequent filters):
+   CREATE INDEX IF NOT EXISTS idx_soilprofile_isderived        ON soilprofile(isderived);
+   CREATE INDEX IF NOT EXISTS idx_soilprofile_wrbversion       ON soilprofile(wrbversion);
+   CREATE INDEX IF NOT EXISTS idx_wrbqualifiergrouptype_wrbversion ON wrbqualifiergrouptype(wrbversion);
+   CREATE INDEX IF NOT EXISTS idx_wrbqualifiergrouptype_qplace     ON wrbqualifiergrouptype(qualifierplace);
+   ----------------------------------------------------------------------- */
+
+
+-- Indexes that keep lookups and aggregate recomputations fast phenomenontime datastream.
+CREATE INDEX IF NOT EXISTS idx_observation_ds_times         ON observation (iddatastream, phenomenontime_start, phenomenontime_end);
+CREATE INDEX IF NOT EXISTS idx_codelist_collection_id       ON codelist (collection, id);
+
+-- Optional but recommended index to accelerate range checks on existing observations
+CREATE INDEX IF NOT EXISTS idx_observation_ds_result_real   ON observation (iddatastream, result_real);
