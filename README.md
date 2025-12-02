@@ -7,7 +7,7 @@ The template is available on [GitHub](https://github.com/ejpsoil/inspire_soil_gp
 
 ---
 The data model **currently under development** can be viewed at:
-🔗 https://dbdiagram.io/d/INSPIRE_SO_STA2-68930e9bdd90d17865ab666b
+🔗 https://dbdiagram.io/d/INSPIRE_SO_STA2_Guid-69202690228c5bbc1ae18a3b
 
 ---
 
@@ -21,16 +21,16 @@ Contains `.gpkg` files:
 ### /geopackage_ddl/
 Includes SQL scripts for:
 - **DDL (Data Definition Language)**: creation of the GeoPackage schema.
-- **DML (Data Manipulation Language)**: population of the `Codelist` support table.
+- **DML (Data Manipulation Language)**: population of the 'Codelist' support table and metadata for the table fields.
 
 ### /qgis_style/
 Includes **custom attribute forms and styles** to enhance data entry and visualization in QGIS.
 
 ---
 
-Repository developerd by the WG within
-User story name: UC2-CREA-Cycle2;
-Main Topic: Provide an improved soil geopackage, tested with 3 datasets, in soilwise repository;
-Key words US: data models, vocabs;
-UC Partner: CREA;
-Problem Owner: Giovanni / Andrea.
+
+- **Repository developed by the WG within User story name:** UC2-CREA-Cycle2  
+- **Main Topic:** Provide an improved soil GeoPackage, tested with 3 datasets, in SoilWise repository  
+- **Key words (US):** data models, vocabs  
+- **UC Partner:** CREA  
+- **Problem Owner:** Giovanni L'Abate / Andrea Lachi

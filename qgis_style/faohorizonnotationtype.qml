@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis version="3.44.0-Solothurn" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,264 +7,280 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation strength="Association" layerId="profileelement_eb6bed83_91c6_4b85_baa7_bbb9469e94e0" id="profileelement_faohorizonnotationtype" dataSource="./INSPIRE_SO_07.gpkg|layername=profileelement" layerName="profileelement" name="profileelement_faohorizonnotationtype" referencingLayer="faohorizonnotationtype_8a0968be_62d1_417e_a7ba_a0e3de8f8687" providerKey="ogr" referencedLayer="profileelement_eb6bed83_91c6_4b85_baa7_bbb9469e94e0">
-      <fieldRef referencingField="idprofileelement" referencedField="guidkey"/>
+    <relation name="profileelement_faohorizonnotationtype" referencingLayer="faohorizonnotationtype_1b02e2f5_02fe_44ba_8ece_b7ebc8afe271" id="profileelement_faohorizonnotationtype" layerName="profileelement" strength="Composition" layerId="profileelement_c30e6a23_64c8_4588_a32e_c91c0209d0a3" referencedLayer="profileelement_c30e6a23_64c8_4588_a32e_c91c0209d0a3" providerKey="ogr" dataSource="./SW_15.gpkg|layername=profileelement">
+      <fieldRef referencingField="guid_profileelement" referencedField="guid"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
-    <field name="id" configurationFlags="None">
+    <field name="id" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="faohorizondiscontinuity" configurationFlags="None">
+    <field name="guid" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="faohorizonmaster_1" configurationFlags="None">
-      <editWidget type="ValueRelation">
-        <config>
-          <Option type="Map">
-            <Option value="false" name="AllowMulti" type="bool"/>
-            <Option value="false" name="AllowNull" type="bool"/>
-            <Option value="" name="Description" type="QString"/>
-            <Option value="&quot;collection&quot; IN('FAOHorizonMasterValue') " name="FilterExpression" type="QString"/>
-            <Option value="id" name="Key" type="QString"/>
-            <Option value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" name="Layer" type="QString"/>
-            <Option value="codelist" name="LayerName" type="QString"/>
-            <Option value="ogr" name="LayerProviderName" type="QString"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" name="LayerSource" type="QString"/>
-            <Option value="1" name="NofColumns" type="int"/>
-            <Option value="false" name="OrderByValue" type="bool"/>
-            <Option value="false" name="UseCompleter" type="bool"/>
-            <Option value="label" name="Value" type="QString"/>
-          </Option>
-        </config>
-      </editWidget>
-    </field>
-    <field name="faohorizonmaster_2" configurationFlags="None">
-      <editWidget type="ValueRelation">
-        <config>
-          <Option type="Map">
-            <Option value="false" name="AllowMulti" type="bool"/>
-            <Option value="true" name="AllowNull" type="bool"/>
-            <Option value="" name="Description" type="QString"/>
-            <Option value="&quot;collection&quot; IN('FAOHorizonMasterValue') " name="FilterExpression" type="QString"/>
-            <Option value="id" name="Key" type="QString"/>
-            <Option value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" name="Layer" type="QString"/>
-            <Option value="codelist" name="LayerName" type="QString"/>
-            <Option value="ogr" name="LayerProviderName" type="QString"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" name="LayerSource" type="QString"/>
-            <Option value="1" name="NofColumns" type="int"/>
-            <Option value="false" name="OrderByValue" type="bool"/>
-            <Option value="false" name="UseCompleter" type="bool"/>
-            <Option value="label" name="Value" type="QString"/>
-          </Option>
-        </config>
-      </editWidget>
-    </field>
-    <field name="faohorizonsubordinate_1" configurationFlags="None">
-      <editWidget type="ValueRelation">
-        <config>
-          <Option type="Map">
-            <Option value="false" name="AllowMulti" type="bool"/>
-            <Option value="true" name="AllowNull" type="bool"/>
-            <Option value="" name="Description" type="QString"/>
-            <Option value="&quot;collection&quot; IN('FAOHorizonSubordinateValue') " name="FilterExpression" type="QString"/>
-            <Option value="id" name="Key" type="QString"/>
-            <Option value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" name="Layer" type="QString"/>
-            <Option value="codelist" name="LayerName" type="QString"/>
-            <Option value="ogr" name="LayerProviderName" type="QString"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" name="LayerSource" type="QString"/>
-            <Option value="1" name="NofColumns" type="int"/>
-            <Option value="false" name="OrderByValue" type="bool"/>
-            <Option value="false" name="UseCompleter" type="bool"/>
-            <Option value="label" name="Value" type="QString"/>
-          </Option>
-        </config>
-      </editWidget>
-    </field>
-    <field name="faohorizonsubordinate_2" configurationFlags="None">
-      <editWidget type="ValueRelation">
-        <config>
-          <Option type="Map">
-            <Option value="false" name="AllowMulti" type="bool"/>
-            <Option value="true" name="AllowNull" type="bool"/>
-            <Option value="" name="Description" type="QString"/>
-            <Option value="&quot;collection&quot; IN('FAOHorizonSubordinateValue') " name="FilterExpression" type="QString"/>
-            <Option value="id" name="Key" type="QString"/>
-            <Option value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" name="Layer" type="QString"/>
-            <Option value="codelist" name="LayerName" type="QString"/>
-            <Option value="ogr" name="LayerProviderName" type="QString"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" name="LayerSource" type="QString"/>
-            <Option value="1" name="NofColumns" type="int"/>
-            <Option value="false" name="OrderByValue" type="bool"/>
-            <Option value="false" name="UseCompleter" type="bool"/>
-            <Option value="label" name="Value" type="QString"/>
-          </Option>
-        </config>
-      </editWidget>
-    </field>
-    <field name="faohorizonsubordinate_3" configurationFlags="None">
-      <editWidget type="ValueRelation">
-        <config>
-          <Option type="Map">
-            <Option value="false" name="AllowMulti" type="bool"/>
-            <Option value="true" name="AllowNull" type="bool"/>
-            <Option value="" name="Description" type="QString"/>
-            <Option value="&quot;collection&quot; IN('FAOHorizonSubordinateValue') " name="FilterExpression" type="QString"/>
-            <Option value="id" name="Key" type="QString"/>
-            <Option value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" name="Layer" type="QString"/>
-            <Option value="codelist" name="LayerName" type="QString"/>
-            <Option value="ogr" name="LayerProviderName" type="QString"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" name="LayerSource" type="QString"/>
-            <Option value="1" name="NofColumns" type="int"/>
-            <Option value="false" name="OrderByValue" type="bool"/>
-            <Option value="false" name="UseCompleter" type="bool"/>
-            <Option value="label" name="Value" type="QString"/>
-          </Option>
-        </config>
-      </editWidget>
-    </field>
-    <field name="faohorizonverical" configurationFlags="None">
+    <field name="faohorizondiscontinuity" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="faoprime" configurationFlags="None">
+    <field name="faohorizonmaster_1" configurationFlags="NoFlag">
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowMulti" type="bool"/>
-            <Option value="false" name="AllowNull" type="bool"/>
-            <Option value="" name="Description" type="QString"/>
-            <Option value="&quot;collection&quot; IN('FAOPrimeValue') &#xa;&#xa;" name="FilterExpression" type="QString"/>
-            <Option value="id" name="Key" type="QString"/>
-            <Option value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" name="Layer" type="QString"/>
-            <Option value="codelist" name="LayerName" type="QString"/>
-            <Option value="ogr" name="LayerProviderName" type="QString"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" name="LayerSource" type="QString"/>
-            <Option value="1" name="NofColumns" type="int"/>
-            <Option value="false" name="OrderByValue" type="bool"/>
-            <Option value="false" name="UseCompleter" type="bool"/>
-            <Option value="label" name="Value" type="QString"/>
+            <Option name="AllowMulti" value="false" type="bool"/>
+            <Option name="AllowNull" value="false" type="bool"/>
+            <Option name="Description" type="invalid"/>
+            <Option name="FilterExpression" value="&quot;collection&quot; IN('FAOHorizonMasterValue') " type="QString"/>
+            <Option name="Key" value="id" type="QString"/>
+            <Option name="Layer" value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" type="QString"/>
+            <Option name="LayerName" value="codelist" type="QString"/>
+            <Option name="LayerProviderName" value="ogr" type="QString"/>
+            <Option name="LayerSource" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" type="QString"/>
+            <Option name="NofColumns" value="1" type="int"/>
+            <Option name="OrderByValue" value="false" type="bool"/>
+            <Option name="UseCompleter" value="false" type="bool"/>
+            <Option name="Value" value="label" type="QString"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="isoriginalclassification" configurationFlags="None">
+    <field name="faohorizonmaster_2" configurationFlags="NoFlag">
+      <editWidget type="ValueRelation">
+        <config>
+          <Option type="Map">
+            <Option name="AllowMulti" value="false" type="bool"/>
+            <Option name="AllowNull" value="true" type="bool"/>
+            <Option name="Description" type="invalid"/>
+            <Option name="FilterExpression" value="&quot;collection&quot; IN('FAOHorizonMasterValue') " type="QString"/>
+            <Option name="Key" value="id" type="QString"/>
+            <Option name="Layer" value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" type="QString"/>
+            <Option name="LayerName" value="codelist" type="QString"/>
+            <Option name="LayerProviderName" value="ogr" type="QString"/>
+            <Option name="LayerSource" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" type="QString"/>
+            <Option name="NofColumns" value="1" type="int"/>
+            <Option name="OrderByValue" value="false" type="bool"/>
+            <Option name="UseCompleter" value="false" type="bool"/>
+            <Option name="Value" value="label" type="QString"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
+    <field name="faohorizonsubordinate_1" configurationFlags="NoFlag">
+      <editWidget type="ValueRelation">
+        <config>
+          <Option type="Map">
+            <Option name="AllowMulti" value="false" type="bool"/>
+            <Option name="AllowNull" value="true" type="bool"/>
+            <Option name="Description" type="invalid"/>
+            <Option name="FilterExpression" value="&quot;collection&quot; IN('FAOHorizonSubordinateValue') " type="QString"/>
+            <Option name="Key" value="id" type="QString"/>
+            <Option name="Layer" value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" type="QString"/>
+            <Option name="LayerName" value="codelist" type="QString"/>
+            <Option name="LayerProviderName" value="ogr" type="QString"/>
+            <Option name="LayerSource" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" type="QString"/>
+            <Option name="NofColumns" value="1" type="int"/>
+            <Option name="OrderByValue" value="false" type="bool"/>
+            <Option name="UseCompleter" value="false" type="bool"/>
+            <Option name="Value" value="label" type="QString"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
+    <field name="faohorizonsubordinate_2" configurationFlags="NoFlag">
+      <editWidget type="ValueRelation">
+        <config>
+          <Option type="Map">
+            <Option name="AllowMulti" value="false" type="bool"/>
+            <Option name="AllowNull" value="true" type="bool"/>
+            <Option name="Description" type="invalid"/>
+            <Option name="FilterExpression" value="&quot;collection&quot; IN('FAOHorizonSubordinateValue') " type="QString"/>
+            <Option name="Key" value="id" type="QString"/>
+            <Option name="Layer" value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" type="QString"/>
+            <Option name="LayerName" value="codelist" type="QString"/>
+            <Option name="LayerProviderName" value="ogr" type="QString"/>
+            <Option name="LayerSource" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" type="QString"/>
+            <Option name="NofColumns" value="1" type="int"/>
+            <Option name="OrderByValue" value="false" type="bool"/>
+            <Option name="UseCompleter" value="false" type="bool"/>
+            <Option name="Value" value="label" type="QString"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
+    <field name="faohorizonsubordinate_3" configurationFlags="NoFlag">
+      <editWidget type="ValueRelation">
+        <config>
+          <Option type="Map">
+            <Option name="AllowMulti" value="false" type="bool"/>
+            <Option name="AllowNull" value="true" type="bool"/>
+            <Option name="Description" type="invalid"/>
+            <Option name="FilterExpression" value="&quot;collection&quot; IN('FAOHorizonSubordinateValue') " type="QString"/>
+            <Option name="Key" value="id" type="QString"/>
+            <Option name="Layer" value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" type="QString"/>
+            <Option name="LayerName" value="codelist" type="QString"/>
+            <Option name="LayerProviderName" value="ogr" type="QString"/>
+            <Option name="LayerSource" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" type="QString"/>
+            <Option name="NofColumns" value="1" type="int"/>
+            <Option name="OrderByValue" value="false" type="bool"/>
+            <Option name="UseCompleter" value="false" type="bool"/>
+            <Option name="Value" value="label" type="QString"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
+    <field name="faohorizonvertical" configurationFlags="NoFlag">
+      <editWidget type="TextEdit">
+        <config>
+          <Option/>
+        </config>
+      </editWidget>
+    </field>
+    <field name="faoprime" configurationFlags="NoFlag">
+      <editWidget type="ValueRelation">
+        <config>
+          <Option type="Map">
+            <Option name="AllowMulti" value="false" type="bool"/>
+            <Option name="AllowNull" value="false" type="bool"/>
+            <Option name="Description" type="invalid"/>
+            <Option name="FilterExpression" value="&quot;collection&quot; IN('FAOPrimeValue') &#xa;&#xa;" type="QString"/>
+            <Option name="Key" value="id" type="QString"/>
+            <Option name="Layer" value="codelist_a4124c0e_f027_4721_825f_b8618baffa11" type="QString"/>
+            <Option name="LayerName" value="codelist" type="QString"/>
+            <Option name="LayerProviderName" value="ogr" type="QString"/>
+            <Option name="LayerSource" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=codelist" type="QString"/>
+            <Option name="NofColumns" value="1" type="int"/>
+            <Option name="OrderByValue" value="false" type="bool"/>
+            <Option name="UseCompleter" value="false" type="bool"/>
+            <Option name="Value" value="label" type="QString"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
+    <field name="isoriginalclassification" configurationFlags="NoFlag">
       <editWidget type="CheckBox">
         <config>
           <Option type="Map">
-            <Option value="" name="CheckedState" type="QString"/>
-            <Option value="0" name="TextDisplayMethod" type="int"/>
-            <Option value="" name="UncheckedState" type="QString"/>
+            <Option name="CheckedState" type="invalid"/>
+            <Option name="TextDisplayMethod" value="0" type="int"/>
+            <Option name="UncheckedState" type="invalid"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="idprofileelement" configurationFlags="None">
+    <field name="guid_profileelement" configurationFlags="NoFlag">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=profileelement" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" name="ReferencedLayerId" type="QString"/>
-            <Option value="profileelement" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="profileelement_faohorizonnotationtype" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="true" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=profileelement" type="QString"/>
+            <Option name="ReferencedLayerId" value="profileelement_c30e6a23_64c8_4588_a32e_c91c0209d0a3" type="QString"/>
+            <Option name="ReferencedLayerName" value="profileelement" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="profileelement_faohorizonnotationtype" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias field="id" name="" index="0"/>
-    <alias field="faohorizondiscontinuity" name="FAO Horizon Discontinuity" index="1"/>
-    <alias field="faohorizonmaster_1" name="FAO Horizon Master" index="2"/>
-    <alias field="faohorizonmaster_2" name="" index="3"/>
-    <alias field="faohorizonsubordinate_1" name="FAO Horizon Subordinate" index="4"/>
-    <alias field="faohorizonsubordinate_2" name="Fao Hor Sub 2" index="5"/>
-    <alias field="faohorizonsubordinate_3" name="Fao Hor Sub 3" index="6"/>
-    <alias field="faohorizonverical" name="FAO Horizon Vertical" index="7"/>
-    <alias field="faoprime" name="FAO Prime" index="8"/>
-    <alias field="isoriginalclassification" name="It is an Original classification" index="9"/>
-    <alias field="idprofileelement" name="Profile Element" index="10"/>
+    <alias name="" field="id" index="0"/>
+    <alias name="" field="guid" index="1"/>
+    <alias name="FAO Horizon Discontinuity" field="faohorizondiscontinuity" index="2"/>
+    <alias name="FAO Horizon Master" field="faohorizonmaster_1" index="3"/>
+    <alias name="" field="faohorizonmaster_2" index="4"/>
+    <alias name="FAO Horizon Subordinate" field="faohorizonsubordinate_1" index="5"/>
+    <alias name="Fao Hor Sub 2" field="faohorizonsubordinate_2" index="6"/>
+    <alias name="Fao Hor Sub 3" field="faohorizonsubordinate_3" index="7"/>
+    <alias name="" field="faohorizonvertical" index="8"/>
+    <alias name="FAO Prime" field="faoprime" index="9"/>
+    <alias name="It is an Original classification" field="isoriginalclassification" index="10"/>
+    <alias name="Profile Element" field="guid_profileelement" index="11"/>
   </aliases>
   <splitPolicies>
     <policy field="id" policy="DefaultValue"/>
+    <policy field="guid" policy="DefaultValue"/>
     <policy field="faohorizondiscontinuity" policy="DefaultValue"/>
     <policy field="faohorizonmaster_1" policy="DefaultValue"/>
     <policy field="faohorizonmaster_2" policy="DefaultValue"/>
     <policy field="faohorizonsubordinate_1" policy="DefaultValue"/>
     <policy field="faohorizonsubordinate_2" policy="DefaultValue"/>
     <policy field="faohorizonsubordinate_3" policy="DefaultValue"/>
-    <policy field="faohorizonverical" policy="DefaultValue"/>
     <policy field="faoprime" policy="DefaultValue"/>
     <policy field="isoriginalclassification" policy="DefaultValue"/>
-    <policy field="idprofileelement" policy="DefaultValue"/>
+    <policy field="guid_profileelement" policy="DefaultValue"/>
   </splitPolicies>
+  <mergePolicies>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guid" policy="DefaultValue"/>
+    <policy field="guid_profileelement" policy="DefaultValue"/>
+  </mergePolicies>
   <defaults>
     <default field="id" applyOnUpdate="0" expression=""/>
+    <default field="guid" applyOnUpdate="0" expression=""/>
     <default field="faohorizondiscontinuity" applyOnUpdate="0" expression=""/>
     <default field="faohorizonmaster_1" applyOnUpdate="0" expression=""/>
     <default field="faohorizonmaster_2" applyOnUpdate="0" expression=""/>
     <default field="faohorizonsubordinate_1" applyOnUpdate="0" expression=""/>
     <default field="faohorizonsubordinate_2" applyOnUpdate="0" expression=""/>
     <default field="faohorizonsubordinate_3" applyOnUpdate="0" expression=""/>
-    <default field="faohorizonverical" applyOnUpdate="0" expression=""/>
+    <default field="faohorizonvertical" applyOnUpdate="0" expression=""/>
     <default field="faoprime" applyOnUpdate="0" expression=""/>
     <default field="isoriginalclassification" applyOnUpdate="0" expression=""/>
-    <default field="idprofileelement" applyOnUpdate="0" expression=""/>
+    <default field="guid_profileelement" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint field="id" constraints="3" notnull_strength="1" unique_strength="1" exp_strength="0"/>
-    <constraint field="faohorizondiscontinuity" constraints="0" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint field="faohorizonmaster_1" constraints="1" notnull_strength="1" unique_strength="0" exp_strength="0"/>
-    <constraint field="faohorizonmaster_2" constraints="0" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint field="faohorizonsubordinate_1" constraints="0" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint field="faohorizonsubordinate_2" constraints="0" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint field="faohorizonsubordinate_3" constraints="0" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint field="faohorizonverical" constraints="0" notnull_strength="0" unique_strength="0" exp_strength="0"/>
-    <constraint field="faoprime" constraints="1" notnull_strength="1" unique_strength="0" exp_strength="0"/>
-    <constraint field="isoriginalclassification" constraints="1" notnull_strength="1" unique_strength="0" exp_strength="0"/>
-    <constraint field="idprofileelement" constraints="2" notnull_strength="0" unique_strength="1" exp_strength="0"/>
+    <constraint unique_strength="1" notnull_strength="1" field="id" constraints="3" exp_strength="0"/>
+    <constraint unique_strength="1" notnull_strength="0" field="guid" constraints="2" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="faohorizondiscontinuity" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="faohorizonmaster_1" constraints="1" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="faohorizonmaster_2" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="faohorizonsubordinate_1" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="faohorizonsubordinate_2" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="faohorizonsubordinate_3" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="faohorizonvertical" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="faoprime" constraints="1" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="isoriginalclassification" constraints="1" exp_strength="0"/>
+    <constraint unique_strength="1" notnull_strength="0" field="guid_profileelement" constraints="2" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint field="id" desc="" exp=""/>
-    <constraint field="faohorizondiscontinuity" desc="" exp=""/>
-    <constraint field="faohorizonmaster_1" desc="" exp=""/>
-    <constraint field="faohorizonmaster_2" desc="" exp=""/>
-    <constraint field="faohorizonsubordinate_1" desc="" exp=""/>
-    <constraint field="faohorizonsubordinate_2" desc="" exp=""/>
-    <constraint field="faohorizonsubordinate_3" desc="" exp=""/>
-    <constraint field="faohorizonverical" desc="" exp=""/>
-    <constraint field="faoprime" desc="" exp=""/>
-    <constraint field="isoriginalclassification" desc="" exp=""/>
-    <constraint field="idprofileelement" desc="" exp=""/>
+    <constraint exp="" desc="" field="id"/>
+    <constraint exp="" desc="" field="guid"/>
+    <constraint exp="" desc="" field="faohorizondiscontinuity"/>
+    <constraint exp="" desc="" field="faohorizonmaster_1"/>
+    <constraint exp="" desc="" field="faohorizonmaster_2"/>
+    <constraint exp="" desc="" field="faohorizonsubordinate_1"/>
+    <constraint exp="" desc="" field="faohorizonsubordinate_2"/>
+    <constraint exp="" desc="" field="faohorizonsubordinate_3"/>
+    <constraint exp="" desc="" field="faohorizonvertical"/>
+    <constraint exp="" desc="" field="faoprime"/>
+    <constraint exp="" desc="" field="isoriginalclassification"/>
+    <constraint exp="" desc="" field="guid_profileelement"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -290,137 +306,156 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-      <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+      <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
     </labelStyle>
-    <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="id" index="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer groupBox="1" name="ID" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="1" type="GroupBox" collapsed="1" visibilityExpression="" collapsedExpressionEnabled="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
-    </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="faohorizondiscontinuity" index="1">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
-      </labelStyle>
-    </attributeEditorField>
-    <attributeEditorContainer horizontalStretch="0" columnCount="1" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="0" name="Master" collapsed="0" collapsedExpression="" type="Row" groupBox="0" collapsedExpressionEnabled="0" visibilityExpression="">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
-      </labelStyle>
-      <attributeEditorField horizontalStretch="1" verticalStretch="0" showLabel="1" name="faohorizonmaster_1" index="2">
-        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-          <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="id" verticalStretch="0" showLabel="1" index="0" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField horizontalStretch="1" verticalStretch="0" showLabel="0" name="faohorizonmaster_2" index="3">
-        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-          <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="guid" verticalStretch="0" showLabel="1" index="1" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer horizontalStretch="0" columnCount="1" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="0" name="Subordinate" collapsed="0" collapsedExpression="" type="Row" groupBox="0" collapsedExpressionEnabled="0" visibilityExpression="">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField name="faohorizondiscontinuity" verticalStretch="0" showLabel="1" index="2" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
-      <attributeEditorField horizontalStretch="1" verticalStretch="0" showLabel="1" name="faohorizonsubordinate_1" index="4">
-        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-          <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    </attributeEditorField>
+    <attributeEditorContainer groupBox="0" name="Master" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="0" type="Row" collapsed="0" visibilityExpression="" collapsedExpressionEnabled="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+      </labelStyle>
+      <attributeEditorField name="faohorizonmaster_1" verticalStretch="0" showLabel="1" index="3" horizontalStretch="1">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField horizontalStretch="1" verticalStretch="0" showLabel="0" name="faohorizonsubordinate_2" index="5">
-        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-          <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
-        </labelStyle>
-      </attributeEditorField>
-      <attributeEditorField horizontalStretch="1" verticalStretch="0" showLabel="0" name="faohorizonsubordinate_3" index="6">
-        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-          <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="faohorizonmaster_2" verticalStretch="0" showLabel="0" index="4" horizontalStretch="1">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="faoprime" index="8">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer groupBox="0" name="Subordinate" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="0" type="Row" collapsed="0" visibilityExpression="" collapsedExpressionEnabled="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+      </labelStyle>
+      <attributeEditorField name="faohorizonsubordinate_1" verticalStretch="0" showLabel="1" index="5" horizontalStretch="1">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+        </labelStyle>
+      </attributeEditorField>
+      <attributeEditorField name="faohorizonsubordinate_2" verticalStretch="0" showLabel="0" index="6" horizontalStretch="1">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+        </labelStyle>
+      </attributeEditorField>
+      <attributeEditorField name="faohorizonsubordinate_3" verticalStretch="0" showLabel="0" index="7" horizontalStretch="1">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+        </labelStyle>
+      </attributeEditorField>
+    </attributeEditorContainer>
+    <attributeEditorField name="faoprime" verticalStretch="0" showLabel="1" index="9" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="isoriginalclassification" index="9">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField name="isoriginalclassification" verticalStretch="0" showLabel="1" index="10" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="idprofileelement" index="10">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont style="" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField name="guid_profileelement" verticalStretch="0" showLabel="1" index="11" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
   <editable>
-    <field editable="1" name="faohorizondiscontinuity"/>
-    <field editable="1" name="faohorizonmaster"/>
-    <field editable="1" name="faohorizonmaster_1"/>
-    <field editable="1" name="faohorizonmaster_2"/>
-    <field editable="1" name="faohorizonsubordinate"/>
-    <field editable="1" name="faohorizonsubordinate_1"/>
-    <field editable="1" name="faohorizonsubordinate_2"/>
-    <field editable="1" name="faohorizonsubordinate_3"/>
-    <field editable="1" name="faohorizonverical"/>
-    <field editable="1" name="faoprime"/>
-    <field editable="1" name="guidkey"/>
-    <field editable="1" name="id"/>
-    <field editable="1" name="idprofileelement"/>
-    <field editable="1" name="isoriginalclassification"/>
+    <field name="faohorizondiscontinuity" editable="1"/>
+    <field name="faohorizonmaster" editable="1"/>
+    <field name="faohorizonmaster_1" editable="1"/>
+    <field name="faohorizonmaster_2" editable="1"/>
+    <field name="faohorizonsubordinate" editable="1"/>
+    <field name="faohorizonsubordinate_1" editable="1"/>
+    <field name="faohorizonsubordinate_2" editable="1"/>
+    <field name="faohorizonsubordinate_3" editable="1"/>
+    <field name="faohorizonverical" editable="1"/>
+    <field name="faohorizonvertical" editable="1"/>
+    <field name="faoprime" editable="1"/>
+    <field name="guid" editable="0"/>
+    <field name="guid_profileelement" editable="1"/>
+    <field name="guidkey" editable="1"/>
+    <field name="id" editable="0"/>
+    <field name="idprofileelement" editable="1"/>
+    <field name="isoriginalclassification" editable="1"/>
   </editable>
   <labelOnTop>
-    <field name="faohorizondiscontinuity" labelOnTop="0"/>
-    <field name="faohorizonmaster" labelOnTop="0"/>
-    <field name="faohorizonmaster_1" labelOnTop="0"/>
-    <field name="faohorizonmaster_2" labelOnTop="0"/>
-    <field name="faohorizonsubordinate" labelOnTop="0"/>
-    <field name="faohorizonsubordinate_1" labelOnTop="0"/>
-    <field name="faohorizonsubordinate_2" labelOnTop="0"/>
-    <field name="faohorizonsubordinate_3" labelOnTop="0"/>
-    <field name="faohorizonverical" labelOnTop="0"/>
-    <field name="faoprime" labelOnTop="0"/>
-    <field name="guidkey" labelOnTop="0"/>
-    <field name="id" labelOnTop="0"/>
-    <field name="idprofileelement" labelOnTop="0"/>
-    <field name="isoriginalclassification" labelOnTop="0"/>
+    <field labelOnTop="0" name="faohorizondiscontinuity"/>
+    <field labelOnTop="0" name="faohorizonmaster"/>
+    <field labelOnTop="0" name="faohorizonmaster_1"/>
+    <field labelOnTop="0" name="faohorizonmaster_2"/>
+    <field labelOnTop="0" name="faohorizonsubordinate"/>
+    <field labelOnTop="0" name="faohorizonsubordinate_1"/>
+    <field labelOnTop="0" name="faohorizonsubordinate_2"/>
+    <field labelOnTop="0" name="faohorizonsubordinate_3"/>
+    <field labelOnTop="0" name="faohorizonverical"/>
+    <field labelOnTop="0" name="faohorizonvertical"/>
+    <field labelOnTop="0" name="faoprime"/>
+    <field labelOnTop="0" name="guid"/>
+    <field labelOnTop="0" name="guid_profileelement"/>
+    <field labelOnTop="0" name="guidkey"/>
+    <field labelOnTop="0" name="id"/>
+    <field labelOnTop="0" name="idprofileelement"/>
+    <field labelOnTop="0" name="isoriginalclassification"/>
   </labelOnTop>
   <reuseLastValue>
-    <field reuseLastValue="0" name="faohorizondiscontinuity"/>
-    <field reuseLastValue="0" name="faohorizonmaster"/>
-    <field reuseLastValue="0" name="faohorizonmaster_1"/>
-    <field reuseLastValue="0" name="faohorizonmaster_2"/>
-    <field reuseLastValue="0" name="faohorizonsubordinate"/>
-    <field reuseLastValue="0" name="faohorizonsubordinate_1"/>
-    <field reuseLastValue="0" name="faohorizonsubordinate_2"/>
-    <field reuseLastValue="0" name="faohorizonsubordinate_3"/>
-    <field reuseLastValue="0" name="faohorizonverical"/>
-    <field reuseLastValue="0" name="faoprime"/>
-    <field reuseLastValue="0" name="guidkey"/>
-    <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="idprofileelement"/>
-    <field reuseLastValue="0" name="isoriginalclassification"/>
+    <field name="faohorizondiscontinuity" reuseLastValue="0"/>
+    <field name="faohorizonmaster" reuseLastValue="0"/>
+    <field name="faohorizonmaster_1" reuseLastValue="0"/>
+    <field name="faohorizonmaster_2" reuseLastValue="0"/>
+    <field name="faohorizonsubordinate" reuseLastValue="0"/>
+    <field name="faohorizonsubordinate_1" reuseLastValue="0"/>
+    <field name="faohorizonsubordinate_2" reuseLastValue="0"/>
+    <field name="faohorizonsubordinate_3" reuseLastValue="0"/>
+    <field name="faohorizonverical" reuseLastValue="0"/>
+    <field name="faohorizonvertical" reuseLastValue="0"/>
+    <field name="faoprime" reuseLastValue="0"/>
+    <field name="guid" reuseLastValue="0"/>
+    <field name="guid_profileelement" reuseLastValue="0"/>
+    <field name="guidkey" reuseLastValue="0"/>
+    <field name="id" reuseLastValue="0"/>
+    <field name="idprofileelement" reuseLastValue="0"/>
+    <field name="isoriginalclassification" reuseLastValue="0"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>if("faohorizonverical" is null,'',  "faohorizonverical" )&#xd;
-||&#xd;
-COALESCE(regexp_substr("faohorizonmaster_1" , '[^/]*$'),'') &#xd;
-||  &#xd;
-COALESCE(regexp_substr("faohorizonmaster_2" , '[^/]*$'),'') &#xd;
-|| &#xd;
-COALESCE(regexp_substr("faohorizonsubordinate_1" , '[^/]*$'),'')&#xd;
-||&#xd;
-COALESCE(regexp_substr("faohorizonsubordinate_2" , '[^/]*$'),'')&#xd;
-||&#xd;
-COALESCE(regexp_substr("faohorizonsubordinate_3" , '[^/]*$'),'')&#xd;
-||&#xd;
-if(  "faohorizondiscontinuity"  is null, '', ' Discontinuty : '||"faohorizondiscontinuity" )&#xd;
-||&#xd;
-if("faoprime" = 'http://inspire.ec.europa.eu/codelist/FAOPrimeValue/0' ,'', ' Prime : '||COALESCE(regexp_substr("faoprime" , '[^/]*$'),'') )&#xd;
-&#xd;
-&#xd;
+  <previewExpression>if("faohorizonverical" is null,'',  "faohorizonverical" )&#xd;&#xd;
+||&#xd;&#xd;
+COALESCE(regexp_substr("faohorizonmaster_1" , '[^/]*$'),'') &#xd;&#xd;
+||  &#xd;&#xd;
+COALESCE(regexp_substr("faohorizonmaster_2" , '[^/]*$'),'') &#xd;&#xd;
+|| &#xd;&#xd;
+COALESCE(regexp_substr("faohorizonsubordinate_1" , '[^/]*$'),'')&#xd;&#xd;
+||&#xd;&#xd;
+COALESCE(regexp_substr("faohorizonsubordinate_2" , '[^/]*$'),'')&#xd;&#xd;
+||&#xd;&#xd;
+COALESCE(regexp_substr("faohorizonsubordinate_3" , '[^/]*$'),'')&#xd;&#xd;
+||&#xd;&#xd;
+if(  "faohorizondiscontinuity"  is null, '', ' Discontinuty : '||"faohorizondiscontinuity" )&#xd;&#xd;
+||&#xd;&#xd;
+if("faoprime" = 'http://inspire.ec.europa.eu/codelist/FAOPrimeValue/0' ,'', ' Prime : '||COALESCE(regexp_substr("faoprime" , '[^/]*$'),'') )&#xd;&#xd;
+&#xd;&#xd;
+&#xd;&#xd;
 </previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>

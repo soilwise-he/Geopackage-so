@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0" version="3.32.3-Lima">
+<qgis version="3.44.0-Solothurn" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,88 +7,96 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation referencedLayer="otherhorizonnotationtype_9d3923ad_c916_40e0_b96b_7fd6d7c588ef" id="otherhorizonnotationtype_otherhorizon_profileelement" referencingLayer="otherhorizon_profileelement_9b1d14d7_79aa_45ab_a6d8_77949e1aa1ad" layerId="otherhorizonnotationtype_9d3923ad_c916_40e0_b96b_7fd6d7c588ef" providerKey="ogr" dataSource="./INSPIRE_SO_DEMO_V01.gpkg|layername=otherhorizonnotationtype" layerName="otherhorizonnotationtype" name="otherhorizonnotationtype_otherhorizon_profileelement" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idotherhorizonnotationtype"/>
+    <relation name="otherhorizonnotationtype_otherhorizon_profileelement" referencingLayer="otherhorizon_profileelement_83c7dac0_cc79_4828_88cf_ee34e979c8d7" id="otherhorizonnotationtype_otherhorizon_profileelement" layerName="otherhorizonnotationtype" strength="Composition" layerId="otherhorizonnotationtype_9d4fc2f6_fc67_4b98_8477_51f6560d7b31" referencedLayer="otherhorizonnotationtype_9d4fc2f6_fc67_4b98_8477_51f6560d7b31" providerKey="ogr" dataSource="./SW_15.gpkg|layername=otherhorizonnotationtype">
+      <fieldRef referencingField="guid_otherhorizonnotationtype" referencedField="guid"/>
     </relation>
-    <relation referencedLayer="profileelement_e3c097e6_b9be_4926_8bd6_13f11448b000" id="profileelement_otherhorizon_profileelement_2" referencingLayer="otherhorizon_profileelement_9b1d14d7_79aa_45ab_a6d8_77949e1aa1ad" layerId="profileelement_e3c097e6_b9be_4926_8bd6_13f11448b000" providerKey="ogr" dataSource="./INSPIRE_SO_DEMO_V01.gpkg|layername=profileelement" layerName="profileelement" name="profileelement_otherhorizon_profileelement_2" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idprofileelement"/>
+    <relation name="profileelement_otherhorizon_profileelement_2" referencingLayer="otherhorizon_profileelement_83c7dac0_cc79_4828_88cf_ee34e979c8d7" id="profileelement_otherhorizon_profileelement_2" layerName="profileelement" strength="Composition" layerId="profileelement_c30e6a23_64c8_4588_a32e_c91c0209d0a3" referencedLayer="profileelement_c30e6a23_64c8_4588_a32e_c91c0209d0a3" providerKey="ogr" dataSource="./SW_15.gpkg|layername=profileelement">
+      <fieldRef referencingField="guid_profileelement" referencedField="guid"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
-    <field configurationFlags="None" name="id">
+    <field name="id" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
-          <Option/>
-        </config>
-      </editWidget>
-    </field>
-    <field configurationFlags="None" name="idprofileelement">
-      <editWidget type="RelationReference">
-        <config>
           <Option type="Map">
-            <Option value="false" type="bool" name="AllowAddFeatures"/>
-            <Option value="false" type="bool" name="AllowNULL"/>
-            <Option value="true" type="bool" name="FetchLimitActive"/>
-            <Option value="100" type="int" name="FetchLimitNumber"/>
-            <Option value="false" type="bool" name="MapIdentification"/>
-            <Option value="false" type="bool" name="ReadOnly"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=profileelement" type="QString" name="ReferencedLayerDataSource"/>
-            <Option value="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" type="QString" name="ReferencedLayerId"/>
-            <Option value="profileelement" type="QString" name="ReferencedLayerName"/>
-            <Option value="ogr" type="QString" name="ReferencedLayerProviderKey"/>
-            <Option value="profileelement_otherhorizon_profileelement_2" type="QString" name="Relation"/>
-            <Option value="false" type="bool" name="ShowForm"/>
-            <Option value="true" type="bool" name="ShowOpenFormButton"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="idotherhorizonnotationtype">
+    <field name="guid_profileelement" configurationFlags="NoFlag">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" type="bool" name="AllowAddFeatures"/>
-            <Option value="false" type="bool" name="AllowNULL"/>
-            <Option value="true" type="bool" name="FetchLimitActive"/>
-            <Option value="100" type="int" name="FetchLimitNumber"/>
-            <Option value="false" type="bool" name="MapIdentification"/>
-            <Option value="false" type="bool" name="ReadOnly"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=otherhorizonnotationtype" type="QString" name="ReferencedLayerDataSource"/>
-            <Option value="otherhorizonnotationtype_d52d4ee1_52c4_4eb4_a1aa_f71bcb71bcfb" type="QString" name="ReferencedLayerId"/>
-            <Option value="otherhorizonnotationtype" type="QString" name="ReferencedLayerName"/>
-            <Option value="ogr" type="QString" name="ReferencedLayerProviderKey"/>
-            <Option value="otherhorizonnotationtype_otherhorizon_profileelement" type="QString" name="Relation"/>
-            <Option value="false" type="bool" name="ShowForm"/>
-            <Option value="true" type="bool" name="ShowOpenFormButton"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=profileelement" type="QString"/>
+            <Option name="ReferencedLayerId" value="profileelement_c30e6a23_64c8_4588_a32e_c91c0209d0a3" type="QString"/>
+            <Option name="ReferencedLayerName" value="profileelement" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="profileelement_otherhorizon_profileelement_2" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
+    <field name="guid_otherhorizonnotationtype" configurationFlags="NoFlag">
+      <editWidget type="RelationReference">
+        <config>
+          <Option type="Map">
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=otherhorizonnotationtype" type="QString"/>
+            <Option name="ReferencedLayerId" value="otherhorizonnotationtype_9d4fc2f6_fc67_4b98_8477_51f6560d7b31" type="QString"/>
+            <Option name="ReferencedLayerName" value="otherhorizonnotationtype" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="otherhorizonnotationtype_otherhorizon_profileelement" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias field="id" index="0" name=""/>
-    <alias field="idprofileelement" index="1" name="Profile Element"/>
-    <alias field="idotherhorizonnotationtype" index="2" name="Other Notation Type"/>
+    <alias name="" field="id" index="0"/>
+    <alias name="Profile Element" field="guid_profileelement" index="1"/>
+    <alias name="Other Horizon Notation Type" field="guid_otherhorizonnotationtype" index="2"/>
   </aliases>
   <splitPolicies>
-    <policy field="id" policy="Duplicate"/>
-    <policy field="idprofileelement" policy="DefaultValue"/>
-    <policy field="idotherhorizonnotationtype" policy="DefaultValue"/>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guid_profileelement" policy="DefaultValue"/>
+    <policy field="guid_otherhorizonnotationtype" policy="DefaultValue"/>
   </splitPolicies>
+  <mergePolicies>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guid_profileelement" policy="DefaultValue"/>
+    <policy field="guid_otherhorizonnotationtype" policy="DefaultValue"/>
+  </mergePolicies>
   <defaults>
     <default field="id" applyOnUpdate="0" expression=""/>
-    <default field="idprofileelement" applyOnUpdate="0" expression=""/>
-    <default field="idotherhorizonnotationtype" applyOnUpdate="0" expression=""/>
+    <default field="guid_profileelement" applyOnUpdate="0" expression=""/>
+    <default field="guid_otherhorizonnotationtype" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint field="id" unique_strength="1" notnull_strength="1" exp_strength="0" constraints="3"/>
-    <constraint field="idprofileelement" unique_strength="0" notnull_strength="1" exp_strength="0" constraints="1"/>
-    <constraint field="idotherhorizonnotationtype" unique_strength="0" notnull_strength="1" exp_strength="0" constraints="1"/>
+    <constraint unique_strength="1" notnull_strength="1" field="id" constraints="3" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="guid_profileelement" constraints="1" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="guid_otherhorizonnotationtype" constraints="1" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint field="id" exp="" desc=""/>
-    <constraint field="idprofileelement" exp="" desc=""/>
-    <constraint field="idotherhorizonnotationtype" exp="" desc=""/>
+    <constraint exp="" desc="" field="id"/>
+    <constraint exp="" desc="" field="guid_profileelement"/>
+    <constraint exp="" desc="" field="guid_otherhorizonnotationtype"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -115,63 +123,64 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-      <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
+    <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+      <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
     </labelStyle>
-    <attributeEditorField horizontalStretch="0" index="0" name="id" showLabel="1" verticalStretch="0">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
+    <attributeEditorField name="guid_profileelement" verticalStretch="0" showLabel="1" index="1" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" index="1" name="idprofileelement" showLabel="1" verticalStretch="0">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
-      </labelStyle>
-    </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" index="2" name="idotherhorizonnotationtype" showLabel="1" verticalStretch="0">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
+    <attributeEditorField name="guid_otherhorizonnotationtype" verticalStretch="0" showLabel="1" index="2" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
   <editable>
-    <field editable="1" name="id"/>
-    <field editable="1" name="idotherhorizonnotationtype"/>
-    <field editable="1" name="idprofileelement"/>
+    <field name="guid_otherhorizonnotationtype" editable="1"/>
+    <field name="guid_profileelement" editable="1"/>
+    <field name="id" editable="1"/>
+    <field name="idotherhorizonnotationtype" editable="1"/>
+    <field name="idprofileelement" editable="1"/>
   </editable>
   <labelOnTop>
+    <field labelOnTop="0" name="guid_otherhorizonnotationtype"/>
+    <field labelOnTop="0" name="guid_profileelement"/>
     <field labelOnTop="0" name="id"/>
     <field labelOnTop="0" name="idotherhorizonnotationtype"/>
     <field labelOnTop="0" name="idprofileelement"/>
   </labelOnTop>
   <reuseLastValue>
-    <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="idotherhorizonnotationtype"/>
-    <field reuseLastValue="0" name="idprofileelement"/>
+    <field name="guid_otherhorizonnotationtype" reuseLastValue="0"/>
+    <field name="guid_profileelement" reuseLastValue="0"/>
+    <field name="id" reuseLastValue="0"/>
+    <field name="idotherhorizonnotationtype" reuseLastValue="0"/>
+    <field name="idprofileelement" reuseLastValue="0"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>COALESCE(attribute(get_feature&#xd;
-						(&#xd;
-							'otherhorizonnotationtype',&#xd;
-							'guidkey',&#xd;
-							"idotherhorizonnotationtype"&#xd;
-						),&#xd;
-					'horizonnotation'&#xd;
-					),&#xd;
-		'&lt;NULL>')&#xd;
-&#xd;
-&#xd;
-|| ' ' ||&#xd;
-regexp_substr(COALESCE(attribute(get_feature&#xd;
-						(&#xd;
-							'otherhorizonnotationtype',&#xd;
-							'guidkey',&#xd;
-							"idotherhorizonnotationtype"&#xd;
-						),&#xd;
-					'diagnostichorizon'&#xd;
-					),&#xd;
-		'&lt;NULL>'), '[^/]*$')&#xd;
+  <previewExpression>COALESCE(attribute(get_feature&#xd;&#xd;
+						(&#xd;&#xd;
+							'otherhorizonnotationtype',&#xd;&#xd;
+							'guid',&#xd;&#xd;
+							"guid_otherhorizonnotationtype"&#xd;&#xd;
+						),&#xd;&#xd;
+					'horizonnotation'&#xd;&#xd;
+					),&#xd;&#xd;
+		'&lt;NULL>')&#xd;&#xd;
+&#xd;&#xd;
+&#xd;&#xd;
+|| ' ' ||&#xd;&#xd;
+regexp_substr(COALESCE(attribute(get_feature&#xd;&#xd;
+						(&#xd;&#xd;
+							'otherhorizonnotationtype',&#xd;&#xd;
+							'guid',&#xd;&#xd;
+							"guid_otherhorizonnotationtype"&#xd;&#xd;
+						),&#xd;&#xd;
+					'diagnostichorizon'&#xd;&#xd;
+					),&#xd;&#xd;
+		'&lt;NULL>'), '[^/]*$')&#xd;&#xd;
 </previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>

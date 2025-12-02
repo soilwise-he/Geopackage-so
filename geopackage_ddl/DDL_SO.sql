@@ -1,6 +1,6 @@
 ---
 -- title: "Howto: produce a GeoPackage template for INSPIRE Soil data"
--- date: 20/08/2025
+-- date: 02/12/2025
 -- author: Andrea Lachi - andrea.lachi@crea.gov.it
 ---
 
@@ -72,7 +72,7 @@ CREATE TABLE gpkg_data_columns (
 CREATE TABLE soilsite
 ( 
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    guidkey TEXT UNIQUE,
+    guid TEXT UNIQUE,
     geometry POLYGON NOT NULL, 
     inspireid_localid TEXT, 
     inspireid_namespace TEXT, 
@@ -133,9 +133,9 @@ INSERT INTO gpkg_geometry_columns (
 CREATE TRIGGER soilsiteguid
 AFTER INSERT ON soilsite
 FOR EACH ROW
-WHEN (NEW.guidkey IS NULL)
+WHEN (NEW.guid IS NULL)
 BEGIN
-   UPDATE soilsite SET guidkey = lower(
+   UPDATE soilsite SET guid = lower(
     (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
          || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
          || substr('AB89', 1 + (abs(random()) % 4), 1) 
@@ -146,11 +146,11 @@ BEGIN
 END;
 
 CREATE TRIGGER soilsiteguidupdate
-AFTER UPDATE OF guidkey ON soilsite
+AFTER UPDATE OF guid ON soilsite
 BEGIN
     SELECT CASE
-        WHEN NEW.guidkey != OLD.guidkey THEN
-            RAISE (ABORT, 'Cannot update guidkey column.')
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
     END;
 END;
 --
@@ -236,7 +236,7 @@ END;
 CREATE TABLE soilplot
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    guidkey TEXT UNIQUE,
+    guid TEXT UNIQUE,
     soilplotlocation POINT NOT NULL, 
     inspireid_localid TEXT,
     inspireid_namespace TEXT,
@@ -246,7 +246,7 @@ CREATE TABLE soilplot
     endlifespanversion DATETIME,
     locatedon TEXT,
     FOREIGN KEY (locatedon)
-      REFERENCES soilsite(guidkey)
+      REFERENCES soilsite(guid)
       ON UPDATE CASCADE
 );
 
@@ -299,9 +299,9 @@ INSERT INTO gpkg_geometry_columns (
 CREATE TRIGGER soilplotguid
 AFTER INSERT ON soilplot
 FOR EACH ROW
-WHEN (NEW.guidkey IS NULL)
+WHEN (NEW.guid IS NULL)
 BEGIN
-   UPDATE soilplot SET guidkey = lower(
+   UPDATE soilplot SET guid = lower(
     (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
          || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
          || substr('AB89', 1 + (abs(random()) % 4), 1) 
@@ -312,11 +312,11 @@ BEGIN
 END;
 
 CREATE TRIGGER soilplotguidupdate
-AFTER UPDATE OF guidkey ON soilplot
+AFTER UPDATE OF guid ON soilplot
 BEGIN
     SELECT CASE
-        WHEN NEW.guidkey != OLD.guidkey THEN
-            RAISE (ABORT, 'Cannot update guidkey column.')
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
     END;
 END;
 --
@@ -391,7 +391,7 @@ END;
 CREATE TABLE soilprofile 
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    guidkey TEXT UNIQUE,
+    guid TEXT UNIQUE,
     inspireid_localid TEXT,
     inspireid_namespace TEXT,
     inspireid_versionid TEXT,
@@ -401,14 +401,14 @@ CREATE TABLE soilprofile
     validfrom DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null,
     validto	DATETIME,
     isderived BOOLEAN DEFAULT 0 NOT NULL, 
-	wrbversion TEXT,  
+	  wrbversion TEXT,  
     wrbreferencesoilgroup TEXT,    -- Codelist wrbreferencesoilgroupvalue
     isoriginalclassification BOOLEAN DEFAULT 1 NOT NULL,
 
     location TEXT UNIQUE,
 	  CHECK ((wrbreferencesoilgroup IS NULL AND wrbversion IS NULL) OR (wrbreferencesoilgroup IS NOT NULL AND wrbversion IS NOT NULL)),
     FOREIGN KEY (location)
-      REFERENCES soilplot(guidkey)
+      REFERENCES soilplot(guid)
       ON DELETE CASCADE
       ON UPDATE CASCADE
 );
@@ -443,9 +443,9 @@ INSERT INTO gpkg_contents (
 CREATE TRIGGER soilprofileguid
 AFTER INSERT ON soilprofile
 FOR EACH ROW
-WHEN (NEW.guidkey IS NULL)
+WHEN (NEW.guid IS NULL)
 BEGIN
-   UPDATE soilprofile SET guidkey = lower(
+   UPDATE soilprofile SET guid = lower(
     (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
          || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
          || substr('AB89', 1 + (abs(random()) % 4), 1) 
@@ -456,11 +456,11 @@ BEGIN
 END;
 
 CREATE TRIGGER soilprofileguidupdate
-AFTER UPDATE OF guidkey ON soilprofile
+AFTER UPDATE OF guid ON soilprofile
 BEGIN
     SELECT CASE
-        WHEN NEW.guidkey != OLD.guidkey THEN
-            RAISE (ABORT, 'Cannot update guidkey column.')
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
     END;
 END;
 --
@@ -620,12 +620,13 @@ END;
 CREATE TABLE othersoilnametype
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guid TEXT UNIQUE,
     othersoilname_type TEXT NOT NULL, --Codelist othersoilnametypevalue
     othersoilname_class TEXT,
     isoriginalclassification  BOOLEAN  DEFAULT 0 NOT NULL,
     othersoilname TEXT,
     FOREIGN KEY (othersoilname)
-      REFERENCES soilprofile(guidkey)
+      REFERENCES soilprofile(guid)
       ON DELETE CASCADE
       ON UPDATE CASCADE
 );
@@ -656,6 +657,30 @@ INSERT INTO gpkg_contents (
 );
 
 -- Trigger othersoilnametype ---------------------------------------------------------------------------------------
+CREATE TRIGGER othersoilnametypeguid
+AFTER INSERT ON othersoilnametype
+FOR EACH ROW
+WHEN (NEW.guid IS NULL)
+BEGIN
+   UPDATE othersoilnametype SET guid = lower(
+    (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
+         || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
+         || substr('AB89', 1 + (abs(random()) % 4), 1) 
+         || substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6))
+    )
+)
+ WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER othersoilnametypeguidupdate
+AFTER UPDATE OF guid ON othersoilnametype
+BEGIN
+    SELECT CASE
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
+    END;
+END;
+
 CREATE TRIGGER i_soilname
 BEFORE INSERT ON othersoilnametype
 FOR EACH ROW
@@ -687,11 +712,11 @@ END;
 CREATE TABLE isderivedfrom 
 (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  base_id TEXT NOT NULL, -- Derived Profile
-  related_id TEXT NOT NULL, -- Observed Profile
-  CONSTRAINT unicrelationidf UNIQUE (base_id, related_id),
-  FOREIGN KEY (base_id) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (related_id) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE
+  guid_base TEXT NOT NULL, -- Derived Profile
+  guid_related TEXT NOT NULL, -- Observed Profile
+  CONSTRAINT unicrelationidf UNIQUE (guid_base, guid_related),
+  FOREIGN KEY (guid_base) REFERENCES soilprofile (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (guid_related) REFERENCES soilprofile (guid) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents isderivedfrom ---------------------------------------------------------------------------------------
@@ -714,8 +739,8 @@ CREATE TRIGGER i_checkisderived
 BEFORE INSERT ON isderivedfrom
 BEGIN
   SELECT
-    CASE WHEN NEW.base_id NOT IN (SELECT guidkey FROM soilprofile WHERE isderived = 1)
-    THEN RAISE(ABORT, 'Table isderivedfrom:  Attention, the value of the "base_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type derived')
+    CASE WHEN NEW.guid_base NOT IN (SELECT guid FROM soilprofile WHERE isderived = 1)
+    THEN RAISE(ABORT, 'Table isderivedfrom:  Attention, the value of the "guid_base" field in the "isderivedfrom" table cannot be inserted because profile is not of type derived')
     END;                  
 END;
 
@@ -723,8 +748,8 @@ CREATE TRIGGER u_checkisderived
 BEFORE UPDATE ON isderivedfrom
 BEGIN
   SELECT
-    CASE WHEN NEW.base_id NOT IN (SELECT guidkey FROM soilprofile WHERE isderived = 1)
-    THEN RAISE(ABORT, 'Table isderivedfrom:  Attention, the value of the "base_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type derived')
+    CASE WHEN NEW.guid_base NOT IN (SELECT guid FROM soilprofile WHERE isderived = 1)
+    THEN RAISE(ABORT, 'Table isderivedfrom:  Attention, the value of the "guid_base" field in the "isderivedfrom" table cannot be inserted because profile is not of type derived')
     END;
 END;
 --
@@ -734,8 +759,8 @@ CREATE TRIGGER i_checkisobserved
 BEFORE INSERT ON isderivedfrom
 BEGIN
   SELECT
-    CASE WHEN NEW.related_id NOT IN (SELECT guidkey FROM soilprofile WHERE isderived = 0)
-    THEN RAISE(ABORT, 'Table isderivedfrom:  Attention, the value of the "related_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type observed')
+    CASE WHEN NEW.guid_related NOT IN (SELECT guid FROM soilprofile WHERE isderived = 0)
+    THEN RAISE(ABORT, 'Table isderivedfrom:  Attention, the value of the "guid_related" field in the "isderivedfrom" table cannot be inserted because profile is not of type observed')
     END;                  
 END;
 
@@ -743,8 +768,8 @@ CREATE TRIGGER u_checkisobserved
 BEFORE UPDATE ON isderivedfrom
 BEGIN
   SELECT
-    CASE WHEN NEW.related_id NOT IN (SELECT guidkey FROM soilprofile WHERE isderived = 0)
-    THEN RAISE(ABORT, 'Table isderivedfrom:  Attention, the value of the "related_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type observed')
+    CASE WHEN NEW.guid_related NOT IN (SELECT guid FROM soilprofile WHERE isderived = 0)
+    THEN RAISE(ABORT, 'Table isderivedfrom:  Attention, the value of the "guid_related" field in the "isderivedfrom" table cannot be inserted because profile is not of type observed')
     END;
 END;
 --
@@ -763,7 +788,7 @@ END;
 CREATE TABLE soilbody
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    guidkey TEXT UNIQUE,
+    guid TEXT UNIQUE,
     inspireid_localid TEXT,
     inspireid_namespace TEXT,
     inspireid_versionid TEXT, 
@@ -801,9 +826,9 @@ INSERT INTO gpkg_contents (
 CREATE TRIGGER soilbodyguid
 AFTER INSERT ON soilbody
 FOR EACH ROW
-WHEN (NEW.guidkey IS NULL)
+WHEN (NEW.guid IS NULL)
 BEGIN
-   UPDATE soilbody SET guidkey = lower(
+   UPDATE soilbody SET guid = lower(
     (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
          || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
          || substr('AB89', 1 + (abs(random()) % 4), 1) 
@@ -814,11 +839,11 @@ BEGIN
 END;
 
 CREATE TRIGGER soilbodyguidupdate
-AFTER UPDATE OF guidkey ON soilbody
+AFTER UPDATE OF guid ON soilbody
 BEGIN
     SELECT CASE
-        WHEN NEW.guidkey != OLD.guidkey THEN
-            RAISE (ABORT, 'Cannot update guidkey column.')
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
     END;
 END;
 --
@@ -869,10 +894,11 @@ END;
 CREATE TABLE soilbody_geom
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guid TEXT UNIQUE,
     geom MULTIPOLYGON NOT NULL, 
-    idsoilbody TEXT NOT NULL,
-     FOREIGN KEY (idsoilbody)
-      REFERENCES soilbody(guidkey)
+    guid_soilbody TEXT NOT NULL,
+     FOREIGN KEY (guid_soilbody)
+      REFERENCES soilbody(guid)
       ON DELETE CASCADE 
       ON UPDATE CASCADE
  
@@ -923,6 +949,31 @@ INSERT INTO gpkg_geometry_columns (
   0 -- if the geometry has a M coordinate (0 = no, 1 = yes, 2 = optional)
 );
 
+-- Trigger soilbody_geom ---------------------------------------------------------------------------------------
+CREATE TRIGGER soilbody_geomguid
+AFTER INSERT ON soilbody_geom
+FOR EACH ROW
+WHEN (NEW.guid IS NULL)
+BEGIN
+   UPDATE soilbody_geom SET guid = lower(
+    (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
+         || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
+         || substr('AB89', 1 + (abs(random()) % 4), 1) 
+         || substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6))
+    )
+)
+ WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER soilbody_geomguidupdate
+AFTER UPDATE OF guid ON soilbody_geom
+BEGIN
+    SELECT CASE
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
+    END;
+END;
+
 
 /* 
 ██████  ███████ ██████  ██ ██    ██ ███████ ██████  ██████  ██████   ██████  ███████ ██ ██      ███████ ██████  ██████  ███████ ███████ ███████ ███    ██  ██████ ███████ ██ ███    ██ ███████  ██████  ██ ██      ██████   ██████  ██████  ██    ██ 
@@ -936,13 +987,13 @@ INSERT INTO gpkg_geometry_columns (
 -- Table derivedprofilepresenceinsoilbody ---------------------------------------------------------------------------------------
 CREATE TABLE derivedprofilepresenceinsoilbody (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  idsoilbody TEXT NOT NULL,
-  idsoilprofile TEXT NOT NULL,
+  guid_soilbody TEXT NOT NULL,
+  guid_soilprofile TEXT NOT NULL,
   lowervalue REAL,
   uppervalue REAL,
-  CONSTRAINT unicrelationdpsb UNIQUE (idsoilbody, idsoilprofile),
-  FOREIGN KEY (idsoilbody) REFERENCES soilbody (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (idsoilprofile) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT unicrelationdpsb UNIQUE (guid_soilbody, guid_soilprofile),
+  FOREIGN KEY (guid_soilbody) REFERENCES soilbody (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (guid_soilprofile) REFERENCES soilprofile (guid) ON DELETE CASCADE ON UPDATE CASCADE
   
 );
 -- Contents derivedprofilepresenceinsoilbody ---------------------------------------------------------------------------------------
@@ -975,17 +1026,17 @@ INSERT INTO gpkg_contents (
 CREATE TRIGGER i_cecklowervaluesum
 BEFORE INSERT ON derivedprofilepresenceinsoilbody
 FOR EACH ROW
-WHEN (SELECT Round(SUM(lowervalue),2) FROM derivedprofilepresenceinsoilbody WHERE idsoilbody = NEW.idsoilbody) + Round(NEW.lowervalue,2) > 100.00
+WHEN (SELECT Round(SUM(lowervalue),2) FROM derivedprofilepresenceinsoilbody WHERE guid_soilbody = NEW.guid_soilbody) + Round(NEW.lowervalue,2) > 100.00
 BEGIN
-    SELECT RAISE(ABORT, 'Table derivedprofilepresenceinsoilbody: sum of lowervalue exceeds 100 for the same idsoilbody');
+    SELECT RAISE(ABORT, 'Table derivedprofilepresenceinsoilbody: sum of lowervalue exceeds 100 for the same guid_soilbody');
 END;
 
 CREATE TRIGGER u_cecklowervaluesum
 BEFORE UPDATE ON derivedprofilepresenceinsoilbody
 FOR EACH ROW
-WHEN (SELECT Round(SUM(lowervalue),2) FROM derivedprofilepresenceinsoilbody WHERE idsoilbody = NEW.idsoilbody) - Round(OLD.lowervalue,2) + Round(NEW.lowervalue,2) > 100.00
+WHEN (SELECT Round(SUM(lowervalue),2) FROM derivedprofilepresenceinsoilbody WHERE guid_soilbody = NEW.guid_soilbody) - Round(OLD.lowervalue,2) + Round(NEW.lowervalue,2) > 100.00
 BEGIN
-    SELECT RAISE(ABORT, 'Table derivedprofilepresenceinsoilbody: sum of lowervalue exceeds 100 for the same idsoilbody');
+    SELECT RAISE(ABORT, 'Table derivedprofilepresenceinsoilbody: sum of lowervalue exceeds 100 for the same guid_soilbody');
 END;
 --
  
@@ -994,8 +1045,8 @@ CREATE TRIGGER "i_checkisderived_soilbody"
 BEFORE INSERT ON derivedprofilepresenceinsoilbody
 BEGIN
   SELECT
-    CASE WHEN NEW.idsoilprofile NOT IN (SELECT guidkey FROM soilprofile WHERE isderived = 1)
-    THEN RAISE(ABORT, 'Table derivedprofilepresenceinsoilbody:  Attention, the value of the "idsoilprofile" field  cannot be inserted because profile is not of type derived')
+    CASE WHEN NEW.guid_soilprofile NOT IN (SELECT guid FROM soilprofile WHERE isderived = 1)
+    THEN RAISE(ABORT, 'Table derivedprofilepresenceinsoilbody:  Attention, the value of the "guid_soilprofile" field  cannot be inserted because profile is not of type derived')
     END;
 END;
 
@@ -1003,8 +1054,8 @@ CREATE TRIGGER  u_checkisderived_soilbody
 BEFORE UPDATE ON derivedprofilepresenceinsoilbody
 BEGIN
   SELECT
-    CASE WHEN NEW.idsoilprofile NOT IN (SELECT guidkey FROM soilprofile WHERE isderived = 1)
-    THEN RAISE(ABORT, 'Table derivedprofilepresenceinsoilbody:  Attention, the value of the "idsoilprofile" field  cannot be inserted because profile is not of type derived')
+    CASE WHEN NEW.guid_soilprofile NOT IN (SELECT guid FROM soilprofile WHERE isderived = 1)
+    THEN RAISE(ABORT, 'Table derivedprofilepresenceinsoilbody:  Attention, the value of the "guid_soilprofile" field  cannot be inserted because profile is not of type derived')
     END;
 END;
 --
@@ -1023,7 +1074,7 @@ END;
 CREATE TABLE soilderivedobject
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    guidkey TEXT UNIQUE,
+    guid TEXT UNIQUE,
     inspireid_localid     TEXT,
     inspireid_namespace   TEXT,
     inspireid_versionid    TEXT,
@@ -1080,9 +1131,9 @@ INSERT INTO gpkg_geometry_columns (
 CREATE TRIGGER soilderivedobjectguid
 AFTER INSERT ON soilderivedobject
 FOR EACH ROW
-WHEN (NEW.guidkey IS NULL)
+WHEN (NEW.guid IS NULL)
 BEGIN
-   UPDATE soilderivedobject SET guidkey = lower(
+   UPDATE soilderivedobject SET guid = lower(
     (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
          || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
          || substr('AB89', 1 + (abs(random()) % 4), 1) 
@@ -1093,11 +1144,11 @@ BEGIN
 END;
 
 CREATE TRIGGER soilderivedobjectguidupdate
-AFTER UPDATE OF guidkey ON soilderivedobject
+AFTER UPDATE OF guid ON soilderivedobject
 BEGIN
     SELECT CASE
-        WHEN NEW.guidkey != OLD.guidkey THEN
-            RAISE (ABORT, 'Cannot update guidkey column.')
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
     END;
 END;
 --
@@ -1116,11 +1167,11 @@ END;
 CREATE TABLE isbasedonobservedsoilprofile 
 (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  idsoilderivedobject TEXT NOT NULL,
-  idsoilprofile TEXT NOT NULL, --idsoilprofile
-  CONSTRAINT unicrelationibosp UNIQUE (idsoilderivedobject, idsoilprofile),
-  FOREIGN KEY (idsoilderivedobject) REFERENCES soilderivedobject (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (idsoilprofile) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE
+  guid_soilderivedobject TEXT NOT NULL,
+  guid_soilprofile TEXT NOT NULL, --guid_soilprofile
+  CONSTRAINT unicrelationibosp UNIQUE (guid_soilderivedobject, guid_soilprofile),
+  FOREIGN KEY (guid_soilderivedobject) REFERENCES soilderivedobject (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (guid_soilprofile) REFERENCES soilprofile (guid) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents isbasedonobservedsoilprofile  ---------------------------------------------------------------------------------------
@@ -1143,8 +1194,8 @@ CREATE TRIGGER i_checkisobserved_dobj
 BEFORE INSERT ON isbasedonobservedsoilprofile 
 BEGIN
   SELECT
-    CASE WHEN NEW.idsoilprofile NOT IN (SELECT guidkey FROM soilprofile WHERE isderived = 0)
-    THEN RAISE(ABORT, 'Table isbasedonobservedsoilprofile :  Attention, the value of the "idsoilprofile" field  cannot be inserted because profile is not of type observed')
+    CASE WHEN NEW.guid_soilprofile NOT IN (SELECT guid FROM soilprofile WHERE isderived = 0)
+    THEN RAISE(ABORT, 'Table isbasedonobservedsoilprofile :  Attention, the value of the "guid_soilprofile" field  cannot be inserted because profile is not of type observed')
     END;                  
 END;
 
@@ -1152,8 +1203,8 @@ CREATE TRIGGER u_checkisobserved_dobj
 BEFORE UPDATE ON isbasedonobservedsoilprofile 
 BEGIN
   SELECT
-    CASE WHEN NEW.idsoilprofile NOT IN (SELECT guidkey FROM soilprofile WHERE isderived = 0)
-    THEN RAISE(ABORT, 'Table isbasedonobservedsoilprofile :  Attention, the value of the "idsoilprofile" field  cannot be inserted because profile is not of type observed')
+    CASE WHEN NEW.guid_soilprofile NOT IN (SELECT guid FROM soilprofile WHERE isderived = 0)
+    THEN RAISE(ABORT, 'Table isbasedonobservedsoilprofile :  Attention, the value of the "guid_soilprofile" field  cannot be inserted because profile is not of type observed')
     END;
 END;
 --
@@ -1172,11 +1223,11 @@ END;
 CREATE TABLE isbasedonsoilbody
 (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  idsoilderivedobject TEXT NOT NULL,
-  idsoilbody TEXT NOT NULL,
-  CONSTRAINT unicrelationibosb UNIQUE (idsoilderivedobject, idsoilbody),
-  FOREIGN KEY (idsoilderivedobject) REFERENCES soilderivedobject (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (idsoilbody) REFERENCES soilbody (guidkey)  ON DELETE CASCADE ON UPDATE CASCADE
+  guid_soilderivedobject TEXT NOT NULL,
+  guid_soilbody TEXT NOT NULL,
+  CONSTRAINT unicrelationibosb UNIQUE (guid_soilderivedobject, guid_soilbody),
+  FOREIGN KEY (guid_soilderivedobject) REFERENCES soilderivedobject (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (guid_soilbody) REFERENCES soilbody (guid)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents isbasedonsoilbody ---------------------------------------------------------------------------------------
@@ -1207,11 +1258,11 @@ strftime('%Y-%m-%dT%H:%M:%fZ','now') -- last modification date and time
 -- Table isbasedonsoilderivedobject
 CREATE TABLE isbasedonsoilderivedobject (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  base_id TEXT NOT NULL,
-  related_id TEXT NOT NULL,
-  CONSTRAINT unicrelationibosdo UNIQUE (base_id, related_id),
-  FOREIGN KEY (base_id) REFERENCES soilderivedobject (guidkey)  ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (related_id) REFERENCES soilderivedobject (guidkey)  ON DELETE CASCADE ON UPDATE CASCADE
+  guid_base TEXT NOT NULL,
+  guid_related TEXT NOT NULL,
+  CONSTRAINT unicrelationibosdo UNIQUE (guid_base, guid_related),
+  FOREIGN KEY (guid_base) REFERENCES soilderivedobject (guid)  ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (guid_related) REFERENCES soilderivedobject (guid)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents soilderivedobject
@@ -1247,7 +1298,7 @@ strftime('%Y-%m-%dT%H:%M:%fZ','now') -- last modification date and time
 CREATE TABLE profileelement
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    guidkey TEXT UNIQUE,
+    guid TEXT UNIQUE,
     inspireid_localid                    TEXT,      
     inspireid_namespace                  TEXT,     
     inspireid_versionid                   TEXT, 
@@ -1266,7 +1317,7 @@ CREATE TABLE profileelement
     profileelementtype                   BOOLEAN DEFAULT 0 NOT NULL,
     ispartof TEXT NOT NULL,
     FOREIGN KEY (ispartof)
-      REFERENCES soilprofile(guidkey)
+      REFERENCES soilprofile(guid)
       ON DELETE CASCADE
       ON UPDATE CASCADE
 );
@@ -1300,9 +1351,9 @@ INSERT INTO gpkg_contents (
 CREATE TRIGGER profileelementguid
 AFTER INSERT ON profileelement
 FOR EACH ROW
-WHEN (NEW.guidkey IS NULL)
+WHEN (NEW.guid IS NULL)
 BEGIN
-   UPDATE profileelement SET guidkey = lower(
+   UPDATE profileelement SET guid = lower(
     (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
          || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
          || substr('AB89', 1 + (abs(random()) % 4), 1) 
@@ -1313,11 +1364,11 @@ BEGIN
 END;
 
 CREATE TRIGGER profileelementguidupdate
-AFTER UPDATE OF guidkey ON profileelement
+AFTER UPDATE OF guid ON profileelement
 BEGIN
     SELECT CASE
-        WHEN NEW.guidkey != OLD.guidkey THEN
-            RAISE (ABORT, 'Cannot update guidkey column.')
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
     END;
 END;
 --
@@ -1560,135 +1611,6 @@ END;
 --
 
 
-
-/* 
-██████   █████  ██████  ████████ ██  ██████ ██      ███████ ███████ ██ ███████ ███████ ███████ ██████   █████   ██████ ████████ ██  ██████  ███    ██ ████████ ██    ██ ██████  ███████ 
-██   ██ ██   ██ ██   ██    ██    ██ ██      ██      ██      ██      ██    ███  ██      ██      ██   ██ ██   ██ ██         ██    ██ ██    ██ ████   ██    ██     ██  ██  ██   ██ ██      
-██████  ███████ ██████     ██    ██ ██      ██      █████   ███████ ██   ███   █████   █████   ██████  ███████ ██         ██    ██ ██    ██ ██ ██  ██    ██      ████   ██████  █████   
-██      ██   ██ ██   ██    ██    ██ ██      ██      ██           ██ ██  ███    ██      ██      ██   ██ ██   ██ ██         ██    ██ ██    ██ ██  ██ ██    ██       ██    ██      ██      
-██      ██   ██ ██   ██    ██    ██  ██████ ███████ ███████ ███████ ██ ███████ ███████ ██      ██   ██ ██   ██  ██████    ██    ██  ██████  ██   ████    ██       ██    ██      ███████
- */
-
-
--- Table particlesizefractiontype ---------------------------------------------------------------------------------------
-CREATE TABLE particlesizefractiontype
-(
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    fractioncontent                 REAL NOT NULL, 
-    particlesize_lower                 INTEGER NOT NULL, 
-    particlesize_upper                 INTEGER NOT NULL, 
-    idprofileelement TEXT NOT NULL,
-    CHECK (particlesize_lower >= 0 AND particlesize_lower <= 1999),
-    CHECK (particlesize_upper >= 1 AND particlesize_upper <= 2000),
-    CHECK (particlesize_lower < particlesize_upper),
-    FOREIGN KEY (idprofileelement)
-      REFERENCES profileelement(guidkey) 
-      ON DELETE CASCADE 
-      ON UPDATE CASCADE
-
-);
-
--- Contents particlesizefractiontype ---------------------------------------------------------------------------------------
-INSERT INTO gpkg_contents (
-  table_name,
-  data_type,
-  identifier,
-  description,
-  last_change,
-  min_x,
-  min_y,
-  max_x,
-  max_y,
-  srs_id
-) VALUES (
-  'particlesizefractiontype', -- table name
-  'attributes', -- data type
-  't_psft', -- unique table identifier
-  'particlesizefractiontype Table', -- table description
-  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
-  NULL, 
-  NULL,
-  NULL,
-  NULL,
-  NULL -- EPSG spatial reference system code
-);
-
-
--- Trigger particlesizefractiontype ---------------------------------------------------------------------------------------
-CREATE TRIGGER i_check_fraction_sum
-BEFORE INSERT ON particlesizefractiontype
-FOR EACH ROW
-BEGIN
-    SELECT CASE
-        WHEN (
-            SELECT ROUND(SUM(fractioncontent), 1) + ROUND(NEW.fractioncontent, 1)
-            FROM particlesizefractiontype
-            WHERE idprofileelement = NEW.idprofileelement
-        ) > 100 THEN
-            RAISE(ABORT, 'The sum of fractioncontent for idprofileelement cannot exceed 100')
-    END;
-END;
-
-
-CREATE TRIGGER u_check_fraction_sum
-BEFORE UPDATE ON particlesizefractiontype
-FOR EACH ROW
-BEGIN
-    SELECT CASE
-        WHEN (
-            SELECT ROUND(SUM(fractioncontent), 1)
-            FROM particlesizefractiontype
-            WHERE idprofileelement = NEW.idprofileelement
-            AND id <> OLD.id
-        ) + ROUND(NEW.fractioncontent, 1) > 100 THEN
-            RAISE(ABORT, 'The sum of fractioncontent for idprofileelement cannot exceed 100')
-    END;
-END;
-
-
-CREATE TRIGGER i_check_particlesize_overlap
-BEFORE INSERT ON particlesizefractiontype
-FOR EACH ROW
-BEGIN
-    SELECT CASE
-        WHEN EXISTS (
-            SELECT 1
-            FROM particlesizefractiontype
-            WHERE idprofileelement = NEW.idprofileelement
-              AND (
-                  (NEW.particlesize_lower > particlesize_lower AND NEW.particlesize_lower < particlesize_upper) OR
-                  (NEW.particlesize_upper > particlesize_lower AND NEW.particlesize_upper < particlesize_upper) OR
-                  (NEW.particlesize_lower <= particlesize_lower AND NEW.particlesize_upper >= particlesize_upper) OR
-                  (NEW.particlesize_upper = particlesize_lower) OR
-                  (NEW.particlesize_lower = particlesize_upper)
-              )
-        ) THEN
-            RAISE(ABORT, 'New range overlaps with or touches an existing range for the same idprofileelement')
-    END;
-END;
-
-
-CREATE TRIGGER u_check_particlesize_overlap
-BEFORE UPDATE ON particlesizefractiontype
-FOR EACH ROW
-BEGIN
-    SELECT CASE
-        WHEN EXISTS (
-            SELECT 1
-            FROM particlesizefractiontype
-            WHERE idprofileelement = NEW.idprofileelement
-              AND (
-                  (NEW.particlesize_lower > particlesize_lower AND NEW.particlesize_lower < particlesize_upper) OR
-                  (NEW.particlesize_upper > particlesize_lower AND NEW.particlesize_upper < particlesize_upper) OR
-                  (NEW.particlesize_lower <= particlesize_lower AND NEW.particlesize_upper >= particlesize_upper) OR
-                  (NEW.particlesize_upper = particlesize_lower) OR
-                  (NEW.particlesize_lower = particlesize_upper)
-              )
-        ) THEN
-            RAISE(ABORT, 'New range overlaps with or touches an existing range for the same idprofileelement')
-    END;
-END;
-
 /* 
 ███████  █████   ██████  ██   ██  ██████  ██████  ██ ███████  ██████  ███    ██ ███    ██  ██████  ████████  █████  ████████ ██  ██████  ███    ██ ████████ ██    ██ ██████  ███████ 
 ██      ██   ██ ██    ██ ██   ██ ██    ██ ██   ██ ██    ███  ██    ██ ████   ██ ████   ██ ██    ██    ██    ██   ██    ██    ██ ██    ██ ████   ██    ██     ██  ██  ██   ██ ██      
@@ -1702,6 +1624,7 @@ END;
 CREATE TABLE faohorizonnotationtype
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guid TEXT UNIQUE,
     faohorizondiscontinuity           INTEGER, 
     faohorizonmaster_1                TEXT NOT NULL, -- Codelist faohorizonmastervalue
     faohorizonmaster_2                TEXT, -- Codelist faohorizonmastervalue
@@ -1711,9 +1634,9 @@ CREATE TABLE faohorizonnotationtype
     faohorizonvertical                 INTEGER,
     faoprime                          TEXT  NOT NULL,  -- Codelist faoprimevalue
     isoriginalclassification          BOOLEAN  DEFAULT 0 NOT NULL,
-    idprofileelement                  TEXT UNIQUE, 
-    FOREIGN KEY (idprofileelement) 
-      REFERENCES profileelement(guidkey)  ON DELETE CASCADE ON UPDATE CASCADE
+    guid_profileelement                  TEXT UNIQUE, 
+    FOREIGN KEY (guid_profileelement) 
+      REFERENCES profileelement(guid)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents faohorizonnotationtype ---------------------------------------------------------------------------------------
@@ -1742,13 +1665,38 @@ INSERT INTO gpkg_contents (
 );
 
 -- Trigger faohorizonnotationtype ---------------------------------------------------------------------------------------
+
+CREATE TRIGGER faohorizonnotationtypeguid
+AFTER INSERT ON faohorizonnotationtype
+FOR EACH ROW
+WHEN (NEW.guid IS NULL)
+BEGIN
+   UPDATE faohorizonnotationtype SET guid = lower(
+    (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
+         || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
+         || substr('AB89', 1 + (abs(random()) % 4), 1) 
+         || substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6))
+    )
+)
+ WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER faohorizonnotationtypeguidupdate
+AFTER UPDATE OF guid ON faohorizonnotationtype
+BEGIN
+    SELECT CASE
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
+    END;
+END;
+
 CREATE TRIGGER i_checkfaoprofileelementtype
 BEFORE INSERT ON faohorizonnotationtype
 FOR EACH ROW
 BEGIN
     SELECT 
         CASE 
-            WHEN (SELECT profileelementtype FROM profileelement WHERE profileelement.guidkey = NEW.idprofileelement) = 1
+            WHEN (SELECT profileelementtype FROM profileelement WHERE profileelement.guid = NEW.guid_profileelement) = 1
             THEN
                 RAISE(ABORT, 'Table faohorizonnotationtype: The associated profileelement must have profileelementtype = 0 (HORIZON)')
         END;
@@ -1760,7 +1708,7 @@ FOR EACH ROW
 BEGIN
     SELECT 
         CASE 
-            WHEN (SELECT profileelementtype FROM profileelement WHERE profileelement.guidkey = NEW.idprofileelement) = 1
+            WHEN (SELECT profileelementtype FROM profileelement WHERE profileelement.guid = NEW.guid_profileelement) = 1
             THEN
                 RAISE(ABORT, 'Table faohorizonnotationtype: The associated profileelement must have profileelementtype = 0 (HORIZON)')
         END;
@@ -1885,7 +1833,7 @@ END;
 CREATE TABLE otherhorizonnotationtype
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    guidkey TEXT UNIQUE,
+    guid TEXT UNIQUE,
     horizonnotation                      TEXT NOT NULL, --Codelist otherhorizonnotationtypevalue
     diagnostichorizon                    TEXT, -- Codelist wrbdiagnostichorizonvalue 
     isoriginalclassification             BOOLEAN  DEFAULT 0 NOT NULL, 
@@ -1921,9 +1869,9 @@ INSERT INTO gpkg_contents (
 CREATE TRIGGER otherhorizonnotationtypeguid
 AFTER INSERT ON otherhorizonnotationtype
 FOR EACH ROW
-WHEN (NEW.guidkey IS NULL)
+WHEN (NEW.guid IS NULL)
 BEGIN
-   UPDATE otherhorizonnotationtype SET guidkey = lower(
+   UPDATE otherhorizonnotationtype SET guid = lower(
     (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
          || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
          || substr('AB89', 1 + (abs(random()) % 4), 1) 
@@ -1934,11 +1882,11 @@ BEGIN
 END;
 
 CREATE TRIGGER otherhorizonnotationtypeguidupdate
-AFTER UPDATE OF guidkey ON otherhorizonnotationtype
+AFTER UPDATE OF guid ON otherhorizonnotationtype
 BEGIN
     SELECT CASE
-        WHEN NEW.guidkey != OLD.guidkey THEN
-            RAISE (ABORT, 'Cannot update guidkey column.')
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
     END;
 END;
 --
@@ -1993,11 +1941,11 @@ END;
 CREATE TABLE otherhorizon_profileelement
 (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  idprofileelement TEXT NOT NULL,
-  idotherhorizonnotationtype TEXT NOT NULL,
-  CONSTRAINT unicrelationprooth UNIQUE (idprofileelement, idotherhorizonnotationtype),
-  FOREIGN KEY (idprofileelement) REFERENCES profileelement (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (idotherhorizonnotationtype) REFERENCES otherhorizonnotationtype (guidkey)  ON DELETE CASCADE ON UPDATE CASCADE
+  guid_profileelement TEXT NOT NULL,
+  guid_otherhorizonnotationtype TEXT NOT NULL,
+  CONSTRAINT unicrelationprooth UNIQUE (guid_profileelement, guid_otherhorizonnotationtype),
+  FOREIGN KEY (guid_profileelement) REFERENCES profileelement (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (guid_otherhorizonnotationtype) REFERENCES otherhorizonnotationtype (guid)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents otherhorizon_profileelement ---------------------------------------------------------------------------------------
@@ -2020,7 +1968,7 @@ CREATE TRIGGER   i_ceckothprofileelementtype
 BEFORE INSERT ON otherhorizon_profileelement
 FOR EACH ROW
 WHEN (
-    SELECT profileelementtype FROM profileelement WHERE guidkey = NEW.idprofileelement
+    SELECT profileelementtype FROM profileelement WHERE guid = NEW.guid_profileelement
     ) = 1
 BEGIN
     SELECT RAISE(ABORT, 'Table otherhorizon_profileelement: The associated profileelement must have profileelementtype = 0 (HORIZON)');
@@ -2030,7 +1978,7 @@ CREATE TRIGGER   u_ceckothprofileelementtype
 BEFORE UPDATE ON otherhorizon_profileelement
 FOR EACH ROW
 WHEN  (
-    SELECT profileelementtype FROM profileelement WHERE guidkey = NEW.idprofileelement
+    SELECT profileelementtype FROM profileelement WHERE guid = NEW.guid_profileelement
     ) = 1
 BEGIN
     SELECT RAISE(ABORT, 'Table otherhorizon_profileelement: The associated profileelement must have profileelementtype = 0 (HORIZON)');
@@ -2051,7 +1999,7 @@ END;
 CREATE TABLE wrbqualifiergrouptype 
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    guidkey TEXT UNIQUE,
+    guid TEXT UNIQUE,
 	wrbversion TEXT DEFAULT 'https://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue' NOT NULL,  
     qualifierplace            TEXT NOT NULL, -- Codelist wrbqualifierplacevalue
     wrbqualifier              TEXT NOT NULL,  --Codelist wrbqualifiervalue 
@@ -2089,9 +2037,9 @@ INSERT INTO gpkg_contents (
 CREATE TRIGGER wrbqualifiergrouptypeguid
 AFTER INSERT ON wrbqualifiergrouptype
 FOR EACH ROW
-WHEN (NEW.guidkey IS NULL)
+WHEN (NEW.guid IS NULL)
 BEGIN
-   UPDATE wrbqualifiergrouptype SET guidkey = lower(
+   UPDATE wrbqualifiergrouptype SET guid = lower(
     (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
          || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
          || substr('AB89', 1 + (abs(random()) % 4), 1) 
@@ -2102,11 +2050,11 @@ BEGIN
 END;
 
 CREATE TRIGGER wrbqualifiergrouptypeguidupdate
-AFTER UPDATE OF guidkey ON wrbqualifiergrouptype
+AFTER UPDATE OF guid ON wrbqualifiergrouptype
 BEGIN
     SELECT CASE
-        WHEN NEW.guidkey != OLD.guidkey THEN
-            RAISE (ABORT, 'Cannot update guidkey column.')
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
     END;
 END;
 --
@@ -2288,12 +2236,12 @@ END;
 CREATE TABLE wrbqualifiergroup_profile
 (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  idsoilprofile TEXT NOT NULL,
-  idwrbqualifiergrouptype TEXT NOT NULL,
+  guid_soilprofile TEXT NOT NULL,
+  guid_wrbqualifiergrouptype TEXT NOT NULL,
   qualifierposition      INTEGER NOT NULL,
-  CONSTRAINT unicrelationspwbr UNIQUE (idsoilprofile, idwrbqualifiergrouptype),
-  FOREIGN KEY (idsoilprofile) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (idwrbqualifiergrouptype) REFERENCES wrbqualifiergrouptype (guidkey)  ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT unicrelationspwbr UNIQUE (guid_soilprofile, guid_wrbqualifiergrouptype),
+  FOREIGN KEY (guid_soilprofile) REFERENCES soilprofile (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (guid_wrbqualifiergrouptype) REFERENCES wrbqualifiergrouptype (guid)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents wrbqualifiergroup_profile ---------------------------------------------------------------------------------------
@@ -2317,8 +2265,8 @@ BEFORE INSERT ON wrbqualifiergroup_profile
 FOR EACH ROW
 BEGIN
     SELECT RAISE(ABORT, 'Mismatch in wrbversion values.')
-    WHERE (SELECT wrbversion FROM soilprofile WHERE guidkey = NEW.idsoilprofile) <> 
-          (SELECT wrbversion FROM wrbqualifiergrouptype WHERE guidkey = NEW.idwrbqualifiergrouptype);
+    WHERE (SELECT wrbversion FROM soilprofile WHERE guid = NEW.guid_soilprofile) <> 
+          (SELECT wrbversion FROM wrbqualifiergrouptype WHERE guid = NEW.guid_wrbqualifiergrouptype);
 END;
 
 
@@ -2327,8 +2275,8 @@ BEFORE UPDATE ON wrbqualifiergroup_profile
 FOR EACH ROW
 BEGIN
     SELECT RAISE(ABORT, 'Mismatch in wrbversion values.')
-    WHERE (SELECT wrbversion FROM soilprofile WHERE guidkey = NEW.idsoilprofile) <> 
-          (SELECT wrbversion FROM wrbqualifiergrouptype WHERE guidkey = NEW.idwrbqualifiergrouptype);
+    WHERE (SELECT wrbversion FROM soilprofile WHERE guid = NEW.guid_soilprofile) <> 
+          (SELECT wrbversion FROM wrbqualifiergrouptype WHERE guid = NEW.guid_wrbqualifiergrouptype);
 END;
 --
 
@@ -2338,12 +2286,12 @@ FOR EACH ROW
 BEGIN
     SELECT RAISE(ABORT, 'qualifierposition must be unique for each qualifierplace within the same soilprofile')
     FROM wrbqualifiergroup_profile
-    JOIN wrbqualifiergrouptype ON wrbqualifiergroup_profile.idwrbqualifiergrouptype = wrbqualifiergrouptype.guidkey
-    WHERE wrbqualifiergroup_profile.idsoilprofile = NEW.idsoilprofile
+    JOIN wrbqualifiergrouptype ON wrbqualifiergroup_profile.guid_wrbqualifiergrouptype = wrbqualifiergrouptype.guid
+    WHERE wrbqualifiergroup_profile.guid_soilprofile = NEW.guid_soilprofile
       AND wrbqualifiergroup_profile.qualifierposition = NEW.qualifierposition
       AND wrbqualifiergrouptype.qualifierplace = (SELECT qualifierplace
                                                   FROM wrbqualifiergrouptype
-                                                  WHERE guidkey = NEW.idwrbqualifiergrouptype)
+                                                  WHERE guid = NEW.guid_wrbqualifiergrouptype)
       AND wrbqualifiergroup_profile.id != NEW.id;
 END;
 
@@ -2354,12 +2302,12 @@ FOR EACH ROW
 BEGIN
     SELECT RAISE(ABORT, 'qualifierposition must be unique for each qualifierplace within the same soilprofile')
     FROM wrbqualifiergroup_profile
-    JOIN wrbqualifiergrouptype ON wrbqualifiergroup_profile.idwrbqualifiergrouptype = wrbqualifiergrouptype.guidkey
-    WHERE wrbqualifiergroup_profile.idsoilprofile = NEW.idsoilprofile
+    JOIN wrbqualifiergrouptype ON wrbqualifiergroup_profile.guid_wrbqualifiergrouptype = wrbqualifiergrouptype.guid
+    WHERE wrbqualifiergroup_profile.guid_soilprofile = NEW.guid_soilprofile
       AND wrbqualifiergroup_profile.qualifierposition = NEW.qualifierposition
       AND wrbqualifiergrouptype.qualifierplace = (SELECT qualifierplace
                                                   FROM wrbqualifiergrouptype
-                                                  WHERE guidkey = NEW.idwrbqualifiergrouptype)
+                                                  WHERE guid = NEW.guid_wrbqualifiergrouptype)
       AND wrbqualifiergroup_profile.id != NEW.id;
 END;
 
@@ -2378,226 +2326,6 @@ END;
 
 
 /*
-███████ ███████  █████  ████████ ██    ██ ██████  ███████ 
-██      ██      ██   ██    ██    ██    ██ ██   ██ ██      
-█████   █████   ███████    ██    ██    ██ ██████  █████   
-██      ██      ██   ██    ██    ██    ██ ██   ██ ██      
-██      ███████ ██   ██    ██     ██████  ██   ██ ███████ 
-*/
-
--- Table feature ---------------------------------------------------------------------------------------
-CREATE TABLE  feature (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    definition TEXT, --URI
-    description TEXT,
-    encodingtype TEXT NOT NULL, -- encodingType values
-    --
-    feature_soilsite TEXT,
-    feature_soilprofile TEXT,
-    feature_profileelement TEXT,
-    feature_soilderivedobject TEXT,
-    --
-    properties  TEXT, --JSON
-    idfeaturetype INTEGER,
-    FOREIGN KEY (feature_soilsite) REFERENCES soilsite (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (feature_soilprofile) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (feature_profileelement) REFERENCES profileelement (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (feature_soilderivedobject) REFERENCES soilderivedobject (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (idfeaturetype) REFERENCES featuretype (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    UNIQUE (feature_soilsite),
-    UNIQUE (feature_soilprofile),
-    UNIQUE (feature_profileelement),
-    UNIQUE (feature_soilderivedobject),      
-
-    -- Only one among Soil Site, Soil Profile, Profile Element, and Soil Derived Object can be populated.
-    CHECK (
-        ((feature_soilsite IS NOT NULL) +
-        (feature_soilprofile IS NOT NULL) +
-        (feature_profileelement IS NOT NULL) +
-        (feature_soilderivedobject IS NOT NULL)) IN (0, 1)
-    ),
-
-    -- Validate that column `definition` is a well-formed URI
-    -- URL with http/https/ftp scheme and a non-empty authority
-    CHECK (
-        definition IS NULL OR (
-            typeof(definition) = 'text'
-            AND trim(definition) = definition          -- no leading or trailing spaces
-            AND length(definition) > 0
-            -- no whitespace characters allowed
-            AND instr(definition, ' ') = 0
-            AND instr(definition, char(9)) = 0         -- TAB
-            AND instr(definition, char(10)) = 0        -- LF
-            AND instr(definition, char(13)) = 0        -- CR
-
-            -- scheme: case-insensitive prefix check
-            AND (
-            lower(substr(definition, 1, 7)) = 'http://'
-            OR lower(substr(definition, 1, 8)) = 'https://'
-            OR lower(substr(definition, 1, 6)) = 'ftp://'
-            )
-
-            -- must contain "://" and at least one character in the authority (no "http:///...")
-            AND instr(definition, '://') > 0
-            AND substr(definition, instr(definition, '://') + 3, 1) <> '/'
-
-            -- extract the authority (up to the first '/' or end of string) and ensure it does not end with '.'
-            AND substr(
-                CASE
-                    WHEN instr(substr(definition, instr(definition,'://')+3), '/') > 0
-                    THEN substr(
-                        substr(definition, instr(definition,'://')+3),
-                        1,
-                        instr(substr(definition, instr(definition,'://')+3), '/') - 1
-                        )
-                    ELSE substr(definition, instr(definition,'://')+3)
-                END,
-                -1, 1
-                ) <> '.'
-            )
-        ),
-
-
-    CHECK (
-            encodingtype IN (
-                'application/geo+json',
-                'application/geopose+json',
-                'text/plain'
-            )
-        )
-);
-
-
-
--- JSON mime type ---------------------------------------------------------------------------------------
-INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('feature', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', 'application/json', null);
-
--- Contents  codelist -----------------------------------------------------------------------------
-INSERT INTO gpkg_contents (
-  table_name,
-  data_type,
-  identifier,
-  description,
-  last_change,
-  min_x,
-  min_y,
-  max_x,
-  max_y,
-  srs_id
-) VALUES (
-  'feature', -- table name
-  'attributes', -- data type
-  'feat', -- unique table identifier
-  'feature Table', -- table description
-  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
-  NULL, 
-  NULL,
-  NULL,
-  NULL,
-  NULL -- EPSG spatial reference system code
-);
-
-
--- Trigger Feature ----------------------------------------------------
-
--- Custom triggers are implemented to enforce foreign key constraints
--- even when PRAGMA foreign_keys is disabled (set to 0).
--- These triggers act as a fallback mechanism to maintain referential integrity
--- in environments or connections where foreign key enforcement is not enabled by default.
-
--- NOTE: SQLite does not enforce foreign key constraints unless PRAGMA foreign_keys = ON
--- is explicitly set for each connection. To prevent data inconsistencies when this setting
--- is OFF, we use custom triggers that manually validate foreign key relationships.
-
-
-/*
-███████ ███████  █████  ████████ ██    ██ ██████  ███████     ████████ ██    ██ ██████  ███████ 
-██      ██      ██   ██    ██    ██    ██ ██   ██ ██             ██     ██  ██  ██   ██ ██      
-█████   █████   ███████    ██    ██    ██ ██████  █████          ██      ████   ██████  █████   
-██      ██      ██   ██    ██    ██    ██ ██   ██ ██             ██       ██    ██      ██      
-██      ███████ ██   ██    ██     ██████  ██   ██ ███████        ██       ██    ██      ███████                                                                                                                                                                                                                           
-*/                                                        
-
--- Table feature ---------------------------------------------------------------------------------------
-CREATE TABLE  featuretype (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name  TEXT NOT NULL,
-    definition TEXT, --URI
-    description TEXT,
-    properties  TEXT, --JSON
-
-    -- Validate that column `definition` is a well-formed URI
-    -- URL with http/https/ftp scheme and a non-empty authority
-    CHECK (
-        definition IS NULL OR (
-            typeof(definition) = 'text'
-            AND trim(definition) = definition          -- no leading or trailing spaces
-            AND length(definition) > 0
-            -- no whitespace characters allowed
-            AND instr(definition, ' ') = 0
-            AND instr(definition, char(9)) = 0         -- TAB
-            AND instr(definition, char(10)) = 0        -- LF
-            AND instr(definition, char(13)) = 0        -- CR
-
-            -- scheme: case-insensitive prefix check
-            AND (
-            lower(substr(definition, 1, 7)) = 'http://'
-            OR lower(substr(definition, 1, 8)) = 'https://'
-            OR lower(substr(definition, 1, 6)) = 'ftp://'
-            )
-
-            -- must contain "://" and at least one character in the authority (no "http:///...")
-            AND instr(definition, '://') > 0
-            AND substr(definition, instr(definition, '://') + 3, 1) <> '/'
-
-            -- extract the authority (up to the first '/' or end of string) and ensure it does not end with '.'
-            AND substr(
-                CASE
-                    WHEN instr(substr(definition, instr(definition,'://')+3), '/') > 0
-                    THEN substr(
-                        substr(definition, instr(definition,'://')+3),
-                        1,
-                        instr(substr(definition, instr(definition,'://')+3), '/') - 1
-                        )
-                    ELSE substr(definition, instr(definition,'://')+3)
-                END,
-                -1, 1
-                ) <> '.'
-            )
-        )
-);
-
-
--- JSON mime type ---------------------------------------------------------------------------------------
-INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('featuretype', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', 'application/json', null);
-
--- Contents  codelist -----------------------------------------------------------------------------
-INSERT INTO gpkg_contents (
-  table_name,
-  data_type,
-  identifier,
-  description,
-  last_change,
-  min_x,
-  min_y,
-  max_x,
-  max_y,
-  srs_id
-) VALUES (
-  'featuretype', -- table name
-  'attributes', -- data type
-  'feattype', -- unique table identifier
-  'featuretype Table', -- table description
-  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
-  NULL, 
-  NULL,
-  NULL,
-  NULL,
-  NULL -- EPSG spatial reference system code
-);
-
-/*
 ██████   █████  ████████  █████  ███████ ████████ ██████  ███████  █████  ███    ███ 
 ██   ██ ██   ██    ██    ██   ██ ██         ██    ██   ██ ██      ██   ██ ████  ████ 
 ██   ██ ███████    ██    ███████ ███████    ██    ██████  █████   ███████ ██ ████ ██ 
@@ -2609,13 +2337,14 @@ INSERT INTO gpkg_contents (
 CREATE TABLE datastream
 ( 
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guid TEXT UNIQUE,
     name text NOT NULL, 
     definition TEXT,
     description TEXT,
     --
     type TEXT NOT NULL, 
     codespace TEXT,
-    iduom INTEGER,
+    code_unitofmeasure TEXT,
     value_min REAL,
     value_max REAL,
     --
@@ -2626,12 +2355,32 @@ CREATE TABLE datastream
     resulttime_end DATETIME,
     properties TEXT,
 
+
     -- FK block
-    idfeature INTEGER,  -- It is not clear whether the presence of at least one between UltimateFeatureOfInterest and ProximateFeatureOfInterest is mandatory.
-    idthing INTEGER NOT NULL,
-    idsensor INTEGER NOT NULL,
-    idobservedproperty INTEGER NOT NULL,
+    --idfeature INTEGER,  -- It is not clear whether the presence of at least one between UltimateFeatureOfInterest and ProximateFeatureOfInterest is mandatory.
+    guid_thing TEXT NOT NULL,
+    guid_sensor TEXT NOT NULL,
+    guid_observedproperty TEXT NOT NULL,
+    guid_observingprocedure TEXT,
     
+    -- FK FOI block
+    guid_soilsite TEXT,
+    guid_soilprofile TEXT,
+    guid_profileelement TEXT,
+    guid_soilderivedobject TEXT,
+
+    -- FK Feature Type
+    --idfeaturetype INTEGER,
+
+    -- Only one among Soil Site, Soil Profile, Profile Element, and Soil Derived Object can be populated.
+    -- In this case, there can be none or only one occurrence; if we want to make it mandatory, that is, require that at least one exists, we must write
+    -- (guid_soilderivedobject IS NOT NULL) = 1
+    CHECK (
+        ((guid_soilsite IS NOT NULL) +
+        (guid_soilprofile IS NOT NULL) +
+        (guid_profileelement IS NOT NULL) +
+        (guid_soilderivedobject IS NOT NULL)) IN (0, 1)
+    ),
 
     --CONSTRAINT chk_phenomenontime
     CHECK (
@@ -2640,7 +2389,7 @@ CREATE TABLE datastream
         (
             phenomenontime_start IS NOT NULL
             AND phenomenontime_end IS NOT NULL
-            AND phenomenontime_end > phenomenontime_start
+            AND phenomenontime_end >= phenomenontime_start
         )
     ),
 
@@ -2669,13 +2418,13 @@ CREATE TABLE datastream
     CHECK (
         (
             type = 'Quantity'
-            AND iduom    IS NOT NULL
+            AND code_unitofmeasure    IS NOT NULL
             AND codespace IS NULL
         )
         OR
         (
             type = 'Category'
-            AND iduom     IS NULL
+            AND code_unitofmeasure     IS NULL
             AND codespace IS NOT NULL
             AND value_min IS NULL
             AND value_max IS NULL
@@ -2683,7 +2432,7 @@ CREATE TABLE datastream
 		 OR
         (
             type = 'Boolean'
-            AND iduom     IS NULL
+            AND code_unitofmeasure     IS NULL
             AND codespace IS NULL
             AND value_min IS NULL
             AND value_max IS NULL
@@ -2691,13 +2440,13 @@ CREATE TABLE datastream
 		 OR
         (
             type = 'Count'
-            AND iduom     IS NULL
+            AND code_unitofmeasure     IS NULL
             AND codespace IS NULL
         )
          OR
         (
             type = 'Text'
-            AND iduom     IS NULL
+            AND code_unitofmeasure     IS NULL
             AND codespace IS NULL
             AND value_min IS NULL
             AND value_max IS NULL
@@ -2792,11 +2541,19 @@ CREATE TABLE datastream
         ),
 
     
-    FOREIGN KEY (iduom) REFERENCES unitofmeasure (id) ON DELETE CASCADE   ON UPDATE CASCADE,
-    FOREIGN KEY (idfeature) REFERENCES feature (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (idthing) REFERENCES thing (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (idsensor) REFERENCES sensor (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (idobservedproperty) REFERENCES observedproperty (id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (code_unitofmeasure) REFERENCES unitofmeasure (code) ON DELETE CASCADE   ON UPDATE CASCADE,
+    --FOREIGN KEY (idfeature) REFERENCES feature (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (guid_thing) REFERENCES thing (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (guid_sensor) REFERENCES sensor (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (guid_observedproperty) REFERENCES observedproperty (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (guid_observingprocedure) REFERENCES observingprocedure (guid) ON DELETE SET NULL ON UPDATE CASCADE,
+
+    FOREIGN KEY (guid_soilsite) REFERENCES soilsite (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (guid_soilprofile) REFERENCES soilprofile (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (guid_profileelement) REFERENCES profileelement (guid) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (guid_soilderivedobject) REFERENCES soilderivedobject (guid) ON DELETE CASCADE ON UPDATE CASCADE
+    --FOREIGN KEY (idfeaturetype) REFERENCES featuretype (id) ON DELETE CASCADE ON UPDATE CASCADE
+
     
 );
 
@@ -2851,7 +2608,29 @@ INSERT INTO gpkg_geometry_columns (
 );
 
 -- Trigger datastream ---------------------------------------------------------------------------------------
+CREATE TRIGGER datastreamguid
+AFTER INSERT ON datastream
+FOR EACH ROW
+WHEN (NEW.guid IS NULL)
+BEGIN
+   UPDATE datastream SET guid = lower(
+    (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
+         || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
+         || substr('AB89', 1 + (abs(random()) % 4), 1) 
+         || substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6))
+    )
+)
+ WHERE rowid = NEW.rowid;
+END;
 
+CREATE TRIGGER datastreamguidupdate
+AFTER UPDATE OF guid ON datastream
+BEGIN
+    SELECT CASE
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
+    END;
+END;
 
 
 
@@ -2868,9 +2647,12 @@ INSERT INTO gpkg_geometry_columns (
 CREATE TABLE unitofmeasure 
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    code TEXT ,
+    code TEXT UNIQUE ,
     label TEXT,
-    symbol TEXT
+    symbol TEXT,
+    qudt_unit TEXT,
+    conversionoffset REAL, 
+    conversionmultiplier REAL
 );
 
 -- Contents unitofmeasure ---------------------------------------------------------------------------------------
@@ -2916,6 +2698,7 @@ INSERT INTO gpkg_contents (
 CREATE TABLE  observedproperty
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guid TEXT UNIQUE,
     name text NOT NULL, 
     definition TEXT NOT NULL,
     description TEXT,
@@ -2995,8 +2778,30 @@ INSERT INTO gpkg_contents (
 );
 
 
--- Trigger abservedproperty ---------------------------------------------------------------------------------------
+-- Trigger observedproperty ---------------------------------------------------------------------------------------
+CREATE TRIGGER observedpropertyguid
+AFTER INSERT ON observedproperty
+FOR EACH ROW
+WHEN (NEW.guid IS NULL)
+BEGIN
+   UPDATE observedproperty SET guid = lower(
+    (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
+         || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
+         || substr('AB89', 1 + (abs(random()) % 4), 1) 
+         || substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6))
+    )
+)
+ WHERE rowid = NEW.rowid;
+END;
 
+CREATE TRIGGER observedpropertyguidupdate
+AFTER UPDATE OF guid ON observedproperty
+BEGIN
+    SELECT CASE
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
+    END;
+END;
 
 
 
@@ -3014,6 +2819,7 @@ INSERT INTO gpkg_contents (
 CREATE TABLE  sensor
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guid TEXT UNIQUE,
     name text NOT NULL, 
     definition TEXT,
     description TEXT,
@@ -3103,8 +2909,30 @@ INSERT INTO gpkg_contents (
 );
 
 -- Trigger sensor ---------------------------------------------------------------------------------------
--- ToDo check if encodingtype Values in in codelist encodingtypevalue
 
+CREATE TRIGGER sensorguid
+AFTER INSERT ON sensor
+FOR EACH ROW
+WHEN (NEW.guid IS NULL)
+BEGIN
+   UPDATE sensor SET guid = lower(
+    (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
+         || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
+         || substr('AB89', 1 + (abs(random()) % 4), 1) 
+         || substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6))
+    )
+)
+ WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER sensorguidupdate
+AFTER UPDATE OF guid ON sensor
+BEGIN
+    SELECT CASE
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
+    END;
+END;
 
 
 
@@ -3116,10 +2944,11 @@ INSERT INTO gpkg_contents (
    ██    ██   ██ ██ ██   ████  ██████
 */
 
--- Table sensor ---------------------------------------------------------------------------------------
+-- Table thing ---------------------------------------------------------------------------------------
 CREATE TABLE  thing
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guid TEXT UNIQUE,
     name text NOT NULL, 
     definition TEXT,
     description TEXT,
@@ -3198,7 +3027,30 @@ INSERT INTO gpkg_contents (
 
 
 -- Trigger thing ---------------------------------------------------------------------------------------
+CREATE TRIGGER thingguid
+AFTER INSERT ON thing
+FOR EACH ROW
+WHEN (NEW.guid IS NULL)
+BEGIN
+   UPDATE thing SET guid = lower(
+    (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
+         || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
+         || substr('AB89', 1 + (abs(random()) % 4), 1) 
+         || substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6))
+    )
+)
+ WHERE rowid = NEW.rowid;
+END;
 
+CREATE TRIGGER thingguidupdate
+AFTER UPDATE OF guid ON thing
+BEGIN
+    SELECT CASE
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
+    END;
+END;
+--
 
 
 
@@ -3216,6 +3068,7 @@ INSERT INTO gpkg_contents (
 CREATE TABLE  observation
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guid TEXT UNIQUE,
     phenomenontime_start DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL,
     phenomenontime_end DATETIME,
     result_text TEXT ,
@@ -3225,7 +3078,9 @@ CREATE TABLE  observation
     validtime_start DATETIME,
     validtime_end DATETIME,
     properties TEXT,
-    iddatastream INTEGER NOT NULL,
+    guid_datastream TEXT NOT NULL,
+
+    UNIQUE (phenomenontime_start, guid_datastream),
 
     --CONSTRAINT chk_validtime
     CHECK (
@@ -3238,7 +3093,7 @@ CREATE TABLE  observation
         )
     ),
 
-    FOREIGN KEY (iddatastream) REFERENCES datastream(id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (guid_datastream) REFERENCES datastream(guid) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -3272,6 +3127,32 @@ INSERT INTO gpkg_contents (
 );
 
 
+-- Trigger observation ---------------------------------------------------------------------------------------
+CREATE TRIGGER observationguid
+AFTER INSERT ON observation
+FOR EACH ROW
+WHEN (NEW.guid IS NULL)
+BEGIN
+   UPDATE observation SET guid = lower(
+    (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
+         || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
+         || substr('AB89', 1 + (abs(random()) % 4), 1) 
+         || substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6))
+    )
+)
+ WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER observationguidupdate
+AFTER UPDATE OF guid ON observation
+BEGIN
+    SELECT CASE
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
+    END;
+END;
+
+
 -- Trigger observation + datastream ---------------------------------------------------------------------------------------
 
 -- =========================================================
@@ -3291,19 +3172,19 @@ BEGIN
   SET phenomenontime_start = (
         SELECT MIN(phenomenontime_start)
         FROM observation
-        WHERE iddatastream = NEW.iddatastream
+        WHERE guid_datastream = NEW.guid_datastream
       ),
       phenomenontime_end = (
-        SELECT MAX(phenomenontime_end)
+        SELECT MAX(COALESCE(phenomenontime_end, phenomenontime_start))
         FROM observation
-        WHERE iddatastream = NEW.iddatastream
+        WHERE guid_datastream = NEW.guid_datastream
       )
-  WHERE id = NEW.iddatastream;
+  WHERE guid = NEW.guid_datastream;
 END;
 
 
 CREATE TRIGGER observation_au_recalc_ds_times
-AFTER UPDATE OF phenomenontime_start, phenomenontime_end, iddatastream ON observation
+AFTER UPDATE OF phenomenontime_start, phenomenontime_end, guid_datastream ON observation
 FOR EACH ROW
 BEGIN
   -- Recompute for the "new" datastream referenced after the update.
@@ -3311,29 +3192,29 @@ BEGIN
   SET phenomenontime_start = (
         SELECT MIN(phenomenontime_start)
         FROM observation
-        WHERE iddatastream = NEW.iddatastream
+        WHERE guid_datastream = NEW.guid_datastream
       ),
       phenomenontime_end = (
-        SELECT MAX(phenomenontime_end)
+        SELECT MAX(COALESCE(phenomenontime_end, phenomenontime_start))
         FROM observation
-        WHERE iddatastream = NEW.iddatastream
+        WHERE guid_datastream = NEW.guid_datastream
       )
-  WHERE id = NEW.iddatastream;
+  WHERE guid = NEW.guid_datastream;
 
   -- If the row was moved to a different datastream, also recompute the old one.
   UPDATE datastream
   SET phenomenontime_start = (
         SELECT MIN(phenomenontime_start)
         FROM observation
-        WHERE iddatastream = OLD.iddatastream
+        WHERE guid_datastream = OLD.guid_datastream
       ),
       phenomenontime_end = (
-        SELECT MAX(phenomenontime_end)
+        SELECT MAX(COALESCE(phenomenontime_end, phenomenontime_start))
         FROM observation
-        WHERE iddatastream = OLD.iddatastream
+        WHERE guid_datastream = OLD.guid_datastream
       )
-  WHERE id = OLD.iddatastream
-    AND OLD.iddatastream <> NEW.iddatastream;
+  WHERE guid = OLD.guid_datastream
+    AND OLD.guid_datastream <> NEW.guid_datastream;
 END;
 
 
@@ -3346,14 +3227,14 @@ BEGIN
   SET phenomenontime_start = (
         SELECT MIN(phenomenontime_start)
         FROM observation
-        WHERE iddatastream = OLD.iddatastream
+        WHERE guid_datastream = OLD.guid_datastream
       ),
       phenomenontime_end = (
-        SELECT MAX(phenomenontime_end)
+        SELECT MAX(COALESCE(phenomenontime_end, phenomenontime_start))
         FROM observation
-        WHERE iddatastream = OLD.iddatastream
+        WHERE guid_datastream = OLD.guid_datastream
       )
-  WHERE id = OLD.iddatastream;
+  WHERE guid = OLD.guid_datastream;
 END;
 
 
@@ -3454,7 +3335,7 @@ BEGIN
   -- ------------------------------
   -- Shape: only result_real (NOT NULL); text and boolean must be NULL.
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Quantity'
          AND NOT (NEW.result_real IS NOT NULL
                   AND NEW.result_text IS NULL
                   AND NEW.result_boolean IS NULL)
@@ -3463,17 +3344,17 @@ BEGIN
 
   -- Bounds: if a lower bound exists, value must be >= value_min.
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
-         AND (SELECT value_min FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
-         AND NEW.result_real < (SELECT value_min FROM datastream WHERE id = NEW.iddatastream)
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Quantity'
+         AND (SELECT value_min FROM datastream where guid = NEW.guid_datastream) IS NOT NULL
+         AND NEW.result_real < (SELECT value_min FROM datastream where guid = NEW.guid_datastream)
     THEN RAISE(ABORT, 'Type Quantity: result_real is below value_min.')
   END;
 
   -- Bounds: if an upper bound exists, value must be <= value_max.
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
-         AND (SELECT value_max FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
-         AND NEW.result_real > (SELECT value_max FROM datastream WHERE id = NEW.iddatastream)
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Quantity'
+         AND (SELECT value_max FROM datastream where guid = NEW.guid_datastream) IS NOT NULL
+         AND NEW.result_real > (SELECT value_max FROM datastream where guid = NEW.guid_datastream)
     THEN RAISE(ABORT, 'Type Quantity: result_real exceeds value_max.')
   END;
 
@@ -3482,7 +3363,7 @@ BEGIN
   -- ------------------------------
   -- Shape: only result_text (NOT NULL); real and boolean must be NULL.
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Category'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Category'
          AND NOT (NEW.result_text IS NOT NULL
                   AND NEW.result_real IS NULL
                   AND NEW.result_boolean IS NULL)
@@ -3491,11 +3372,11 @@ BEGIN
 
   -- Membership: result_text must exist as codelist.id within the collection equal to datastream.codespace.
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Category'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Category'
          AND NOT EXISTS (
            SELECT 1
            FROM codelist c
-           WHERE c.collection = (SELECT codespace FROM datastream WHERE id = NEW.iddatastream)
+           WHERE c.collection = (SELECT codespace FROM datastream where guid = NEW.guid_datastream)
              AND c.id = NEW.result_text
          )
     THEN RAISE(ABORT, 'Type Category: result_text must exist in codelist.id for the collection equal to the datastream codespace.')
@@ -3506,7 +3387,7 @@ BEGIN
   -- ------------------------------
   -- Shape: only result_boolean (0/1) NOT NULL; text and real must be NULL.
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Boolean'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Boolean'
          AND NOT (NEW.result_boolean IS NOT NULL
                   AND NEW.result_boolean IN (0,1)
                   AND NEW.result_text IS NULL
@@ -3519,7 +3400,7 @@ BEGIN
   -- ------------------------------
   -- Shape: only result_real (NOT NULL) and it must be an integer in value; text and boolean must be NULL.
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Count'
          AND NOT (NEW.result_real IS NOT NULL
                   AND NEW.result_text IS NULL
                   AND NEW.result_boolean IS NULL
@@ -3529,17 +3410,17 @@ BEGIN
 
   -- Bounds: if a lower bound exists, value must be >= value_min.
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
-         AND (SELECT value_min FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
-         AND NEW.result_real < (SELECT value_min FROM datastream WHERE id = NEW.iddatastream)
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Count'
+         AND (SELECT value_min FROM datastream where guid = NEW.guid_datastream) IS NOT NULL
+         AND NEW.result_real < (SELECT value_min FROM datastream where guid = NEW.guid_datastream)
     THEN RAISE(ABORT, 'Type Count: result_real is below value_min.')
   END;
 
   -- Bounds: if an upper bound exists, value must be <= value_max.
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
-         AND (SELECT value_max FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
-         AND NEW.result_real > (SELECT value_max FROM datastream WHERE id = NEW.iddatastream)
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Count'
+         AND (SELECT value_max FROM datastream where guid = NEW.guid_datastream) IS NOT NULL
+         AND NEW.result_real > (SELECT value_max FROM datastream where guid = NEW.guid_datastream)
     THEN RAISE(ABORT, 'Type Count: result_real exceeds value_max.')
   END;
 
@@ -3548,7 +3429,7 @@ BEGIN
   -- ------------------------------
   -- Shape: only result_text (NOT NULL); real and boolean must be NULL.
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Text'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Text'
          AND NOT (NEW.result_text IS NOT NULL
                   AND NEW.result_real IS NULL
                   AND NEW.result_boolean IS NULL)
@@ -3558,7 +3439,7 @@ END;
 
 
 CREATE TRIGGER observation_bu_type_constraints
-BEFORE UPDATE OF result_text, result_real, result_boolean, iddatastream ON observation
+BEFORE UPDATE OF result_text, result_real, result_boolean, guid_datastream ON observation
 FOR EACH ROW
 BEGIN
   -- Apply the same rules on UPDATE to protect both changes to result_* fields
@@ -3566,7 +3447,7 @@ BEGIN
 
   -- QUANTITY: shape
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Quantity'
          AND NOT (NEW.result_real IS NOT NULL
                   AND NEW.result_text IS NULL
                   AND NEW.result_boolean IS NULL)
@@ -3574,21 +3455,21 @@ BEGIN
   END;
   -- QUANTITY: bounds
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
-         AND (SELECT value_min FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
-         AND NEW.result_real < (SELECT value_min FROM datastream WHERE id = NEW.iddatastream)
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Quantity'
+         AND (SELECT value_min FROM datastream where guid = NEW.guid_datastream) IS NOT NULL
+         AND NEW.result_real < (SELECT value_min FROM datastream where guid = NEW.guid_datastream)
     THEN RAISE(ABORT, 'Type Quantity: result_real is below value_min.')
   END;
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Quantity'
-         AND (SELECT value_max FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
-         AND NEW.result_real > (SELECT value_max FROM datastream WHERE id = NEW.iddatastream)
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Quantity'
+         AND (SELECT value_max FROM datastream where guid = NEW.guid_datastream) IS NOT NULL
+         AND NEW.result_real > (SELECT value_max FROM datastream where guid = NEW.guid_datastream)
     THEN RAISE(ABORT, 'Type Quantity: result_real exceeds value_max.')
   END;
 
   -- CATEGORY: shape
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Category'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Category'
          AND NOT (NEW.result_text IS NOT NULL
                   AND NEW.result_real IS NULL
                   AND NEW.result_boolean IS NULL)
@@ -3596,11 +3477,11 @@ BEGIN
   END;
   -- CATEGORY: membership
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Category'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Category'
          AND NOT EXISTS (
            SELECT 1
            FROM codelist c
-           WHERE c.collection = (SELECT codespace FROM datastream WHERE id = NEW.iddatastream)
+           WHERE c.collection = (SELECT codespace FROM datastream where guid = NEW.guid_datastream)
              AND c.id = NEW.result_text
          )
     THEN RAISE(ABORT, 'Type Category: result_text must exist in codelist.id for the collection equal to the datastream codespace.')
@@ -3608,7 +3489,7 @@ BEGIN
 
   -- BOOLEAN
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Boolean'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Boolean'
          AND NOT (NEW.result_boolean IS NOT NULL
                   AND NEW.result_boolean IN (0,1)
                   AND NEW.result_text IS NULL
@@ -3618,7 +3499,7 @@ BEGIN
 
   -- COUNT: shape
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Count'
          AND NOT (NEW.result_real IS NOT NULL
                   AND NEW.result_text IS NULL
                   AND NEW.result_boolean IS NULL
@@ -3627,21 +3508,21 @@ BEGIN
   END;
   -- COUNT: bounds
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
-         AND (SELECT value_min FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
-         AND NEW.result_real < (SELECT value_min FROM datastream WHERE id = NEW.iddatastream)
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Count'
+         AND (SELECT value_min FROM datastream where guid = NEW.guid_datastream) IS NOT NULL
+         AND NEW.result_real < (SELECT value_min FROM datastream where guid = NEW.guid_datastream)
     THEN RAISE(ABORT, 'Type Count: result_real is below value_min.')
   END;
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Count'
-         AND (SELECT value_max FROM datastream WHERE id = NEW.iddatastream) IS NOT NULL
-         AND NEW.result_real > (SELECT value_max FROM datastream WHERE id = NEW.iddatastream)
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Count'
+         AND (SELECT value_max FROM datastream where guid = NEW.guid_datastream) IS NOT NULL
+         AND NEW.result_real > (SELECT value_max FROM datastream where guid = NEW.guid_datastream)
     THEN RAISE(ABORT, 'Type Count: result_real exceeds value_max.')
   END;
 
   -- TEXT
   SELECT CASE
-    WHEN (SELECT type FROM datastream WHERE id = NEW.iddatastream) = 'Text'
+    WHEN (SELECT type FROM datastream where guid = NEW.guid_datastream) = 'Text'
          AND NOT (NEW.result_text IS NOT NULL
                   AND NEW.result_real IS NULL
                   AND NEW.result_boolean IS NULL)
@@ -3665,7 +3546,7 @@ BEGIN
          AND EXISTS (
            SELECT 1
            FROM observation o
-           WHERE o.iddatastream = NEW.id
+           WHERE o.guid_datastream = NEW.id
              AND o.result_real IS NOT NULL
              AND o.result_real < NEW.value_min
          )
@@ -3679,13 +3560,225 @@ BEGIN
          AND EXISTS (
            SELECT 1
            FROM observation o
-           WHERE o.iddatastream = NEW.id
+           WHERE o.guid_datastream = NEW.id
              AND o.result_real IS NOT NULL
              AND o.result_real > NEW.value_max
          )
     THEN RAISE(ABORT, 'Bounds update rejected: some existing observations have result_real above the new value_max.')
   END;
 END;
+
+
+
+/*
+ ██████  ██████  ███████ ███████ ██████  ██    ██ ██ ███    ██  ██████  ██████  ██████   ██████   ██████ ███████ ██████  ██    ██ ██████  ███████ 
+██    ██ ██   ██ ██      ██      ██   ██ ██    ██ ██ ████   ██ ██       ██   ██ ██   ██ ██    ██ ██      ██      ██   ██ ██    ██ ██   ██ ██      
+██    ██ ██████  ███████ █████   ██████  ██    ██ ██ ██ ██  ██ ██   ███ ██████  ██████  ██    ██ ██      █████   ██   ██ ██    ██ ██████  █████   
+██    ██ ██   ██      ██ ██      ██   ██  ██  ██  ██ ██  ██ ██ ██    ██ ██      ██   ██ ██    ██ ██      ██      ██   ██ ██    ██ ██   ██ ██      
+ ██████  ██████  ███████ ███████ ██   ██   ████   ██ ██   ████  ██████  ██      ██   ██  ██████   ██████ ███████ ██████   ██████  ██   ██ ███████                                                                                                                                                                                                                                                                                           
+*/
+
+-- Table observingprocedure ---------------------------------------------------------------------------------------
+CREATE TABLE  observingprocedure
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guid TEXT UNIQUE,
+    name text NOT NULL, 
+    definition TEXT,
+    description TEXT,
+    properties TEXT
+
+    -- Validate that column `definition` is a well-formed URI
+    -- URL with http/https/ftp scheme and a non-empty authority
+    CHECK (
+        definition IS NULL OR (
+            typeof(definition) = 'text'
+            AND trim(definition) = definition          -- no leading or trailing spaces
+            AND length(definition) > 0
+            -- no whitespace characters allowed
+            AND instr(definition, ' ') = 0
+            AND instr(definition, char(9)) = 0         -- TAB
+            AND instr(definition, char(10)) = 0        -- LF
+            AND instr(definition, char(13)) = 0        -- CR
+
+            -- scheme: case-insensitive prefix check
+            AND (
+            lower(substr(definition, 1, 7)) = 'http://'
+            OR lower(substr(definition, 1, 8)) = 'https://'
+            OR lower(substr(definition, 1, 6)) = 'ftp://'
+            )
+
+            -- must contain "://" and at least one character in the authority (no "http:///...")
+            AND instr(definition, '://') > 0
+            AND substr(definition, instr(definition, '://') + 3, 1) <> '/'
+
+            -- extract the authority (up to the first '/' or end of string) and ensure it does not end with '.'
+            AND substr(
+                CASE
+                    WHEN instr(substr(definition, instr(definition,'://')+3), '/') > 0
+                    THEN substr(
+                        substr(definition, instr(definition,'://')+3),
+                        1,
+                        instr(substr(definition, instr(definition,'://')+3), '/') - 1
+                        )
+                    ELSE substr(definition, instr(definition,'://')+3)
+                END,
+                -1, 1
+                ) <> '.'
+            )
+        )
+
+);
+
+
+-- JSON mime type ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('observingprocedure', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', 'application/json', null);
+
+-- Contents observingprocedure ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'observingprocedure', -- table name
+  'attributes', -- data type
+  't_oservproc', -- unique table identifier
+  'thing Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+
+-- Trigger observingprocedure ---------------------------------------------------------------------------------------
+CREATE TRIGGER observingprocedureguid
+AFTER INSERT ON observingprocedure
+FOR EACH ROW
+WHEN (NEW.guid IS NULL)
+BEGIN
+   UPDATE observingprocedure SET guid = lower(
+    (SELECT hex(randomblob(4)) || '-' || hex(randomblob(2))
+         || '-' || '4' || substr(hex(randomblob(2)), 2) || '-'
+         || substr('AB89', 1 + (abs(random()) % 4), 1) 
+         || substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6))
+    )
+)
+ WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER observingprocedureguidupdate
+AFTER UPDATE OF guid ON observingprocedure
+BEGIN
+    SELECT CASE
+        WHEN NEW.guid != OLD.guid THEN
+            RAISE (ABORT, 'Cannot update guid column.')
+    END;
+END;
+
+/*
+██████  ██████   ██████   ██████ ███████ ██████  ██    ██ ██████  ███████          ██████  ██████  ███████ ███████ ██████  ██    ██ ███████ ██████  ██████  ██████   ██████  ██████  ███████ ██████  ████████ ██    ██ 
+██   ██ ██   ██ ██    ██ ██      ██      ██   ██ ██    ██ ██   ██ ██              ██    ██ ██   ██ ██      ██      ██   ██ ██    ██ ██      ██   ██ ██   ██ ██   ██ ██    ██ ██   ██ ██      ██   ██    ██     ██  ██  
+██████  ██████  ██    ██ ██      █████   ██   ██ ██    ██ ██████  █████           ██    ██ ██████  ███████ █████   ██████  ██    ██ █████   ██   ██ ██████  ██████  ██    ██ ██████  █████   ██████     ██      ████   
+██      ██   ██ ██    ██ ██      ██      ██   ██ ██    ██ ██   ██ ██              ██    ██ ██   ██      ██ ██      ██   ██  ██  ██  ██      ██   ██ ██      ██   ██ ██    ██ ██      ██      ██   ██    ██       ██    
+██      ██   ██  ██████   ██████ ███████ ██████   ██████  ██   ██ ███████ ███████  ██████  ██████  ███████ ███████ ██   ██   ████   ███████ ██████  ██      ██   ██  ██████  ██      ███████ ██   ██    ██       ██    
+ */
+
+-- N:M association table
+CREATE TABLE obsprocedure_obsdproperty (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, 
+  guid_observingprocedure  TEXT NOT NULL,
+  guid_observedproperty   TEXT NOT NULL,
+  UNIQUE (guid_observingprocedure, guid_observedproperty),              -- avoids duplicates
+  FOREIGN KEY (guid_observingprocedure) REFERENCES observingprocedure(guid)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (guid_observedproperty)  REFERENCES observedproperty(guid)
+    ON DELETE RESTRICT ON UPDATE CASCADE
+    -- RESTRICT on the property side to prevent “emptying” mandatory relationships by mistake
+);
+
+-- Contents obsprocedure_obsdproperty ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'obsprocedure_obsdproperty', -- table name
+  'attributes', -- data type
+  't_oserv_pro', -- unique table identifier
+  'thing Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+
+
+/*
+ ██████  ██████  ███████ ██████  ██████   ██████   ██████ ███████ ██████  ██    ██ ██████  ███████         ███████ ███████ ███    ██ ███████  ██████  ██████  
+██    ██ ██   ██ ██      ██   ██ ██   ██ ██    ██ ██      ██      ██   ██ ██    ██ ██   ██ ██              ██      ██      ████   ██ ██      ██    ██ ██   ██ 
+██    ██ ██████  ███████ ██████  ██████  ██    ██ ██      █████   ██   ██ ██    ██ ██████  █████           ███████ █████   ██ ██  ██ ███████ ██    ██ ██████  
+██    ██ ██   ██      ██ ██      ██   ██ ██    ██ ██      ██      ██   ██ ██    ██ ██   ██ ██                   ██ ██      ██  ██ ██      ██ ██    ██ ██   ██ 
+ ██████  ██████  ███████ ██      ██   ██  ██████   ██████ ███████ ██████   ██████  ██   ██ ███████ ███████ ███████ ███████ ██   ████ ███████  ██████  ██   ██ 
+ */                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                         
+-- N:M association table
+CREATE TABLE obsprocedure_sensor (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, 
+  guid_observingprocedure  TEXT NOT NULL,
+  guid_sensor   TEXT NOT NULL,
+ UNIQUE (guid_observingprocedure, guid_sensor),              -- avoids duplicates
+  FOREIGN KEY (guid_observingprocedure) REFERENCES observingprocedure(guid)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (guid_sensor)  REFERENCES sensor(guid)
+    ON DELETE RESTRICT ON UPDATE CASCADE
+    -- RESTRICT on the property side to prevent “emptying” mandatory relationships by mistake
+);
+
+-- Contents obsprocedure_sensor ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'obsprocedure_sensor', -- table name
+  'attributes', -- data type
+  't_oserv_sens', -- unique table identifier
+  'thing Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
 
 
 /* 
@@ -3697,18 +3790,17 @@ END;
  */
 
 
-
 -- Table codelist -----------------------------------------------------------------------------
 create table codelist
 (
     id             TEXT,
     label          TEXT,
-    definition     TEXT,
+    --definition     TEXT,
     collection     TEXT,
-    featuretype            TEXT,
-    phenomenon     TEXT,
-    featuretype_phenomenon TEXT,
-    parent         TEXT
+    collectionset            TEXT
+    --phenomenon     TEXT,
+    --featuretype_phenomenon TEXT,
+    --parent         TEXT
 );
 
 -- Contents  codelist -----------------------------------------------------------------------------
@@ -3737,94 +3829,4 @@ INSERT INTO gpkg_contents (
 );
 
 
-------------------------------------------------------------------------------------------- 
--------------------------------------  INDEXES -------------------------------------------- 
-------------------------------------------------------------------------------------------- 
 
-/* =======================================================================
-   INDEXES (NON-GEOMETRIC)
-    - Excludes indexes on geometric columns (geometry, soilplotlocation, geom, observedarea)
-    - Includes indexes useful for foreign keys and join/lookup fields
-    - Avoids redundant indexes already covered by UNIQUE constraints
-   ======================================================================= */
-
--- soilplot
-CREATE INDEX IF NOT EXISTS idx_soilplot_locatedon ON soilplot(locatedon);
-
--- othersoilnametype
-CREATE INDEX IF NOT EXISTS idx_othersoilnametype_othersoilname ON othersoilnametype(othersoilname);
-
--- isderivedfrom
-CREATE INDEX IF NOT EXISTS idx_isderivedfrom_base_id    ON isderivedfrom(base_id);
-CREATE INDEX IF NOT EXISTS idx_isderivedfrom_related_id ON isderivedfrom(related_id);
-
--- soilbody_geom (index on a non-geometric foreign key)
-CREATE INDEX IF NOT EXISTS idx_soilbody_geom_idsoilbody ON soilbody_geom(idsoilbody);
-
--- derivedprofilepresenceinsoilbody
-CREATE INDEX IF NOT EXISTS idx_derivedprofilepresenceinsoilbody_idsoilbody  ON derivedprofilepresenceinsoilbody(idsoilbody);
-CREATE INDEX IF NOT EXISTS idx_derivedprofilepresenceinsoilbody_idsoilprofile ON derivedprofilepresenceinsoilbody(idsoilprofile);
-
--- isbasedonobservedsoilprofile
-CREATE INDEX IF NOT EXISTS idx_isbasedonobservedsoilprofile_idsoilderivedobject ON isbasedonobservedsoilprofile(idsoilderivedobject);
-CREATE INDEX IF NOT EXISTS idx_isbasedonobservedsoilprofile_idsoilprofile       ON isbasedonobservedsoilprofile(idsoilprofile);
-
--- isbasedonsoilbody
-CREATE INDEX IF NOT EXISTS idx_isbasedonsoilbody_idsoilderivedobject ON isbasedonsoilbody(idsoilderivedobject);
-CREATE INDEX IF NOT EXISTS idx_isbasedonsoilbody_idsoilbody          ON isbasedonsoilbody(idsoilbody);
-
--- isbasedonsoilderivedobject
-CREATE INDEX IF NOT EXISTS idx_isbasedonsoilderivedobject_base_id    ON isbasedonsoilderivedobject(base_id);
-CREATE INDEX IF NOT EXISTS idx_isbasedonsoilderivedobject_related_id ON isbasedonsoilderivedobject(related_id);
-
--- profileelement
-CREATE INDEX IF NOT EXISTS idx_profileelement_ispartof ON profileelement(ispartof);
-
--- particlesizefractiontype
-CREATE INDEX IF NOT EXISTS idx_particlesizefractiontype_idprofileelement ON particlesizefractiontype(idprofileelement);
-
--- otherhorizon_profileelement
-CREATE INDEX IF NOT EXISTS idx_otherhorizon_profileelement_idprofileelement         ON otherhorizon_profileelement(idprofileelement);
-CREATE INDEX IF NOT EXISTS idx_otherhorizon_profileelement_idotherhorizonnotationtype ON otherhorizon_profileelement(idotherhorizonnotationtype);
-
--- wrbqualifiergroup_profile
-CREATE INDEX IF NOT EXISTS idx_wrbqualifiergroup_profile_idsoilprofile         ON wrbqualifiergroup_profile(idsoilprofile);
-CREATE INDEX IF NOT EXISTS idx_wrbqualifiergroup_profile_idwrbqualifiergrouptype ON wrbqualifiergroup_profile(idwrbqualifiergrouptype);
-
--- feature
-CREATE INDEX IF NOT EXISTS idx_feature_idfeaturetype ON feature(idfeaturetype);
-
--- datastream (FK e lookup)
-CREATE INDEX IF NOT EXISTS idx_datastream_idfeature        ON datastream(idfeature);
-CREATE INDEX IF NOT EXISTS idx_datastream_idthing          ON datastream(idthing);
-CREATE INDEX IF NOT EXISTS idx_datastream_idsensor         ON datastream(idsensor);
-CREATE INDEX IF NOT EXISTS idx_datastream_iduom            ON datastream(iduom);
-CREATE INDEX IF NOT EXISTS idx_datastream_observedproperty_id ON datastream(idobservedproperty);
-
--- observation (FK vs datastream)
-CREATE INDEX IF NOT EXISTS idx_observation_iddatastream ON observation(iddatastream);
-
-/*
--- Optional codelist (frequent lookupsi)
-CREATE INDEX IF NOT EXISTS idx_codelist_id              ON codelist(id);
-CREATE INDEX IF NOT EXISTS idx_codelist_collection      ON codelist(collection);
-CREATE INDEX IF NOT EXISTS idx_codelist_featuretype     ON codelist(featuretype);
-CREATE INDEX IF NOT EXISTS idx_codelist_phenomenon      ON codelist(phenomenon);
-CREATE INDEX IF NOT EXISTS idx_codelist_ft_ph           ON codelist(featuretype_phenomenon);
-*/
-
-/* -----------------------------------------------------------------------
-   Optional (enable only if needed for heavy loads/frequent filters):
-   CREATE INDEX IF NOT EXISTS idx_soilprofile_isderived        ON soilprofile(isderived);
-   CREATE INDEX IF NOT EXISTS idx_soilprofile_wrbversion       ON soilprofile(wrbversion);
-   CREATE INDEX IF NOT EXISTS idx_wrbqualifiergrouptype_wrbversion ON wrbqualifiergrouptype(wrbversion);
-   CREATE INDEX IF NOT EXISTS idx_wrbqualifiergrouptype_qplace     ON wrbqualifiergrouptype(qualifierplace);
-   ----------------------------------------------------------------------- */
-
-
--- Indexes that keep lookups and aggregate recomputations fast phenomenontime datastream.
-CREATE INDEX IF NOT EXISTS idx_observation_ds_times         ON observation (iddatastream, phenomenontime_start, phenomenontime_end);
-CREATE INDEX IF NOT EXISTS idx_codelist_collection_id       ON codelist (collection, id);
-
--- Optional but recommended index to accelerate range checks on existing observations
-CREATE INDEX IF NOT EXISTS idx_observation_ds_result_real   ON observation (iddatastream, result_real);

@@ -1,172 +1,172 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
+<qgis version="3.44.0-Solothurn" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
     <Searchable>1</Searchable>
     <Private>0</Private>
   </flags>
-  <renderer-v2 symbollevels="0" referencescale="-1" attr="soilplottype" type="categorizedSymbol" enableorderby="0" forceraster="0">
+  <renderer-v2 attr="soilplottype" forceraster="0" type="categorizedSymbol" enableorderby="0" symbollevels="0" referencescale="-1">
     <categories>
-      <category label="trial pit" value="http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/trialPit" type="string" symbol="0" render="true"/>
-      <category label="borehole" value="http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/borehole" type="string" symbol="1" render="true"/>
-      <category label="sample" value="http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/sample" type="string" symbol="2" render="true"/>
+      <category symbol="0" value="http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/trialPit" type="string" render="true" label="trial pit" uuid="0"/>
+      <category symbol="1" value="http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/borehole" type="string" render="true" label="borehole" uuid="1"/>
+      <category symbol="2" value="http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/sample" type="string" render="true" label="sample" uuid="2"/>
     </categories>
     <symbols>
-      <symbol is_animated="0" force_rhr="0" type="marker" frame_rate="10" alpha="1" name="0" clip_to_extent="1">
+      <symbol name="0" frame_rate="10" force_rhr="0" is_animated="0" type="marker" clip_to_extent="1" alpha="1">
         <data_defined_properties>
           <Option type="Map">
-            <Option value="" type="QString" name="name"/>
+            <Option name="name" value="" type="QString"/>
             <Option name="properties"/>
-            <Option value="collection" type="QString" name="type"/>
+            <Option name="type" value="collection" type="QString"/>
           </Option>
         </data_defined_properties>
-        <layer locked="0" id="{3b6a205c-32b9-4f34-a0d2-f3170179da69}" enabled="1" class="SimpleMarker" pass="0">
+        <layer id="{3b6a205c-32b9-4f34-a0d2-f3170179da69}" enabled="1" pass="0" locked="0" class="SimpleMarker">
           <Option type="Map">
-            <Option value="0" type="QString" name="angle"/>
-            <Option value="square" type="QString" name="cap_style"/>
-            <Option value="0,0,255,255" type="QString" name="color"/>
-            <Option value="1" type="QString" name="horizontal_anchor_point"/>
-            <Option value="bevel" type="QString" name="joinstyle"/>
-            <Option value="circle" type="QString" name="name"/>
-            <Option value="0,0" type="QString" name="offset"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
-            <Option value="MM" type="QString" name="offset_unit"/>
-            <Option value="255,255,255,255" type="QString" name="outline_color"/>
-            <Option value="no" type="QString" name="outline_style"/>
-            <Option value="0.4" type="QString" name="outline_width"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="outline_width_map_unit_scale"/>
-            <Option value="MM" type="QString" name="outline_width_unit"/>
-            <Option value="diameter" type="QString" name="scale_method"/>
-            <Option value="2" type="QString" name="size"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="size_map_unit_scale"/>
-            <Option value="MM" type="QString" name="size_unit"/>
-            <Option value="1" type="QString" name="vertical_anchor_point"/>
+            <Option name="angle" value="0" type="QString"/>
+            <Option name="cap_style" value="square" type="QString"/>
+            <Option name="color" value="0,0,255,255,rgb:0,0,1,1" type="QString"/>
+            <Option name="horizontal_anchor_point" value="1" type="QString"/>
+            <Option name="joinstyle" value="bevel" type="QString"/>
+            <Option name="name" value="circle" type="QString"/>
+            <Option name="offset" value="0,0" type="QString"/>
+            <Option name="offset_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="offset_unit" value="MM" type="QString"/>
+            <Option name="outline_color" value="255,255,255,255,rgb:1,1,1,1" type="QString"/>
+            <Option name="outline_style" value="no" type="QString"/>
+            <Option name="outline_width" value="0.4" type="QString"/>
+            <Option name="outline_width_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="outline_width_unit" value="MM" type="QString"/>
+            <Option name="scale_method" value="diameter" type="QString"/>
+            <Option name="size" value="2" type="QString"/>
+            <Option name="size_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="size_unit" value="MM" type="QString"/>
+            <Option name="vertical_anchor_point" value="1" type="QString"/>
           </Option>
           <data_defined_properties>
             <Option type="Map">
-              <Option value="" type="QString" name="name"/>
+              <Option name="name" value="" type="QString"/>
               <Option name="properties"/>
-              <Option value="collection" type="QString" name="type"/>
+              <Option name="type" value="collection" type="QString"/>
             </Option>
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol is_animated="0" force_rhr="0" type="marker" frame_rate="10" alpha="1" name="1" clip_to_extent="1">
+      <symbol name="1" frame_rate="10" force_rhr="0" is_animated="0" type="marker" clip_to_extent="1" alpha="1">
         <data_defined_properties>
           <Option type="Map">
-            <Option value="" type="QString" name="name"/>
+            <Option name="name" value="" type="QString"/>
             <Option name="properties"/>
-            <Option value="collection" type="QString" name="type"/>
+            <Option name="type" value="collection" type="QString"/>
           </Option>
         </data_defined_properties>
-        <layer locked="0" id="{d2887607-802d-40af-bc64-02a63c651328}" enabled="1" class="SimpleMarker" pass="0">
+        <layer id="{d2887607-802d-40af-bc64-02a63c651328}" enabled="1" pass="0" locked="0" class="SimpleMarker">
           <Option type="Map">
-            <Option value="0" type="QString" name="angle"/>
-            <Option value="square" type="QString" name="cap_style"/>
-            <Option value="255,0,0,255" type="QString" name="color"/>
-            <Option value="1" type="QString" name="horizontal_anchor_point"/>
-            <Option value="bevel" type="QString" name="joinstyle"/>
-            <Option value="circle" type="QString" name="name"/>
-            <Option value="0,0" type="QString" name="offset"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
-            <Option value="MM" type="QString" name="offset_unit"/>
-            <Option value="255,255,255,255" type="QString" name="outline_color"/>
-            <Option value="no" type="QString" name="outline_style"/>
-            <Option value="0.4" type="QString" name="outline_width"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="outline_width_map_unit_scale"/>
-            <Option value="MM" type="QString" name="outline_width_unit"/>
-            <Option value="diameter" type="QString" name="scale_method"/>
-            <Option value="2" type="QString" name="size"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="size_map_unit_scale"/>
-            <Option value="MM" type="QString" name="size_unit"/>
-            <Option value="1" type="QString" name="vertical_anchor_point"/>
+            <Option name="angle" value="0" type="QString"/>
+            <Option name="cap_style" value="square" type="QString"/>
+            <Option name="color" value="255,0,0,255,rgb:1,0,0,1" type="QString"/>
+            <Option name="horizontal_anchor_point" value="1" type="QString"/>
+            <Option name="joinstyle" value="bevel" type="QString"/>
+            <Option name="name" value="circle" type="QString"/>
+            <Option name="offset" value="0,0" type="QString"/>
+            <Option name="offset_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="offset_unit" value="MM" type="QString"/>
+            <Option name="outline_color" value="255,255,255,255,rgb:1,1,1,1" type="QString"/>
+            <Option name="outline_style" value="no" type="QString"/>
+            <Option name="outline_width" value="0.4" type="QString"/>
+            <Option name="outline_width_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="outline_width_unit" value="MM" type="QString"/>
+            <Option name="scale_method" value="diameter" type="QString"/>
+            <Option name="size" value="2" type="QString"/>
+            <Option name="size_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="size_unit" value="MM" type="QString"/>
+            <Option name="vertical_anchor_point" value="1" type="QString"/>
           </Option>
           <data_defined_properties>
             <Option type="Map">
-              <Option value="" type="QString" name="name"/>
+              <Option name="name" value="" type="QString"/>
               <Option name="properties"/>
-              <Option value="collection" type="QString" name="type"/>
+              <Option name="type" value="collection" type="QString"/>
             </Option>
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol is_animated="0" force_rhr="0" type="marker" frame_rate="10" alpha="1" name="2" clip_to_extent="1">
+      <symbol name="2" frame_rate="10" force_rhr="0" is_animated="0" type="marker" clip_to_extent="1" alpha="1">
         <data_defined_properties>
           <Option type="Map">
-            <Option value="" type="QString" name="name"/>
+            <Option name="name" value="" type="QString"/>
             <Option name="properties"/>
-            <Option value="collection" type="QString" name="type"/>
+            <Option name="type" value="collection" type="QString"/>
           </Option>
         </data_defined_properties>
-        <layer locked="0" id="{077e100f-05a6-49e8-a962-74d5c1395267}" enabled="1" class="SimpleMarker" pass="0">
+        <layer id="{077e100f-05a6-49e8-a962-74d5c1395267}" enabled="1" pass="0" locked="0" class="SimpleMarker">
           <Option type="Map">
-            <Option value="0" type="QString" name="angle"/>
-            <Option value="square" type="QString" name="cap_style"/>
-            <Option value="0,255,0,255" type="QString" name="color"/>
-            <Option value="1" type="QString" name="horizontal_anchor_point"/>
-            <Option value="bevel" type="QString" name="joinstyle"/>
-            <Option value="circle" type="QString" name="name"/>
-            <Option value="0,0" type="QString" name="offset"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
-            <Option value="MM" type="QString" name="offset_unit"/>
-            <Option value="255,255,255,255" type="QString" name="outline_color"/>
-            <Option value="no" type="QString" name="outline_style"/>
-            <Option value="0.4" type="QString" name="outline_width"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="outline_width_map_unit_scale"/>
-            <Option value="MM" type="QString" name="outline_width_unit"/>
-            <Option value="diameter" type="QString" name="scale_method"/>
-            <Option value="2" type="QString" name="size"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="size_map_unit_scale"/>
-            <Option value="MM" type="QString" name="size_unit"/>
-            <Option value="1" type="QString" name="vertical_anchor_point"/>
+            <Option name="angle" value="0" type="QString"/>
+            <Option name="cap_style" value="square" type="QString"/>
+            <Option name="color" value="0,255,0,255,rgb:0,1,0,1" type="QString"/>
+            <Option name="horizontal_anchor_point" value="1" type="QString"/>
+            <Option name="joinstyle" value="bevel" type="QString"/>
+            <Option name="name" value="circle" type="QString"/>
+            <Option name="offset" value="0,0" type="QString"/>
+            <Option name="offset_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="offset_unit" value="MM" type="QString"/>
+            <Option name="outline_color" value="255,255,255,255,rgb:1,1,1,1" type="QString"/>
+            <Option name="outline_style" value="no" type="QString"/>
+            <Option name="outline_width" value="0.4" type="QString"/>
+            <Option name="outline_width_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="outline_width_unit" value="MM" type="QString"/>
+            <Option name="scale_method" value="diameter" type="QString"/>
+            <Option name="size" value="2" type="QString"/>
+            <Option name="size_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="size_unit" value="MM" type="QString"/>
+            <Option name="vertical_anchor_point" value="1" type="QString"/>
           </Option>
           <data_defined_properties>
             <Option type="Map">
-              <Option value="" type="QString" name="name"/>
+              <Option name="name" value="" type="QString"/>
               <Option name="properties"/>
-              <Option value="collection" type="QString" name="type"/>
+              <Option name="type" value="collection" type="QString"/>
             </Option>
           </data_defined_properties>
         </layer>
       </symbol>
     </symbols>
     <source-symbol>
-      <symbol is_animated="0" force_rhr="0" type="marker" frame_rate="10" alpha="1" name="0" clip_to_extent="1">
+      <symbol name="0" frame_rate="10" force_rhr="0" is_animated="0" type="marker" clip_to_extent="1" alpha="1">
         <data_defined_properties>
           <Option type="Map">
-            <Option value="" type="QString" name="name"/>
+            <Option name="name" value="" type="QString"/>
             <Option name="properties"/>
-            <Option value="collection" type="QString" name="type"/>
+            <Option name="type" value="collection" type="QString"/>
           </Option>
         </data_defined_properties>
-        <layer locked="0" id="{150bb17b-652b-485d-b011-7e36e2877eb8}" enabled="1" class="SimpleMarker" pass="0">
+        <layer id="{150bb17b-652b-485d-b011-7e36e2877eb8}" enabled="1" pass="0" locked="0" class="SimpleMarker">
           <Option type="Map">
-            <Option value="0" type="QString" name="angle"/>
-            <Option value="square" type="QString" name="cap_style"/>
-            <Option value="177,164,135,255" type="QString" name="color"/>
-            <Option value="1" type="QString" name="horizontal_anchor_point"/>
-            <Option value="bevel" type="QString" name="joinstyle"/>
-            <Option value="circle" type="QString" name="name"/>
-            <Option value="0,0" type="QString" name="offset"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
-            <Option value="MM" type="QString" name="offset_unit"/>
-            <Option value="0,0,0,255" type="QString" name="outline_color"/>
-            <Option value="no" type="QString" name="outline_style"/>
-            <Option value="0" type="QString" name="outline_width"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="outline_width_map_unit_scale"/>
-            <Option value="MM" type="QString" name="outline_width_unit"/>
-            <Option value="diameter" type="QString" name="scale_method"/>
-            <Option value="2" type="QString" name="size"/>
-            <Option value="3x:0,0,0,0,0,0" type="QString" name="size_map_unit_scale"/>
-            <Option value="MM" type="QString" name="size_unit"/>
-            <Option value="1" type="QString" name="vertical_anchor_point"/>
+            <Option name="angle" value="0" type="QString"/>
+            <Option name="cap_style" value="square" type="QString"/>
+            <Option name="color" value="177,164,135,255,rgb:0.6941176,0.6431373,0.5294118,1" type="QString"/>
+            <Option name="horizontal_anchor_point" value="1" type="QString"/>
+            <Option name="joinstyle" value="bevel" type="QString"/>
+            <Option name="name" value="circle" type="QString"/>
+            <Option name="offset" value="0,0" type="QString"/>
+            <Option name="offset_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="offset_unit" value="MM" type="QString"/>
+            <Option name="outline_color" value="0,0,0,255,rgb:0,0,0,1" type="QString"/>
+            <Option name="outline_style" value="no" type="QString"/>
+            <Option name="outline_width" value="0" type="QString"/>
+            <Option name="outline_width_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="outline_width_unit" value="MM" type="QString"/>
+            <Option name="scale_method" value="diameter" type="QString"/>
+            <Option name="size" value="2" type="QString"/>
+            <Option name="size_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="size_unit" value="MM" type="QString"/>
+            <Option name="vertical_anchor_point" value="1" type="QString"/>
           </Option>
           <data_defined_properties>
             <Option type="Map">
-              <Option value="" type="QString" name="name"/>
+              <Option name="name" value="" type="QString"/>
               <Option name="properties"/>
-              <Option value="collection" type="QString" name="type"/>
+              <Option name="type" value="collection" type="QString"/>
             </Option>
           </data_defined_properties>
         </layer>
@@ -174,147 +174,201 @@
     </source-symbol>
     <rotation/>
     <sizescale/>
+    <data-defined-properties>
+      <Option type="Map">
+        <Option name="name" value="" type="QString"/>
+        <Option name="properties"/>
+        <Option name="type" value="collection" type="QString"/>
+      </Option>
+    </data-defined-properties>
   </renderer-v2>
+  <selection mode="Default">
+    <selectionColor invalid="1"/>
+    <selectionSymbol>
+      <symbol name="" frame_rate="10" force_rhr="0" is_animated="0" type="marker" clip_to_extent="1" alpha="1">
+        <data_defined_properties>
+          <Option type="Map">
+            <Option name="name" value="" type="QString"/>
+            <Option name="properties"/>
+            <Option name="type" value="collection" type="QString"/>
+          </Option>
+        </data_defined_properties>
+        <layer id="{752445b7-fb4a-4953-8970-446208f861d6}" enabled="1" pass="0" locked="0" class="SimpleMarker">
+          <Option type="Map">
+            <Option name="angle" value="0" type="QString"/>
+            <Option name="cap_style" value="square" type="QString"/>
+            <Option name="color" value="255,0,0,255,rgb:1,0,0,1" type="QString"/>
+            <Option name="horizontal_anchor_point" value="1" type="QString"/>
+            <Option name="joinstyle" value="bevel" type="QString"/>
+            <Option name="name" value="circle" type="QString"/>
+            <Option name="offset" value="0,0" type="QString"/>
+            <Option name="offset_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="offset_unit" value="MM" type="QString"/>
+            <Option name="outline_color" value="35,35,35,255,rgb:0.1372549,0.1372549,0.1372549,1" type="QString"/>
+            <Option name="outline_style" value="solid" type="QString"/>
+            <Option name="outline_width" value="0" type="QString"/>
+            <Option name="outline_width_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="outline_width_unit" value="MM" type="QString"/>
+            <Option name="scale_method" value="diameter" type="QString"/>
+            <Option name="size" value="2" type="QString"/>
+            <Option name="size_map_unit_scale" value="3x:0,0,0,0,0,0" type="QString"/>
+            <Option name="size_unit" value="MM" type="QString"/>
+            <Option name="vertical_anchor_point" value="1" type="QString"/>
+          </Option>
+          <data_defined_properties>
+            <Option type="Map">
+              <Option name="name" value="" type="QString"/>
+              <Option name="properties"/>
+              <Option name="type" value="collection" type="QString"/>
+            </Option>
+          </data_defined_properties>
+        </layer>
+      </symbol>
+    </selectionSymbol>
+  </selection>
   <blendMode>0</blendMode>
   <featureBlendMode>0</featureBlendMode>
   <referencedLayers>
-    <relation referencingLayer="soilplot_383f2201_ad95_4184_b8f0_d003966182c7" referencedLayer="soilsite_6897ca86_10e3_4e5d_bcdc_8059da02535d" id="soilsite_soilplot" strength="Association" name="soilsite_soilplot" providerKey="ogr" layerId="soilsite_6897ca86_10e3_4e5d_bcdc_8059da02535d" layerName="soilsite" dataSource="./INSPIRE_SO.gpkg|layername=soilsite">
-      <fieldRef referencingField="locatedon" referencedField="guidkey"/>
+    <relation name="soilsite_soilplot" referencingLayer="soilplot_ec7ff90d_5173_4636_9f98_6e0de6b7b59a" id="soilsite_soilplot" layerName="soilsite" strength="Association" layerId="soilsite_478dc2f4_41c8_48ca_959a_80cbce061ab3" referencedLayer="soilsite_478dc2f4_41c8_48ca_959a_80cbce061ab3" providerKey="ogr" dataSource="./SW_15.gpkg|layername=soilsite">
+      <fieldRef referencingField="locatedon" referencedField="guid"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
-    <field configurationFlags="None" name="id">
-      <editWidget type="TextEdit">
-        <config>
-          <Option/>
-        </config>
-      </editWidget>
-    </field>
-    <field configurationFlags="None" name="guidkey">
+    <field name="id" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" type="bool" name="IsMultiline"/>
-            <Option value="false" type="bool" name="UseHtml"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="inspireid_localid">
+    <field name="guid" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" type="bool" name="IsMultiline"/>
-            <Option value="false" type="bool" name="UseHtml"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="inspireid_namespace">
+    <field name="inspireid_localid" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" type="bool" name="IsMultiline"/>
-            <Option value="false" type="bool" name="UseHtml"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="inspireid_versionid">
+    <field name="inspireid_namespace" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" type="bool" name="IsMultiline"/>
-            <Option value="false" type="bool" name="UseHtml"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="soilplottype">
+    <field name="inspireid_versionid" configurationFlags="NoFlag">
+      <editWidget type="TextEdit">
+        <config>
+          <Option type="Map">
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
+    <field name="soilplottype" configurationFlags="NoFlag">
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option value="false" type="bool" name="AllowMulti"/>
-            <Option value="false" type="bool" name="AllowNull"/>
-            <Option value="&quot;label&quot;" type="QString" name="Description"/>
-            <Option value="&quot;collection&quot; IN('SoilPlotTypeValue') " type="QString" name="FilterExpression"/>
-            <Option value="id" type="QString" name="Key"/>
-            <Option value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" type="QString" name="Layer"/>
-            <Option value="codelist" type="QString" name="LayerName"/>
-            <Option value="ogr" type="QString" name="LayerProviderName"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" type="QString" name="LayerSource"/>
-            <Option value="1" type="int" name="NofColumns"/>
-            <Option value="false" type="bool" name="OrderByValue"/>
-            <Option value="false" type="bool" name="UseCompleter"/>
-            <Option value="label" type="QString" name="Value"/>
+            <Option name="AllowMulti" value="false" type="bool"/>
+            <Option name="AllowNull" value="false" type="bool"/>
+            <Option name="Description" value="&quot;label&quot;" type="QString"/>
+            <Option name="FilterExpression" value="&quot;collection&quot; IN('SoilPlotTypeValue') " type="QString"/>
+            <Option name="Key" value="id" type="QString"/>
+            <Option name="Layer" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" type="QString"/>
+            <Option name="LayerName" value="codelist" type="QString"/>
+            <Option name="LayerProviderName" value="ogr" type="QString"/>
+            <Option name="LayerSource" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" type="QString"/>
+            <Option name="NofColumns" value="1" type="int"/>
+            <Option name="OrderByValue" value="false" type="bool"/>
+            <Option name="UseCompleter" value="false" type="bool"/>
+            <Option name="Value" value="label" type="QString"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="beginlifespanversion">
+    <field name="beginlifespanversion" configurationFlags="NoFlag">
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option value="false" type="bool" name="allow_null"/>
-            <Option value="true" type="bool" name="calendar_popup"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" type="QString" name="display_format"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" type="QString" name="field_format"/>
-            <Option value="false" type="bool" name="field_format_overwrite"/>
-            <Option value="false" type="bool" name="field_iso_format"/>
+            <Option name="allow_null" value="false" type="bool"/>
+            <Option name="calendar_popup" value="true" type="bool"/>
+            <Option name="display_format" value="yyyy-MM-dd HH:mm:ss" type="QString"/>
+            <Option name="field_format" value="yyyy-MM-dd HH:mm:ss" type="QString"/>
+            <Option name="field_format_overwrite" value="false" type="bool"/>
+            <Option name="field_iso_format" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="endlifespanversion">
+    <field name="endlifespanversion" configurationFlags="NoFlag">
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option value="true" type="bool" name="allow_null"/>
-            <Option value="true" type="bool" name="calendar_popup"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" type="QString" name="display_format"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" type="QString" name="field_format"/>
-            <Option value="false" type="bool" name="field_format_overwrite"/>
-            <Option value="false" type="bool" name="field_iso_format"/>
+            <Option name="allow_null" value="true" type="bool"/>
+            <Option name="calendar_popup" value="true" type="bool"/>
+            <Option name="display_format" value="yyyy-MM-dd HH:mm:ss" type="QString"/>
+            <Option name="field_format" value="yyyy-MM-dd HH:mm:ss" type="QString"/>
+            <Option name="field_format_overwrite" value="false" type="bool"/>
+            <Option name="field_iso_format" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="locatedon">
+    <field name="locatedon" configurationFlags="NoFlag">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" type="bool" name="AllowAddFeatures"/>
-            <Option value="false" type="bool" name="AllowNULL"/>
-            <Option value="true" type="bool" name="FetchLimitActive"/>
-            <Option value="100" type="int" name="FetchLimitNumber"/>
-            <Option value="false" type="bool" name="MapIdentification"/>
-            <Option value="false" type="bool" name="ReadOnly"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_02/Vector.gpkg|layername=soilsite" type="QString" name="ReferencedLayerDataSource"/>
-            <Option value="soilsite_b1a194b7_e66a_4744_80af_5bfa81c8ef3c" type="QString" name="ReferencedLayerId"/>
-            <Option value="soilsite" type="QString" name="ReferencedLayerName"/>
-            <Option value="ogr" type="QString" name="ReferencedLayerProviderKey"/>
-            <Option value="soilsite_soilplot" type="QString" name="Relation"/>
-            <Option value="false" type="bool" name="ShowForm"/>
-            <Option value="true" type="bool" name="ShowOpenFormButton"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_02/Vector.gpkg|layername=soilsite" type="QString"/>
+            <Option name="ReferencedLayerId" value="soilsite_b1a194b7_e66a_4744_80af_5bfa81c8ef3c" type="QString"/>
+            <Option name="ReferencedLayerName" value="soilsite" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="soilsite_soilplot" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias field="id" index="0" name=""/>
-    <alias field="guidkey" index="1" name=""/>
-    <alias field="inspireid_localid" index="2" name="Local id"/>
-    <alias field="inspireid_namespace" index="3" name="Namespace"/>
-    <alias field="inspireid_versionid" index="4" name="Varsion id"/>
-    <alias field="soilplottype" index="5" name="Type"/>
-    <alias field="beginlifespanversion" index="6" name="Begin Lifespan Version"/>
-    <alias field="endlifespanversion" index="7" name="End Lifespan Version"/>
-    <alias field="locatedon" index="8" name="Soil Site"/>
+    <alias name="" field="id" index="0"/>
+    <alias name="" field="guid" index="1"/>
+    <alias name="Local id" field="inspireid_localid" index="2"/>
+    <alias name="Namespace" field="inspireid_namespace" index="3"/>
+    <alias name="Varsion id" field="inspireid_versionid" index="4"/>
+    <alias name="Type" field="soilplottype" index="5"/>
+    <alias name="Begin Lifespan Version" field="beginlifespanversion" index="6"/>
+    <alias name="End Lifespan Version" field="endlifespanversion" index="7"/>
+    <alias name="Soil Site" field="locatedon" index="8"/>
   </aliases>
   <splitPolicies>
-    <policy field="id" policy="Duplicate"/>
-    <policy field="guidkey" policy="DefaultValue"/>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guid" policy="DefaultValue"/>
     <policy field="inspireid_localid" policy="DefaultValue"/>
     <policy field="inspireid_namespace" policy="DefaultValue"/>
     <policy field="inspireid_versionid" policy="DefaultValue"/>
@@ -324,37 +378,37 @@
     <policy field="locatedon" policy="DefaultValue"/>
   </splitPolicies>
   <defaults>
-    <default field="id" expression="" applyOnUpdate="0"/>
-    <default field="guidkey" expression="" applyOnUpdate="0"/>
-    <default field="inspireid_localid" expression="" applyOnUpdate="0"/>
-    <default field="inspireid_namespace" expression="" applyOnUpdate="0"/>
-    <default field="inspireid_versionid" expression="" applyOnUpdate="0"/>
-    <default field="soilplottype" expression="" applyOnUpdate="0"/>
-    <default field="beginlifespanversion" expression="" applyOnUpdate="0"/>
-    <default field="endlifespanversion" expression="" applyOnUpdate="0"/>
-    <default field="locatedon" expression="" applyOnUpdate="0"/>
+    <default field="id" applyOnUpdate="0" expression=""/>
+    <default field="guid" applyOnUpdate="0" expression=""/>
+    <default field="inspireid_localid" applyOnUpdate="0" expression=""/>
+    <default field="inspireid_namespace" applyOnUpdate="0" expression=""/>
+    <default field="inspireid_versionid" applyOnUpdate="0" expression=""/>
+    <default field="soilplottype" applyOnUpdate="0" expression=""/>
+    <default field="beginlifespanversion" applyOnUpdate="0" expression=""/>
+    <default field="endlifespanversion" applyOnUpdate="0" expression=""/>
+    <default field="locatedon" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint field="id" notnull_strength="1" exp_strength="0" constraints="3" unique_strength="1"/>
-    <constraint field="guidkey" notnull_strength="0" exp_strength="0" constraints="2" unique_strength="1"/>
-    <constraint field="inspireid_localid" notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0"/>
-    <constraint field="inspireid_namespace" notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0"/>
-    <constraint field="inspireid_versionid" notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0"/>
-    <constraint field="soilplottype" notnull_strength="1" exp_strength="0" constraints="1" unique_strength="0"/>
-    <constraint field="beginlifespanversion" notnull_strength="1" exp_strength="0" constraints="1" unique_strength="0"/>
-    <constraint field="endlifespanversion" notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0"/>
-    <constraint field="locatedon" notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0"/>
+    <constraint unique_strength="1" notnull_strength="1" field="id" constraints="3" exp_strength="0"/>
+    <constraint unique_strength="1" notnull_strength="0" field="guid" constraints="2" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="inspireid_localid" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="inspireid_namespace" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="inspireid_versionid" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="soilplottype" constraints="1" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="beginlifespanversion" constraints="1" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="endlifespanversion" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="locatedon" constraints="0" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint field="id" exp="" desc=""/>
-    <constraint field="guidkey" exp="" desc=""/>
-    <constraint field="inspireid_localid" exp="" desc=""/>
-    <constraint field="inspireid_namespace" exp="" desc=""/>
-    <constraint field="inspireid_versionid" exp="" desc=""/>
-    <constraint field="soilplottype" exp="" desc=""/>
-    <constraint field="beginlifespanversion" exp="" desc=""/>
-    <constraint field="endlifespanversion" exp="" desc=""/>
-    <constraint field="locatedon" exp="" desc=""/>
+    <constraint exp="" desc="" field="id"/>
+    <constraint exp="" desc="" field="guid"/>
+    <constraint exp="" desc="" field="inspireid_localid"/>
+    <constraint exp="" desc="" field="inspireid_namespace"/>
+    <constraint exp="" desc="" field="inspireid_versionid"/>
+    <constraint exp="" desc="" field="soilplottype"/>
+    <constraint exp="" desc="" field="beginlifespanversion"/>
+    <constraint exp="" desc="" field="endlifespanversion"/>
+    <constraint exp="" desc="" field="locatedon"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -380,75 +434,86 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-      <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
+    <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+      <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
     </labelStyle>
-    <attributeEditorField horizontalStretch="0" showLabel="1" verticalStretch="0" index="0" name="id">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
+    <attributeEditorContainer groupBox="1" name="ID" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="1" type="GroupBox" collapsed="1" visibilityExpression="" collapsedExpressionEnabled="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
-    </attributeEditorField>
-    <attributeEditorContainer columnCount="1" visibilityExpressionEnabled="0" horizontalStretch="0" visibilityExpression="" collapsed="0" showLabel="1" verticalStretch="0" groupBox="1" type="GroupBox" collapsedExpressionEnabled="0" collapsedExpression="" name="INSPIRE ID">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
-      </labelStyle>
-      <attributeEditorField horizontalStretch="0" showLabel="1" verticalStretch="0" index="2" name="inspireid_localid">
-        <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-          <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
+      <attributeEditorField name="id" verticalStretch="0" showLabel="1" index="0" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField horizontalStretch="0" showLabel="1" verticalStretch="0" index="3" name="inspireid_namespace">
-        <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-          <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
-        </labelStyle>
-      </attributeEditorField>
-      <attributeEditorField horizontalStretch="0" showLabel="1" verticalStretch="0" index="4" name="inspireid_versionid">
-        <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-          <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
+      <attributeEditorField name="guid" verticalStretch="0" showLabel="1" index="1" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField horizontalStretch="0" showLabel="1" verticalStretch="0" index="5" name="soilplottype">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
+    <attributeEditorContainer groupBox="1" name="INSPIRE ID" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="1" type="GroupBox" collapsed="0" visibilityExpression="" collapsedExpressionEnabled="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
-    </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" showLabel="1" verticalStretch="0" index="8" name="locatedon">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
-      </labelStyle>
-    </attributeEditorField>
-    <attributeEditorContainer columnCount="1" visibilityExpressionEnabled="0" horizontalStretch="0" visibilityExpression="" collapsed="0" showLabel="1" verticalStretch="0" groupBox="1" type="GroupBox" collapsedExpressionEnabled="0" collapsedExpression="" name="Dates">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
-      </labelStyle>
-      <attributeEditorField horizontalStretch="0" showLabel="1" verticalStretch="0" index="6" name="beginlifespanversion">
-        <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-          <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
+      <attributeEditorField name="inspireid_localid" verticalStretch="0" showLabel="1" index="2" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField horizontalStretch="0" showLabel="1" verticalStretch="0" index="7" name="endlifespanversion">
-        <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-          <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
+      <attributeEditorField name="inspireid_namespace" verticalStretch="0" showLabel="1" index="3" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+        </labelStyle>
+      </attributeEditorField>
+      <attributeEditorField name="inspireid_versionid" verticalStretch="0" showLabel="1" index="4" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer columnCount="1" visibilityExpressionEnabled="0" horizontalStretch="0" visibilityExpression="" collapsed="0" showLabel="1" verticalStretch="0" groupBox="1" type="GroupBox" collapsedExpressionEnabled="0" collapsedExpression="" name="RELATIONS">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
+    <attributeEditorField name="soilplottype" verticalStretch="0" showLabel="1" index="5" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
-      <attributeEditorContainer columnCount="1" visibilityExpressionEnabled="0" horizontalStretch="0" visibilityExpression="" collapsed="1" showLabel="1" verticalStretch="0" groupBox="1" type="GroupBox" collapsedExpressionEnabled="0" collapsedExpression="" name="Soil Profile">
-        <labelStyle overrideLabelFont="1" overrideLabelColor="0" labelColor="0,0,0,255">
-          <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0" strikethrough="0" style="" bold="1"/>
+    </attributeEditorField>
+    <attributeEditorField name="locatedon" verticalStretch="0" showLabel="1" index="8" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+      </labelStyle>
+    </attributeEditorField>
+    <attributeEditorContainer groupBox="1" name="Dates" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="1" type="GroupBox" collapsed="0" visibilityExpression="" collapsedExpressionEnabled="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+      </labelStyle>
+      <attributeEditorField name="beginlifespanversion" verticalStretch="0" showLabel="1" index="6" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
         </labelStyle>
-        <attributeEditorRelation label="" horizontalStretch="0" forceSuppressFormPopup="0" relationWidgetTypeId="relation_editor" showLabel="0" verticalStretch="0" name="soilplot_soilprofile" relation="soilplot_soilprofile" nmRelationId="">
-          <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-            <labelFont italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0"/>
+      </attributeEditorField>
+      <attributeEditorField name="endlifespanversion" verticalStretch="0" showLabel="1" index="7" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+        </labelStyle>
+      </attributeEditorField>
+    </attributeEditorContainer>
+    <attributeEditorContainer groupBox="1" name="RELATIONS" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="1" type="GroupBox" collapsed="0" visibilityExpression="" collapsedExpressionEnabled="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+      </labelStyle>
+      <attributeEditorContainer groupBox="1" name="Soil Profile" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="1" type="GroupBox" collapsed="1" visibilityExpression="" collapsedExpressionEnabled="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+        <labelStyle overrideLabelFont="1" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="1" italic="0" description="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0" strikethrough="0" underline="0"/>
+        </labelStyle>
+        <attributeEditorRelation name="soilplot_soilprofile" relationWidgetTypeId="relation_editor" verticalStretch="0" nmRelationId="" relation="soilplot_soilprofile" showLabel="0" label="" forceSuppressFormPopup="0" horizontalStretch="0">
+          <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+            <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
           </labelStyle>
           <editor_configuration type="Map">
-            <Option value="false" type="bool" name="allow_add_child_feature_with_no_geometry"/>
-            <Option value="Link|Unlink|SaveChildEdits|AddChildFeature|DeleteChildFeature|ZoomToChildFeature" type="QString" name="buttons"/>
-            <Option value="true" type="bool" name="show_first_feature"/>
+            <Option name="allow_add_child_feature_with_no_geometry" value="false" type="bool"/>
+            <Option name="buttons" value="Link|Unlink|SaveChildEdits|AddChildFeature|DeleteChildFeature|ZoomToChildFeature" type="QString"/>
+            <Option name="filter_expression" value="" type="QString"/>
+            <Option name="show_first_feature" value="true" type="bool"/>
           </editor_configuration>
         </attributeEditorRelation>
       </attributeEditorContainer>
@@ -457,8 +522,9 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <editable>
     <field name="beginlifespanversion" editable="1"/>
     <field name="endlifespanversion" editable="1"/>
+    <field name="guid" editable="0"/>
     <field name="guidkey" editable="1"/>
-    <field name="id" editable="1"/>
+    <field name="id" editable="0"/>
     <field name="inspireid_localid" editable="1"/>
     <field name="inspireid_namespace" editable="1"/>
     <field name="inspireid_versionid" editable="1"/>
@@ -468,6 +534,7 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <labelOnTop>
     <field labelOnTop="0" name="beginlifespanversion"/>
     <field labelOnTop="0" name="endlifespanversion"/>
+    <field labelOnTop="0" name="guid"/>
     <field labelOnTop="0" name="guidkey"/>
     <field labelOnTop="0" name="id"/>
     <field labelOnTop="0" name="inspireid_localid"/>
@@ -477,18 +544,26 @@ control = dialog.findChild(QWidget, "MyLineEdit")
     <field labelOnTop="0" name="soilplottype"/>
   </labelOnTop>
   <reuseLastValue>
-    <field reuseLastValue="0" name="beginlifespanversion"/>
-    <field reuseLastValue="0" name="endlifespanversion"/>
-    <field reuseLastValue="0" name="guidkey"/>
-    <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="inspireid_localid"/>
-    <field reuseLastValue="0" name="inspireid_namespace"/>
-    <field reuseLastValue="0" name="inspireid_versionid"/>
-    <field reuseLastValue="0" name="locatedon"/>
-    <field reuseLastValue="0" name="soilplottype"/>
+    <field name="beginlifespanversion" reuseLastValue="0"/>
+    <field name="endlifespanversion" reuseLastValue="0"/>
+    <field name="guid" reuseLastValue="0"/>
+    <field name="guidkey" reuseLastValue="0"/>
+    <field name="id" reuseLastValue="0"/>
+    <field name="inspireid_localid" reuseLastValue="0"/>
+    <field name="inspireid_namespace" reuseLastValue="0"/>
+    <field name="inspireid_versionid" reuseLastValue="0"/>
+    <field name="locatedon" reuseLastValue="0"/>
+    <field name="soilplottype" reuseLastValue="0"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
-  <widgets/>
+  <widgets>
+    <widget name="soilplot_soilprofile">
+      <config type="Map">
+        <Option name="force-suppress-popup" value="false" type="bool"/>
+        <Option name="nm-rel" type="invalid"/>
+      </config>
+    </widget>
+  </widgets>
   <previewExpression>COALESCE( "inspireid_localid", '&lt;NULL>' )</previewExpression>
   <layerGeometryType>0</layerGeometryType>
 </qgis>

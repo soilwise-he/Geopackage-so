@@ -7,12 +7,15 @@ This repository provides resources for working with the **INSPIRE Soil (SO)** da
 ### 1. `INSPIRE_SO_empty`  
 - **Contents:**  
   - GeoPackage files containing the complete INSPIRE SO data structure.
+  - A set of QGIS forms for:  
+      - Easier navigation of the dataset.  
+      - Data input and editing.  
 - **Purpose:**  
   - To provide a clean template of the INSPIRE SO model for further customization and data population.  
 
 ---
 
-### 2. `INSPIRE_SO_with_data_and_QGIS_project`  
+### 2. `INSPIRE_SO_with_data`  
 - **Contents:**  
   - GeoPackage files with:  
     - The complete INSPIRE SO structure.  
@@ -20,9 +23,9 @@ This repository provides resources for working with the **INSPIRE Soil (SO)** da
     - A set of QGIS forms for:  
       - Easier navigation of the dataset.  
       - Data input and editing.  
-- **Usage Instructions:**  
+### Usage Instructions:
   1. Link the GeoPackage to QGIS.  
-  2. Open the **`SO_PRJ`** project file (contained within the GeoPackage).  
+  2. Open the **`PRJ_SO`** project file (contained within the GeoPackage).  
   3. Utilize the included forms for efficient data handling.  
 
 

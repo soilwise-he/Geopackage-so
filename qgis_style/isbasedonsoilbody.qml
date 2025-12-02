@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis version="3.44.0-Solothurn" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,91 +7,96 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="soilbody_isbasedonsoilbody" providerKey="ogr" referencedLayer="soilbody_9e604eb5_eab1_4147_aaa8_8d7a59ca703f" layerName="soilbody" name="soilbody_isbasedonsoilbody" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilbody" referencingLayer="isbasedonsoilbody_d543d828_1f29_446c_b33a_60684d945148" layerId="soilbody_9e604eb5_eab1_4147_aaa8_8d7a59ca703f" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idsoilbody"/>
+    <relation name="soilbody_isbasedonsoilbody" referencingLayer="isbasedonsoilbody_0fe2b047_fcf1_40df_b86f_efd9dbf92cb7" id="soilbody_isbasedonsoilbody" layerName="soilbody" strength="Composition" layerId="soilbody_7cd4f504_2bdb_45db_86b2_e5ae852f3a79" referencedLayer="soilbody_7cd4f504_2bdb_45db_86b2_e5ae852f3a79" providerKey="ogr" dataSource="./SW_15.gpkg|layername=soilbody">
+      <fieldRef referencingField="guid_soilbody" referencedField="guid"/>
     </relation>
-    <relation id="soilderivedobject_isbasedonsoilbody_2" providerKey="ogr" referencedLayer="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" layerName="soilderivedobject" name="soilderivedobject_isbasedonsoilbody_2" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilderivedobject" referencingLayer="isbasedonsoilbody_d543d828_1f29_446c_b33a_60684d945148" layerId="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idsoilderivedobject"/>
+    <relation name="soilderivedobject_isbasedonsoilbody_2" referencingLayer="isbasedonsoilbody_0fe2b047_fcf1_40df_b86f_efd9dbf92cb7" id="soilderivedobject_isbasedonsoilbody_2" layerName="soilderivedobject" strength="Composition" layerId="soilderivedobject_360aac90_af34_468c_953d_c1813d5ee56a" referencedLayer="soilderivedobject_360aac90_af34_468c_953d_c1813d5ee56a" providerKey="ogr" dataSource="./SW_15.gpkg|layername=soilderivedobject">
+      <fieldRef referencingField="guid_soilderivedobject" referencedField="guid"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
-    <field configurationFlags="None" name="id">
+    <field name="id" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="idsoilderivedobject">
+    <field name="guid_soilderivedobject" configurationFlags="NoFlag">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilderivedobject" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" name="ReferencedLayerId" type="QString"/>
-            <Option value="soilderivedobject" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="soilderivedobject_isbasedonsoilbody_2" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=soilderivedobject" type="QString"/>
+            <Option name="ReferencedLayerId" value="soilderivedobject_360aac90_af34_468c_953d_c1813d5ee56a" type="QString"/>
+            <Option name="ReferencedLayerName" value="soilderivedobject" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="soilderivedobject_isbasedonsoilbody_2" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="idsoilbody">
+    <field name="guid_soilbody" configurationFlags="NoFlag">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilbody" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="soilbody_9e604eb5_eab1_4147_aaa8_8d7a59ca703f" name="ReferencedLayerId" type="QString"/>
-            <Option value="soilbody" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="soilbody_isbasedonsoilbody" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=soilbody" type="QString"/>
+            <Option name="ReferencedLayerId" value="soilbody_7cd4f504_2bdb_45db_86b2_e5ae852f3a79" type="QString"/>
+            <Option name="ReferencedLayerName" value="soilbody" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="soilbody_isbasedonsoilbody" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="Soil Derived Object" field="idsoilderivedobject"/>
-    <alias index="2" name="Soil Body" field="idsoilbody"/>
+    <alias name="" field="id" index="0"/>
+    <alias name="Soil Derived Object" field="guid_soilderivedobject" index="1"/>
+    <alias name="Soil Body" field="guid_soilbody" index="2"/>
   </aliases>
   <splitPolicies>
-    <policy policy="DefaultValue" field="id"/>
-    <policy policy="DefaultValue" field="idsoilderivedobject"/>
-    <policy policy="DefaultValue" field="idsoilbody"/>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guid_soilderivedobject" policy="DefaultValue"/>
+    <policy field="guid_soilbody" policy="DefaultValue"/>
   </splitPolicies>
+  <mergePolicies>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guid_soilderivedobject" policy="DefaultValue"/>
+    <policy field="guid_soilbody" policy="DefaultValue"/>
+  </mergePolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="idsoilderivedobject"/>
-    <default applyOnUpdate="0" expression="" field="idsoilbody"/>
+    <default field="id" applyOnUpdate="0" expression=""/>
+    <default field="guid_soilderivedobject" applyOnUpdate="0" expression=""/>
+    <default field="guid_soilbody" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idsoilderivedobject"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idsoilbody"/>
+    <constraint unique_strength="1" notnull_strength="1" field="id" constraints="3" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="guid_soilderivedobject" constraints="1" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="guid_soilbody" constraints="1" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
     <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="idsoilderivedobject"/>
-    <constraint exp="" desc="" field="idsoilbody"/>
+    <constraint exp="" desc="" field="guid_soilderivedobject"/>
+    <constraint exp="" desc="" field="guid_soilbody"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -118,51 +123,52 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+      <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="guid_soilderivedobject" verticalStretch="0" showLabel="1" index="1" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="1" name="idsoilderivedobject" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
-      </labelStyle>
-    </attributeEditorField>
-    <attributeEditorField showLabel="1" index="2" name="idsoilbody" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="guid_soilbody" verticalStretch="0" showLabel="1" index="2" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
   <editable>
-    <field editable="1" name="id"/>
-    <field editable="1" name="idsoilbody"/>
-    <field editable="1" name="idsoilderivedobject"/>
+    <field name="guid_soilbody" editable="1"/>
+    <field name="guid_soilderivedobject" editable="1"/>
+    <field name="id" editable="1"/>
+    <field name="idsoilbody" editable="1"/>
+    <field name="idsoilderivedobject" editable="1"/>
   </editable>
   <labelOnTop>
+    <field labelOnTop="0" name="guid_soilbody"/>
+    <field labelOnTop="0" name="guid_soilderivedobject"/>
     <field labelOnTop="0" name="id"/>
     <field labelOnTop="0" name="idsoilbody"/>
     <field labelOnTop="0" name="idsoilderivedobject"/>
   </labelOnTop>
   <reuseLastValue>
-    <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="idsoilbody"/>
-    <field reuseLastValue="0" name="idsoilderivedobject"/>
+    <field name="guid_soilbody" reuseLastValue="0"/>
+    <field name="guid_soilderivedobject" reuseLastValue="0"/>
+    <field name="id" reuseLastValue="0"/>
+    <field name="idsoilbody" reuseLastValue="0"/>
+    <field name="idsoilderivedobject" reuseLastValue="0"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>'Based on: '&#xd;
-|| COALESCE(attribute(get_feature&#xd;
-	(&#xd;
-		'soilbody',  &#xd;
-		'guidkey',&#xd;
-		"idsoilbody"&#xd;
-	) &#xd;
-	,'inspireid_localid' &#xd;
-	)&#xd;
+  <previewExpression>'Based on: '&#xd;&#xd;
+|| COALESCE(attribute(get_feature&#xd;&#xd;
+	(&#xd;&#xd;
+		'soilbody',  &#xd;&#xd;
+		'guid',&#xd;&#xd;
+		"guid_soilbody"&#xd;&#xd;
+	) &#xd;&#xd;
+	,'inspireid_localid' &#xd;&#xd;
+	)&#xd;&#xd;
 )</previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>

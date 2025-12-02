@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis version="3.44.0-Solothurn" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,112 +7,146 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="soilprofile_othersoilnametype" providerKey="ogr" referencedLayer="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" layerName="soilprofile" name="soilprofile_othersoilnametype" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilprofile" referencingLayer="othersoilnametype_fb52f48b_e19f_4d3c_896b_ae88969f9c37" layerId="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" strength="Composition">
-      <fieldRef referencedField="guidkey" referencingField="othersoilname"/>
+    <relation name="soilprofile_othersoilnametype" referencingLayer="othersoilnametype_b67946df_f895_4167_89fa_9532bf308ea4" id="soilprofile_othersoilnametype" layerName="soilprofile" strength="Composition" layerId="soilprofile_216eea7c_d015_4117_8c9f_df0b7692b5a7" referencedLayer="soilprofile_216eea7c_d015_4117_8c9f_df0b7692b5a7" providerKey="ogr" dataSource="./SW_15.gpkg|layername=soilprofile">
+      <fieldRef referencingField="othersoilname" referencedField="guid"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
-    <field configurationFlags="None" name="id">
+    <field name="id" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
-          <Option/>
+          <Option type="Map">
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
+          </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="othersoilname_type">
+    <field name="guid" configurationFlags="NoFlag">
+      <editWidget type="TextEdit">
+        <config>
+          <Option type="Map">
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
+    <field name="othersoilname_type" configurationFlags="NoFlag">
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowMulti" type="bool"/>
-            <Option value="false" name="AllowNull" type="bool"/>
-            <Option value="&quot;label&quot;" name="Description" type="QString"/>
-            <Option value="&quot;collection&quot; IN('OtherSoilNameTypeValue') " name="FilterExpression" type="QString"/>
-            <Option value="id" name="Key" type="QString"/>
-            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" name="Layer" type="QString"/>
-            <Option value="codelist" name="LayerName" type="QString"/>
-            <Option value="ogr" name="LayerProviderName" type="QString"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" name="LayerSource" type="QString"/>
-            <Option value="1" name="NofColumns" type="int"/>
-            <Option value="false" name="OrderByValue" type="bool"/>
-            <Option value="false" name="UseCompleter" type="bool"/>
-            <Option value="label" name="Value" type="QString"/>
+            <Option name="AllowMulti" value="false" type="bool"/>
+            <Option name="AllowNull" value="false" type="bool"/>
+            <Option name="CompleterMatchFlags" value="2" type="int"/>
+            <Option name="Description" value="&quot;label&quot;" type="QString"/>
+            <Option name="DisplayGroupName" value="false" type="bool"/>
+            <Option name="FilterExpression" value="&quot;collection&quot; IN('OtherSoilNameTypeValue') " type="QString"/>
+            <Option name="Group" value="" type="QString"/>
+            <Option name="Key" value="id" type="QString"/>
+            <Option name="Layer" value="codelist_a19771d8_036c_4ed5_9822_7f24f4d13c01" type="QString"/>
+            <Option name="LayerName" value="codelist" type="QString"/>
+            <Option name="LayerProviderName" value="ogr" type="QString"/>
+            <Option name="LayerSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=codelist" type="QString"/>
+            <Option name="NofColumns" value="1" type="int"/>
+            <Option name="OrderByDescending" value="false" type="bool"/>
+            <Option name="OrderByField" value="false" type="bool"/>
+            <Option name="OrderByFieldName" value="" type="QString"/>
+            <Option name="OrderByKey" value="true" type="bool"/>
+            <Option name="OrderByValue" value="false" type="bool"/>
+            <Option name="UseCompleter" value="false" type="bool"/>
+            <Option name="Value" value="label" type="QString"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="othersoilname_class">
+    <field name="othersoilname_class" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="isoriginalclassification">
+    <field name="isoriginalclassification" configurationFlags="NoFlag">
       <editWidget type="CheckBox">
         <config>
           <Option type="Map">
-            <Option value="" name="CheckedState" type="QString"/>
-            <Option value="0" name="TextDisplayMethod" type="int"/>
-            <Option value="" name="UncheckedState" type="QString"/>
+            <Option name="AllowNullState" value="false" type="bool"/>
+            <Option name="CheckedState" value="" type="QString"/>
+            <Option name="TextDisplayMethod" value="0" type="int"/>
+            <Option name="UncheckedState" value="" type="QString"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="othersoilname">
+    <field name="othersoilname" configurationFlags="NoFlag">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilprofile" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" name="ReferencedLayerId" type="QString"/>
-            <Option value="soilprofile" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="soilprofile_othersoilnametype" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=soilprofile" type="QString"/>
+            <Option name="ReferencedLayerId" value="soilprofile_216eea7c_d015_4117_8c9f_df0b7692b5a7" type="QString"/>
+            <Option name="ReferencedLayerName" value="soilprofile" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="soilprofile_othersoilnametype" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="Type" field="othersoilname_type"/>
-    <alias index="2" name="Class" field="othersoilname_class"/>
-    <alias index="3" name="It is an Original classification" field="isoriginalclassification"/>
-    <alias index="4" name="Other Soil Name" field="othersoilname"/>
+    <alias name="" field="id" index="0"/>
+    <alias name="" field="guid" index="1"/>
+    <alias name="Type" field="othersoilname_type" index="2"/>
+    <alias name="Class" field="othersoilname_class" index="3"/>
+    <alias name="It is an Original classification" field="isoriginalclassification" index="4"/>
+    <alias name="Soil Profile" field="othersoilname" index="5"/>
   </aliases>
   <splitPolicies>
-    <policy policy="Duplicate" field="id"/>
-    <policy policy="DefaultValue" field="othersoilname_type"/>
-    <policy policy="DefaultValue" field="othersoilname_class"/>
-    <policy policy="DefaultValue" field="isoriginalclassification"/>
-    <policy policy="DefaultValue" field="othersoilname"/>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guid" policy="DefaultValue"/>
+    <policy field="othersoilname_type" policy="DefaultValue"/>
+    <policy field="othersoilname_class" policy="DefaultValue"/>
+    <policy field="isoriginalclassification" policy="DefaultValue"/>
+    <policy field="othersoilname" policy="DefaultValue"/>
   </splitPolicies>
+  <mergePolicies>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guid" policy="DefaultValue"/>
+    <policy field="othersoilname_type" policy="DefaultValue"/>
+    <policy field="othersoilname_class" policy="DefaultValue"/>
+    <policy field="isoriginalclassification" policy="DefaultValue"/>
+    <policy field="othersoilname" policy="DefaultValue"/>
+  </mergePolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="othersoilname_type"/>
-    <default applyOnUpdate="0" expression="" field="othersoilname_class"/>
-    <default applyOnUpdate="0" expression="" field="isoriginalclassification"/>
-    <default applyOnUpdate="0" expression="" field="othersoilname"/>
+    <default field="id" applyOnUpdate="0" expression=""/>
+    <default field="guid" applyOnUpdate="0" expression=""/>
+    <default field="othersoilname_type" applyOnUpdate="0" expression=""/>
+    <default field="othersoilname_class" applyOnUpdate="0" expression=""/>
+    <default field="isoriginalclassification" applyOnUpdate="0" expression=""/>
+    <default field="othersoilname" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="othersoilname_type"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="othersoilname_class"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="isoriginalclassification"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="othersoilname"/>
+    <constraint unique_strength="1" notnull_strength="1" field="id" constraints="3" exp_strength="0"/>
+    <constraint unique_strength="1" notnull_strength="0" field="guid" constraints="2" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="othersoilname_type" constraints="1" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="othersoilname_class" constraints="0" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="1" field="isoriginalclassification" constraints="1" exp_strength="0"/>
+    <constraint unique_strength="0" notnull_strength="0" field="othersoilname" constraints="0" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
     <constraint exp="" desc="" field="id"/>
+    <constraint exp="" desc="" field="guid"/>
     <constraint exp="" desc="" field="othersoilname_type"/>
     <constraint exp="" desc="" field="othersoilname_class"/>
     <constraint exp="" desc="" field="isoriginalclassification"/>
@@ -143,43 +177,55 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+      <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer groupBox="1" name="ID" verticalStretch="0" visibilityExpressionEnabled="0" showLabel="1" type="GroupBox" collapsed="1" visibilityExpression="" collapsedExpressionEnabled="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+      </labelStyle>
+      <attributeEditorField name="id" verticalStretch="0" showLabel="1" index="0" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+        </labelStyle>
+      </attributeEditorField>
+      <attributeEditorField name="guid" verticalStretch="0" showLabel="1" index="1" horizontalStretch="0">
+        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
+          <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+        </labelStyle>
+      </attributeEditorField>
+    </attributeEditorContainer>
+    <attributeEditorField name="othersoilname_type" verticalStretch="0" showLabel="1" index="2" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="1" name="othersoilname_type" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="othersoilname_class" verticalStretch="0" showLabel="1" index="3" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="2" name="othersoilname_class" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="isoriginalclassification" verticalStretch="0" showLabel="1" index="4" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="3" name="isoriginalclassification" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
-      </labelStyle>
-    </attributeEditorField>
-    <attributeEditorField showLabel="1" index="4" name="othersoilname" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="othersoilname" verticalStretch="0" showLabel="1" index="5" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
+        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
   <editable>
-    <field editable="1" name="id"/>
-    <field editable="1" name="isoriginalclassification"/>
-    <field editable="1" name="othersoilname"/>
-    <field editable="1" name="othersoilname_class"/>
-    <field editable="1" name="othersoilname_type"/>
+    <field name="guid" editable="0"/>
+    <field name="id" editable="0"/>
+    <field name="isoriginalclassification" editable="1"/>
+    <field name="othersoilname" editable="1"/>
+    <field name="othersoilname_class" editable="1"/>
+    <field name="othersoilname_type" editable="1"/>
   </editable>
   <labelOnTop>
+    <field labelOnTop="0" name="guid"/>
     <field labelOnTop="0" name="id"/>
     <field labelOnTop="0" name="isoriginalclassification"/>
     <field labelOnTop="0" name="othersoilname"/>
@@ -187,17 +233,18 @@ def my_form_open(dialog, layer, feature):
     <field labelOnTop="0" name="othersoilname_type"/>
   </labelOnTop>
   <reuseLastValue>
-    <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="isoriginalclassification"/>
-    <field reuseLastValue="0" name="othersoilname"/>
-    <field reuseLastValue="0" name="othersoilname_class"/>
-    <field reuseLastValue="0" name="othersoilname_type"/>
+    <field name="guid" reuseLastValue="0"/>
+    <field name="id" reuseLastValue="0"/>
+    <field name="isoriginalclassification" reuseLastValue="0"/>
+    <field name="othersoilname" reuseLastValue="0"/>
+    <field name="othersoilname_class" reuseLastValue="0"/>
+    <field name="othersoilname_type" reuseLastValue="0"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>regexp_substr(COALESCE( "othersoilname_type", '&lt;NULL>' ), '/([^/]+)$')&#xd;
-|| ' - ' ||&#xd;
- "othersoilname_class" &#xd;
+  <previewExpression>regexp_substr(COALESCE( "othersoilname_type", '&lt;NULL>' ), '/([^/]+)$')&#xd;&#xd;
+|| ' - ' ||&#xd;&#xd;
+ "othersoilname_class" &#xd;&#xd;
 </previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>
