@@ -7,7 +7,7 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="datastream_observation" name="datastream_observation" providerKey="ogr" layerName="datastream" strength="Composition" dataSource="./SW_15.gpkg|layername=datastream" layerId="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb" referencingLayer="observation_4d160c22_cbd4_448b_a710_434409308753" referencedLayer="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb">
+    <relation dataSource="./SW_21.gpkg|layername=datastream" layerId="datastream_a469526b_b3bd_4dc9_8312_6204bfc15ab8" id="datastream_observation" layerName="datastream" strength="Association" name="datastream_observation" referencedLayer="datastream_a469526b_b3bd_4dc9_8312_6204bfc15ab8" providerKey="ogr" referencingLayer="observation_e95caa82_81e9_4b77_b221_658268b1f642">
       <fieldRef referencingField="guid_datastream" referencedField="guid"/>
     </relation>
   </referencedLayers>
@@ -61,11 +61,29 @@
       </editWidget>
     </field>
     <field name="result_text" configurationFlags="NoFlag">
-      <editWidget type="TextEdit">
+      <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
+            <Option name="AllowMulti" type="bool" value="false"/>
+            <Option name="AllowNull" type="bool" value="false"/>
+            <Option name="CompleterMatchFlags" type="int" value="2"/>
+            <Option name="Description" type="invalid"/>
+            <Option name="DisplayGroupName" type="bool" value="false"/>
+            <Option name="FilterExpression" type="QString" value="&quot;collection&quot;  IN (attribute(get_feature&#xa;(&#xa;&#x9;'datastream',&#xa;&#x9;'guid',&#xa;&#x9;current_value('guid_datastream')&#xa;) &#xa;,'codespace'))"/>
+            <Option name="Group" type="invalid"/>
+            <Option name="Key" type="QString" value="id"/>
+            <Option name="Layer" type="QString" value="codelist_f0a44890_4094_42a9_91ee_5774ede060e3"/>
+            <Option name="LayerName" type="QString" value="codelist"/>
+            <Option name="LayerProviderName" type="QString" value="ogr"/>
+            <Option name="LayerSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_21.gpkg|layername=codelist"/>
+            <Option name="NofColumns" type="int" value="1"/>
+            <Option name="OrderByDescending" type="bool" value="false"/>
+            <Option name="OrderByField" type="bool" value="false"/>
+            <Option name="OrderByFieldName" type="QString" value="id"/>
+            <Option name="OrderByKey" type="bool" value="true"/>
+            <Option name="OrderByValue" type="bool" value="false"/>
+            <Option name="UseCompleter" type="bool" value="false"/>
+            <Option name="Value" type="QString" value="label"/>
           </Option>
         </config>
       </editWidget>
@@ -84,10 +102,10 @@
       <editWidget type="CheckBox">
         <config>
           <Option type="Map">
-            <Option name="AllowNullState" type="bool" value="false"/>
-            <Option name="CheckedState" type="QString" value=""/>
+            <Option name="AllowNullState" type="bool" value="true"/>
+            <Option name="CheckedState" type="invalid"/>
             <Option name="TextDisplayMethod" type="int" value="0"/>
-            <Option name="UncheckedState" type="QString" value=""/>
+            <Option name="UncheckedState" type="invalid"/>
           </Option>
         </config>
       </editWidget>
@@ -162,6 +180,16 @@
         </config>
       </editWidget>
     </field>
+    <field name="auxiliary_storage_user_custom_note" configurationFlags="NoFlag">
+      <editWidget type="TextEdit">
+        <config>
+          <Option type="Map">
+            <Option name="IsMultiline" type="bool" value="true"/>
+            <Option name="UseHtml" type="bool" value="false"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
     <field name="type_data" configurationFlags="NoFlag">
       <editWidget type="TextEdit">
         <config>
@@ -172,103 +200,127 @@
         </config>
       </editWidget>
     </field>
+    <field name="note" configurationFlags="NoFlag">
+      <editWidget type="TextEdit">
+        <config>
+          <Option type="Map">
+            <Option name="IsMultiline" type="bool" value="true"/>
+            <Option name="UseHtml" type="bool" value="false"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
   </fieldConfiguration>
   <aliases>
-    <alias name="" field="id" index="0"/>
-    <alias name="" field="guid" index="1"/>
-    <alias name="Start of Phenomenon" field="phenomenontime_start" index="2"/>
-    <alias name="End of Phenomenon" field="phenomenontime_end" index="3"/>
-    <alias name="Value" field="result_text" index="4"/>
-    <alias name="Value" field="result_real" index="5"/>
-    <alias name="Value" field="result_boolean" index="6"/>
-    <alias name="Time of result" field="resulttime" index="7"/>
-    <alias name="Start Time of Validity Period" field="validtime_start" index="8"/>
-    <alias name="End Time of Validity Period (mandatory)" field="validtime_end" index="9"/>
-    <alias name="" field="properties" index="10"/>
-    <alias name="Datastream" field="guid_datastream" index="11"/>
-    <alias name="" field="type_data" index="12"/>
+    <alias name="" index="0" field="id"/>
+    <alias name="" index="1" field="guid"/>
+    <alias name="Start of Phenomenon" index="2" field="phenomenontime_start"/>
+    <alias name="End of Phenomenon" index="3" field="phenomenontime_end"/>
+    <alias name="Value" index="4" field="result_text"/>
+    <alias name="Value" index="5" field="result_real"/>
+    <alias name="Value" index="6" field="result_boolean"/>
+    <alias name="Time of result" index="7" field="resulttime"/>
+    <alias name="Start Time of Validity Period" index="8" field="validtime_start"/>
+    <alias name="End Time of Validity Period (mandatory)" index="9" field="validtime_end"/>
+    <alias name="" index="10" field="properties"/>
+    <alias name="Datastream" index="11" field="guid_datastream"/>
+    <alias name="Value  (Edit-only)" index="12" field="auxiliary_storage_user_custom_note"/>
+    <alias name="" index="13" field="type_data"/>
+    <alias name="Value  (Read-only)" index="14" field="note"/>
   </aliases>
   <splitPolicies>
-    <policy policy="DefaultValue" field="id"/>
-    <policy policy="DefaultValue" field="guid"/>
-    <policy policy="DefaultValue" field="phenomenontime_start"/>
-    <policy policy="DefaultValue" field="phenomenontime_end"/>
-    <policy policy="DefaultValue" field="result_text"/>
-    <policy policy="DefaultValue" field="result_real"/>
-    <policy policy="DefaultValue" field="result_boolean"/>
-    <policy policy="DefaultValue" field="resulttime"/>
-    <policy policy="DefaultValue" field="validtime_start"/>
-    <policy policy="DefaultValue" field="validtime_end"/>
-    <policy policy="DefaultValue" field="properties"/>
-    <policy policy="DefaultValue" field="guid_datastream"/>
-    <policy policy="DefaultValue" field="type_data"/>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guid" policy="DefaultValue"/>
+    <policy field="phenomenontime_start" policy="DefaultValue"/>
+    <policy field="phenomenontime_end" policy="DefaultValue"/>
+    <policy field="result_text" policy="DefaultValue"/>
+    <policy field="result_real" policy="DefaultValue"/>
+    <policy field="result_boolean" policy="DefaultValue"/>
+    <policy field="resulttime" policy="DefaultValue"/>
+    <policy field="validtime_start" policy="DefaultValue"/>
+    <policy field="validtime_end" policy="DefaultValue"/>
+    <policy field="properties" policy="DefaultValue"/>
+    <policy field="guid_datastream" policy="DefaultValue"/>
+    <policy field="auxiliary_storage_user_custom_note" policy="DefaultValue"/>
+    <policy field="type_data" policy="DefaultValue"/>
+    <policy field="note" policy="DefaultValue"/>
   </splitPolicies>
   <mergePolicies>
-    <policy policy="DefaultValue" field="id"/>
-    <policy policy="DefaultValue" field="guid"/>
-    <policy policy="DefaultValue" field="phenomenontime_start"/>
-    <policy policy="DefaultValue" field="phenomenontime_end"/>
-    <policy policy="DefaultValue" field="result_text"/>
-    <policy policy="DefaultValue" field="result_real"/>
-    <policy policy="DefaultValue" field="result_boolean"/>
-    <policy policy="DefaultValue" field="resulttime"/>
-    <policy policy="DefaultValue" field="validtime_start"/>
-    <policy policy="DefaultValue" field="validtime_end"/>
-    <policy policy="DefaultValue" field="properties"/>
-    <policy policy="DefaultValue" field="guid_datastream"/>
-    <policy policy="DefaultValue" field="type_data"/>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guid" policy="DefaultValue"/>
+    <policy field="phenomenontime_start" policy="DefaultValue"/>
+    <policy field="phenomenontime_end" policy="DefaultValue"/>
+    <policy field="result_text" policy="DefaultValue"/>
+    <policy field="result_real" policy="DefaultValue"/>
+    <policy field="result_boolean" policy="DefaultValue"/>
+    <policy field="resulttime" policy="DefaultValue"/>
+    <policy field="validtime_start" policy="DefaultValue"/>
+    <policy field="validtime_end" policy="DefaultValue"/>
+    <policy field="properties" policy="DefaultValue"/>
+    <policy field="guid_datastream" policy="DefaultValue"/>
+    <policy field="auxiliary_storage_user_custom_note" policy="DefaultValue"/>
+    <policy field="type_data" policy="DefaultValue"/>
+    <policy field="note" policy="DefaultValue"/>
   </mergePolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="guid"/>
-    <default applyOnUpdate="0" expression="" field="phenomenontime_start"/>
-    <default applyOnUpdate="0" expression="" field="phenomenontime_end"/>
-    <default applyOnUpdate="0" expression="" field="result_text"/>
-    <default applyOnUpdate="0" expression="" field="result_real"/>
-    <default applyOnUpdate="0" expression="" field="result_boolean"/>
-    <default applyOnUpdate="0" expression="" field="resulttime"/>
-    <default applyOnUpdate="0" expression="" field="validtime_start"/>
-    <default applyOnUpdate="0" expression="" field="validtime_end"/>
-    <default applyOnUpdate="0" expression="" field="properties"/>
-    <default applyOnUpdate="0" expression="" field="guid_datastream"/>
-    <default applyOnUpdate="0" expression="" field="type_data"/>
+    <default expression="" applyOnUpdate="0" field="id"/>
+    <default expression="" applyOnUpdate="0" field="guid"/>
+    <default expression="" applyOnUpdate="0" field="phenomenontime_start"/>
+    <default expression="" applyOnUpdate="0" field="phenomenontime_end"/>
+    <default expression="CASE&#xd;&#xa;  WHEN &quot;auxiliary_storage_user_custom_note&quot; IS NOT NULL&#xd;&#xa;    THEN &quot;auxiliary_storage_user_custom_note&quot;&#xd;&#xa;  ELSE &quot;result_text&quot;&#xd;&#xa;END" applyOnUpdate="1" field="result_text"/>
+    <default expression="" applyOnUpdate="0" field="result_real"/>
+    <default expression="" applyOnUpdate="0" field="result_boolean"/>
+    <default expression="" applyOnUpdate="0" field="resulttime"/>
+    <default expression="" applyOnUpdate="0" field="validtime_start"/>
+    <default expression="" applyOnUpdate="0" field="validtime_end"/>
+    <default expression="" applyOnUpdate="0" field="properties"/>
+    <default expression="" applyOnUpdate="0" field="guid_datastream"/>
+    <default expression="" applyOnUpdate="0" field="auxiliary_storage_user_custom_note"/>
+    <default expression="" applyOnUpdate="0" field="type_data"/>
+    <default expression="" applyOnUpdate="0" field="note"/>
   </defaults>
   <constraints>
-    <constraint constraints="3" exp_strength="0" field="id" unique_strength="1" notnull_strength="1"/>
-    <constraint constraints="2" exp_strength="0" field="guid" unique_strength="1" notnull_strength="0"/>
-    <constraint constraints="1" exp_strength="0" field="phenomenontime_start" unique_strength="0" notnull_strength="1"/>
-    <constraint constraints="0" exp_strength="0" field="phenomenontime_end" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="result_text" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="result_real" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="result_boolean" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="resulttime" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="validtime_start" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="validtime_end" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="properties" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="1" exp_strength="0" field="guid_datastream" unique_strength="0" notnull_strength="1"/>
-    <constraint constraints="0" exp_strength="0" field="type_data" unique_strength="0" notnull_strength="0"/>
+    <constraint notnull_strength="1" field="id" constraints="3" unique_strength="1" exp_strength="0"/>
+    <constraint notnull_strength="0" field="guid" constraints="2" unique_strength="1" exp_strength="0"/>
+    <constraint notnull_strength="1" field="phenomenontime_start" constraints="1" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="0" field="phenomenontime_end" constraints="0" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="0" field="result_text" constraints="4" unique_strength="0" exp_strength="2"/>
+    <constraint notnull_strength="0" field="result_real" constraints="0" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="0" field="result_boolean" constraints="0" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="0" field="resulttime" constraints="0" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="0" field="validtime_start" constraints="0" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="0" field="validtime_end" constraints="0" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="0" field="properties" constraints="0" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="1" field="guid_datastream" constraints="1" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="0" field="auxiliary_storage_user_custom_note" constraints="0" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="0" field="type_data" constraints="0" unique_strength="0" exp_strength="0"/>
+    <constraint notnull_strength="0" field="note" constraints="0" unique_strength="0" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint desc="" exp="" field="id"/>
-    <constraint desc="" exp="" field="guid"/>
-    <constraint desc="" exp="" field="phenomenontime_start"/>
-    <constraint desc="" exp="" field="phenomenontime_end"/>
-    <constraint desc="" exp="" field="result_text"/>
-    <constraint desc="" exp="" field="result_real"/>
-    <constraint desc="" exp="" field="result_boolean"/>
-    <constraint desc="" exp="" field="resulttime"/>
-    <constraint desc="" exp="" field="validtime_start"/>
-    <constraint desc="" exp="" field="validtime_end"/>
-    <constraint desc="" exp="" field="properties"/>
-    <constraint desc="" exp="" field="guid_datastream"/>
-    <constraint desc="" exp="" field="type_data"/>
+    <constraint desc="" field="id" exp=""/>
+    <constraint desc="" field="guid" exp=""/>
+    <constraint desc="" field="phenomenontime_start" exp=""/>
+    <constraint desc="" field="phenomenontime_end" exp=""/>
+    <constraint desc="" field="result_text" exp="CASE&#xd;&#xa;  WHEN &quot;auxiliary_storage_user_custom_note&quot; IS NOT NULL&#xd;&#xa;    THEN &quot;auxiliary_storage_user_custom_note&quot;&#xd;&#xa;  ELSE &quot;result_text&quot;&#xd;&#xa;END&#xd;&#xa;&#xd;&#xa;"/>
+    <constraint desc="" field="result_real" exp=""/>
+    <constraint desc="" field="result_boolean" exp=""/>
+    <constraint desc="" field="resulttime" exp=""/>
+    <constraint desc="" field="validtime_start" exp=""/>
+    <constraint desc="" field="validtime_end" exp=""/>
+    <constraint desc="" field="properties" exp=""/>
+    <constraint desc="" field="guid_datastream" exp=""/>
+    <constraint desc="" field="auxiliary_storage_user_custom_note" exp=""/>
+    <constraint desc="" field="type_data" exp=""/>
+    <constraint desc="" field="note" exp=""/>
   </constraintExpressions>
   <expressionfields>
-    <field comment="" typeName="string" name="type_data" length="0" type="10" expression="attribute(get_feature&#xd;&#xa;&#x9;(&#xd;&#xa;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;'guid',&#xd;&#xa;&#x9;&#x9;&quot;guid_datastream&quot;&#xd;&#xa;&#x9;) &#xd;&#xa;&#x9;,'type'&#xd;&#xa;)" subType="0" precision="0"/>
-    <field comment="" typeName="string" name="type_data" length="0" type="10" expression="attribute(get_feature&#xd;&#xa;&#x9;(&#xd;&#xa;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;'guid',&#xd;&#xa;&#x9;&#x9;&quot;guid_datastream&quot;&#xd;&#xa;&#x9;) &#xd;&#xa;&#x9;,'type'&#xd;&#xa;)" subType="0" precision="0"/>
+    <field comment="" expression="attribute(get_feature&#xd;&#xa;&#x9;(&#xd;&#xa;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;'guid',&#xd;&#xa;&#x9;&#x9;&quot;guid_datastream&quot;&#xd;&#xa;&#x9;) &#xd;&#xa;&#x9;,'type'&#xd;&#xa;)" name="type_data" precision="0" type="10" length="0" typeName="string" subType="0"/>
+    <field comment="" expression="attribute(get_feature&#xd;&#xa;&#x9;(&#xd;&#xa;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;'guid',&#xd;&#xa;&#x9;&#x9;&quot;guid_datastream&quot;&#xd;&#xa;&#x9;) &#xd;&#xa;&#x9;,'type'&#xd;&#xa;)" name="type_data" precision="0" type="10" length="0" typeName="string" subType="0"/>
+    <field comment="" expression=" &quot;result_text&quot; " name="note" precision="0" type="10" length="0" typeName="string" subType="0"/>
+    <field comment="" expression=" &quot;result_text&quot; " name="note" precision="0" type="10" length="0" typeName="string" subType="0"/>
   </expressionfields>
   <attributeactions>
-    <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+    <defaultAction key="Canvas" value="{00000000-0000-0000-0000-000000000000}"/>
   </attributeactions>
   <editform tolerant="1"></editform>
   <editforminit/>
@@ -294,136 +346,141 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-      <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+      <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
     </labelStyle>
-    <attributeEditorContainer name="ID" collapsed="1" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer collapsedExpressionEnabled="0" name="ID" horizontalStretch="0" collapsedExpression="" visibilityExpression="" columnCount="1" verticalStretch="0" type="GroupBox" collapsed="1" showLabel="1" groupBox="1" visibilityExpressionEnabled="0">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField name="id" showLabel="1" horizontalStretch="0" verticalStretch="0" index="0">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="id" horizontalStretch="0" verticalStretch="0" index="0" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField name="guid" showLabel="1" horizontalStretch="0" verticalStretch="0" index="1">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="guid" horizontalStretch="0" verticalStretch="0" index="1" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Phenomenon Time" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer collapsedExpressionEnabled="0" name="Phenomenon Time" horizontalStretch="0" collapsedExpression="" visibilityExpression="" columnCount="1" verticalStretch="0" type="GroupBox" collapsed="0" showLabel="1" groupBox="1" visibilityExpressionEnabled="0">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField name="phenomenontime_start" showLabel="1" horizontalStretch="0" verticalStretch="0" index="2">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="phenomenontime_start" horizontalStretch="0" verticalStretch="0" index="2" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField name="phenomenontime_end" showLabel="1" horizontalStretch="0" verticalStretch="0" index="3">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="phenomenontime_end" horizontalStretch="0" verticalStretch="0" index="3" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Result (Type Quantity)" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression=" &quot;type_data&quot; ='Quantity'" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer collapsedExpressionEnabled="0" name="Result (Type Quantity)" horizontalStretch="0" collapsedExpression="" visibilityExpression=" &quot;type_data&quot; ='Quantity'" columnCount="1" verticalStretch="0" type="GroupBox" collapsed="0" showLabel="1" groupBox="1" visibilityExpressionEnabled="1">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField name="result_real" showLabel="1" horizontalStretch="0" verticalStretch="0" index="5">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="result_real" horizontalStretch="0" verticalStretch="0" index="5" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Result (Type Category)" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression=" &quot;type_data&quot; ='Category'" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer collapsedExpressionEnabled="0" name="Result (Type Category)" horizontalStretch="0" collapsedExpression="" visibilityExpression=" &quot;type_data&quot; ='Category'" columnCount="1" verticalStretch="0" type="GroupBox" collapsed="0" showLabel="1" groupBox="1" visibilityExpressionEnabled="1">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField name="result_text" showLabel="1" horizontalStretch="0" verticalStretch="0" index="4">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="result_text" horizontalStretch="0" verticalStretch="0" index="4" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Result (Type Boolean)" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression=" &quot;type_data&quot; ='Boolean'" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer collapsedExpressionEnabled="0" name="Result (Type Boolean)" horizontalStretch="0" collapsedExpression="" visibilityExpression=" &quot;type_data&quot; ='Boolean'" columnCount="1" verticalStretch="0" type="GroupBox" collapsed="0" showLabel="1" groupBox="1" visibilityExpressionEnabled="1">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField name="result_boolean" showLabel="1" horizontalStretch="0" verticalStretch="0" index="6">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="result_boolean" horizontalStretch="0" verticalStretch="0" index="6" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Result (Type Count)" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression=" &quot;type_data&quot; ='Count'" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer collapsedExpressionEnabled="0" name="Result (Type Count)" horizontalStretch="0" collapsedExpression="" visibilityExpression=" &quot;type_data&quot; ='Count'" columnCount="1" verticalStretch="0" type="GroupBox" collapsed="0" showLabel="1" groupBox="1" visibilityExpressionEnabled="1">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField name="result_real" showLabel="1" horizontalStretch="0" verticalStretch="0" index="5">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="result_real" horizontalStretch="0" verticalStretch="0" index="5" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Result (Type Text)" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression=" &quot;type_data&quot; ='Text'" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer collapsedExpressionEnabled="0" name="Result (Type Text)" horizontalStretch="0" collapsedExpression="" visibilityExpression=" &quot;type_data&quot; ='Text'" columnCount="1" verticalStretch="0" type="GroupBox" collapsed="0" showLabel="1" groupBox="1" visibilityExpressionEnabled="1">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField name="result_text" showLabel="1" horizontalStretch="0" verticalStretch="0" index="4">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="note" horizontalStretch="0" verticalStretch="0" index="14" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+        </labelStyle>
+      </attributeEditorField>
+      <attributeEditorField name="auxiliary_storage_user_custom_note" horizontalStretch="0" verticalStretch="0" index="12" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField name="resulttime" showLabel="1" horizontalStretch="0" verticalStretch="0" index="7">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField name="resulttime" horizontalStretch="0" verticalStretch="0" index="7" showLabel="1">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer name="Valid Time" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer collapsedExpressionEnabled="0" name="Valid Time" horizontalStretch="0" collapsedExpression="" visibilityExpression="" columnCount="1" verticalStretch="0" type="GroupBox" collapsed="0" showLabel="1" groupBox="1" visibilityExpressionEnabled="0">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField name="validtime_start" showLabel="1" horizontalStretch="0" verticalStretch="0" index="8">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="validtime_start" horizontalStretch="0" verticalStretch="0" index="8" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorContainer name="end" collapsed="0" showLabel="0" collapsedExpression="" type="Row" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression=" &quot;validtime_start&quot; is not NULL" collapsedExpressionEnabled="0" columnCount="1" groupBox="0">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorContainer collapsedExpressionEnabled="0" name="end" horizontalStretch="0" collapsedExpression="" visibilityExpression=" &quot;validtime_start&quot; is not NULL" columnCount="1" verticalStretch="0" type="Row" collapsed="0" showLabel="0" groupBox="0" visibilityExpressionEnabled="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
-        <attributeEditorField name="validtime_end" showLabel="1" horizontalStretch="0" verticalStretch="0" index="9">
-          <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-            <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+        <attributeEditorField name="validtime_end" horizontalStretch="0" verticalStretch="0" index="9" showLabel="1">
+          <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+            <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
           </labelStyle>
         </attributeEditorField>
       </attributeEditorContainer>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Properties" collapsed="1" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer collapsedExpressionEnabled="0" name="Properties" horizontalStretch="0" collapsedExpression="" visibilityExpression="" columnCount="1" verticalStretch="0" type="GroupBox" collapsed="1" showLabel="1" groupBox="1" visibilityExpressionEnabled="0">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField name="properties" showLabel="1" horizontalStretch="0" verticalStretch="0" index="10">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="properties" horizontalStretch="0" verticalStretch="0" index="10" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField name="guid_datastream" showLabel="1" horizontalStretch="0" verticalStretch="0" index="11">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField name="guid_datastream" horizontalStretch="0" verticalStretch="0" index="11" showLabel="1">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer name="Hidden" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression="1=0" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer collapsedExpressionEnabled="0" name="Hidden" horizontalStretch="0" collapsedExpression="" visibilityExpression="1=0" columnCount="1" verticalStretch="0" type="GroupBox" collapsed="0" showLabel="1" groupBox="1" visibilityExpressionEnabled="1">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField name="type_data" showLabel="1" horizontalStretch="0" verticalStretch="0" index="12">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField name="type_data" horizontalStretch="0" verticalStretch="0" index="13" showLabel="1">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+          <labelFont bold="0" underline="0" strikethrough="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
@@ -431,16 +488,21 @@ def my_form_open(dialog, layer, feature):
   <editable>
     <field name="Domain" editable="0"/>
     <field name="Type_dat" editable="1"/>
+    <field name="auxiliary_storage_user_custom_note" editable="0"/>
     <field name="guid" editable="0"/>
     <field name="guid_datastream" editable="1"/>
     <field name="id" editable="0"/>
+    <field name="my_text" editable="0"/>
+    <field name="note" editable="0"/>
     <field name="phenomenontime_end" editable="1"/>
     <field name="phenomenontime_start" editable="1"/>
     <field name="properties" editable="1"/>
     <field name="result_boolean" editable="1"/>
     <field name="result_real" editable="1"/>
+    <field name="result_test_long" editable="0"/>
     <field name="result_text" editable="1"/>
     <field name="resulttime" editable="1"/>
+    <field name="text_note" editable="1"/>
     <field name="type_data" editable="0"/>
     <field name="typed" editable="1"/>
     <field name="validtime_end" editable="1"/>
@@ -449,51 +511,71 @@ def my_form_open(dialog, layer, feature):
   <labelOnTop>
     <field name="Domain" labelOnTop="0"/>
     <field name="Type_dat" labelOnTop="0"/>
+    <field name="auxiliary_storage_user_custom_note" labelOnTop="1"/>
     <field name="guid" labelOnTop="0"/>
     <field name="guid_datastream" labelOnTop="0"/>
     <field name="id" labelOnTop="0"/>
+    <field name="my_text" labelOnTop="0"/>
+    <field name="note" labelOnTop="1"/>
     <field name="phenomenontime_end" labelOnTop="0"/>
     <field name="phenomenontime_start" labelOnTop="0"/>
     <field name="properties" labelOnTop="0"/>
     <field name="result_boolean" labelOnTop="0"/>
     <field name="result_real" labelOnTop="0"/>
+    <field name="result_test_long" labelOnTop="0"/>
     <field name="result_text" labelOnTop="0"/>
     <field name="resulttime" labelOnTop="0"/>
+    <field name="text_note" labelOnTop="0"/>
     <field name="type_data" labelOnTop="0"/>
     <field name="typed" labelOnTop="0"/>
     <field name="validtime_end" labelOnTop="0"/>
     <field name="validtime_start" labelOnTop="0"/>
   </labelOnTop>
   <reuseLastValue>
-    <field name="Domain" reuseLastValue="0"/>
-    <field name="Type_dat" reuseLastValue="0"/>
-    <field name="guid" reuseLastValue="0"/>
-    <field name="guid_datastream" reuseLastValue="0"/>
-    <field name="id" reuseLastValue="0"/>
-    <field name="phenomenontime_end" reuseLastValue="0"/>
-    <field name="phenomenontime_start" reuseLastValue="0"/>
-    <field name="properties" reuseLastValue="0"/>
-    <field name="result_boolean" reuseLastValue="0"/>
-    <field name="result_real" reuseLastValue="0"/>
-    <field name="result_text" reuseLastValue="0"/>
-    <field name="resulttime" reuseLastValue="0"/>
-    <field name="type_data" reuseLastValue="0"/>
-    <field name="typed" reuseLastValue="0"/>
-    <field name="validtime_end" reuseLastValue="0"/>
-    <field name="validtime_start" reuseLastValue="0"/>
+    <field reuseLastValue="0" name="Domain"/>
+    <field reuseLastValue="0" name="Type_dat"/>
+    <field reuseLastValue="0" name="auxiliary_storage_user_custom_note"/>
+    <field reuseLastValue="0" name="guid"/>
+    <field reuseLastValue="0" name="guid_datastream"/>
+    <field reuseLastValue="0" name="id"/>
+    <field reuseLastValue="0" name="my_text"/>
+    <field reuseLastValue="0" name="note"/>
+    <field reuseLastValue="0" name="phenomenontime_end"/>
+    <field reuseLastValue="0" name="phenomenontime_start"/>
+    <field reuseLastValue="0" name="properties"/>
+    <field reuseLastValue="0" name="result_boolean"/>
+    <field reuseLastValue="0" name="result_real"/>
+    <field reuseLastValue="0" name="result_test_long"/>
+    <field reuseLastValue="0" name="result_text"/>
+    <field reuseLastValue="0" name="resulttime"/>
+    <field reuseLastValue="0" name="text_note"/>
+    <field reuseLastValue="0" name="type_data"/>
+    <field reuseLastValue="0" name="typed"/>
+    <field reuseLastValue="0" name="validtime_end"/>
+    <field reuseLastValue="0" name="validtime_start"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>' Value = '||&#xd;
-CASE &#xd;
+  <previewExpression>CASE &#xd;
 WHEN  "type_data" ='Quantity' &#xd;
 THEN  &#xd;
 "result_real"&#xd;
  &#xd;
 WHEN  "type_data" ='Category' &#xd;
 THEN  &#xd;
- "result_text" &#xd;
+regexp_substr("result_text" , '[^/]+$')&#xd;
+&#xd;
+WHEN  "type_data" ='Count' &#xd;
+THEN  &#xd;
+"result_real"&#xd;
  &#xd;
+WHEN  "type_data" ='Boolean' &#xd;
+THEN  &#xd;
+"result_boolean" &#xd;
+&#xd;
+WHEN  "type_data" ='Text' &#xd;
+THEN  &#xd;
+'note'&#xd;
 END&#xd;
 || ' - ('|| "phenomenontime_start" ||')'</previewExpression>
   <layerGeometryType>4</layerGeometryType>

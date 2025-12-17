@@ -1,40 +1,40 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis readOnly="0" version="3.44.0-Solothurn" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Actions|Relations">
+<qgis version="3.44.0-Solothurn" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Actions|Relations" readOnly="0">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
     <Searchable>1</Searchable>
     <Private>0</Private>
   </flags>
-  <renderer-v2 type="singleSymbol" forceraster="0" enableorderby="0" referencescale="-1" symbollevels="0">
+  <renderer-v2 enableorderby="0" symbollevels="0" referencescale="-1" forceraster="0" type="singleSymbol">
     <symbols>
-      <symbol name="0" force_rhr="0" frame_rate="10" type="fill" alpha="1" is_animated="0" clip_to_extent="1">
+      <symbol force_rhr="0" frame_rate="10" clip_to_extent="1" name="0" is_animated="0" type="fill" alpha="1">
         <data_defined_properties>
           <Option type="Map">
-            <Option name="name" type="QString" value=""/>
+            <Option value="" name="name" type="QString"/>
             <Option name="properties"/>
-            <Option name="type" type="QString" value="collection"/>
+            <Option value="collection" name="type" type="QString"/>
           </Option>
         </data_defined_properties>
-        <layer id="{7f0b70e6-8da6-47ea-8a88-3181ed329ccb}" enabled="1" locked="0" class="SimpleFill" pass="0">
+        <layer id="{7f0b70e6-8da6-47ea-8a88-3181ed329ccb}" class="SimpleFill" locked="0" enabled="1" pass="0">
           <Option type="Map">
-            <Option name="border_width_map_unit_scale" type="QString" value="3x:0,0,0,0,0,0"/>
-            <Option name="color" type="QString" value="133,182,111,255,rgb:0.5215686,0.7137255,0.4352941,1"/>
-            <Option name="joinstyle" type="QString" value="bevel"/>
-            <Option name="offset" type="QString" value="0,0"/>
-            <Option name="offset_map_unit_scale" type="QString" value="3x:0,0,0,0,0,0"/>
-            <Option name="offset_unit" type="QString" value="MM"/>
-            <Option name="outline_color" type="QString" value="35,35,35,255,rgb:0.1372549,0.1372549,0.1372549,1"/>
-            <Option name="outline_style" type="QString" value="solid"/>
-            <Option name="outline_width" type="QString" value="0.26"/>
-            <Option name="outline_width_unit" type="QString" value="MM"/>
-            <Option name="style" type="QString" value="solid"/>
+            <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
+            <Option value="133,182,111,255,rgb:0.5215686,0.7137255,0.4352941,1" name="color" type="QString"/>
+            <Option value="bevel" name="joinstyle" type="QString"/>
+            <Option value="0,0" name="offset" type="QString"/>
+            <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+            <Option value="MM" name="offset_unit" type="QString"/>
+            <Option value="35,35,35,255,rgb:0.1372549,0.1372549,0.1372549,1" name="outline_color" type="QString"/>
+            <Option value="solid" name="outline_style" type="QString"/>
+            <Option value="0.26" name="outline_width" type="QString"/>
+            <Option value="MM" name="outline_width_unit" type="QString"/>
+            <Option value="solid" name="style" type="QString"/>
           </Option>
           <data_defined_properties>
             <Option type="Map">
-              <Option name="name" type="QString" value=""/>
+              <Option value="" name="name" type="QString"/>
               <Option name="properties"/>
-              <Option name="type" type="QString" value="collection"/>
+              <Option value="collection" name="type" type="QString"/>
             </Option>
           </data_defined_properties>
         </layer>
@@ -44,42 +44,42 @@
     <sizescale/>
     <data-defined-properties>
       <Option type="Map">
-        <Option name="name" type="QString" value=""/>
+        <Option value="" name="name" type="QString"/>
         <Option name="properties"/>
-        <Option name="type" type="QString" value="collection"/>
+        <Option value="collection" name="type" type="QString"/>
       </Option>
     </data-defined-properties>
   </renderer-v2>
   <selection mode="Default">
     <selectionColor invalid="1"/>
     <selectionSymbol>
-      <symbol name="" force_rhr="0" frame_rate="10" type="fill" alpha="1" is_animated="0" clip_to_extent="1">
+      <symbol force_rhr="0" frame_rate="10" clip_to_extent="1" name="" is_animated="0" type="fill" alpha="1">
         <data_defined_properties>
           <Option type="Map">
-            <Option name="name" type="QString" value=""/>
+            <Option value="" name="name" type="QString"/>
             <Option name="properties"/>
-            <Option name="type" type="QString" value="collection"/>
+            <Option value="collection" name="type" type="QString"/>
           </Option>
         </data_defined_properties>
-        <layer id="{a71490d4-95dd-43be-8147-23b7629c41f5}" enabled="1" locked="0" class="SimpleFill" pass="0">
+        <layer id="{a71490d4-95dd-43be-8147-23b7629c41f5}" class="SimpleFill" locked="0" enabled="1" pass="0">
           <Option type="Map">
-            <Option name="border_width_map_unit_scale" type="QString" value="3x:0,0,0,0,0,0"/>
-            <Option name="color" type="QString" value="0,0,255,255,rgb:0,0,1,1"/>
-            <Option name="joinstyle" type="QString" value="bevel"/>
-            <Option name="offset" type="QString" value="0,0"/>
-            <Option name="offset_map_unit_scale" type="QString" value="3x:0,0,0,0,0,0"/>
-            <Option name="offset_unit" type="QString" value="MM"/>
-            <Option name="outline_color" type="QString" value="35,35,35,255,rgb:0.1372549,0.1372549,0.1372549,1"/>
-            <Option name="outline_style" type="QString" value="solid"/>
-            <Option name="outline_width" type="QString" value="0.26"/>
-            <Option name="outline_width_unit" type="QString" value="MM"/>
-            <Option name="style" type="QString" value="solid"/>
+            <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
+            <Option value="0,0,255,255,rgb:0,0,1,1" name="color" type="QString"/>
+            <Option value="bevel" name="joinstyle" type="QString"/>
+            <Option value="0,0" name="offset" type="QString"/>
+            <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+            <Option value="MM" name="offset_unit" type="QString"/>
+            <Option value="35,35,35,255,rgb:0.1372549,0.1372549,0.1372549,1" name="outline_color" type="QString"/>
+            <Option value="solid" name="outline_style" type="QString"/>
+            <Option value="0.26" name="outline_width" type="QString"/>
+            <Option value="MM" name="outline_width_unit" type="QString"/>
+            <Option value="solid" name="style" type="QString"/>
           </Option>
           <data_defined_properties>
             <Option type="Map">
-              <Option name="name" type="QString" value=""/>
+              <Option value="" name="name" type="QString"/>
               <Option name="properties"/>
-              <Option name="type" type="QString" value="collection"/>
+              <Option value="collection" name="type" type="QString"/>
             </Option>
           </data_defined_properties>
         </layer>
@@ -89,31 +89,31 @@
   <blendMode>0</blendMode>
   <featureBlendMode>0</featureBlendMode>
   <referencedLayers>
-    <relation id="observedproperty_datastream_6" name="observedproperty_datastream_6" providerKey="ogr" layerName="observedproperty" strength="Association" dataSource="./SW_15.gpkg|layername=observedproperty" layerId="observedproperty_312aa990_cf51_4640_bbaa_d1fe7ab3d04a" referencingLayer="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb" referencedLayer="observedproperty_312aa990_cf51_4640_bbaa_d1fe7ab3d04a">
+    <relation id="observedproperty_datastream_6" name="observedproperty_datastream_6" dataSource="./SW_21.gpkg|layername=observedproperty" layerName="observedproperty" providerKey="ogr" referencingLayer="datastream_38f6b4da_7026_42b3_b36d_3cb5ad35fa5d" referencedLayer="observedproperty_f0fc863e_b80d_4fd4_87ad_e218b65dfabe" strength="Association" layerId="observedproperty_f0fc863e_b80d_4fd4_87ad_e218b65dfabe">
       <fieldRef referencingField="guid_observedproperty" referencedField="guid"/>
     </relation>
-    <relation id="observingprocedure_datastream_5" name="observingprocedure_datastream_5" providerKey="ogr" layerName="observingprocedure" strength="Association" dataSource="./SW_15.gpkg|layername=observingprocedure" layerId="observingprocedure_e62041a8_914c_4525_84f2_79abbbb5999e" referencingLayer="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb" referencedLayer="observingprocedure_e62041a8_914c_4525_84f2_79abbbb5999e">
+    <relation id="observingprocedure_datastream_5" name="observingprocedure_datastream_5" dataSource="./SW_21.gpkg|layername=observingprocedure" layerName="observingprocedure" providerKey="ogr" referencingLayer="datastream_38f6b4da_7026_42b3_b36d_3cb5ad35fa5d" referencedLayer="observingprocedure_6523f712_8a82_4123_ad3f_2a1c628cbcd4" strength="Association" layerId="observingprocedure_6523f712_8a82_4123_ad3f_2a1c628cbcd4">
       <fieldRef referencingField="guid_observingprocedure" referencedField="guid"/>
     </relation>
-    <relation id="profileelement_datastream_2" name="profileelement_datastream_2" providerKey="ogr" layerName="profileelement" strength="Association" dataSource="./SW_15.gpkg|layername=profileelement" layerId="profileelement_b2d20b62_1ce2_48cf_bb25_b89977036735" referencingLayer="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb" referencedLayer="profileelement_b2d20b62_1ce2_48cf_bb25_b89977036735">
+    <relation id="profileelement_datastream_2" name="profileelement_datastream_2" dataSource="./SW_21.gpkg|layername=profileelement" layerName="profileelement" providerKey="ogr" referencingLayer="datastream_38f6b4da_7026_42b3_b36d_3cb5ad35fa5d" referencedLayer="profileelement_94912eb0_69a6_4f78_a28e_7894952bc181" strength="Association" layerId="profileelement_94912eb0_69a6_4f78_a28e_7894952bc181">
       <fieldRef referencingField="guid_profileelement" referencedField="guid"/>
     </relation>
-    <relation id="sensor_datastream_7" name="sensor_datastream_7" providerKey="ogr" layerName="sensor" strength="Association" dataSource="./SW_15.gpkg|layername=sensor" layerId="sensor_d0442955_b1fb_45d4_a8b2_aa99e71e0da9" referencingLayer="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb" referencedLayer="sensor_d0442955_b1fb_45d4_a8b2_aa99e71e0da9">
+    <relation id="sensor_datastream_7" name="sensor_datastream_7" dataSource="./SW_21.gpkg|layername=sensor" layerName="sensor" providerKey="ogr" referencingLayer="datastream_38f6b4da_7026_42b3_b36d_3cb5ad35fa5d" referencedLayer="sensor_72a0d300_a2f1_4f5d_8136_1c011cef879e" strength="Association" layerId="sensor_72a0d300_a2f1_4f5d_8136_1c011cef879e">
       <fieldRef referencingField="guid_sensor" referencedField="guid"/>
     </relation>
-    <relation id="soilderivedobject_datastream" name="soilderivedobject_datastream" providerKey="ogr" layerName="soilderivedobject" strength="Association" dataSource="./SW_15.gpkg|layername=soilderivedobject" layerId="soilderivedobject_3b15523b_c10c_4932_8282_15e772159f6c" referencingLayer="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb" referencedLayer="soilderivedobject_3b15523b_c10c_4932_8282_15e772159f6c">
+    <relation id="soilderivedobject_datastream" name="soilderivedobject_datastream" dataSource="./SW_21.gpkg|layername=soilderivedobject" layerName="soilderivedobject" providerKey="ogr" referencingLayer="datastream_38f6b4da_7026_42b3_b36d_3cb5ad35fa5d" referencedLayer="soilderivedobject_4bc08aba_7b79_4815_9abb_1d51b420659b" strength="Association" layerId="soilderivedobject_4bc08aba_7b79_4815_9abb_1d51b420659b">
       <fieldRef referencingField="guid_soilderivedobject" referencedField="guid"/>
     </relation>
-    <relation id="soilprofile_datastream_3" name="soilprofile_datastream_3" providerKey="ogr" layerName="soilprofile" strength="Association" dataSource="./SW_15.gpkg|layername=soilprofile" layerId="soilprofile_e216584c_29f6_4f76_97a2_e0af9b478016" referencingLayer="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb" referencedLayer="soilprofile_e216584c_29f6_4f76_97a2_e0af9b478016">
+    <relation id="soilprofile_datastream_3" name="soilprofile_datastream_3" dataSource="./SW_21.gpkg|layername=soilprofile" layerName="soilprofile" providerKey="ogr" referencingLayer="datastream_38f6b4da_7026_42b3_b36d_3cb5ad35fa5d" referencedLayer="soilprofile_74d36ec1_9358_46be_8207_bcb134bb4e0d" strength="Association" layerId="soilprofile_74d36ec1_9358_46be_8207_bcb134bb4e0d">
       <fieldRef referencingField="guid_soilprofile" referencedField="guid"/>
     </relation>
-    <relation id="soilsite_datastream_4" name="soilsite_datastream_4" providerKey="ogr" layerName="soilsite" strength="Association" dataSource="./SW_15.gpkg|layername=soilsite" layerId="soilsite_5d0c90d6_52aa_48cc_a4db_40b96424714a" referencingLayer="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb" referencedLayer="soilsite_5d0c90d6_52aa_48cc_a4db_40b96424714a">
+    <relation id="soilsite_datastream_4" name="soilsite_datastream_4" dataSource="./SW_21.gpkg|layername=soilsite" layerName="soilsite" providerKey="ogr" referencingLayer="datastream_38f6b4da_7026_42b3_b36d_3cb5ad35fa5d" referencedLayer="soilsite_523bd55e_7e56_459b_ba63_7681210804e7" strength="Association" layerId="soilsite_523bd55e_7e56_459b_ba63_7681210804e7">
       <fieldRef referencingField="guid_soilsite" referencedField="guid"/>
     </relation>
-    <relation id="thing_datastream_8" name="thing_datastream_8" providerKey="ogr" layerName="thing" strength="Association" dataSource="./SW_15.gpkg|layername=thing" layerId="thing_1d13e5c5_8331_4b91_aaa7_3dcd92ccde81" referencingLayer="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb" referencedLayer="thing_1d13e5c5_8331_4b91_aaa7_3dcd92ccde81">
+    <relation id="thing_datastream_8" name="thing_datastream_8" dataSource="./SW_21.gpkg|layername=thing" layerName="thing" providerKey="ogr" referencingLayer="datastream_38f6b4da_7026_42b3_b36d_3cb5ad35fa5d" referencedLayer="thing_43cf0218_65cb_41df_b76d_56c8680aaf1c" strength="Association" layerId="thing_43cf0218_65cb_41df_b76d_56c8680aaf1c">
       <fieldRef referencingField="guid_thing" referencedField="guid"/>
     </relation>
-    <relation id="unitofmeasure_datastream_9" name="unitofmeasure_datastream_9" providerKey="ogr" layerName="unitofmeasure" strength="Association" dataSource="./SW_15.gpkg|layername=unitofmeasure" layerId="unitofmeasure_3fd95dd6_fab0_4ef6_a02f_459e761f6105" referencingLayer="datastream_d1fcb085_7d78_487a_abd5_e78d6e00f2bb" referencedLayer="unitofmeasure_3fd95dd6_fab0_4ef6_a02f_459e761f6105">
+    <relation id="unitofmeasure_datastream_9" name="unitofmeasure_datastream_9" dataSource="./SW_21.gpkg|layername=unitofmeasure" layerName="unitofmeasure" providerKey="ogr" referencingLayer="datastream_38f6b4da_7026_42b3_b36d_3cb5ad35fa5d" referencedLayer="unitofmeasure_9f91415c_0005_40d2_848e_5a01ccb0d1c9" strength="Association" layerId="unitofmeasure_9f91415c_0005_40d2_848e_5a01ccb0d1c9">
       <fieldRef referencingField="code_unitofmeasure" referencedField="code"/>
     </relation>
   </referencedLayers>
@@ -122,8 +122,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -132,8 +132,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -142,8 +142,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -152,8 +152,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -162,8 +162,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -172,36 +172,54 @@
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option name="AllowMulti" type="bool" value="false"/>
-            <Option name="AllowNull" type="bool" value="false"/>
-            <Option name="CompleterMatchFlags" type="int" value="2"/>
+            <Option value="false" name="AllowMulti" type="bool"/>
+            <Option value="false" name="AllowNull" type="bool"/>
+            <Option value="2" name="CompleterMatchFlags" type="int"/>
             <Option name="Description" type="invalid"/>
-            <Option name="DisplayGroupName" type="bool" value="false"/>
-            <Option name="FilterExpression" type="QString" value="&quot;collection&quot; IN('resultType') "/>
+            <Option value="false" name="DisplayGroupName" type="bool"/>
+            <Option value="&quot;collection&quot; IN('resultType') " name="FilterExpression" type="QString"/>
             <Option name="Group" type="invalid"/>
-            <Option name="Key" type="QString" value="id"/>
-            <Option name="Layer" type="QString" value="codelist_f18d81cb_1e12_49ac_bec5_56641613bb71"/>
-            <Option name="LayerName" type="QString" value="codelist"/>
-            <Option name="LayerProviderName" type="QString" value="ogr"/>
-            <Option name="LayerSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_14.gpkg|layername=codelist"/>
-            <Option name="NofColumns" type="int" value="1"/>
-            <Option name="OrderByDescending" type="bool" value="false"/>
-            <Option name="OrderByField" type="bool" value="false"/>
-            <Option name="OrderByFieldName" type="QString" value="id"/>
-            <Option name="OrderByKey" type="bool" value="true"/>
-            <Option name="OrderByValue" type="bool" value="false"/>
-            <Option name="UseCompleter" type="bool" value="false"/>
-            <Option name="Value" type="QString" value="label"/>
+            <Option value="id" name="Key" type="QString"/>
+            <Option value="codelist_9d9c12b3_fa86_4a58_a6ce_a6f7279b4b2e" name="Layer" type="QString"/>
+            <Option value="codelist" name="LayerName" type="QString"/>
+            <Option value="ogr" name="LayerProviderName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_21.gpkg|layername=codelist" name="LayerSource" type="QString"/>
+            <Option value="1" name="NofColumns" type="int"/>
+            <Option value="false" name="OrderByDescending" type="bool"/>
+            <Option value="false" name="OrderByField" type="bool"/>
+            <Option value="id" name="OrderByFieldName" type="QString"/>
+            <Option value="true" name="OrderByKey" type="bool"/>
+            <Option value="false" name="OrderByValue" type="bool"/>
+            <Option value="false" name="UseCompleter" type="bool"/>
+            <Option value="label" name="Value" type="QString"/>
           </Option>
         </config>
       </editWidget>
     </field>
     <field name="codespace" configurationFlags="NoFlag">
-      <editWidget type="TextEdit">
+      <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
+            <Option value="false" name="AllowMulti" type="bool"/>
+            <Option value="true" name="AllowNull" type="bool"/>
+            <Option value="2" name="CompleterMatchFlags" type="int"/>
+            <Option name="Description" type="invalid"/>
+            <Option value="false" name="DisplayGroupName" type="bool"/>
+            <Option value="&quot;collection&quot; IN('Category')" name="FilterExpression" type="QString"/>
+            <Option name="Group" type="invalid"/>
+            <Option value="id" name="Key" type="QString"/>
+            <Option value="codelist_9d9c12b3_fa86_4a58_a6ce_a6f7279b4b2e" name="Layer" type="QString"/>
+            <Option value="codelist" name="LayerName" type="QString"/>
+            <Option value="ogr" name="LayerProviderName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_21.gpkg|layername=codelist" name="LayerSource" type="QString"/>
+            <Option value="1" name="NofColumns" type="int"/>
+            <Option value="false" name="OrderByDescending" type="bool"/>
+            <Option value="false" name="OrderByField" type="bool"/>
+            <Option value="id" name="OrderByFieldName" type="QString"/>
+            <Option value="true" name="OrderByKey" type="bool"/>
+            <Option value="false" name="OrderByValue" type="bool"/>
+            <Option value="false" name="UseCompleter" type="bool"/>
+            <Option value="label" name="Value" type="QString"/>
           </Option>
         </config>
       </editWidget>
@@ -210,19 +228,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="true"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=unitofmeasure"/>
-            <Option name="ReferencedLayerId" type="QString" value="unitofmeasure_3fd95dd6_fab0_4ef6_a02f_459e761f6105"/>
-            <Option name="ReferencedLayerName" type="QString" value="unitofmeasure"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="unitofmeasure_datastream_9"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="true" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_21.gpkg|layername=unitofmeasure" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="unitofmeasure_9f91415c_0005_40d2_848e_5a01ccb0d1c9" name="ReferencedLayerId" type="QString"/>
+            <Option value="unitofmeasure" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="unitofmeasure_datastream_9" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -231,8 +249,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -241,8 +259,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -251,12 +269,12 @@
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option name="allow_null" type="bool" value="true"/>
-            <Option name="calendar_popup" type="bool" value="true"/>
-            <Option name="display_format" type="QString" value="d MMM yyyy HH:mm:ss"/>
-            <Option name="field_format" type="QString" value="yyyy-MM-dd HH:mm:ss"/>
-            <Option name="field_format_overwrite" type="bool" value="false"/>
-            <Option name="field_iso_format" type="bool" value="false"/>
+            <Option value="true" name="allow_null" type="bool"/>
+            <Option value="true" name="calendar_popup" type="bool"/>
+            <Option value="d MMM yyyy HH:mm:ss" name="display_format" type="QString"/>
+            <Option value="yyyy-MM-dd HH:mm:ss" name="field_format" type="QString"/>
+            <Option value="false" name="field_format_overwrite" type="bool"/>
+            <Option value="false" name="field_iso_format" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -265,12 +283,12 @@
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option name="allow_null" type="bool" value="true"/>
-            <Option name="calendar_popup" type="bool" value="true"/>
-            <Option name="display_format" type="QString" value="d MMM yyyy HH:mm:ss"/>
-            <Option name="field_format" type="QString" value="yyyy-MM-dd HH:mm:ss"/>
-            <Option name="field_format_overwrite" type="bool" value="false"/>
-            <Option name="field_iso_format" type="bool" value="false"/>
+            <Option value="true" name="allow_null" type="bool"/>
+            <Option value="true" name="calendar_popup" type="bool"/>
+            <Option value="d MMM yyyy HH:mm:ss" name="display_format" type="QString"/>
+            <Option value="yyyy-MM-dd HH:mm:ss" name="field_format" type="QString"/>
+            <Option value="false" name="field_format_overwrite" type="bool"/>
+            <Option value="false" name="field_iso_format" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -279,12 +297,12 @@
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option name="allow_null" type="bool" value="true"/>
-            <Option name="calendar_popup" type="bool" value="true"/>
-            <Option name="display_format" type="QString" value="d MMM yyyy HH:mm:ss"/>
-            <Option name="field_format" type="QString" value="yyyy-MM-dd HH:mm:ss"/>
-            <Option name="field_format_overwrite" type="bool" value="false"/>
-            <Option name="field_iso_format" type="bool" value="false"/>
+            <Option value="true" name="allow_null" type="bool"/>
+            <Option value="true" name="calendar_popup" type="bool"/>
+            <Option value="d MMM yyyy HH:mm:ss" name="display_format" type="QString"/>
+            <Option value="yyyy-MM-dd HH:mm:ss" name="field_format" type="QString"/>
+            <Option value="false" name="field_format_overwrite" type="bool"/>
+            <Option value="false" name="field_iso_format" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -293,12 +311,12 @@
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option name="allow_null" type="bool" value="true"/>
-            <Option name="calendar_popup" type="bool" value="true"/>
-            <Option name="display_format" type="QString" value="d MMM yyyy HH:mm:ss"/>
-            <Option name="field_format" type="QString" value="yyyy-MM-dd HH:mm:ss"/>
-            <Option name="field_format_overwrite" type="bool" value="false"/>
-            <Option name="field_iso_format" type="bool" value="false"/>
+            <Option value="true" name="allow_null" type="bool"/>
+            <Option value="true" name="calendar_popup" type="bool"/>
+            <Option value="d MMM yyyy HH:mm:ss" name="display_format" type="QString"/>
+            <Option value="yyyy-MM-dd HH:mm:ss" name="field_format" type="QString"/>
+            <Option value="false" name="field_format_overwrite" type="bool"/>
+            <Option value="false" name="field_iso_format" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -314,19 +332,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="false"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=thing"/>
-            <Option name="ReferencedLayerId" type="QString" value="thing_75af3248_c17c_426e_8a94_9ad91d6f9acf"/>
-            <Option name="ReferencedLayerName" type="QString" value="thing"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="thing_datastream_8"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="false" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=thing" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="thing_75af3248_c17c_426e_8a94_9ad91d6f9acf" name="ReferencedLayerId" type="QString"/>
+            <Option value="thing" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="thing_datastream_8" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -335,19 +353,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="false"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=sensor"/>
-            <Option name="ReferencedLayerId" type="QString" value="sensor_882086b2_0ca1_4e1e_92bd_1ed513943846"/>
-            <Option name="ReferencedLayerName" type="QString" value="sensor"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="sensor_datastream_7"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="false" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=sensor" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="sensor_882086b2_0ca1_4e1e_92bd_1ed513943846" name="ReferencedLayerId" type="QString"/>
+            <Option value="sensor" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="sensor_datastream_7" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -356,19 +374,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="false"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=observedproperty"/>
-            <Option name="ReferencedLayerId" type="QString" value="observedproperty_ca40a68d_fb6f_4bc5_a570_06e1a6415064"/>
-            <Option name="ReferencedLayerName" type="QString" value="observedproperty"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="observedproperty_datastream_6"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="false" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=observedproperty" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="observedproperty_ca40a68d_fb6f_4bc5_a570_06e1a6415064" name="ReferencedLayerId" type="QString"/>
+            <Option value="observedproperty" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="observedproperty_datastream_6" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -377,19 +395,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="true"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=observingprocedure"/>
-            <Option name="ReferencedLayerId" type="QString" value="observingprocedure_1aae3844_6744_4f5a_9c0e_6b5f07ffea94"/>
-            <Option name="ReferencedLayerName" type="QString" value="observingprocedure"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="observingprocedure_datastream_5"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="true" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=observingprocedure" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="observingprocedure_1aae3844_6744_4f5a_9c0e_6b5f07ffea94" name="ReferencedLayerId" type="QString"/>
+            <Option value="observingprocedure" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="observingprocedure_datastream_5" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -398,19 +416,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="true"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=soilsite"/>
-            <Option name="ReferencedLayerId" type="QString" value="soilsite_478dc2f4_41c8_48ca_959a_80cbce061ab3"/>
-            <Option name="ReferencedLayerName" type="QString" value="soilsite"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="soilsite_datastream_4"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="true" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=soilsite" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="soilsite_478dc2f4_41c8_48ca_959a_80cbce061ab3" name="ReferencedLayerId" type="QString"/>
+            <Option value="soilsite" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="soilsite_datastream_4" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -419,19 +437,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="true"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=soilprofile"/>
-            <Option name="ReferencedLayerId" type="QString" value="soilprofile_216eea7c_d015_4117_8c9f_df0b7692b5a7"/>
-            <Option name="ReferencedLayerName" type="QString" value="soilprofile"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="soilprofile_datastream_3"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="true" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=soilprofile" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="soilprofile_216eea7c_d015_4117_8c9f_df0b7692b5a7" name="ReferencedLayerId" type="QString"/>
+            <Option value="soilprofile" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="soilprofile_datastream_3" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -440,19 +458,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="true"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=profileelement"/>
-            <Option name="ReferencedLayerId" type="QString" value="profileelement_c30e6a23_64c8_4588_a32e_c91c0209d0a3"/>
-            <Option name="ReferencedLayerName" type="QString" value="profileelement"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="profileelement_datastream_2"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="true" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=profileelement" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="profileelement_c30e6a23_64c8_4588_a32e_c91c0209d0a3" name="ReferencedLayerId" type="QString"/>
+            <Option value="profileelement" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="profileelement_datastream_2" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -461,128 +479,128 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="true"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=soilderivedobject"/>
-            <Option name="ReferencedLayerId" type="QString" value="soilderivedobject_360aac90_af34_468c_953d_c1813d5ee56a"/>
-            <Option name="ReferencedLayerName" type="QString" value="soilderivedobject"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="soilderivedobject_datastream"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="true" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=soilderivedobject" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="soilderivedobject_360aac90_af34_468c_953d_c1813d5ee56a" name="ReferencedLayerId" type="QString"/>
+            <Option value="soilderivedobject" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="soilderivedobject_datastream" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias name="" field="id" index="0"/>
-    <alias name="" field="guid" index="1"/>
-    <alias name="Name" field="name" index="2"/>
-    <alias name="Definition   " field="definition" index="3"/>
-    <alias name="Description" field="description" index="4"/>
-    <alias name="Type" field="type" index="5"/>
-    <alias name="Codespace" field="codespace" index="6"/>
-    <alias name="Unit Of Measure" field="code_unitofmeasure" index="7"/>
-    <alias name="Min" field="value_min" index="8"/>
-    <alias name="Max" field="value_max" index="9"/>
-    <alias name="Start of Phenomenon" field="phenomenontime_start" index="10"/>
-    <alias name="End of Phenomenon (mandatory)" field="phenomenontime_end" index="11"/>
-    <alias name="Result Time Start" field="resulttime_start" index="12"/>
-    <alias name="Result Time End  (mandatory)" field="resulttime_end" index="13"/>
-    <alias name="Properties" field="properties" index="14"/>
-    <alias name="Thing" field="guid_thing" index="15"/>
-    <alias name="Sensor" field="guid_sensor" index="16"/>
-    <alias name="Observed Property" field="guid_observedproperty" index="17"/>
-    <alias name="Observing Procedure" field="guid_observingprocedure" index="18"/>
-    <alias name="Soil Site" field="guid_soilsite" index="19"/>
-    <alias name="Soil Profile" field="guid_soilprofile" index="20"/>
-    <alias name="Profile Element" field="guid_profileelement" index="21"/>
-    <alias name="Soil Derived Object" field="guid_soilderivedobject" index="22"/>
+    <alias name="" index="0" field="id"/>
+    <alias name="" index="1" field="guid"/>
+    <alias name="Name" index="2" field="name"/>
+    <alias name="Definition   " index="3" field="definition"/>
+    <alias name="Description" index="4" field="description"/>
+    <alias name="Type" index="5" field="type"/>
+    <alias name="Codespace" index="6" field="codespace"/>
+    <alias name="Unit Of Measure" index="7" field="code_unitofmeasure"/>
+    <alias name="Min (optional)" index="8" field="value_min"/>
+    <alias name="Max (optional)" index="9" field="value_max"/>
+    <alias name="Start of Phenomenon" index="10" field="phenomenontime_start"/>
+    <alias name="End of Phenomenon (mandatory)" index="11" field="phenomenontime_end"/>
+    <alias name="Result Time Start" index="12" field="resulttime_start"/>
+    <alias name="Result Time End  (mandatory)" index="13" field="resulttime_end"/>
+    <alias name="Properties" index="14" field="properties"/>
+    <alias name="Thing" index="15" field="guid_thing"/>
+    <alias name="Sensor" index="16" field="guid_sensor"/>
+    <alias name="Observed Property" index="17" field="guid_observedproperty"/>
+    <alias name="Observing Procedure" index="18" field="guid_observingprocedure"/>
+    <alias name="Soil Site" index="19" field="guid_soilsite"/>
+    <alias name="Soil Profile" index="20" field="guid_soilprofile"/>
+    <alias name="Profile Element" index="21" field="guid_profileelement"/>
+    <alias name="Soil Derived Object" index="22" field="guid_soilderivedobject"/>
   </aliases>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="guid"/>
-    <default applyOnUpdate="0" expression="" field="name"/>
-    <default applyOnUpdate="0" expression="" field="definition"/>
-    <default applyOnUpdate="0" expression="" field="description"/>
-    <default applyOnUpdate="0" expression="" field="type"/>
-    <default applyOnUpdate="0" expression="" field="codespace"/>
-    <default applyOnUpdate="0" expression="" field="code_unitofmeasure"/>
-    <default applyOnUpdate="0" expression="" field="value_min"/>
-    <default applyOnUpdate="0" expression="" field="value_max"/>
-    <default applyOnUpdate="0" expression="" field="phenomenontime_start"/>
-    <default applyOnUpdate="0" expression="" field="phenomenontime_end"/>
-    <default applyOnUpdate="0" expression="" field="resulttime_start"/>
-    <default applyOnUpdate="0" expression="" field="resulttime_end"/>
-    <default applyOnUpdate="0" expression="" field="properties"/>
-    <default applyOnUpdate="0" expression="" field="guid_thing"/>
-    <default applyOnUpdate="0" expression="" field="guid_sensor"/>
-    <default applyOnUpdate="0" expression="" field="guid_observedproperty"/>
-    <default applyOnUpdate="0" expression="" field="guid_observingprocedure"/>
-    <default applyOnUpdate="0" expression="" field="guid_soilsite"/>
-    <default applyOnUpdate="0" expression="" field="guid_soilprofile"/>
-    <default applyOnUpdate="0" expression="" field="guid_profileelement"/>
-    <default applyOnUpdate="0" expression="" field="guid_soilderivedobject"/>
+    <default field="id" applyOnUpdate="0" expression=""/>
+    <default field="guid" applyOnUpdate="0" expression=""/>
+    <default field="name" applyOnUpdate="0" expression=""/>
+    <default field="definition" applyOnUpdate="0" expression=""/>
+    <default field="description" applyOnUpdate="0" expression=""/>
+    <default field="type" applyOnUpdate="0" expression=""/>
+    <default field="codespace" applyOnUpdate="1" expression="&#xd;&#xa;CASE &#xd;&#xa;  WHEN &quot;type&quot; IN ('Quantity','Boolean','Count','Text') THEN NULL&#xd;&#xa;  ELSE &quot;codespace&quot;&#xd;&#xa;END&#xd;&#xa;"/>
+    <default field="code_unitofmeasure" applyOnUpdate="1" expression="CASE &#xd;&#xa;  WHEN &quot;type&quot; IN ('Category','Boolean','Count','Text') THEN NULL&#xd;&#xa;  ELSE &quot;code_unitofmeasure&quot;&#xd;&#xa;END&#xd;&#xa;"/>
+    <default field="value_min" applyOnUpdate="1" expression="CASE &#xd;&#xa;  WHEN &quot;type&quot; IN ('Category','Boolean','Text') THEN NULL&#xd;&#xa;  ELSE &quot;value_min&quot;&#xd;&#xa;END&#xd;&#xa;"/>
+    <default field="value_max" applyOnUpdate="1" expression="CASE &#xd;&#xa;  WHEN &quot;type&quot; IN ('Category','Boolean','Text') THEN NULL&#xd;&#xa;  ELSE &quot;value_max&quot;&#xd;&#xa;END&#xd;&#xa;"/>
+    <default field="phenomenontime_start" applyOnUpdate="0" expression=""/>
+    <default field="phenomenontime_end" applyOnUpdate="0" expression=""/>
+    <default field="resulttime_start" applyOnUpdate="0" expression=""/>
+    <default field="resulttime_end" applyOnUpdate="0" expression=""/>
+    <default field="properties" applyOnUpdate="0" expression=""/>
+    <default field="guid_thing" applyOnUpdate="0" expression=""/>
+    <default field="guid_sensor" applyOnUpdate="0" expression=""/>
+    <default field="guid_observedproperty" applyOnUpdate="0" expression=""/>
+    <default field="guid_observingprocedure" applyOnUpdate="0" expression=""/>
+    <default field="guid_soilsite" applyOnUpdate="0" expression=""/>
+    <default field="guid_soilprofile" applyOnUpdate="0" expression=""/>
+    <default field="guid_profileelement" applyOnUpdate="0" expression=""/>
+    <default field="guid_soilderivedobject" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint constraints="3" exp_strength="0" field="id" unique_strength="1" notnull_strength="1"/>
-    <constraint constraints="2" exp_strength="0" field="guid" unique_strength="1" notnull_strength="0"/>
-    <constraint constraints="1" exp_strength="0" field="name" unique_strength="0" notnull_strength="1"/>
-    <constraint constraints="0" exp_strength="0" field="definition" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="description" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="1" exp_strength="0" field="type" unique_strength="0" notnull_strength="1"/>
-    <constraint constraints="0" exp_strength="0" field="codespace" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="code_unitofmeasure" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="value_min" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="value_max" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="phenomenontime_start" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="phenomenontime_end" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="resulttime_start" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="resulttime_end" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="properties" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="1" exp_strength="0" field="guid_thing" unique_strength="0" notnull_strength="1"/>
-    <constraint constraints="1" exp_strength="0" field="guid_sensor" unique_strength="0" notnull_strength="1"/>
-    <constraint constraints="1" exp_strength="0" field="guid_observedproperty" unique_strength="0" notnull_strength="1"/>
-    <constraint constraints="0" exp_strength="0" field="guid_observingprocedure" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="guid_soilsite" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="guid_soilprofile" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="guid_profileelement" unique_strength="0" notnull_strength="0"/>
-    <constraint constraints="0" exp_strength="0" field="guid_soilderivedobject" unique_strength="0" notnull_strength="0"/>
+    <constraint field="id" notnull_strength="1" unique_strength="1" constraints="3" exp_strength="0"/>
+    <constraint field="guid" notnull_strength="0" unique_strength="1" constraints="2" exp_strength="0"/>
+    <constraint field="name" notnull_strength="1" unique_strength="0" constraints="1" exp_strength="0"/>
+    <constraint field="definition" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="description" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="type" notnull_strength="1" unique_strength="0" constraints="1" exp_strength="0"/>
+    <constraint field="codespace" notnull_strength="0" unique_strength="0" constraints="4" exp_strength="2"/>
+    <constraint field="code_unitofmeasure" notnull_strength="0" unique_strength="0" constraints="4" exp_strength="2"/>
+    <constraint field="value_min" notnull_strength="0" unique_strength="0" constraints="4" exp_strength="2"/>
+    <constraint field="value_max" notnull_strength="0" unique_strength="0" constraints="4" exp_strength="2"/>
+    <constraint field="phenomenontime_start" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="phenomenontime_end" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="resulttime_start" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="resulttime_end" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="properties" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="guid_thing" notnull_strength="1" unique_strength="0" constraints="1" exp_strength="0"/>
+    <constraint field="guid_sensor" notnull_strength="1" unique_strength="0" constraints="1" exp_strength="0"/>
+    <constraint field="guid_observedproperty" notnull_strength="1" unique_strength="0" constraints="1" exp_strength="0"/>
+    <constraint field="guid_observingprocedure" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="guid_soilsite" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="guid_soilprofile" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="guid_profileelement" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
+    <constraint field="guid_soilderivedobject" notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint desc="" exp="" field="id"/>
-    <constraint desc="" exp="" field="guid"/>
-    <constraint desc="" exp="" field="name"/>
-    <constraint desc="" exp="" field="definition"/>
-    <constraint desc="" exp="" field="description"/>
-    <constraint desc="" exp="" field="type"/>
-    <constraint desc="" exp="" field="codespace"/>
-    <constraint desc="" exp="" field="code_unitofmeasure"/>
-    <constraint desc="" exp="" field="value_min"/>
-    <constraint desc="" exp="" field="value_max"/>
-    <constraint desc="" exp="" field="phenomenontime_start"/>
-    <constraint desc="" exp="" field="phenomenontime_end"/>
-    <constraint desc="" exp="" field="resulttime_start"/>
-    <constraint desc="" exp="" field="resulttime_end"/>
-    <constraint desc="" exp="" field="properties"/>
-    <constraint desc="" exp="" field="guid_thing"/>
-    <constraint desc="" exp="" field="guid_sensor"/>
-    <constraint desc="" exp="" field="guid_observedproperty"/>
-    <constraint desc="" exp="" field="guid_observingprocedure"/>
-    <constraint desc="" exp="" field="guid_soilsite"/>
-    <constraint desc="" exp="" field="guid_soilprofile"/>
-    <constraint desc="" exp="" field="guid_profileelement"/>
-    <constraint desc="" exp="" field="guid_soilderivedobject"/>
+    <constraint exp="" field="id" desc=""/>
+    <constraint exp="" field="guid" desc=""/>
+    <constraint exp="" field="name" desc=""/>
+    <constraint exp="" field="definition" desc=""/>
+    <constraint exp="" field="description" desc=""/>
+    <constraint exp="" field="type" desc=""/>
+    <constraint exp="CASE &#xd;&#xa;  WHEN &quot;type&quot; IN ('Quantity','Boolean','Count','Text') THEN NULL&#xd;&#xa;  ELSE &quot;codespace&quot;&#xd;&#xa;END&#xd;&#xa;" field="codespace" desc=""/>
+    <constraint exp="CASE &#xd;&#xa;  WHEN &quot;type&quot; IN ('Category','Boolean','Count','Text') THEN NULL&#xd;&#xa;  ELSE &quot;code_unitofmeasure&quot;&#xd;&#xa;END" field="code_unitofmeasure" desc=""/>
+    <constraint exp="CASE &#xd;&#xa;  WHEN &quot;type&quot; IN ('Category','Boolean','Text') THEN NULL&#xd;&#xa;  ELSE &quot;value_min&quot;&#xd;&#xa;END&#xd;&#xa;" field="value_min" desc="Optional field‑level validation check; failure does not block insert/update"/>
+    <constraint exp="CASE &#xd;&#xa;  WHEN &quot;type&quot; IN ('Category','Boolean','Text') THEN NULL&#xd;&#xa;  ELSE &quot;value_max&quot;&#xd;&#xa;END&#xd;&#xa;" field="value_max" desc="Optional field‑level validation check; failure does not block insert/update"/>
+    <constraint exp="" field="phenomenontime_start" desc=""/>
+    <constraint exp="" field="phenomenontime_end" desc=""/>
+    <constraint exp="" field="resulttime_start" desc=""/>
+    <constraint exp="" field="resulttime_end" desc=""/>
+    <constraint exp="" field="properties" desc=""/>
+    <constraint exp="" field="guid_thing" desc=""/>
+    <constraint exp="" field="guid_sensor" desc=""/>
+    <constraint exp="" field="guid_observedproperty" desc=""/>
+    <constraint exp="" field="guid_observingprocedure" desc=""/>
+    <constraint exp="" field="guid_soilsite" desc=""/>
+    <constraint exp="" field="guid_soilprofile" desc=""/>
+    <constraint exp="" field="guid_profileelement" desc=""/>
+    <constraint exp="" field="guid_soilderivedobject" desc=""/>
   </constraintExpressions>
   <expressionfields/>
   <attributeactions>
     <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
-    <actionsetting name="Search on web based on attribute's value" id="{48dbe2ff-cae4-4548-b815-723f73677ab4}" type="5" shortTitle="Go to Page" icon="" capture="0" action="[%definition%]" notificationMessage="" isEnabledOnlyWhenEditable="0">
+    <actionsetting isEnabledOnlyWhenEditable="0" action="[%definition%]" id="{48dbe2ff-cae4-4548-b815-723f73677ab4}" name="Search on web based on attribute's value" shortTitle="Go to Page" icon="" capture="0" type="5" notificationMessage="">
       <actionScope id="Canvas"/>
       <actionScope id="Feature"/>
     </actionsetting>
@@ -611,217 +629,217 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-      <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+      <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
     </labelStyle>
-    <attributeEditorContainer name="ID" collapsed="1" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="0" name="ID" groupBox="1" collapsed="1" visibilityExpression="" collapsedExpressionEnabled="0" type="GroupBox" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
-      <attributeEditorField name="id" showLabel="1" horizontalStretch="0" verticalStretch="0" index="0">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="id" index="0" showLabel="1" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField name="guid" showLabel="1" horizontalStretch="0" verticalStretch="0" index="1">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="guid" index="1" showLabel="1" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField name="name" showLabel="1" horizontalStretch="0" verticalStretch="0" index="2">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField verticalStretch="0" name="name" index="2" showLabel="1" horizontalStretch="0">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer name="Definition" collapsed="0" showLabel="0" collapsedExpression="" type="Row" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="0">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="0" name="Definition" groupBox="0" collapsed="0" visibilityExpression="" collapsedExpressionEnabled="0" type="Row" showLabel="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
-      <attributeEditorField name="definition" showLabel="1" horizontalStretch="0" verticalStretch="0" index="3">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="definition" index="3" showLabel="1" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorAction ActionUUID="{48dbe2ff-cae4-4548-b815-723f73677ab4}" name="{48dbe2ff-cae4-4548-b815-723f73677ab4}" showLabel="1" horizontalStretch="0" verticalStretch="0">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorAction verticalStretch="0" name="{48dbe2ff-cae4-4548-b815-723f73677ab4}" showLabel="1" ActionUUID="{48dbe2ff-cae4-4548-b815-723f73677ab4}" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorAction>
     </attributeEditorContainer>
-    <attributeEditorField name="description" showLabel="1" horizontalStretch="0" verticalStretch="0" index="4">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField verticalStretch="0" name="description" index="4" showLabel="1" horizontalStretch="0">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer name="Result Type" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="0" name="Result Type" groupBox="1" collapsed="0" visibilityExpression="" collapsedExpressionEnabled="0" type="GroupBox" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
-      <attributeEditorField name="type" showLabel="1" horizontalStretch="0" verticalStretch="0" index="5">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="type" index="5" showLabel="1" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorContainer name="" collapsed="0" showLabel="0" collapsedExpression="" type="Row" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression="  &quot;type&quot; = 'Quantity'" collapsedExpressionEnabled="0" columnCount="1" groupBox="0">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="1" name="" groupBox="0" collapsed="0" visibilityExpression="  &quot;type&quot; = 'Quantity'" collapsedExpressionEnabled="0" type="Row" showLabel="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
-        <attributeEditorField name="code_unitofmeasure" showLabel="1" horizontalStretch="0" verticalStretch="0" index="7">
-          <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-            <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+        <attributeEditorField verticalStretch="0" name="code_unitofmeasure" index="7" showLabel="1" horizontalStretch="0">
+          <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
           </labelStyle>
         </attributeEditorField>
-        <attributeEditorField name="value_min" showLabel="1" horizontalStretch="0" verticalStretch="0" index="8">
-          <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-            <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+        <attributeEditorField verticalStretch="0" name="value_min" index="8" showLabel="1" horizontalStretch="0">
+          <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
           </labelStyle>
         </attributeEditorField>
-        <attributeEditorField name="value_max" showLabel="1" horizontalStretch="0" verticalStretch="0" index="9">
-          <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-            <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+        <attributeEditorField verticalStretch="0" name="value_max" index="9" showLabel="1" horizontalStretch="0">
+          <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
           </labelStyle>
         </attributeEditorField>
       </attributeEditorContainer>
-      <attributeEditorContainer name="" collapsed="0" showLabel="0" collapsedExpression="" type="Row" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression="  &quot;type&quot; = 'Category'" collapsedExpressionEnabled="0" columnCount="1" groupBox="0">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="1" name="" groupBox="0" collapsed="0" visibilityExpression="  &quot;type&quot; = 'Category'" collapsedExpressionEnabled="0" type="Row" showLabel="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
-        <attributeEditorField name="codespace" showLabel="1" horizontalStretch="0" verticalStretch="0" index="6">
-          <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-            <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+        <attributeEditorField verticalStretch="0" name="codespace" index="6" showLabel="1" horizontalStretch="0">
+          <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
           </labelStyle>
         </attributeEditorField>
       </attributeEditorContainer>
-      <attributeEditorContainer name="" collapsed="0" showLabel="0" collapsedExpression="" type="Row" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression="  &quot;type&quot; = 'Boolean'" collapsedExpressionEnabled="0" columnCount="1" groupBox="0">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="1" name="" groupBox="0" collapsed="0" visibilityExpression="  &quot;type&quot; = 'Boolean'" collapsedExpressionEnabled="0" type="Row" showLabel="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorContainer>
-      <attributeEditorContainer name="" collapsed="0" showLabel="0" collapsedExpression="" type="Row" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression="  &quot;type&quot; = 'Count'" collapsedExpressionEnabled="0" columnCount="1" groupBox="0">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="1" name="" groupBox="0" collapsed="0" visibilityExpression="  &quot;type&quot; = 'Count'" collapsedExpressionEnabled="0" type="Row" showLabel="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
-        <attributeEditorField name="value_min" showLabel="1" horizontalStretch="0" verticalStretch="0" index="8">
-          <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-            <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+        <attributeEditorField verticalStretch="0" name="value_min" index="8" showLabel="1" horizontalStretch="0">
+          <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
           </labelStyle>
         </attributeEditorField>
-        <attributeEditorField name="value_max" showLabel="1" horizontalStretch="0" verticalStretch="0" index="9">
-          <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-            <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+        <attributeEditorField verticalStretch="0" name="value_max" index="9" showLabel="1" horizontalStretch="0">
+          <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
           </labelStyle>
         </attributeEditorField>
       </attributeEditorContainer>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Phenomenon Time" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="0" name="Phenomenon Time" groupBox="1" collapsed="0" visibilityExpression="" collapsedExpressionEnabled="0" type="GroupBox" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
-      <attributeEditorField name="phenomenontime_start" showLabel="1" horizontalStretch="0" verticalStretch="0" index="10">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="phenomenontime_start" index="10" showLabel="1" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorContainer name="End" collapsed="0" showLabel="0" collapsedExpression="" type="Row" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression=" &quot;phenomenontime_start&quot; is not NULL" collapsedExpressionEnabled="0" columnCount="1" groupBox="0">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="1" name="End" groupBox="0" collapsed="0" visibilityExpression=" &quot;phenomenontime_start&quot; is not NULL" collapsedExpressionEnabled="0" type="Row" showLabel="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
-        <attributeEditorField name="phenomenontime_end" showLabel="1" horizontalStretch="0" verticalStretch="0" index="11">
-          <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-            <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+        <attributeEditorField verticalStretch="0" name="phenomenontime_end" index="11" showLabel="1" horizontalStretch="0">
+          <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
           </labelStyle>
         </attributeEditorField>
       </attributeEditorContainer>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Result Time" collapsed="0" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="0" name="Result Time" groupBox="1" collapsed="0" visibilityExpression="" collapsedExpressionEnabled="0" type="GroupBox" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
-      <attributeEditorField name="resulttime_start" showLabel="1" horizontalStretch="0" verticalStretch="0" index="12">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="resulttime_start" index="12" showLabel="1" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorContainer name="End" collapsed="0" showLabel="0" collapsedExpression="" type="Row" horizontalStretch="0" visibilityExpressionEnabled="1" verticalStretch="0" visibilityExpression=" &quot;resulttime_start&quot; is not NULL" collapsedExpressionEnabled="0" columnCount="1" groupBox="0">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="1" name="End" groupBox="0" collapsed="0" visibilityExpression=" &quot;resulttime_start&quot; is not NULL" collapsedExpressionEnabled="0" type="Row" showLabel="0" horizontalStretch="0" columnCount="1" collapsedExpression="">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
-        <attributeEditorField name="resulttime_end" showLabel="1" horizontalStretch="0" verticalStretch="0" index="13">
-          <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-            <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+        <attributeEditorField verticalStretch="0" name="resulttime_end" index="13" showLabel="1" horizontalStretch="0">
+          <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
           </labelStyle>
         </attributeEditorField>
       </attributeEditorContainer>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Properties" collapsed="1" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="0" name="Properties" groupBox="1" collapsed="1" visibilityExpression="" collapsedExpressionEnabled="0" type="GroupBox" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
-      <attributeEditorField name="properties" showLabel="0" horizontalStretch="0" verticalStretch="0" index="14">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="properties" index="14" showLabel="0" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer name="Feature" collapsed="1" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="0" name="Feature" groupBox="1" collapsed="1" visibilityExpression="" collapsedExpressionEnabled="0" type="GroupBox" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
-      <attributeEditorField name="guid_soilsite" showLabel="1" horizontalStretch="0" verticalStretch="0" index="19">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="guid_soilsite" index="19" showLabel="1" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField name="guid_soilprofile" showLabel="1" horizontalStretch="0" verticalStretch="0" index="20">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="guid_soilprofile" index="20" showLabel="1" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField name="guid_profileelement" showLabel="1" horizontalStretch="0" verticalStretch="0" index="21">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="guid_profileelement" index="21" showLabel="1" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField name="guid_soilderivedobject" showLabel="1" horizontalStretch="0" verticalStretch="0" index="22">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField verticalStretch="0" name="guid_soilderivedobject" index="22" showLabel="1" horizontalStretch="0">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField name="guid_thing" showLabel="1" horizontalStretch="0" verticalStretch="0" index="15">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField verticalStretch="0" name="guid_thing" index="15" showLabel="1" horizontalStretch="0">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField name="guid_sensor" showLabel="1" horizontalStretch="0" verticalStretch="0" index="16">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField verticalStretch="0" name="guid_sensor" index="16" showLabel="1" horizontalStretch="0">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField name="guid_observedproperty" showLabel="1" horizontalStretch="0" verticalStretch="0" index="17">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField verticalStretch="0" name="guid_observedproperty" index="17" showLabel="1" horizontalStretch="0">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField name="guid_observingprocedure" showLabel="1" horizontalStretch="0" verticalStretch="0" index="18">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField verticalStretch="0" name="guid_observingprocedure" index="18" showLabel="1" horizontalStretch="0">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer name="Observation" collapsed="1" showLabel="1" collapsedExpression="" type="GroupBox" horizontalStretch="0" visibilityExpressionEnabled="0" verticalStretch="0" visibilityExpression="" collapsedExpressionEnabled="0" columnCount="1" groupBox="1">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer verticalStretch="0" visibilityExpressionEnabled="0" name="Observation" groupBox="1" collapsed="1" visibilityExpression="" collapsedExpressionEnabled="0" type="GroupBox" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="">
+      <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
       </labelStyle>
-      <attributeEditorRelation relation="datastream_observation" name="datastream_observation" showLabel="0" label="" forceSuppressFormPopup="0" horizontalStretch="0" verticalStretch="0" nmRelationId="" relationWidgetTypeId="relation_editor">
-        <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-          <labelFont strikethrough="0" style="" underline="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorRelation verticalStretch="0" relationWidgetTypeId="relation_editor" nmRelationId="" name="datastream_observation" relation="datastream_observation" forceSuppressFormPopup="0" showLabel="0" horizontalStretch="0" label="">
+        <labelStyle labelColor="" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0" style=""/>
         </labelStyle>
         <editor_configuration type="Map">
-          <Option name="allow_add_child_feature_with_no_geometry" type="bool" value="false"/>
-          <Option name="buttons" type="QString" value="AllButtons"/>
+          <Option value="false" name="allow_add_child_feature_with_no_geometry" type="bool"/>
+          <Option value="AllButtons" name="buttons" type="QString"/>
           <Option name="filter_expression" type="invalid"/>
-          <Option name="show_first_feature" type="bool" value="true"/>
+          <Option value="true" name="show_first_feature" type="bool"/>
         </editor_configuration>
       </attributeEditorRelation>
     </attributeEditorContainer>
@@ -935,8 +953,8 @@ def my_form_open(dialog, layer, feature):
   <widgets>
     <widget name="datastream_observation">
       <config type="Map">
-        <Option name="force-suppress-popup" type="bool" value="false"/>
-        <Option name="nm-rel" type="QString" value=""/>
+        <Option value="false" name="force-suppress-popup" type="bool"/>
+        <Option value="" name="nm-rel" type="QString"/>
       </config>
     </widget>
   </widgets>

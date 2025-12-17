@@ -1,14 +1,14 @@
-The `sql` folder contains the informatic code which is behind the INSPIRE Soil Geopackage.  
-Using the SQL code provided in the SQL files, you can recreate the GeoPackage containing the complete INSPIRE Soil data structure.
+The `sql` folder contains the informatic code which is behind the SoilWise Geopackage.  
+Using the SQL code provided in the SQL files, you can recreate the GeoPackage containing the complete SoilWise data structure.
 
 
 ---
-The data model **currently under development** can be viewed at:
-🔗 https://dbdiagram.io/d/INSPIRE_SO_STA2_Guid-69202690228c5bbc1ae18a3b
+The data model can be viewed at:
+🔗 https://dbdiagram.io/d/SoilWise_Geopackage-69399847e877c6307451317a
 
 ---
 
-## Recreating the Geopackage Containing the INSPIRE Soil Structure
+## Recreating the Geopackage Containing the SoilWise Structure
 
 To do this:  
 1. Open the empty GeoPackage model available at [http://www.geopackage.org/data/empty.gpkg](http://www.geopackage.org/data/empty.gpkg) using a database manager (e.g., DBeaver).  
@@ -18,7 +18,7 @@ To do this:
 
 - `DDL_SO.sql`
     - Contains Data Definition Language (DDL) statements.
-    - Used to create the full INSPIRE Soil database structure, including tables and relationships.
+    - Used to create the full SoilWise database structure, including tables and relationships.
 
 - `META_SO.sql`
     - Includes instructions to populate GeoPackage metadata (non-INSPIRE format).
@@ -54,8 +54,6 @@ Some names in the code need to be changed for it to work correctly, as described
     - 'soilbody_newname',  ** CHANGE NAME ** the name should be as entered in point 1
 
 ---
-
-
 # Database Structure Report
 
 
@@ -68,7 +66,6 @@ Some names in the code need to be changed for it to work correctly, as described
 | `id` | `TEXT` |  | Codelist Voice Uri, and Primary Key of the Table. |
 | `label` | `TEXT` |  | A word or phrase used to name or describe something, often to identify or classify it. |
 | `collection` | `TEXT` |  | Structured set of related elements, which share common characteristics and are managed with unique and persistent identifiers. |
-| `collectionset` | `TEXT` |  | Set of Collection. |
 
 ### Relationships (as child)
 - None
@@ -81,6 +78,125 @@ Some names in the code need to be changed for it to work correctly, as described
 
 ### Triggers
 - None
+
+Codelists in the SO (Soil) INSPIRE domain are essential for ensuring a standardized representation of soil data across the European Union. They enable consistent classification and encoding of specific values (e.g., soil types, usage categories) across different languages and applications, ensuring interoperability and semantic integrity in environmental datasets.
+
+Although the codelist table has no relationship with other tables, its presence is crucial for the correct data management and control. Although the codelist table has no relationship with other tables, its presence is crucial for the correct data management and control.. It includes replicates of all  SO domain valid codes extracted from the INSPIRE registry (https://inspire.ec.europa.eu/registry). ***Essentially, if a coded value is in the table, it is supposed to be valid; if not, the code is to be considered as incorrect, and the relative value isn’t stored***.
+ 
+The presence of the codelist table in the Geopackage allows forms for displaying dropdown lists, simplifying the data entry. However, up to now (12/2025), not all the mandatory items foreseen in the INSPIRE SOIL UML structure have been populated into the INSPIRE registry. For those mandatory items foreseen in the INSPIRE SOIL UML structure for which there is not yet a published codelis inside the INSPIRE registry, that is, for WRBdiagnostichorizon, ProcessParameterNameValue, WRBReferenceSoilGroupValue (2014), WRBReferenceSoilGroupValue (2022), WRBQualifierValue (2022), and WRBSpecifierValue (2022)), we made reference to other officially mainatined controlled vocabularies by means of URI.
+ 
+Moreover, internal codelists have also been added to the overmentioned table to manage forms more efficiently.
+INSPIRE registry
+ 
+
+## List of Features with their respective codelists:
+
+
+
+### FEATURE soilsite
+
+SoilInvestigationPurposeValue
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/SoilInvestigationPurposeValue
+
+
+### FEATURE soilplot
+
+SoilPlotTypeValue
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue
+
+
+### FEATURE  soilprofile
+
+WRBReferenceSoilGroupValue (2006)
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue
+
+WRBReferenceSoilGroupValue (2014)
+CODELIST AGROPORTAL
+https://agroportal.lirmm.fr/ontologies/AGROVOC/
+
+WRBReferenceSoilGroupValue (2022)
+CODELIST ORBL-SOIL
+https://obrl-soil.github.io/wrbsoil2022/
+
+
+### FEATURE othersoilnametype
+
+OtherSoilNameTypeValue
+CODELIST ***INSPIRE***
+https://inspire.ec.europa.eu/codelist/OtherSoilNameTypeValue 
+
+
+### FEATURE profileelement
+
+LayerTypeValue
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/LayerTypeValue
+
+LithologyValue
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/LithologyValue
+
+EventProcessValue
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/EventProcessValue
+
+EventEnvironmentValue
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/EventEnvironmentValue
+
+LayerGenesisProcessStateValue
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/LayerGenesisProcessStateValue
+
+
+### FEATURE faohorizonnotationtype
+
+FAOHorizonMaster
+CODELIST ***INSPIRE***
+https://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue
+
+FAOHorizonSubordinate
+CODELIST ***INSPIRE***
+https://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue
+
+FAOPrime
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/FAOPrimeValue
+
+
+### FEATURE otherhorizonnotationtype
+
+WRBdiagnostichorizon
+CODELIST ORBL
+https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-diagh
+
+
+### FEATURE wrbqualifiergrouptype
+
+WRBQualifierPlaceValue
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/WRBQualifierPlaceValue
+
+WRBQualifierValue (2006)
+CODELIST ***INSPIRE***
+http://inspire.ec.europa.eu/codelist/WRBQualifierValue
+
+WRBQualifierValue (2022)
+CODELIST ORBL-SOIL
+https://obrl-soil.github.io/wrbsoil2022/
+
+WRBSpecifiers (2006)
+CODELIST ***INSPIRE*** 
+http://inspire.ec.europa.eu/codelist/WRBSpecifierValue (Under review)
+
+WRBSpecifierValue (2022)
+CODELIST ORBL-SOIL
+https://obrl-soil.github.io/wrbsoil2022/
+
+
 
 ---
 
@@ -147,6 +263,10 @@ Some names in the code need to be changed for it to work correctly, as described
 ### Triggers
 - **datastreamguid** — After Insert
 - **datastreamguidupdate** — After Update
+- **datastream_bi_check_proc_prop_pair** — Before Insert, RAISE: `Insert denied: the (guid_observingprocedure, guid_observedproperty) pair is not registered in obsprocedure_obsdproperty.`
+- **datastream_bu_check_proc_prop_pair** — Before Update, RAISE: `Update denied: the (guid_observingprocedure, guid_observedproperty) pair is not registered in obsprocedure_obsdproperty.`
+- **i_codespace** — Before Insert, RAISE: `Table datastream: Invalid value for codespace. Must be present in id of Category codelist.`
+- **u_codespace** — Before Update, RAISE: `Table datastream: Invalid value for codespace. Must be present in id of Category codelist.`
 - **datastream_bi_bounds_consistency** — Before Insert, RAISE: `Datastream bounds: value_min must be less than or equal to value_max when both are provided.`
 - **datastream_bu_bounds_consistency** — Before Update, RAISE: `Datastream bounds: value_min must be less than or equal to value_max when both are provided.`
 - **datastream_bi_count_bounds_are_integers** — Before Insert, RAISE: `Type Count: value_min must be an integer (numerically integral).`
@@ -185,6 +305,74 @@ Since both `idobservedproperty` in `datastream` and the fields `name` and `defin
    - Forbidden: `iduom`, `codespace`.
    - Optional: `value_min` and `value_max`.
    - Additional constraint: if both are present, `value_max > value_min`.
+
+
+
+##  How to Populate the `codelist` Table for Codespace Management
+
+This document provides technical guidelines for correctly populating the `codelist` table in a **GeoPackage/SQLite database**.  
+Proper population of this table ensures that **triggers** defined in the GeoPackage work as intended and that codespaces are managed consistently.
+
+### Why Is This Important?
+
+The `codelist` table contains all **INSPIRE code lists** required to manage many tables in the GeoPackage.  
+In this context, it is also used to store **codespaces** and their corresponding values.
+
+The table will include:
+- **Codespace definitions** (e.g., `coatingNatureValueCode`)
+- **Codespace elements** (e.g., `…-C`, `…-CC`, etc.)
+
+>**Rule:** Always insert the **codespace list first** (top-level), then its **elements**.
+
+
+## Workflow Overview
+
+### Step 1 — Insert the Codespace List (Top-Level)
+
+Each codespace list requires:
+- `id`: **A unique URI or key for the list**
+- `label`: A human-readable name for the list
+- `collection`: Always set to **`'Category'`**
+
+**Example:**
+```sql
+INSERT INTO codelist (id, label, collection)
+VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode',
+        'coatingNatureValueCode',
+        'Category');
+````
+
+### Step 2 — Insert the Codespace Elements
+
+For each element in the codespace:
+- `id`: A unique URI or key for the element (e.g., …-C, …-CC)
+- `label`: A descriptive label for the element
+- `collection`: **The id of the codespace list created in Step 1**
+
+**Example:**
+```sql
+INSERT INTO codelist (id, label, collection) 
+VALUES('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-C',  
+	   'Clay',                
+	   'http://w3id.org/glosis/model/codelists/coatingNatureValueCode'),
+INSERT INTO "codelist" (id, label, collection) 
+VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-CC', 
+		'Calcium carbonate', 
+		'http://w3id.org/glosis/model/codelists/coatingNatureValueCode'),
+INSERT INTO "codelist" (id, label, collection) 
+VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-CH', 
+		'Clay and humus (organic matter)', 
+		'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+````
+### Resulting Table Structure
+After executing the above statements, the codelist table will look like this:
+
+| id | label | collection |
+|------|------|-----------|
+| http://w3id.org/glosis/model/codelists/coatingNatureValueCode | coatingNatureValueCode| Category |
+| http://w3id.org/glosis/model/codelists/coatingNatureValueCode-C | Clay| http://w3id.org/glosis/model/codelists/coatingNatureValueCode |
+| http://w3id.org/glosis/model/codelists/coatingNatureValueCode-CC | Calcium carbonate| http://w3id.org/glosis/model/codelists/coatingNatureValueCode |
+| http://w3id.org/glosis/model/codelists/coatingNatureValueCode-CH | Clay and humus (organic matter)| http://w3id.org/glosis/model/codelists/coatingNatureValueCode |
 
 ---
 
@@ -441,7 +629,8 @@ Since both `idobservedproperty` in `datastream` and the fields `name` and `defin
 - **observation_ad_recalc_ds_times** — After Delete
 - **observation_bi_type_constraints** — Before Insert, RAISE: `Type Quantity: result_real must be NOT NULL; result_text and result_boolean must be NULL.`
 - **observation_bu_type_constraints** — Before Update, RAISE: `Type Quantity: result_real must be NOT NULL; result_text and result_boolean must be NULL.`
-
+- **observation_bi_result_text_in_codespace** — Before Insert, RAISE: `Insert denied: result_text must exist in codelist.id within the collection equal to the linked datastream codespace (type=Category).`
+- **observation_bu_result_text_in_codespace** — Before Insert, RAISE: `Insert denied: result_text must exist in codelist.id within the collection equal to the linked datastream codespace (type=Category).`
 
 ### Alignment of the Datastream Time Window
 To maintain in `datastream` a consistent summary of the temporal coverage of its observations, there are three triggers that recompute the fields `datastream.phenomenontime_start` (MIN) and `datastream.phenomenontime_end` (MAX) with respect to all related rows in `observation`:
@@ -506,6 +695,7 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `definition` | `TEXT` | NOT NULL | The URI of the ObservedProperty. Dereferencing this URI SHOULD result in a representation of the definition of the ObservedProperty. The definition SHOULD be unique in a service. |
 | `description` | `TEXT` |  | A description about the ObservedProperty. |
 | `properties` | `TEXT` |  | mime type: 'application/json'. A JSON Object containing user-annotated properties as key-value pairs. |
+| `source` | `TEXT` | NOT NULL, DEFAULT 'Local' | Indicate the origin of the data. In the case of the insertion of new properties by the user, these will be marked with the label «Local». |
 
 ### Relationships (as child)
 - None
@@ -1213,86 +1403,85 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 
 ---
 
-
 Relationships (child → parent):
 -------------------------------
-[datastream].guid_soilderivedobject  -->  [soilderivedobject].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[datastream].guid_profileelement  -->  [profileelement].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[datastream].guid_soilprofile  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[datastream].guid_soilsite  -->  [soilsite].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[datastream].guid_observingprocedure  -->  [observingprocedure].guid  (ON UPDATE CASCADE, ON DELETE SET NULL)
-[datastream].guid_observedproperty  -->  [observedproperty].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[datastream].guid_sensor  -->  [sensor].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[datastream].guid_thing  -->  [thing].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[datastream].code_unitofmeasure  -->  [unitofmeasure].code  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[derivedprofilepresenceinsoilbody].guid_soilprofile  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[derivedprofilepresenceinsoilbody].guid_soilbody  -->  [soilbody].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[faohorizonnotationtype].guid_profileelement  -->  [profileelement].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[isbasedonobservedsoilprofile].guid_soilprofile  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[isbasedonobservedsoilprofile].guid_soilderivedobject  -->  [soilderivedobject].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[isbasedonsoilbody].guid_soilbody  -->  [soilbody].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[isbasedonsoilbody].guid_soilderivedobject  -->  [soilderivedobject].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[isbasedonsoilderivedobject].guid_related  -->  [soilderivedobject].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[isbasedonsoilderivedobject].guid_base  -->  [soilderivedobject].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[isderivedfrom].guid_related  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[isderivedfrom].guid_base  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[observation].guid_datastream  -->  [datastream].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[obsprocedure_obsdproperty].guid_observedproperty  -->  [observedproperty].guid  (ON UPDATE CASCADE, ON DELETE RESTRICT)
-[obsprocedure_obsdproperty].guid_observingprocedure  -->  [observingprocedure].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[obsprocedure_sensor].guid_sensor  -->  [sensor].guid  (ON UPDATE CASCADE, ON DELETE RESTRICT)
-[obsprocedure_sensor].guid_observingprocedure  -->  [observingprocedure].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[otherhorizon_profileelement].guid_otherhorizonnotationtype  -->  [otherhorizonnotationtype].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[otherhorizon_profileelement].guid_profileelement  -->  [profileelement].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[othersoilnametype].othersoilname  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[profileelement].ispartof  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilbody_geom].guid_soilbody  -->  [soilbody].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilplot].locatedon  -->  [soilsite].guid  (ON UPDATE CASCADE, ON DELETE NO ACTION)
-[soilprofile].location  -->  [soilplot].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[wrbqualifiergroup_profile].guid_wrbqualifiergrouptype  -->  [wrbqualifiergrouptype].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[wrbqualifiergroup_profile].guid_soilprofile  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [datastream].guid_soilderivedobject  -->  [soilderivedobject].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [datastream].guid_profileelement  -->  [profileelement].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [datastream].guid_soilprofile  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [datastream].guid_soilsite  -->  [soilsite].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [datastream].guid_observingprocedure  -->  [observingprocedure].guid  (ON UPDATE CASCADE, ON DELETE SET NULL)
+- [datastream].guid_observedproperty  -->  [observedproperty].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [datastream].guid_sensor  -->  [sensor].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [datastream].guid_thing  -->  [thing].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [datastream].code_unitofmeasure  -->  [unitofmeasure].code  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [derivedprofilepresenceinsoilbody].guid_soilprofile  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [derivedprofilepresenceinsoilbody].guid_soilbody  -->  [soilbody].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [faohorizonnotationtype].guid_profileelement  -->  [profileelement].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [isbasedonobservedsoilprofile].guid_soilprofile  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [isbasedonobservedsoilprofile].guid_soilderivedobject  -->  [soilderivedobject].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [isbasedonsoilbody].guid_soilbody  -->  [soilbody].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [isbasedonsoilbody].guid_soilderivedobject  -->  [soilderivedobject].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [isbasedonsoilderivedobject].guid_related  -->  [soilderivedobject].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [isbasedonsoilderivedobject].guid_base  -->  [soilderivedobject].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [isderivedfrom].guid_related  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [isderivedfrom].guid_base  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [observation].guid_datastream  -->  [datastream].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [obsprocedure_obsdproperty].guid_observedproperty  -->  [observedproperty].guid  (ON UPDATE CASCADE, ON DELETE RESTRICT)
+- [obsprocedure_obsdproperty].guid_observingprocedure  -->  [observingprocedure].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [obsprocedure_sensor].guid_sensor  -->  [sensor].guid  (ON UPDATE CASCADE, ON DELETE RESTRICT)
+- [obsprocedure_sensor].guid_observingprocedure  -->  [observingprocedure].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [otherhorizon_profileelement].guid_otherhorizonnotationtype  -->  [otherhorizonnotationtype].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [otherhorizon_profileelement].guid_profileelement  -->  [profileelement].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [othersoilnametype].othersoilname  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [profileelement].ispartof  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilbody_geom].guid_soilbody  -->  [soilbody].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilplot].locatedon  -->  [soilsite].guid  (ON UPDATE CASCADE, ON DELETE NO ACTION)
+- [soilprofile].location  -->  [soilplot].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [wrbqualifiergroup_profile].guid_wrbqualifiergrouptype  -->  [wrbqualifiergrouptype].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [wrbqualifiergroup_profile].guid_soilprofile  -->  [soilprofile].guid  (ON UPDATE CASCADE, ON DELETE CASCADE)
 
 Reverse relationships (parent → children):
 ------------------------------------------
-[datastream].guid  -->  [observation].guid_datastream  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[observedproperty].guid  -->  [datastream].guid_observedproperty  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[observedproperty].guid  -->  [obsprocedure_obsdproperty].guid_observedproperty  (ON UPDATE CASCADE, ON DELETE RESTRICT)
-[observingprocedure].guid  -->  [datastream].guid_observingprocedure  (ON UPDATE CASCADE, ON DELETE SET NULL)
-[observingprocedure].guid  -->  [obsprocedure_obsdproperty].guid_observingprocedure  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[observingprocedure].guid  -->  [obsprocedure_sensor].guid_observingprocedure  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[otherhorizonnotationtype].guid  -->  [otherhorizon_profileelement].guid_otherhorizonnotationtype  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[profileelement].guid  -->  [datastream].guid_profileelement  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[profileelement].guid  -->  [faohorizonnotationtype].guid_profileelement  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[profileelement].guid  -->  [otherhorizon_profileelement].guid_profileelement  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[sensor].guid  -->  [datastream].guid_sensor  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[sensor].guid  -->  [obsprocedure_sensor].guid_sensor  (ON UPDATE CASCADE, ON DELETE RESTRICT)
-[soilbody].guid  -->  [derivedprofilepresenceinsoilbody].guid_soilbody  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilbody].guid  -->  [isbasedonsoilbody].guid_soilbody  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilbody].guid  -->  [soilbody_geom].guid_soilbody  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilderivedobject].guid  -->  [datastream].guid_soilderivedobject  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilderivedobject].guid  -->  [isbasedonobservedsoilprofile].guid_soilderivedobject  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilderivedobject].guid  -->  [isbasedonsoilbody].guid_soilderivedobject  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilderivedobject].guid  -->  [isbasedonsoilderivedobject].guid_related  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilderivedobject].guid  -->  [isbasedonsoilderivedobject].guid_base  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilplot].guid  -->  [soilprofile].location  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilprofile].guid  -->  [datastream].guid_soilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilprofile].guid  -->  [derivedprofilepresenceinsoilbody].guid_soilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilprofile].guid  -->  [isbasedonobservedsoilprofile].guid_soilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilprofile].guid  -->  [isderivedfrom].guid_related  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilprofile].guid  -->  [isderivedfrom].guid_base  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilprofile].guid  -->  [othersoilnametype].othersoilname  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilprofile].guid  -->  [profileelement].ispartof  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilprofile].guid  -->  [wrbqualifiergroup_profile].guid_soilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilsite].guid  -->  [datastream].guid_soilsite  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[soilsite].guid  -->  [soilplot].locatedon  (ON UPDATE CASCADE, ON DELETE NO ACTION)
-[thing].guid  -->  [datastream].guid_thing  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[unitofmeasure].code  -->  [datastream].code_unitofmeasure  (ON UPDATE CASCADE, ON DELETE CASCADE)
-[wrbqualifiergrouptype].guid  -->  [wrbqualifiergroup_profile].guid_wrbqualifiergrouptype  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [datastream].guid  -->  [observation].guid_datastream  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [observedproperty].guid  -->  [datastream].guid_observedproperty  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [observedproperty].guid  -->  [obsprocedure_obsdproperty].guid_observedproperty  (ON UPDATE CASCADE, ON DELETE RESTRICT)
+- [observingprocedure].guid  -->  [datastream].guid_observingprocedure  (ON UPDATE CASCADE, ON DELETE SET NULL)
+- [observingprocedure].guid  -->  [obsprocedure_obsdproperty].guid_observingprocedure  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [observingprocedure].guid  -->  [obsprocedure_sensor].guid_observingprocedure  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [otherhorizonnotationtype].guid  -->  [otherhorizon_profileelement].guid_otherhorizonnotationtype  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [profileelement].guid  -->  [datastream].guid_profileelement  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [profileelement].guid  -->  [faohorizonnotationtype].guid_profileelement  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [profileelement].guid  -->  [otherhorizon_profileelement].guid_profileelement  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [sensor].guid  -->  [datastream].guid_sensor  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [sensor].guid  -->  [obsprocedure_sensor].guid_sensor  (ON UPDATE CASCADE, ON DELETE RESTRICT)
+- [soilbody].guid  -->  [derivedprofilepresenceinsoilbody].guid_soilbody  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilbody].guid  -->  [isbasedonsoilbody].guid_soilbody  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilbody].guid  -->  [soilbody_geom].guid_soilbody  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilderivedobject].guid  -->  [datastream].guid_soilderivedobject  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilderivedobject].guid  -->  [isbasedonobservedsoilprofile].guid_soilderivedobject  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilderivedobject].guid  -->  [isbasedonsoilbody].guid_soilderivedobject  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilderivedobject].guid  -->  [isbasedonsoilderivedobject].guid_related  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilderivedobject].guid  -->  [isbasedonsoilderivedobject].guid_base  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilplot].guid  -->  [soilprofile].location  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilprofile].guid  -->  [datastream].guid_soilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilprofile].guid  -->  [derivedprofilepresenceinsoilbody].guid_soilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilprofile].guid  -->  [isbasedonobservedsoilprofile].guid_soilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilprofile].guid  -->  [isderivedfrom].guid_related  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilprofile].guid  -->  [isderivedfrom].guid_base  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilprofile].guid  -->  [othersoilnametype].othersoilname  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilprofile].guid  -->  [profileelement].ispartof  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilprofile].guid  -->  [wrbqualifiergroup_profile].guid_soilprofile  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilsite].guid  -->  [datastream].guid_soilsite  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [soilsite].guid  -->  [soilplot].locatedon  (ON UPDATE CASCADE, ON DELETE NO ACTION)
+- [thing].guid  -->  [datastream].guid_thing  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [unitofmeasure].code  -->  [datastream].code_unitofmeasure  (ON UPDATE CASCADE, ON DELETE CASCADE)
+- [wrbqualifiergrouptype].guid  -->  [wrbqualifiergroup_profile].guid_wrbqualifiergrouptype  (ON UPDATE CASCADE, ON DELETE CASCADE)
 
 Legend:
   * column name prefixed with '*' denotes PRIMARY KEY in table boxes.
   * arrow 'child --> parent' indicates a many-to-one relationship.
   * arrow 'parent --> child' indicates the reverse view of the same FK.
-```
+
 
 ## Cascade Summary
 - Deleting from `datastream` may delete rows in:

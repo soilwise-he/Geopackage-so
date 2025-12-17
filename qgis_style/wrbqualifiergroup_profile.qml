@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.44.0-Solothurn" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
+<qgis readOnly="0" version="3.44.0-Solothurn" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Actions|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,10 +7,10 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation name="soilprofile_wrbqualifiergroup_profile_2" referencingLayer="wrbqualifiergroup_profile_68f05370_a2dd_45c4_babf_41702851b4ee" id="soilprofile_wrbqualifiergroup_profile_2" layerName="soilprofile" strength="Composition" layerId="soilprofile_216eea7c_d015_4117_8c9f_df0b7692b5a7" referencedLayer="soilprofile_216eea7c_d015_4117_8c9f_df0b7692b5a7" providerKey="ogr" dataSource="./SW_15.gpkg|layername=soilprofile">
+    <relation layerName="soilprofile" dataSource="./SoilWise.gpkg|layername=soilprofile" referencingLayer="wrbqualifiergroup_profile_d6991f39_59d3_4eb8_b488_8b39680e1f37" name="soilprofile_wrbqualifiergroup_profile_2" strength="Association" referencedLayer="soilprofile_25d7fa1d_bef3_4386_abaa_4aaf5b416cf8" providerKey="ogr" id="soilprofile_wrbqualifiergroup_profile_2" layerId="soilprofile_25d7fa1d_bef3_4386_abaa_4aaf5b416cf8">
       <fieldRef referencingField="guid_soilprofile" referencedField="guid"/>
     </relation>
-    <relation name="wrbqualifiergrouptype_wrbqualifiergroup_profile" referencingLayer="wrbqualifiergroup_profile_68f05370_a2dd_45c4_babf_41702851b4ee" id="wrbqualifiergrouptype_wrbqualifiergroup_profile" layerName="wrbqualifiergrouptype" strength="Composition" layerId="wrbqualifiergrouptype_8e202de8_583e_41fa_a47c_9d5e4c08ab7a" referencedLayer="wrbqualifiergrouptype_8e202de8_583e_41fa_a47c_9d5e4c08ab7a" providerKey="ogr" dataSource="./SW_15.gpkg|layername=wrbqualifiergrouptype">
+    <relation layerName="wrbqualifiergrouptype" dataSource="./SoilWise.gpkg|layername=wrbqualifiergrouptype" referencingLayer="wrbqualifiergroup_profile_d6991f39_59d3_4eb8_b488_8b39680e1f37" name="wrbqualifiergrouptype_wrbqualifiergroup_profile" strength="Association" referencedLayer="wrbqualifiergrouptype_ca23e912_5928_4c98_8810_9608ee425a61" providerKey="ogr" id="wrbqualifiergrouptype_wrbqualifiergroup_profile" layerId="wrbqualifiergrouptype_ca23e912_5928_4c98_8810_9608ee425a61">
       <fieldRef referencingField="guid_wrbqualifiergrouptype" referencedField="guid"/>
     </relation>
   </referencedLayers>
@@ -19,8 +19,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" value="false" type="bool"/>
-            <Option name="UseHtml" value="false" type="bool"/>
+            <Option type="bool" name="IsMultiline" value="false"/>
+            <Option type="bool" name="UseHtml" value="false"/>
           </Option>
         </config>
       </editWidget>
@@ -29,19 +29,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" value="false" type="bool"/>
-            <Option name="AllowNULL" value="false" type="bool"/>
-            <Option name="FetchLimitActive" value="true" type="bool"/>
-            <Option name="FetchLimitNumber" value="100" type="int"/>
-            <Option name="MapIdentification" value="false" type="bool"/>
-            <Option name="ReadOnly" value="false" type="bool"/>
-            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=soilprofile" type="QString"/>
-            <Option name="ReferencedLayerId" value="soilprofile_216eea7c_d015_4117_8c9f_df0b7692b5a7" type="QString"/>
-            <Option name="ReferencedLayerName" value="soilprofile" type="QString"/>
-            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
-            <Option name="Relation" value="soilprofile_wrbqualifiergroup_profile_2" type="QString"/>
-            <Option name="ShowForm" value="false" type="bool"/>
-            <Option name="ShowOpenFormButton" value="true" type="bool"/>
+            <Option type="bool" name="AllowAddFeatures" value="false"/>
+            <Option type="bool" name="AllowNULL" value="false"/>
+            <Option type="bool" name="FetchLimitActive" value="true"/>
+            <Option type="int" name="FetchLimitNumber" value="100"/>
+            <Option type="bool" name="MapIdentification" value="false"/>
+            <Option type="bool" name="ReadOnly" value="false"/>
+            <Option type="QString" name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/UPLOAD_NEXT/SoilWise_empty/SoilWise.gpkg|layername=soilprofile"/>
+            <Option type="QString" name="ReferencedLayerId" value="soilprofile_25d7fa1d_bef3_4386_abaa_4aaf5b416cf8"/>
+            <Option type="QString" name="ReferencedLayerName" value="soilprofile"/>
+            <Option type="QString" name="ReferencedLayerProviderKey" value="ogr"/>
+            <Option type="QString" name="Relation" value="soilprofile_wrbqualifiergroup_profile_2"/>
+            <Option type="bool" name="ShowForm" value="false"/>
+            <Option type="bool" name="ShowOpenFormButton" value="true"/>
           </Option>
         </config>
       </editWidget>
@@ -50,19 +50,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" value="false" type="bool"/>
-            <Option name="AllowNULL" value="false" type="bool"/>
-            <Option name="FetchLimitActive" value="true" type="bool"/>
-            <Option name="FetchLimitNumber" value="100" type="int"/>
-            <Option name="MapIdentification" value="false" type="bool"/>
-            <Option name="ReadOnly" value="false" type="bool"/>
-            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_15.gpkg|layername=wrbqualifiergrouptype" type="QString"/>
-            <Option name="ReferencedLayerId" value="wrbqualifiergrouptype_8e202de8_583e_41fa_a47c_9d5e4c08ab7a" type="QString"/>
-            <Option name="ReferencedLayerName" value="wrbqualifiergrouptype" type="QString"/>
-            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
-            <Option name="Relation" value="wrbqualifiergrouptype_wrbqualifiergroup_profile" type="QString"/>
-            <Option name="ShowForm" value="false" type="bool"/>
-            <Option name="ShowOpenFormButton" value="true" type="bool"/>
+            <Option type="bool" name="AllowAddFeatures" value="false"/>
+            <Option type="bool" name="AllowNULL" value="false"/>
+            <Option type="bool" name="FetchLimitActive" value="true"/>
+            <Option type="int" name="FetchLimitNumber" value="100"/>
+            <Option type="bool" name="MapIdentification" value="false"/>
+            <Option type="bool" name="ReadOnly" value="false"/>
+            <Option type="QString" name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/UPLOAD_NEXT/SoilWise_empty/SoilWise.gpkg|layername=wrbqualifiergrouptype"/>
+            <Option type="QString" name="ReferencedLayerId" value="wrbqualifiergrouptype_ca23e912_5928_4c98_8810_9608ee425a61"/>
+            <Option type="QString" name="ReferencedLayerName" value="wrbqualifiergrouptype"/>
+            <Option type="QString" name="ReferencedLayerProviderKey" value="ogr"/>
+            <Option type="QString" name="Relation" value="wrbqualifiergrouptype_wrbqualifiergroup_profile"/>
+            <Option type="bool" name="ShowForm" value="false"/>
+            <Option type="bool" name="ShowOpenFormButton" value="true"/>
           </Option>
         </config>
       </editWidget>
@@ -71,41 +71,42 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" value="false" type="bool"/>
-            <Option name="UseHtml" value="false" type="bool"/>
+            <Option type="bool" name="IsMultiline" value="false"/>
+            <Option type="bool" name="UseHtml" value="false"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias name="" field="id" index="0"/>
-    <alias name="Id Soil Profile" field="guid_soilprofile" index="1"/>
-    <alias name="Id Wrb Qualifier Group Type" field="guid_wrbqualifiergrouptype" index="2"/>
-    <alias name="Position" field="qualifierposition" index="3"/>
+    <alias index="0" name="" field="id"/>
+    <alias index="1" name="Soil Profile" field="guid_soilprofile"/>
+    <alias index="2" name="Wrb Qualifier Group Type" field="guid_wrbqualifiergrouptype"/>
+    <alias index="3" name="Position" field="qualifierposition"/>
   </aliases>
   <splitPolicies>
-    <policy field="id" policy="DefaultValue"/>
-    <policy field="guid_soilprofile" policy="DefaultValue"/>
-    <policy field="guid_wrbqualifiergrouptype" policy="DefaultValue"/>
-    <policy field="qualifierposition" policy="DefaultValue"/>
+    <policy policy="DefaultValue" field="id"/>
+    <policy policy="DefaultValue" field="guid_soilprofile"/>
+    <policy policy="DefaultValue" field="guid_wrbqualifiergrouptype"/>
+    <policy policy="DefaultValue" field="qualifierposition"/>
   </splitPolicies>
   <mergePolicies>
-    <policy field="id" policy="DefaultValue"/>
-    <policy field="guid_soilprofile" policy="DefaultValue"/>
-    <policy field="guid_wrbqualifiergrouptype" policy="DefaultValue"/>
+    <policy policy="DefaultValue" field="id"/>
+    <policy policy="DefaultValue" field="guid_soilprofile"/>
+    <policy policy="DefaultValue" field="guid_wrbqualifiergrouptype"/>
+    <policy policy="DefaultValue" field="qualifierposition"/>
   </mergePolicies>
   <defaults>
-    <default field="id" applyOnUpdate="0" expression=""/>
-    <default field="guid_soilprofile" applyOnUpdate="0" expression=""/>
-    <default field="guid_wrbqualifiergrouptype" applyOnUpdate="0" expression=""/>
-    <default field="qualifierposition" applyOnUpdate="0" expression=""/>
+    <default expression="" field="id" applyOnUpdate="0"/>
+    <default expression="" field="guid_soilprofile" applyOnUpdate="0"/>
+    <default expression="" field="guid_wrbqualifiergrouptype" applyOnUpdate="0"/>
+    <default expression="" field="qualifierposition" applyOnUpdate="0"/>
   </defaults>
   <constraints>
-    <constraint unique_strength="1" notnull_strength="1" field="id" constraints="3" exp_strength="0"/>
-    <constraint unique_strength="0" notnull_strength="1" field="guid_soilprofile" constraints="1" exp_strength="0"/>
-    <constraint unique_strength="0" notnull_strength="1" field="guid_wrbqualifiergrouptype" constraints="1" exp_strength="0"/>
-    <constraint unique_strength="0" notnull_strength="1" field="qualifierposition" constraints="1" exp_strength="0"/>
+    <constraint exp_strength="0" constraints="3" notnull_strength="1" unique_strength="1" field="id"/>
+    <constraint exp_strength="0" constraints="1" notnull_strength="1" unique_strength="0" field="guid_soilprofile"/>
+    <constraint exp_strength="0" constraints="1" notnull_strength="1" unique_strength="0" field="guid_wrbqualifiergrouptype"/>
+    <constraint exp_strength="0" constraints="1" notnull_strength="1" unique_strength="0" field="qualifierposition"/>
   </constraints>
   <constraintExpressions>
     <constraint exp="" desc="" field="id"/>
@@ -114,6 +115,9 @@
     <constraint exp="" desc="" field="qualifierposition"/>
   </constraintExpressions>
   <expressionfields/>
+  <attributeactions>
+    <defaultAction key="Canvas" value="{00000000-0000-0000-0000-000000000000}"/>
+  </attributeactions>
   <editform tolerant="1"></editform>
   <editforminit/>
   <editforminitcodesource>0</editforminitcodesource>
@@ -138,40 +142,40 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-      <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+    <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+      <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0" style=""/>
     </labelStyle>
-    <attributeEditorField name="guid_soilprofile" verticalStretch="0" showLabel="1" index="1" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+    <attributeEditorField showLabel="1" index="3" horizontalStretch="0" name="qualifierposition" verticalStretch="0">
+      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255,rgb:0,0,0,1">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField name="qualifierposition" verticalStretch="0" showLabel="1" index="3" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255,rgb:0,0,0,1" overrideLabelColor="0">
-        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+    <attributeEditorField showLabel="1" index="2" horizontalStretch="0" name="guid_wrbqualifiergrouptype" verticalStretch="0">
+      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField name="guid_wrbqualifiergrouptype" verticalStretch="0" showLabel="1" index="2" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="" overrideLabelColor="0">
-        <labelFont style="" bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0"/>
+    <attributeEditorField showLabel="1" index="1" horizontalStretch="0" name="guid_soilprofile" verticalStretch="0">
+      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+        <labelFont bold="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
   <editable>
-    <field name="guid_soilprofile" editable="1"/>
-    <field name="guid_wrbqualifiergrouptype" editable="1"/>
-    <field name="id" editable="1"/>
-    <field name="idsoilprofile" editable="1"/>
-    <field name="idwrbqualifiergrouptype" editable="1"/>
-    <field name="qualifierposition" editable="1"/>
+    <field editable="1" name="guid_soilprofile"/>
+    <field editable="1" name="guid_wrbqualifiergrouptype"/>
+    <field editable="1" name="id"/>
+    <field editable="1" name="idsoilprofile"/>
+    <field editable="1" name="idwrbqualifiergrouptype"/>
+    <field editable="1" name="qualifierposition"/>
   </editable>
   <labelOnTop>
-    <field labelOnTop="0" name="guid_soilprofile"/>
-    <field labelOnTop="0" name="guid_wrbqualifiergrouptype"/>
-    <field labelOnTop="0" name="id"/>
-    <field labelOnTop="0" name="idsoilprofile"/>
-    <field labelOnTop="0" name="idwrbqualifiergrouptype"/>
-    <field labelOnTop="0" name="qualifierposition"/>
+    <field name="guid_soilprofile" labelOnTop="0"/>
+    <field name="guid_wrbqualifiergrouptype" labelOnTop="0"/>
+    <field name="id" labelOnTop="0"/>
+    <field name="idsoilprofile" labelOnTop="0"/>
+    <field name="idwrbqualifiergrouptype" labelOnTop="0"/>
+    <field name="qualifierposition" labelOnTop="0"/>
   </labelOnTop>
   <reuseLastValue>
     <field name="guid_soilprofile" reuseLastValue="0"/>

@@ -2633,6 +2633,66 @@ BEGIN
 END;
 
 
+-- Enforce (guid_observingprocedure, guid_observedproperty) membership on INSERT
+CREATE TRIGGER datastream_bi_check_proc_prop_pair
+BEFORE INSERT ON datastream
+FOR EACH ROW
+WHEN NEW.guid_observingprocedure IS NOT NULL
+AND NOT EXISTS (
+    SELECT 1
+    FROM obsprocedure_obsdproperty m
+    WHERE m.guid_observingprocedure = NEW.guid_observingprocedure
+      AND m.guid_observedproperty  = NEW.guid_observedproperty
+)
+BEGIN
+    SELECT RAISE(
+        ABORT,
+        'Insert denied: the (guid_observingprocedure, guid_observedproperty) pair is not registered in obsprocedure_obsdproperty.'
+    );
+END;
+
+-- Enforce (guid_observingprocedure, guid_observedproperty) membership on UPDATE
+CREATE TRIGGER datastream_bu_check_proc_prop_pair
+BEFORE UPDATE OF guid_observingprocedure, guid_observedproperty ON datastream
+FOR EACH ROW
+WHEN NEW.guid_observingprocedure IS NOT NULL
+AND NOT EXISTS (
+    SELECT 1
+    FROM obsprocedure_obsdproperty m
+    WHERE m.guid_observingprocedure = NEW.guid_observingprocedure
+      AND m.guid_observedproperty  = NEW.guid_observedproperty
+)
+BEGIN
+    SELECT RAISE(
+        ABORT,
+        'Update denied: the (guid_observingprocedure, guid_observedproperty) pair is not registered in obsprocedure_obsdproperty.'
+    );
+END;
+
+
+
+CREATE TRIGGER i_codespace
+BEFORE INSERT ON datastream
+FOR EACH ROW
+WHEN NEW.codespace IS NOT NULL
+     AND NEW.codespace NOT IN (
+         SELECT id FROM codelist WHERE collection = 'Category'
+     )
+BEGIN
+    SELECT RAISE(ABORT, 'Table datastream: Invalid value for codespace. Must be present in id of Category codelist.');
+END;
+
+
+CREATE TRIGGER u_codespace
+BEFORE UPDATE ON datastream
+FOR EACH ROW
+WHEN NEW.codespace IS NOT NULL
+     AND NEW.codespace NOT IN (
+         SELECT id FROM codelist WHERE collection = 'Category'
+     )
+BEGIN
+    SELECT RAISE(ABORT, 'Table datastream: Invalid value for codespace. Must be present in id of Category codelist.');
+END;
 
 /* 
 ██    ██ ███    ██ ██ ████████  ██████  ███████ ███    ███ ███████  █████  ███████ ██    ██ ██████  ███████ 
@@ -2702,7 +2762,8 @@ CREATE TABLE  observedproperty
     name text NOT NULL, 
     definition TEXT NOT NULL,
     description TEXT,
-    properties TEXT
+    properties TEXT,
+    source TEXT default 'Local' NOT NULL
 
     -- Validate that column `definition` is a well-formed URI
     -- URL with http/https/ftp scheme and a non-empty authority
@@ -3570,6 +3631,55 @@ END;
 
 
 
+-- Enforce result_text ∈ codelist.id where codelist.collection = datastream.codespace (INSERT)
+CREATE TRIGGER observation_bi_result_text_in_codespace
+BEFORE INSERT ON observation
+FOR EACH ROW
+WHEN
+  -- scatta solo se c'è testo...
+  NEW.result_text IS NOT NULL
+  -- ...ed il datastream collegato è di tipo 'Category'
+  AND (SELECT type FROM datastream WHERE guid = NEW.guid_datastream) = 'Category'
+  -- ...ed il testo NON è presente nella codelist collegata al codespace
+  AND NOT EXISTS (
+    SELECT 1
+    FROM codelist c
+    JOIN datastream d ON d.guid = NEW.guid_datastream
+    WHERE c.collection = d.codespace
+      AND c.id = NEW.result_text
+  )
+BEGIN
+  SELECT RAISE(
+    ABORT,
+    'Insert denied: result_text must exist in codelist.id within the collection equal to the linked datastream codespace (type=Category).'
+  );
+END;
+
+CREATE TRIGGER observation_bu_result_text_in_codespace
+BEFORE INSERT ON observation
+FOR EACH ROW
+WHEN
+  -- scatta solo se c'è testo...
+  NEW.result_text IS NOT NULL
+  -- ...ed il datastream collegato è di tipo 'Category'
+  AND (SELECT type FROM datastream WHERE guid = NEW.guid_datastream) = 'Category'
+  -- ...ed il testo NON è presente nella codelist collegata al codespace
+  AND NOT EXISTS (
+    SELECT 1
+    FROM codelist c
+    JOIN datastream d ON d.guid = NEW.guid_datastream
+    WHERE c.collection = d.codespace
+      AND c.id = NEW.result_text
+  )
+BEGIN
+  SELECT RAISE(
+    ABORT,
+    'Insert denied: result_text must exist in codelist.id within the collection equal to the linked datastream codespace (type=Category).'
+  );
+END;
+
+
+
 /*
  ██████  ██████  ███████ ███████ ██████  ██    ██ ██ ███    ██  ██████  ██████  ██████   ██████   ██████ ███████ ██████  ██    ██ ██████  ███████ 
 ██    ██ ██   ██ ██      ██      ██   ██ ██    ██ ██ ████   ██ ██       ██   ██ ██   ██ ██    ██ ██      ██      ██   ██ ██    ██ ██   ██ ██      
@@ -3796,8 +3906,8 @@ create table codelist
     id             TEXT,
     label          TEXT,
     --definition     TEXT,
-    collection     TEXT,
-    collectionset            TEXT
+    collection     TEXT
+    --collectionset            TEXT
     --phenomenon     TEXT,
     --featuretype_phenomenon TEXT,
     --parent         TEXT

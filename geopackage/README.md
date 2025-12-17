@@ -1,24 +1,30 @@
-# INSPIRE SO GeoPackage Resources  
+# SoilWise GeoPackage Resources  
 
-This repository provides resources for working with the **INSPIRE Soil (SO)** data model in GeoPackage format. Below is an overview of the folder structure and their respective contents.  
+This repository provides resources for working with the **INSPIRE** data model in GeoPackage format.  
+It also includes an implementation using the **OGC SensorThings API 2.0**, an open, geospatial‑enabled framework for interconnecting sensor‑data‑producing devices, data, and applications over the Web. [link](https://hylkevds.github.io/23-019/23-019.html)
+
+SensorThings 2.0 defines a core data model aligned with the OGC/ISO Observations, Measurements and Samples (ISO 19156:2023), an abstract REST API, and protocol bindings for HTTP and MQTT—supporting create/read/update/delete operations, advanced filtering, and customizable responses—as well as push notifications for data changes over MQTT.
+
+Below is an overview of the folder structure and its contents.
+
 
 ## Folder Structure  
 
-### 1. `INSPIRE_SO_empty`  
+### 1. `SoilWise_empty`  
 - **Contents:**  
-  - GeoPackage files containing the complete INSPIRE SO data structure.
+  - GeoPackage files containing the complete SoilWise data structure.
   - A set of QGIS forms for:  
       - Easier navigation of the dataset.  
       - Data input and editing.  
 - **Purpose:**  
-  - To provide a clean template of the INSPIRE SO model for further customization and data population.  
+  - To provide a clean template of the SoilWise model for further customization and data population.  
 
 ---
 
-### 2. `INSPIRE_SO_with_data`  
+### 2. `SoilWise_with_data`  
 - **Contents:**  
   - GeoPackage files with:  
-    - The complete INSPIRE SO structure.  
+    - The complete SoilWise structure.  
     - Sample data derived from the **Soil Map of Sicily** (scale 1:250,000) (Fantappiè et al., 2011).  
     - A set of QGIS forms for:  
       - Easier navigation of the dataset.  

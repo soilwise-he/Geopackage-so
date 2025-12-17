@@ -7,11 +7,11 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation name="observedproperty_obsprocedure_obsdproperty" providerKey="ogr" layerId="observedproperty_c1a157e8_71be_4f91_8cc9_36863463e356" referencingLayer="obsprocedure_obsdproperty_b0ff1ce9_71c8_4943_afca_23d8a3aa1d7c" referencedLayer="observedproperty_c1a157e8_71be_4f91_8cc9_36863463e356" layerName="observedproperty" id="observedproperty_obsprocedure_obsdproperty" strength="Association" dataSource="./SW_19.gpkg|layername=observedproperty">
-      <fieldRef referencedField="guid" referencingField="guid_observedproperty"/>
+    <relation referencedLayer="observedproperty_4583a462_9bb1_4d18_abb5_5a7132130724" layerId="observedproperty_4583a462_9bb1_4d18_abb5_5a7132130724" name="observedproperty_obsprocedure_obsdproperty" strength="Association" layerName="observedproperty" providerKey="ogr" referencingLayer="obsprocedure_obsdproperty_99bb000d_8599_49c6_afd7_e5ac2846504a" id="observedproperty_obsprocedure_obsdproperty" dataSource="./SoilWise.gpkg|layername=observedproperty">
+      <fieldRef referencingField="guid_observedproperty" referencedField="guid"/>
     </relation>
-    <relation name="observingprocedure_obsprocedure_obsdproperty_2" providerKey="ogr" layerId="observingprocedure_f02f2674_8c6a_45c2_b4b5_80ff23a72147" referencingLayer="obsprocedure_obsdproperty_b0ff1ce9_71c8_4943_afca_23d8a3aa1d7c" referencedLayer="observingprocedure_f02f2674_8c6a_45c2_b4b5_80ff23a72147" layerName="observingprocedure" id="observingprocedure_obsprocedure_obsdproperty_2" strength="Composition" dataSource="./SW_19.gpkg|layername=observingprocedure">
-      <fieldRef referencedField="guid" referencingField="guid_observingprocedure"/>
+    <relation referencedLayer="observingprocedure_a78a1ea5_7232_4ef2_834f_608a51aca853" layerId="observingprocedure_a78a1ea5_7232_4ef2_834f_608a51aca853" name="observingprocedure_obsprocedure_obsdproperty_2" strength="Association" layerName="observingprocedure" providerKey="ogr" referencingLayer="obsprocedure_obsdproperty_99bb000d_8599_49c6_afd7_e5ac2846504a" id="observingprocedure_obsprocedure_obsdproperty_2" dataSource="./SoilWise.gpkg|layername=observingprocedure">
+      <fieldRef referencingField="guid_observingprocedure" referencedField="guid"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
@@ -19,8 +19,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -29,19 +29,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="false"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_19.gpkg|layername=observingprocedure"/>
-            <Option name="ReferencedLayerId" type="QString" value="observingprocedure_f02f2674_8c6a_45c2_b4b5_80ff23a72147"/>
-            <Option name="ReferencedLayerName" type="QString" value="observingprocedure"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="observingprocedure_obsprocedure_obsdproperty_2"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/UPLOAD_NEXT/SoilWise_empty/SoilWise.gpkg|layername=observingprocedure" type="QString"/>
+            <Option name="ReferencedLayerId" value="observingprocedure_a78a1ea5_7232_4ef2_834f_608a51aca853" type="QString"/>
+            <Option name="ReferencedLayerName" value="observingprocedure" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="observingprocedure_obsprocedure_obsdproperty_2" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -50,28 +50,28 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="false"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/SW_19.gpkg|layername=observedproperty"/>
-            <Option name="ReferencedLayerId" type="QString" value="observedproperty_c1a157e8_71be_4f91_8cc9_36863463e356"/>
-            <Option name="ReferencedLayerName" type="QString" value="observedproperty"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="observedproperty_obsprocedure_obsdproperty"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/OneDrive - CREA/Documenti/Geopackage_SoilWise/materiale_lavoro/geopackage/UPLOAD_NEXT/SoilWise_empty/SoilWise.gpkg|layername=observedproperty" type="QString"/>
+            <Option name="ReferencedLayerId" value="observedproperty_4583a462_9bb1_4d18_abb5_5a7132130724" type="QString"/>
+            <Option name="ReferencedLayerName" value="observedproperty" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="observedproperty_obsprocedure_obsdproperty" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias name="" field="id" index="0"/>
-    <alias name="Observing Procedure" field="guid_observingprocedure" index="1"/>
-    <alias name="Observed Property" field="guid_observedproperty" index="2"/>
+    <alias field="id" name="" index="0"/>
+    <alias field="guid_observingprocedure" name="Observing Procedure" index="1"/>
+    <alias field="guid_observedproperty" name="Observed Property" index="2"/>
   </aliases>
   <splitPolicies>
     <policy field="id" policy="DefaultValue"/>
@@ -89,14 +89,14 @@
     <default field="guid_observedproperty" expression="" applyOnUpdate="0"/>
   </defaults>
   <constraints>
-    <constraint notnull_strength="1" field="id" constraints="3" unique_strength="1" exp_strength="0"/>
-    <constraint notnull_strength="1" field="guid_observingprocedure" constraints="1" unique_strength="0" exp_strength="0"/>
-    <constraint notnull_strength="1" field="guid_observedproperty" constraints="1" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="3" unique_strength="1" field="id" notnull_strength="1" exp_strength="0"/>
+    <constraint constraints="1" unique_strength="0" field="guid_observingprocedure" notnull_strength="1" exp_strength="0"/>
+    <constraint constraints="1" unique_strength="0" field="guid_observedproperty" notnull_strength="1" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" field="id" desc=""/>
-    <constraint exp="" field="guid_observingprocedure" desc=""/>
-    <constraint exp="" field="guid_observedproperty" desc=""/>
+    <constraint field="id" exp="" desc=""/>
+    <constraint field="guid_observingprocedure" exp="" desc=""/>
+    <constraint field="guid_observedproperty" exp="" desc=""/>
   </constraintExpressions>
   <expressionfields/>
   <attributeactions>
@@ -126,27 +126,17 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
-      <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0" underline="0"/>
+    <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+      <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0" bold="0" style="" italic="0"/>
     </labelStyle>
-    <attributeEditorContainer name="ID" collapsedExpression="" groupBox="1" type="GroupBox" visibilityExpression="" verticalStretch="0" collapsedExpressionEnabled="0" showLabel="1" visibilityExpressionEnabled="0" horizontalStretch="0" collapsed="1" columnCount="1">
-      <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
-        <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0" underline="0"/>
-      </labelStyle>
-      <attributeEditorField name="id" verticalStretch="0" showLabel="1" index="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
-          <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0" underline="0"/>
-        </labelStyle>
-      </attributeEditorField>
-    </attributeEditorContainer>
-    <attributeEditorField name="guid_observedproperty" verticalStretch="0" showLabel="1" index="2" horizontalStretch="0">
-      <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
-        <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0" underline="0"/>
+    <attributeEditorField name="guid_observedproperty" showLabel="1" horizontalStretch="0" verticalStretch="0" index="2">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0" bold="0" style="" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField name="guid_observingprocedure" verticalStretch="0" showLabel="1" index="1" horizontalStretch="0">
-      <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
-        <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style="" bold="0" underline="0"/>
+    <attributeEditorField name="guid_observingprocedure" showLabel="1" horizontalStretch="0" verticalStretch="0" index="1">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" underline="0" bold="0" style="" italic="0"/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
