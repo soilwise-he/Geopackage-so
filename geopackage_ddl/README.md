@@ -56,7 +56,42 @@ Some names in the code need to be changed for it to work correctly, as described
 ---
 # Database Structure Report
 
+---
 
+## Index
+- [codelist](#codelist)
+- [datastream](#datastream)
+- [derivedprofilepresenceinsoilbody](#derivedprofilepresenceinsoilbody)
+- [faohorizonnotationtype](#faohorizonnotationtype)
+- [isbasedonobservedsoilprofile](#isbasedonobservedsoilprofile)
+- [isbasedonsoilbody](#isbasedonsoilbody)
+- [isbasedonsoilderivedobject](#isbasedonsoilderivedobject)
+- [isderivedfrom](#isderivedfrom)
+- [observation](#observation)
+- [observedproperty](#observedproperty)
+- [observingprocedure](#observingprocedure)
+- [obsprocedure_obsdproperty](#obsprocedure_obsdproperty)
+- [obsprocedure_sensor](#obsprocedure_sensor)
+- [otherhorizon_profileelement](#otherhorizon_profileelement)
+- [otherhorizonnotationtype](#otherhorizonnotationtype)
+- [othersoilnametype](#othersoilnametype)
+- [profileelement](#profileelement)
+- [sensor](#sensor)
+- [soilbody](#soilbody)
+- [soilbody_geom](#soilbody_geom)
+- [soilderivedobject](#soilderivedobject)
+- [soilplot](#soilplot)
+- [soilprofile](#soilprofile)
+- [soilsite](#soilsite)
+- [thing](#thing)
+- [unitofmeasure](#unitofmeasure)
+- [wrbqualifiergroup_profile](#wrbqualifiergroup_profile)
+- [wrbqualifiergrouptype](#wrbqualifiergrouptype)
+
+
+---
+
+<a id="codelist"></a>
 ## Table: `codelist`
 
 ### Columns
@@ -199,7 +234,7 @@ https://obrl-soil.github.io/wrbsoil2022/
 
 
 ---
-
+<a id="datastream"></a>
 ## Table: `datastream`
 
 ### Columns
@@ -231,6 +266,18 @@ https://obrl-soil.github.io/wrbsoil2022/
 | `guid_profileelement` | `TEXT` |  | Foreign key to the Profile Elemen table, guid field. |
 | `guid_soilderivedobject` | `TEXT` |  | Foreign key to the Soil Derived Object table, guid field. |
 
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **datastreamguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **datastreamguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
+
 ### Relationships (as child)
 - `datastream.guid_soilderivedobject` → `soilderivedobject.guid` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
   - *Note:* delete on `soilderivedobject` cascades to `datastream`.
@@ -261,17 +308,94 @@ https://obrl-soil.github.io/wrbsoil2022/
 | `sqlite_autoindex_datastream_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **datastreamguid** — After Insert
-- **datastreamguidupdate** — After Update
-- **datastream_bi_check_proc_prop_pair** — Before Insert, RAISE: `Insert denied: the (guid_observingprocedure, guid_observedproperty) pair is not registered in obsprocedure_obsdproperty.`
-- **datastream_bu_check_proc_prop_pair** — Before Update, RAISE: `Update denied: the (guid_observingprocedure, guid_observedproperty) pair is not registered in obsprocedure_obsdproperty.`
-- **i_codespace** — Before Insert, RAISE: `Table datastream: Invalid value for codespace. Must be present in id of Category codelist.`
-- **u_codespace** — Before Update, RAISE: `Table datastream: Invalid value for codespace. Must be present in id of Category codelist.`
-- **datastream_bi_bounds_consistency** — Before Insert, RAISE: `Datastream bounds: value_min must be less than or equal to value_max when both are provided.`
-- **datastream_bu_bounds_consistency** — Before Update, RAISE: `Datastream bounds: value_min must be less than or equal to value_max when both are provided.`
-- **datastream_bi_count_bounds_are_integers** — Before Insert, RAISE: `Type Count: value_min must be an integer (numerically integral).`
-- **datastream_bu_count_bounds_are_integers** — Before Update, RAISE: `Type Count: value_min must be an integer (numerically integral).`
-- **datastream_bu_bounds_validate_observations** — Before Update, RAISE: `Bounds update rejected: some existing observations have result_real below the new value_min.`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `datastreamguid` / `datastreamguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Assign GUID on insert when missing; prevent changing it later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
+
+#### `datastream_bi_check_proc_prop_pair` / `datastream_bu_check_proc_prop_pair`
+**When they run:** BEFORE INSERT / BEFORE UPDATE OF `guid_observingprocedure`, `guid_observedproperty`
+
+**What they do:** If an observing procedure is supplied, verify that the **pair** (`guid_observingprocedure`, `guid_observedproperty`) is **registered** in `obsprocedure_obsdproperty`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Insert denied: the (guid_observingprocedure, guid_observedproperty) pair is not registered in obsprocedure_obsdproperty`.
+
+#### `i_codespace` / `u_codespace`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** If `codespace` is provided, ensure it exists in `codelist.id` for `collection = 'Category'`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table datastream: Invalid value for codespace. Must be present in id of Category codelist`.
+
+#### `datastream_bi_bounds_consistency` / `datastream_bu_bounds_consistency`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** When both bounds are provided, require `value_min <= value_max`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Datastream bounds: value_min must be less than or equal to value_max when both are provided`.
+
+#### `datastream_bi_count_bounds_are_integers` / `datastream_bu_count_bounds_are_integers`
+**When they run:** BEFORE INSERT / BEFORE UPDATE (type-specific)
+
+**What they do:** If `type = 'Count'` and bounds are provided, require each bound to be **integral in value**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Type Count: value_min must be an integer (numerically integral).` or `Type Count: value_max must be an integer (numerically integral).`
+
+#### `datastream_bu_bounds_validate_observations`
+**When it runs:** BEFORE UPDATE OF `value_min`, `value_max`
+
+**What it does:** For `type IN ('Quantity','Count')`, scan existing `observation` rows linked to this datastream. If tightening bounds would **exclude** any existing numeric result (`result_real`), block the update.
+
+**If the check passes:** Update proceeds.
+
+**If the check fails:** Aborts with: `Bounds update rejected: some existing observations have result_real below the new value_min.` or `... above the new value_max`.
+
+#### Observation-type enforcement (`observation_bi_type_constraints` / `observation_bu_type_constraints`)
+**When they run:** BEFORE INSERT / BEFORE UPDATE on `observation`
+
+**What they do:** Read the linked datastream (`guid_datastream`) and enforce the **shape** of result fields and bounds:
+- **Quantity**: `result_real` **NOT NULL**; `result_text` and `result_boolean` **NULL**; apply bounds when present.
+- **Category**: `result_text` **NOT NULL**; others **NULL**; `result_text` must exist in codelist collection equal to datastream `codespace`.
+- **Boolean**: `result_boolean` **NOT NULL** and in `(0, 1)`; others **NULL**.
+- **Count**: `result_real` **NOT NULL** and **integral in value**; others **NULL**; bounds enforced like Quantity.
+- **Text**: `result_text` **NOT NULL**; others **NULL**.
+
+**If the check passes:** Insert/update proceeds.
+
+**If the check fails:** The corresponding type-specific message is raised and the statement aborts.
+
+#### Phenomenon-time synchronization (`observation_ai/au/ad_recalc_ds_times`)
+**When they run:** AFTER INSERT / AFTER UPDATE / AFTER DELETE on `observation`
+
+**What they do:** Recompute the datastream’s phenomenon time window by scanning all observations:
+- `phenomenontime_start = MIN(observation.phenomenontime_start)`
+- `phenomenontime_end = MAX(COALESCE(observation.phenomenontime_end, observation.phenomenontime_start))`
+
+**If the check passes:** No error; times are updated transparently.
+
+**If the check fails:** No failure path — these triggers just keep times in sync.
 
 ### Rules Applied to Fields Describing ResultType
 The JSON object `resultType` (SWE-Common AbstractDataComponent), which represents the formal description of the structure of the `result` attribute of observations in a Datastream, is managed by decomposing its fields within the `datastream` table. This approach enforces specific rules to ensure data consistency based on the type of result.
@@ -340,7 +464,7 @@ INSERT INTO codelist (id, label, collection)
 VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode',
         'coatingNatureValueCode',
         'Category');
-````
+```
 
 ### Step 2 — Insert the Codespace Elements
 
@@ -363,7 +487,7 @@ INSERT INTO "codelist" (id, label, collection)
 VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-CH', 
 		'Clay and humus (organic matter)', 
 		'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
-````
+```
 ### Resulting Table Structure
 After executing the above statements, the codelist table will look like this:
 
@@ -375,7 +499,7 @@ After executing the above statements, the codelist table will look like this:
 | http://w3id.org/glosis/model/codelists/coatingNatureValueCode-CH | Clay and humus (organic matter)| http://w3id.org/glosis/model/codelists/coatingNatureValueCode |
 
 ---
-
+<a id="derivedprofilepresenceinsoilbody"></a>
 ## Table: `derivedprofilepresenceinsoilbody`
 
 ### Columns
@@ -404,13 +528,36 @@ After executing the above statements, the codelist table will look like this:
 | `sqlite_autoindex_derivedprofilepresenceinsoilbody_1` | Yes | `guid_soilbody`, `guid_soilprofile` | `u` | No |
 
 ### Triggers
-- **i_cecklowervaluesum** — Before Insert, RAISE: `Table derivedprofilepresenceinsoilbody: sum of lowervalue exceeds 100 for the same guid_soilbody`
-- **u_cecklowervaluesum** — Before Update, RAISE: `Table derivedprofilepresenceinsoilbody: sum of lowervalue exceeds 100 for the same guid_soilbody`
-- **i_checkisderived_soilbody** — Before Insert, RAISE: `Table derivedprofilepresenceinsoilbody:  Attention, the value of the "guid_soilprofile" field  cannot be inserted because profile is not of type derived`
-- **u_checkisderived_soilbody** — Before Update, RAISE: `Table derivedprofilepresenceinsoilbody:  Attention, the value of the "guid_soilprofile" field  cannot be inserted because profile is not of type derived`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `i_cecklowervaluesum` / `u_cecklowervaluesum`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** For the same `guid_soilbody`, compute the cumulative `lowervalue` across existing rows. On insert, it evaluates `SUM(lowervalue) + NEW.lowervalue`; on update, it evaluates `SUM(lowervalue) - OLD.lowervalue + NEW.lowervalue`. The total must be **≤ 100.00**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table derivedprofilepresenceinsoilbody: sum of lowervalue exceeds 100 for the same guid_soilbody`.
+
+#### `i_checkisderived_soilbody` / `u_checkisderived_soilbody`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Ensure `guid_soilprofile` references a **DERIVED** profile (`isderived = 1`).
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table derivedprofilepresenceinsoilbody: Attention, the value of the "guid_soilprofile" field cannot be inserted because profile is not of type derived`.
 
 ---
-
+<a id="faohorizonnotationtype"></a>
 ## Table: `faohorizonnotationtype`
 
 ### Columns
@@ -430,6 +577,18 @@ After executing the above statements, the codelist table will look like this:
 | `isoriginalclassification` | `BOOLEAN` | NOT NULL, DEFAULT 0 | Boolean value to indicate whether the FAO horizon notation was the original notation to describe the horizon. |
 | `guid_profileelement` | `TEXT` |  | Foreign key to the ProfileElement table,  guid field. |
 
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **faohorizonnotationtypeguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **faohorizonnotationtypeguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
+
 ### Relationships (as child)
 - `faohorizonnotationtype.guid_profileelement` → `profileelement.guid` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
   - *Note:* delete on `profileelement` cascades to `faohorizonnotationtype`.
@@ -445,25 +604,45 @@ After executing the above statements, the codelist table will look like this:
 | `sqlite_autoindex_faohorizonnotationtype_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **faohorizonnotationtypeguid** — After Insert
-- **faohorizonnotationtypeguidupdate** — After Update
-- **i_checkfaoprofileelementtype** — Before Insert, RAISE: `Table faohorizonnotationtype: The associated profileelement must have profileelementtype = 0 (HORIZON)`
-- **u_ceckfaoprofileelementtype** — Before Update, RAISE: `Table faohorizonnotationtype: The associated profileelement must have profileelementtype = 0 (HORIZON)`
-- **i_faohorizonmaster_1** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonmaster. Must be present in id of faohorizonmastervalue codelist.`
-- **u_faohorizonmaster_1** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonmaster. Must be present in id of faohorizonmastervalue codelist.`
-- **i_faohorizonmaster_2** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonmaster. Must be present in id of faohorizonmastervalue codelist.`
-- **u_faohorizonmaster_2** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonmaster. Must be present in id of faohorizonmastervalue codelist.`
-- **i_faohorizonsubordinate_1** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
-- **u_faohorizonsubordinate_1** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
-- **i_faohorizonsubordinate_2** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
-- **u_faohorizonsubordinate_2** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
-- **i_faohorizonsubordinate_3** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
-- **u_faohorizonsubordinate_3** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.`
-- **i_faoprime** — Before Insert, RAISE: `Table faohorizonnotationtype: Invalid value for faoprime. Must be present in id of faoprimevalue codelist.`
-- **u_faoprime** — Before Update, RAISE: `Table faohorizonnotationtype: Invalid value for faoprime. Must be present in id of faoprimevalue codelist.`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `faohorizonnotationtypeguid` / `faohorizonnotationtypeguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Assign a GUID on insert when missing; prevent changing it later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
+
+#### `i_checkfaoprofileelementtype` / `u_ceckfaoprofileelementtype`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Ensure the linked `profileelement` (`guid_profileelement`) is **HORIZON** (`profileelementtype = 0`).
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table faohorizonnotationtype: The associated profileelement must have profileelementtype = 0 (HORIZON)`.
+
+#### FAO codelist validations (`i_`/`u_` variants)
+- `faohorizonmaster_1`, `faohorizonmaster_2` must exist in **FAOHorizonMasterValue**.
+- `faohorizonsubordinate_1/2/3` (when provided and in sequence) must exist in **FAOHorizonSubordinateValue**.
+- `faoprime` must exist in **FAOPrimeValue**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** The corresponding invalid-value message is raised and the statement aborts.
 
 ---
-
+<a id="isbasedonobservedsoilprofile"></a>
 ## Table: `isbasedonobservedsoilprofile`
 
 ### Columns
@@ -490,11 +669,28 @@ After executing the above statements, the codelist table will look like this:
 | `sqlite_autoindex_isbasedonobservedsoilprofile_1` | Yes | `guid_soilderivedobject`, `guid_soilprofile` | `u` | No |
 
 ### Triggers
-- **i_checkisobserved_dobj** — Before Insert, RAISE: `Table isbasedonobservedsoilprofile :  Attention, the value of the "guid_soilprofile" field  cannot be inserted because profile is not of type observed`
-- **u_checkisobserved_dobj** — Before Update, RAISE: `Table isbasedonobservedsoilprofile :  Attention, the value of the "guid_soilprofile" field  cannot be inserted because profile is not of type observed`
+
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `i_checkisobserved_dobj` / `u_checkisobserved_dobj`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Ensure `guid_soilprofile` references an **OBSERVED** profile (`isderived = 0`).
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table isbasedonobservedsoilprofile : Attention, the value of the "guid_soilprofile" field cannot be inserted because profile is not of type observed`.
 
 ---
-
+<a id="isbasedonsoilbody"></a>
 ## Table: `isbasedonsoilbody`
 
 ### Columns
@@ -524,7 +720,7 @@ After executing the above statements, the codelist table will look like this:
 - None
 
 ---
-
+<a id="isbasedonsoilderivedobject"></a>
 ## Table: `isbasedonsoilderivedobject`
 
 ### Columns
@@ -554,7 +750,7 @@ After executing the above statements, the codelist table will look like this:
 - None
 
 ---
-
+<a id="isderivedfrom"></a>
 ## Table: `isderivedfrom`
 
 ### Columns
@@ -581,13 +777,36 @@ After executing the above statements, the codelist table will look like this:
 | `sqlite_autoindex_isderivedfrom_1` | Yes | `guid_base`, `guid_related` | `u` | No |
 
 ### Triggers
-- **i_checkisderived** — Before Insert, RAISE: `Table isderivedfrom:  Attention, the value of the "guid_base" field in the "isderivedfrom" table cannot be inserted because profile is not of type derived`
-- **u_checkisderived** — Before Update, RAISE: `Table isderivedfrom:  Attention, the value of the "guid_base" field in the "isderivedfrom" table cannot be inserted because profile is not of type derived`
-- **i_checkisobserved** — Before Insert, RAISE: `Table isderivedfrom:  Attention, the value of the "guid_related" field in the "isderivedfrom" table cannot be inserted because profile is not of type observed`
-- **u_checkisobserved** — Before Update, RAISE: `Table isderivedfrom:  Attention, the value of the "guid_related" field in the "isderivedfrom" table cannot be inserted because profile is not of type observed`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `i_checkisderived` / `u_checkisderived`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** For `guid_base`, ensure the referenced profile in `soilprofile` has `isderived = 1` (DERIVED).
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table isderivedfrom: Attention, the value of the "guid_base" field in the "isderivedfrom" table cannot be inserted because profile is not of type derived`.
+
+#### `i_checkisobserved` / `u_checkisobserved`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** For `guid_related`, require the referenced profile in `soilprofile` to have `isderived = 0` (OBSERVED).
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table isderivedfrom: Attention, the value of the "guid_related" field in the "isderivedfrom" table cannot be inserted because profile is not of type observed`.
 
 ---
-
+<a id="observation"></a>
 ## Table: `observation`
 
 ### Columns
@@ -607,6 +826,18 @@ After executing the above statements, the codelist table will look like this:
 | `properties` | `TEXT` |  | mime type: 'application/json'. A JSON Object containing user-annotated properties as key-value pairs. |
 | `guid_datastream` | `TEXT` | NOT NULL | Foreign key to the Datstream table, guid field. |
 
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **observationguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **observationguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
+
 ### Relationships (as child)
 - `observation.guid_datastream` → `datastream.guid` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
   - *Note:* delete on `datastream` cascades to `observation`.
@@ -622,15 +853,27 @@ After executing the above statements, the codelist table will look like this:
 | `sqlite_autoindex_observation_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **observationguid** — After Insert
-- **observationguidupdate** — After Update
-- **observation_ai_recalc_ds_times** — After Insert
-- **observation_au_recalc_ds_times** — After Update
-- **observation_ad_recalc_ds_times** — After Delete
-- **observation_bi_type_constraints** — Before Insert, RAISE: `Type Quantity: result_real must be NOT NULL; result_text and result_boolean must be NULL.`
-- **observation_bu_type_constraints** — Before Update, RAISE: `Type Quantity: result_real must be NOT NULL; result_text and result_boolean must be NULL.`
-- **observation_bi_result_text_in_codespace** — Before Insert, RAISE: `Insert denied: result_text must exist in codelist.id within the collection equal to the linked datastream codespace (type=Category).`
-- **observation_bu_result_text_in_codespace** — Before Insert, RAISE: `Insert denied: result_text must exist in codelist.id within the collection equal to the linked datastream codespace (type=Category).`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+
+#### `observationguid` / `observationguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Assign GUID at insert when missing; prevent changes later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
+
+
 
 ### Alignment of the Datastream Time Window
 To maintain in `datastream` a consistent summary of the temporal coverage of its observations, there are three triggers that recompute the fields `datastream.phenomenontime_start` (MIN) and `datastream.phenomenontime_end` (MAX) with respect to all related rows in `observation`:
@@ -682,7 +925,7 @@ This family therefore guarantees semantic stability: you cannot tighten a series
 The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Quantity: result_real is below value_min.”, “Type Category: result_text must exist in codelist...”), facilitating diagnosis during data ingestion and ETL automation.
 
 ---
-
+<a id="observedproperty"></a>
 ## Table: `observedproperty`
 
 ### Columns
@@ -696,6 +939,18 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `description` | `TEXT` |  | A description about the ObservedProperty. |
 | `properties` | `TEXT` |  | mime type: 'application/json'. A JSON Object containing user-annotated properties as key-value pairs. |
 | `source` | `TEXT` | NOT NULL, DEFAULT 'Local' | Indicate the origin of the data. In the case of the insertion of new properties by the user, these will be marked with the label «Local». |
+
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **observedpropertyguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **observedpropertyguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
 
 ### Relationships (as child)
 - None
@@ -711,11 +966,28 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_observedproperty_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **observedpropertyguid** — After Insert
-- **observedpropertyguidupdate** — After Update
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+
+#### `observedpropertyguid` / `observedpropertyguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Assign GUID at insert when missing; block later changes.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
 
 ---
-
+<a id="observingprocedure"></a>
 ## Table: `observingprocedure`
 
 ### Columns
@@ -728,6 +1000,17 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `definition` | `TEXT` |  | The URI linking the Thing to an external definition. Dereferencing this URI SHOULD result in a representation of the definition of the Observing Procedure. |
 | `description` | `TEXT` |  | This is a short description of the corresponding Observing Procedure entity. |
 | `properties` | `TEXT` |  | mime type: 'application/json'. A JSON Object containing user-annotated properties as key-value pairs. |
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **observingprocedureguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **observingprocedureguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
 
 ### Relationships (as child)
 - None
@@ -744,11 +1027,28 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_observingprocedure_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **observingprocedureguid** — After Insert
-- **observingprocedureguidupdate** — After Update
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+
+#### `observingprocedureguid` / `observingprocedureguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Assign GUID at insert when missing; block changes later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
 
 ---
-
+<a id="obsprocedure_obsdproperty"></a>
 ## Table: `obsprocedure_obsdproperty`
 
 ### Columns
@@ -777,7 +1077,7 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 - None
 
 ---
-
+<a id="obsprocedure_sensor"></a>
 ## Table: `obsprocedure_sensor`
 
 ### Columns
@@ -806,7 +1106,7 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 - None
 
 ---
-
+<a id="otherhorizon_profileelement"></a>
 ## Table: `otherhorizon_profileelement`
 
 ### Columns
@@ -833,11 +1133,27 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_otherhorizon_profileelement_1` | Yes | `guid_profileelement`, `guid_otherhorizonnotationtype` | `u` | No |
 
 ### Triggers
-- **i_ceckothprofileelementtype** — Before Insert, RAISE: `Table otherhorizon_profileelement: The associated profileelement must have profileelementtype = 0 (HORIZON)`
-- **u_ceckothprofileelementtype** — Before Update, RAISE: `Table otherhorizon_profileelement: The associated profileelement must have profileelementtype = 0 (HORIZON)`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `i_ceckothprofileelementtype` / `u_ceckothprofileelementtype`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Ensure the linked `profileelement` is **HORIZON** (`profileelementtype = 0`).
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table otherhorizon_profileelement: The associated profileelement must have profileelementtype = 0 (HORIZON)`.
 
 ---
-
+<a id="otherhorizonnotationtype"></a>
 ## Table: `otherhorizonnotationtype`
 
 ### Columns
@@ -850,6 +1166,18 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `diagnostichorizon` | `TEXT` |  | Codelist wrbdiagnostichorizonvalue. |
 | `isoriginalclassification` | `BOOLEAN` | NOT NULL, DEFAULT 0 | Boolean value to indicate whether the specified horizon notation system was the original notation system to describe the horizon. |
 | `otherhorizonnotation` | `TEXT` |  |  |
+
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **otherhorizonnotationtypeguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **otherhorizonnotationtypeguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
 
 ### Relationships (as child)
 - None
@@ -864,15 +1192,46 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_otherhorizonnotationtype_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **otherhorizonnotationtypeguid** — After Insert
-- **otherhorizonnotationtypeguidupdate** — After Update
-- **i_otherhorizonnotationtype** — Before Insert, RAISE: `Table otherhorizonnotationtype: Invalid value for horizonnotation. Must be present in id of otherhorizonnotationtypevalue codelist.`
-- **u_otherhorizonnotationtype** — Before Update, RAISE: `Table otherhorizonnotationtype: Invalid value for horizonnotation. Must be present in id of otherhorizonnotationtypevalue codelist.`
-- **i_diagnostichorizon** — Before Insert, RAISE: `Table otherhorizonnotationtype: Invalid value for diagnostichorizon. Must be present in the relativecodelist.`
-- **u_diagnostichorizon** — Before Update, RAISE: `Table otherhorizonnotationtype: Invalid value for diagnostichorizon. Must be present in the relativecodelist.`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+
+#### `otherhorizonnotationtypeguid` / `otherhorizonnotationtypeguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Assign GUID at insert when missing; block changes afterwards.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
+
+#### `i_otherhorizonnotationtype` / `u_otherhorizonnotationtype`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Validate `horizonnotation` membership in **OtherHorizonNotationTypeValue**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table otherhorizonnotationtype: Invalid value for horizonnotation. Must be present in id of otherhorizonnotationtypevalue codelist.`
+
+#### `i_diagnostichorizon` / `u_diagnostichorizon`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** If provided, `diagnostichorizon` must exist in the **relative codelist** named by `NEW.horizonnotation`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table otherhorizonnotationtype: Invalid value for diagnostichorizon. Must be present in the relativecodelist.`
 
 ---
-
+<a id="othersoilnametype"></a>
 ## Table: `othersoilnametype`
 
 ### Columns
@@ -885,6 +1244,17 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `othersoilname_class` | `TEXT` |  | Specific classification scheme. |
 | `isoriginalclassification` | `BOOLEAN` | NOT NULL, DEFAULT 0 | Boolean value to indicate whether the specified classification scheme was the original classification scheme to describe the profile. |
 | `othersoilname` | `TEXT` |  | Foreign key to the SoilProfile table, guid field. |
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **othersoilnametypeguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **othersoilnametypeguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
 
 ### Relationships (as child)
 - `othersoilnametype.othersoilname` → `soilprofile.guid` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
@@ -900,13 +1270,36 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_othersoilnametype_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **othersoilnametypeguid** — After Insert
-- **othersoilnametypeguidupdate** — After Update
-- **i_soilname** — Before Insert, RAISE: `Table othersoilnametype: Invalid value for othersoilname_type. Must be present in id of othersoilnametypevalue codelist.`
-- **u_soilname** — Before Update, RAISE: `Table othersoilnametype: Invalid value for othersoilname_type. Must be present in id of othersoilnametypevalue codelist.`
+For every trigger you will find:
 
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+
+#### `othersoilnametypeguid` / `othersoilnametypeguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Auto-generate a GUID at insert if missing; prevent changing it later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On GUID change attempt, abort with: `Cannot update guid column.`
+
+#### `i_soilname` / `u_soilname`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Validate that `othersoilname_type` exists in the `OtherSoilNameTypeValue` codelist.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table othersoilnametype: Invalid value for othersoilname_type. Must be present in id of othersoilnametypevalue codelist.`
 ---
-
+<a id="profileelement"></a>
 ## Table: `profileelement`
 
 ### Columns
@@ -930,6 +1323,17 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `profileelementtype` | `BOOLEAN` | NOT NULL, DEFAULT 0 | Boolean value to indicate whether the record is of Horizon or Layer type. |
 | `ispartof` | `TEXT` | NOT NULL | Foreign key to the SoilProfile table, guid field. |
 
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **profileelementguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **profileelementguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
+
 ### Relationships (as child)
 - `profileelement.ispartof` → `soilprofile.guid` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
   - *Note:* delete on `soilprofile` cascades to `profileelement`.
@@ -946,32 +1350,126 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_profileelement_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **profileelementguid** — After Insert
-- **profileelementguidupdate** — After Update
-- **i_ceckvalidversionprofileelement** — Before Insert, RAISE: `Table profileelement: beginlifespanversion must be less than endlifespanversion`
-- **i_ceckvaliddeepprofileelement** — Before Insert, RAISE: `Table profileelement: profileelementdepthrange_uppervalue must be less than profileelementdepthrange_lowervalue`
-- **u_ceckvaliddeepprofileelement** — Before Update, RAISE: `Table profileelement: profileelementdepthrange_uppervalue must be less than profileelementdepthrange_lowervalue`
-- **i_checkgeogenicfieldsnull** — Before Insert, RAISE: `layerrocktype must be NULL when LayerTypeValue is not "geogenic".`
-- **u_checkgeogenicfieldsnotnull** — Before Update, RAISE: `layerrocktype must be NULL when LayerTypeValue is not "geogenic".`
-- **i_ceckhorizonfields** — Before Insert, RAISE: `layertype must be NULL when profilelement is "HORIZON".`
-- **u_ceckhorizonfields** — Before Update, RAISE: `layertype must be NULL when profilelement is "HORIZON".`
-- **i_layertype** — Before Insert, RAISE: `Table profileelement: Invalid value for layertype. Must be present in id of layertypevalue codelist.`
-- **u_layertype** — Before Update, RAISE: `Table profileelement: Invalid value for layertype. Must be present in id of layertypevalue codelist.`
-- **i_layergenesisenviroment** — Before Insert, RAISE: `Table profileelement: Invalid value for layergenesisenviroment. Must be present in id of eventenvironmentvalue codelist.`
-- **u_layergenesisenviroment** — Before Update, RAISE: `Table profileelement: Invalid value for layergenesisenviroment. Must be present in id of eventenvironmentvalue codelist.`
-- **i_layergenesisprocess** — Before Insert, RAISE: `Table profileelement: Invalid value for layergenesisprocess. Must be present in id of  eventprocessvalue codelist.`
-- **u_layergenesisprocess** — Before Update, RAISE: `Table profileelement: Invalid value for layergenesisprocess. Must be present in id of eventprocessvalue codelist.`
-- **i_layergenesisprocessstate** — Before Insert, RAISE: `Table profileelement: Invalid value for layergenesisprocessstate. Must be present in id of layergenesisprocessstatevalue codelist.`
-- **u_layergenesisprocessstate** — Before Update, RAISE: `Table profileelement: Invalid value for layergenesisprocessstate. Must be present in id of layergenesisprocessstatevalue codelist.`
-- **i_layerrocktype** — Before Insert, RAISE: `Table profileelement: Invalid value for layerrocktype. Must be present in id of lithologyvalue codelist .`
-- **u_layerrocktype** — Before Update, RAISE: `Table profileelement: Invalid value for layerrocktype. Must be present in id of lithologyvalue codelist.`
-- **i_check_depth_range** — Before Insert, RAISE: `At least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue must not be null`
-- **u_check_depth_range** — Before Update, RAISE: `At least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue must not be null`
-- **u_begin_today_profileelement** — After Update
-- **u_begin_today_profileelement_error** — After Update, RAISE: `If you change record endlifespanversion must be greater than today`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `profileelementguid` / `profileelementguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Generate a GUID when missing; prevent changing it later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
+
+#### `i_ceckvalidversionprofileelement`
+**When it runs:** BEFORE INSERT
+
+**What it does:** Require `beginlifespanversion < endlifespanversion`.
+
+**If the check passes:** Insert proceeds.
+
+**If the check fails:** Aborts with: `Table profileelement: beginlifespanversion must be less than endlifespanversion`.
+
+#### `i_ceckvaliddeepprofileelement` / `u_ceckvaliddeepprofileelement`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Enforce depth-range ordering: `uppervalue` must be **less** than `lowervalue`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table profileelement: profileelementdepthrange_uppervalue must be less than profileelementdepthrange_lowervalue`.
+
+#### `i_checkgeogenicfieldsnull` / `u_checkgeogenicfieldsnotnull`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** When `layertype` is **not** geogenic (`http://inspire.ec.europa.eu/codelist/LayerTypeValue/geogenic`), the fields `layerrocktype`, `layergenesisprocess`, `layergenesisenviroment`, `layergenesisprocessstate` must all be **NULL**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with a specific message pointing to the offending field (e.g., `layerrocktype must be NULL when LayerTypeValue is not "geogenic".`).
+
+#### `i_ceckhorizonfields` / `u_ceckhorizonfields`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** For horizon-type elements (`profileelementtype = 0`), all layer-specific attributes must be **NULL**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with messages such as `layertype must be NULL when profilelement is "HORIZON".`
+
+#### `i_layertype` / `u_layertype`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Validate `layertype` membership in the `LayerTypeValue` codelist.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table profileelement: Invalid value for layertype. Must be present in id of layertypevalue codelist.`
+
+#### `i_layergenesisenviroment` / `u_layergenesisenviroment`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** If provided, `layergenesisenviroment` must exist in `EventEnvironmentValue`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table profileelement: Invalid value for layergenesisenviroment. Must be present in id of eventenvironmentvalue codelist.`
+
+#### `i_layergenesisprocess` / `u_layergenesisprocess`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** If provided, `layergenesisprocess` must exist in `EventProcessValue`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table profileelement: Invalid value for layergenesisprocess. Must be present in id of eventprocessvalue codelist.`
+
+#### `i_layergenesisprocessstate` / `u_layergenesisprocessstate`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** If provided, `layergenesisprocessstate` must exist in `LayerGenesisProcessStateValue`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table profileelement: Invalid value for layergenesisprocessstate. Must be present in id of layergenesisprocessstatevalue codelist.`
+
+#### `i_layerrocktype` / `u_layerrocktype`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** If provided, `layerrocktype` must exist in `LithologyValue`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table profileelement: Invalid value for layerrocktype. Must be present in id of lithologyvalue codelist .`
+
+#### `i_check_depth_range` / `u_check_depth_range`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Require that at least one of `profileelementdepthrange_uppervalue` or `profileelementdepthrange_lowervalue` is **not NULL** (i.e., some depth info is present).
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `At least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue must not be null`.
+
+#### `u_begin_today_profileelement` / `u_begin_today_profileelement_error`
+**When they run:** AFTER UPDATE
+
+**What they do:** Refresh `beginlifespanversion` when still active; block edits if the end is **past**.
+
+**If the check passes:** Timestamp refreshed / update continues.
+
+**If the check fails:** Aborts with: `If you change record endlifespanversion must be greater than today`.
 
 ---
-
+<a id="sensor"></a>
 ## Table: `sensor`
 
 ### Columns
@@ -987,6 +1485,18 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `metadata` | `TEXT` |  | The detailed description of the Sensor or system. The metadata type is defined by encodingType. |
 | `properties` | `TEXT` |  | mime type: 'application/json'. A JSON Object containing user-annotated properties as key-value pairs. |
 
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **sensorguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **sensorguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
+
 ### Relationships (as child)
 - None
 
@@ -1001,11 +1511,28 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_sensor_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **sensorguid** — After Insert
-- **sensorguidupdate** — After Update
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+
+#### `sensorguid` / `sensorguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Assign GUID at insert when missing; prevent changes later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
 
 ---
-
+<a id="soilbody"></a>
 ## Table: `soilbody`
 
 ### Columns
@@ -1020,6 +1547,17 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `beginlifespanversion` | `DATETIME` | NOT NULL, DEFAULT strftime('%Y-%m-%dT%H:%M:%fZ', 'now') | Date and time at which this version of the spatial object was inserted or changed in the spatial data set. |
 | `endlifespanversion` | `DATETIME` |  | Date and time at which this version of the spatial object was superseded or retired in the spatial data set. |
 | `soilbodylabel` | `TEXT` | NOT NULL | Label to identify the soil body according to the specified reference framework (metadata). |
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **soilbodyguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **soilbodyguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
 
 ### Relationships (as child)
 - None
@@ -1036,14 +1574,46 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_soilbody_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **soilbodyguid** — After Insert
-- **soilbodyguidupdate** — After Update
-- **i_ceckvalidversionsoilbody** — Before Insert, RAISE: `Table soilbody: beginlifespanversion must be less than endlifespanversion`
-- **u_begin_today_soilbody** — After Update
-- **u_begin_today_soilbody_error** — After Update, RAISE: `If you change record endlifespanversion must be greater than today`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `soilbodyguid` / `soilbodyguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Generate a GUID at insert when missing; block GUID changes later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
+
+#### `i_ceckvalidversionsoilbody`
+**When it runs:** BEFORE INSERT
+
+**What it does:** Require `beginlifespanversion < endlifespanversion`.
+
+**If the check passes:** Insert proceeds.
+
+**If the check fails:** Aborts with: `Table soilbody: beginlifespanversion must be less than endlifespanversion`.
+
+#### `u_begin_today_soilbody` / `u_begin_today_soilbody_error`
+**When they run:** AFTER UPDATE
+
+**What they do:** Refresh `beginlifespanversion` when still active; block edits if end-of-lifespan is **past**.
+
+**If the check passes:** Timestamp refreshed / update continues.
+
+**If the check fails:** Aborts with: `If you change record endlifespanversion must be greater than today`.
+
 
 ---
-
+<a id="soilbody_geom"></a>
 ## Table: `soilbody_geom`
 
 ### Columns
@@ -1054,6 +1624,17 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `guid` | `TEXT` |  | Universally unique identifier. |
 | `geom` | `MULTIPOLYGON` | NOT NULL | Geometry. |
 | `guid_soilbody` | `TEXT` | NOT NULL | Foreign key to the SoilBody table. |
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **soilbody_geomguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **soilbody_geomguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
 
 ### Relationships (as child)
 - `soilbody_geom.guid_soilbody` → `soilbody.guid` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
@@ -1070,11 +1651,27 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_soilbody_geom_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **soilbody_geomguid** — After Insert
-- **soilbody_geomguidupdate** — After Update
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `soilbody_geomguid` / `soilbody_geomguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Assign GUID when missing at insert; prevent changes later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
 
 ---
-
+<a id="soilderivedobject"></a>
 ## Table: `soilderivedobject`
 
 ### Columns
@@ -1088,6 +1685,17 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `inspireid_versionid` | `TEXT` |  | The identifier of the particular version of the spatial object, with a maximum length of 25 characters. If the specification of a spatial object type with an external object identifier includes life-cycle information, the version identifier is used to distinguish between the different versions of a spatial object. Within the set of all versions of a spatial object, the version identifier is unique. |
 | `accessuri` | `TEXT` |  | SoilDerivedObject URI. |
 | `geometry` | `POLYGON` |  | Geometry. |
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **soilderivedobjectguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **soilderivedobjectguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
 
 ### Relationships (as child)
 - None
@@ -1107,11 +1715,27 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_soilderivedobject_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **soilderivedobjectguid** — After Insert
-- **soilderivedobjectguidupdate** — After Update
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `soilderivedobjectguid` / `soilderivedobjectguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Auto-assign a GUID on insert when missing; prevent changing it later.
+
+**If the check passes:** Insert assigns GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
 
 ---
-
+<a id="soilplot"></a>
 ## Table: `soilplot`
 
 ### Columns
@@ -1129,6 +1753,17 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `endlifespanversion` | `DATETIME` |  |  |
 | `locatedon` | `TEXT` |  | Foreign key to the SoilSite table, guid field. |
 
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **soilplotguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **soilplotguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
+
 ### Relationships (as child)
 - `soilplot.locatedon` → `soilsite.guid` (**ON UPDATE** CASCADE, **ON DELETE** NO ACTION)
 
@@ -1143,16 +1778,72 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_soilplot_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **soilplotguid** — After Insert
-- **soilplotguidupdate** — After Update
-- **i_ceckvalidversionsoilplot** — Before Insert, RAISE: `Table soilplot: beginlifespanversion must be less than endlifespanversion`
-- **i_soilplottype** — Before Insert, RAISE: `Table soilplot: Invalid value for soilplottype. Must be present in id of  soilplottypevalue codelist.`
-- **u_soilplottype** — Before Update, RAISE: `Table soilplot: Invalid value for soilplottype. Must be present in id of soilplottypevalue codelist.`
-- **u_begin_today_soilplot** — After Update
-- **u_begin_today_soilplot_error** — After Update, RAISE: `If you change record endlifespanversion must be greater than today`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `soilplotguid`
+**When it runs:** AFTER INSERT
+
+**What it does:** Generates a UUID v4 when `NEW.guid` is NULL.
+
+**If the check passes:** Assigns the GUID.
+
+**If the check fails:** No failure path.
+
+#### `soilplotguidupdate`
+**When it runs:** AFTER UPDATE OF `guid`
+
+**What it does:** Prevents changing `guid` by comparing new vs old.
+
+**If the check passes:** Update proceeds.
+
+**If the check fails:** Aborts with: `Cannot update guid column.`
+
+#### `i_ceckvalidversionsoilplot`
+**When it runs:** BEFORE INSERT
+
+**What it does:** Ensures `beginlifespanversion < endlifespanversion`.
+
+**If the check passes:** Insert proceeds.
+
+**If the check fails:** Aborts with: `Table soilplot: beginlifespanversion must be less than endlifespanversion`.
+
+#### `i_soilplottype` / `u_soilplottype`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Validate that `soilplottype` exists in `codelist.id` with `collection = 'SoilPlotTypeValue'`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table soilplot: Invalid value for soilplottype. Must be present in id of soilplottypevalue codelist.`
+
+#### `u_begin_today_soilplot`
+**When it runs:** AFTER UPDATE
+
+**What it does:** If the plot is still active (future/NULL end), refreshes `beginlifespanversion` to **now**.
+
+**If the check passes:** Timestamp is refreshed.
+
+**If the check fails:** No failure path.
+
+#### `u_begin_today_soilplot_error`
+**When it runs:** AFTER UPDATE
+
+**What it does:** Blocks edits when `endlifespanversion` lies in the **past**.
+
+**If the check passes:** Update continues.
+
+**If the check fails:** Aborts with: `If you change record endlifespanversion must be greater than today`.
 
 ---
-
+<a id="soilprofile"></a>
 ## Table: `soilprofile`
 
 ### Columns
@@ -1174,6 +1865,17 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `wrbreferencesoilgroup` | `TEXT` |  | First level of classification of the World Reference Base for Soil Resources. |
 | `isoriginalclassification` | `BOOLEAN` | NOT NULL, DEFAULT 1 | Boolean value to indicate whether the WRB classification system was the original classification system to describe the soil profile. |
 | `location` | `TEXT` |  | Foreign key to the SoilPlot table, guid field. |
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **soilprofileguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **soilprofileguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
 
 ### Relationships (as child)
 - `soilprofile.location` → `soilplot.guid` (**ON UPDATE** CASCADE, **ON DELETE** CASCADE)
@@ -1197,24 +1899,91 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_soilprofile_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **soilprofileguid** — After Insert
-- **soilprofileguidupdate** — After Update
-- **i_ceckvalidperiodsoilprofile** — Before Insert, RAISE: `Table soilprofile: validto must be less than validfrom`
-- **u_ceckvalidperiodsoilprofile** — Before Update, RAISE: `Table soilprofile: validto must be less than validfrom`
-- **i_ceckvalidversionsoilprofile** — Before Insert, RAISE: `Table soilprofile: beginlifespanversion must be less than endlifespanversion`
-- **i_ceckprofileLocation** — Before Insert, RAISE: `Table soilprofile:  For DERIVED profile  (isderived = 1), location must be NULL`
-- **u_ceckprofileLocation** — Before Update, RAISE: `Table soilprofile:  For DERIVED profile  (isderived = 1), location must be NULL`
-- **i_ceckprofileLocationobserved** — Before Insert, RAISE: `Table soilprofile:  For OBSERVED profile  (isderived = 0), location must be NOT NULL`
-- **u_ceckprofileLocationobserved** — Before Insert, RAISE: `Table soilprofile:  For OBSERVED profile  (isderived = 0), location must be NOT NULL`
-- **i_wrbreferencesoilgroup** — Before Insert, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
-- **u_wrbreferencesoilgroup** — Before Update, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
-- **u_begin_today_soilprofile** — After Update
-- **u_begin_today_soilprofile_error** — After Update, RAISE: `If you change record endlifespanversion must be greater than today`
-- **i_wrbproversion** — Before Insert, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.`
-- **u_wrbproversion** — Before Update, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+
+#### `soilprofileguid` / `soilprofileguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Auto-generate a GUID at insert if missing, and prevent changing it afterwards.
+
+**If the check passes:** Insert writes GUID; updates with unchanged GUID proceed.
+
+**If the check fails:** On change attempt, abort with: `Cannot update guid column.`
+
+#### `i_ceckvalidperiodsoilprofile` / `u_ceckvalidperiodsoilprofile`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Ensure `validfrom` is **not after** `validto`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table soilprofile: validto must be less than validfrom`.
+
+#### `i_ceckvalidversionsoilprofile`
+**When it runs:** BEFORE INSERT
+
+**What it does:** Checks that `beginlifespanversion < endlifespanversion` (strict inequality).
+
+**If the check passes:** Insert proceeds.
+
+**If the check fails:** Aborts with: `Table soilprofile: beginlifespanversion must be less than endlifespanversion`.
+
+#### `i_ceckprofileLocation` / `u_ceckprofileLocation`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** For **derived** profiles (`isderived = 1`), require `location` to be **NULL**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Table soilprofile: For DERIVED profile (isderived = 1), location must be NULL`.
+
+#### `i_ceckprofileLocationobserved` / `u_ceckprofileLocationobserved`
+**When they run:** BEFORE INSERT (both, despite the `u_` prefix)
+
+**What they do:** For **observed** profiles (`isderived = 0`), require `location` to be **NOT NULL**.
+
+**If the check passes:** Insert proceeds.
+
+**If the check fails:** Aborts with: `Table soilprofile: For OBSERVED profile (isderived = 0), location must be NOT NULL`.
+
+#### `i_wrbreferencesoilgroup` / `u_wrbreferencesoilgroup`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** If `wrbversion` is set, check that `wrbreferencesoilgroup` exists in the **matching year’s** codelist collection (current/2014/2022).
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with (verbatim): `Table soilprofile: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
+
+#### `u_begin_today_soilprofile` / `u_begin_today_soilprofile_error`
+**When they run:** AFTER UPDATE
+
+**What they do:** Refresh `beginlifespanversion` to **now** when the record is still active; block edits when `endlifespanversion` is **past**.
+
+**If the check passes:** Timestamp refreshed / update proceeds.
+
+**If the check fails:** Aborts with: `If you change record endlifespanversion must be greater than today`.
+
+#### `i_wrbproversion` / `u_wrbproversion`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Require `wrbversion` to exist in `codelist.id` for `collection = 'wrbversion'`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with (verbatim): `Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.`
 
 ---
-
+<a id="soilsite"></a>
 ## Table: `soilsite`
 
 ### Columns
@@ -1233,6 +2002,17 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `beginlifespanversion` | `DATETIME` | NOT NULL, DEFAULT strftime('%Y-%m-%dT%H:%M:%fZ', 'now') | Date and time at which this version of the spatial object was inserted or changed in the spatial data set. |
 | `endlifespanversion` | `DATETIME` |  | Date and time at which this version of the spatial object was superseded or retired in the spatial data set. |
 
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **soilsiteguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **soilsiteguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
+
 ### Relationships (as child)
 - None
 
@@ -1248,18 +2028,101 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_soilsite_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **soilsiteguid** — After Insert
-- **soilsiteguidupdate** — After Update
-- **i_ceckvalidperiodsoilsite** — Before Insert, RAISE: `Table soilsite: validto must be less than validfrom`
-- **u_ceckvalidperiodsoilsite** — Before Update, RAISE: `Table soilsite: validto must be less than validfrom`
-- **i_ceckvalidversionsoilsite** — Before Insert, RAISE: `Table soilsite: beginlifespanversion must be less than endlifespanversion`
-- **i_soilinvestigationpurpose** — Before Insert, RAISE: `Table soilsite: Invalid value for soilinvestigationpurpose. Must be present in id of soilinvestigationpurposevalue codelist.`
-- **u_soilinvestigationpurpose** — Before Update, RAISE: `Table soilsite: Invalid value for soilinvestigationpurpose. Must be present in id of soilinvestigationpurposevalue codelist.`
-- **u_begin_today_soilsite** — After Update
-- **u_begin_today_soilsite_error** — After Update, RAISE: `If you change record endlifespanversion must be greater than today`
+
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `soilsiteguid`
+**When it runs:** AFTER INSERT (per row)
+
+**What it does:** It examines the newly inserted row. If `NEW.guid` is `NULL` or absent, it generates a fresh **UUID v4** in lowercase canonical format and prepares to set it.
+
+**If the check passes:** It updates the just-inserted row, setting `guid` to the generated UUID. No error is raised.
+
+**If the check fails:** No failure path — it only assigns when `guid` is missing.
+
+#### `soilsiteguidupdate`
+**When it runs:** AFTER UPDATE OF `guid`
+
+**What it does:** It compares `NEW.guid` with `OLD.guid` to detect any attempt to change the GUID.
+
+**If the check passes:** If the GUID is unchanged, the update proceeds.
+
+**If the check fails:** If `NEW.guid <> OLD.guid`, the statement is aborted with: `Cannot update guid column.`
+
+#### `i_ceckvalidperiodsoilsite`
+**When it runs:** BEFORE INSERT
+
+**What it does:** Reads `validfrom` and `validto` from the new row and checks that the **from** date is **not later** than the **to** date.
+
+**If the check passes:** Insert continues.
+
+**If the check fails:** Aborts with: `Table soilsite: validto must be less than validfrom`.
+
+#### `u_ceckvalidperiodsoilsite`
+**When it runs:** BEFORE UPDATE
+
+**What it does:** Performs the same period consistency check as above using `NEW.validfrom` and `NEW.validto`.
+
+**If the check passes:** Update continues.
+
+**If the check fails:** Aborts with: `Table soilsite: validto must be less than validfrom`.
+
+#### `i_ceckvalidversionsoilsite`
+**When it runs:** BEFORE INSERT
+
+**What it does:** Compares lifecycle fields `beginlifespanversion` and `endlifespanversion`; begin must be **earlier** than end.
+
+**If the check passes:** Insert proceeds.
+
+**If the check fails:** Aborts with: `Table soilsite: beginlifespanversion must be less than endlifespanversion`.
+
+##### `i_soilinvestigationpurpose`
+**When it runs:** BEFORE INSERT
+
+**What it does:** Looks up `soilinvestigationpurpose` in the `codelist` table, restricting to `collection = 'SoilInvestigationPurposeValue'`.
+
+**If the check passes:** Insert proceeds.
+
+**If the check fails:** Aborts with: `Table soilsite: Invalid value for soilinvestigationpurpose. Must be present in id of soilinvestigationpurposevalue codelist.`
+
+#### `u_soilinvestigationpurpose`
+**When it runs:** BEFORE UPDATE
+
+**What it does:** Performs the same codelist membership check as above before updating.
+
+**If the check passes:** Update proceeds.
+
+**If the check fails:** Same abort message as the insert variant.
+
+#### `u_begin_today_soilsite`
+**When it runs:** AFTER UPDATE of selected columns
+
+**What it does:** If `endlifespanversion` is in the **future** or **NULL** (record still active), it refreshes `beginlifespanversion` to the **current timestamp**.
+
+**If the check passes:** The row is updated with the refreshed begin-lifespan timestamp.
+
+**If the check fails:** No explicit failure; this trigger only updates the timestamp.
+
+#### `u_begin_today_soilsite_error`
+**When it runs:** AFTER UPDATE of the same columns
+
+**What it does:** If `endlifespanversion` is **before now**, it blocks the edit.
+
+**If the check passes:** When end is in the future or NULL, the update continues.
+
+**If the check fails:** Aborts with: `If you change record endlifespanversion must be greater than today`.
+
 
 ---
-
+<a id="thing"></a>
 ## Table: `thing`
 
 ### Columns
@@ -1272,6 +2135,18 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `definition` | `TEXT` |  | The URI linking the Thing to an external definition. Dereferencing this URI SHOULD result in a representation of the definition of the Thing. |
 | `description` | `TEXT` |  | This is a short description of the corresponding Thing entity. |
 | `properties` | `TEXT` |  | mime type: 'application/json'. A JSON Object containing user-annotated properties as key-value pairs. |
+
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **thingguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **thingguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
 
 ### Relationships (as child)
 - None
@@ -1286,11 +2161,27 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_thing_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **thingguid** — After Insert
-- **thingguidupdate** — After Update
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `thingguid` / `thingguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Assign GUID at insert when missing; prevent changes later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
 
 ---
-
+<a id="unitofmeasure"></a>
 ## Table: `unitofmeasure`
 
 ### Columns
@@ -1321,7 +2212,7 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 - None
 
 ---
-
+<a id="wrbqualifiergroup_profile"></a>
 ## Table: `wrbqualifiergroup_profile`
 
 ### Columns
@@ -1349,13 +2240,37 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_wrbqualifiergroup_profile_1` | Yes | `guid_soilprofile`, `guid_wrbqualifiergrouptype` | `u` | No |
 
 ### Triggers
-- **i_check_wrbversion_match** — Before Insert, RAISE: `Mismatch in wrbversion values.`
-- **u_check_wrbversion_match** — Before Update, RAISE: `Mismatch in wrbversion values.`
-- **i_check_qualifier_position_unique** — Before Insert, RAISE: `qualifierposition must be unique for each qualifierplace within the same soilprofile`
-- **u_check_qualifier_position_unique** — Before Update, RAISE: `qualifierposition must be unique for each qualifierplace within the same soilprofile`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+
+#### `i_check_wrbversion_match` / `u_check_wrbversion_match`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Read `wrbversion` from the linked `soilprofile` and `wrbqualifiergrouptype` and ensure they **match**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Mismatch in wrbversion values`.
+
+#### `i_check_qualifier_position_unique` / `u_check_qualifier_position_unique`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Within the **same soilprofile** and **same qualifier place**, ensure `qualifierposition` is **unique**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `qualifierposition must be unique for each qualifierplace within the same soilprofile`.
 
 ---
-
+<a id="wrbqualifiergrouptype"></a>
 ## Table: `wrbqualifiergrouptype`
 
 ### Columns
@@ -1369,6 +2284,18 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `wrbqualifier` | `TEXT` | NOT NULL | Name element of WRB, 2nd level of classification. |
 | `wrbspecifier_1` | `TEXT` |  | First code that indicates the degree of expression of a qualifier or the depth range of which the qualifier applies. |
 | `wrbspecifier_2` | `TEXT` |  | Second code that indicates the degree of expression of a qualifier or the depth range of which the qualifier applies. |
+
+
+### Table Identifiers
+In this table, the primary key is the *id* field (integer, auto-incrementing).  
+There is also a text field named **GUID**, which stores a *UUID* (Universally Unique Identifier) compliant with RFC 4122.
+
+Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:
+- **wrbqualifiergrouptypeguid (INSERT)** trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.
+- **wrbqualifiergrouptypeguidupdate (UPDATE)** trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).  
+
+Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.
+
 
 ### Relationships (as child)
 - None
@@ -1384,22 +2311,79 @@ The triggers use `RAISE(ABORT, '...')` with specific messages (e.g., “Type Qua
 | `sqlite_autoindex_wrbqualifiergrouptype_1` | Yes | `guid` | `u` | No |
 
 ### Triggers
-- **wrbqualifiergrouptypeguid** — After Insert
-- **wrbqualifiergrouptypeguidupdate** — After Update
-- **i_wrbqualifier** — Before Insert, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
-- **u_wrbqualifier** — Before Update, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
-- **i_qualifierplace** — Before Insert, RAISE: `Table wrbqualifiergrouptype: Invalid value for qualifierplace. Must be present in id of wrbqualifierplacevalue codelist.`
-- **u_qualifierplace** — Before Update, RAISE: `Table wrbqualifiergrouptype: Invalid value for qualifierplace. Must be present in id of wrbqualifierplacevalue codelist.`
-- **i_wrbspecifier_1** — Before Insert, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
-- **u_wrbspecifier_1** — Before Update, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
-- **i_wrbspecifier_2** — Before Insert, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
-- **u_wrbspecifier_2** — Before Update, RAISE: `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
-- **i_wrbqualversion** — Before Insert, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.`
-- **u_wrbqualversion** — Before Update, RAISE: `Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.`
-- **i_unique_wrbqualifiergrouptype** — Before Insert, RAISE: `Duplicate entry found for wrbversion, qualifierplace, wrbqualifier, wrbspecifier_1, wrbspecifier_2.`
-- **u_unique_wrbqualifiergrouptype** — Before Update, RAISE: `Duplicate entry found for wrbversion, qualifierplace, wrbqualifier, wrbspecifier_1, wrbspecifier_2.`
-- **i_check_specifiers_not_equal** — Before Insert, RAISE: `wrbspecifier_1 and wrbspecifier_2 must not be equal`
-- **u_check_specifiers_not_equal** — Before Update, RAISE: `wrbspecifier_1 and wrbspecifier_2 must not be equal`
+For every trigger you will find:
+
+- **When it runs** (BEFORE/AFTER, INSERT/UPDATE/DELETE)
+- **What it reads and compares** (columns, lookups in other tables)
+- **What happens on success** (the statement proceeds, optional updates)
+- **What happens on failure** (the exact error text raised)
+
+ 
+
+
+#### `wrbqualifiergrouptypeguid` / `wrbqualifiergrouptypeguidupdate`
+**When they run:** AFTER INSERT / AFTER UPDATE OF `guid`
+
+**What they do:** Assign GUID when missing; prevent changing it later.
+
+**If the check passes:** Insert writes GUID; unchanged updates proceed.
+
+**If the check fails:** On change, abort with: `Cannot update guid column.`
+
+#### `i_wrbqualifier` / `u_wrbqualifier`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Based on `wrbversion`, pick the appropriate **year’s codelist** (current/2014/2022) and verify `wrbqualifier` exists there.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with (verbatim): `Table wrbqualifiergrouptype: Invalid value for wrbversion. Must be present in id of the correct year codelist collection.`
+
+#### `i_qualifierplace` / `u_qualifierplace`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Ensure `qualifierplace` exists in **WRBQualifierPlaceValue**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with the invalid-value message.
+
+#### `i_wrbspecifier_1/2` / `u_wrbspecifier_1/2`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** When provided, `wrbspecifier_1` and `wrbspecifier_2` must exist in the **WRBSpecifierValue** collection corresponding to `wrbversion`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with the invalid-value message.
+
+#### `i_wrbqualversion` / `u_wrbqualversion`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Ensure `wrbversion` exists in `codelist.id` for `collection = 'wrbversion'`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with (verbatim): `Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.`
+
+#### `i_unique_wrbqualifiergrouptype` / `u_unique_wrbqualifiergrouptype`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Enforce **composite uniqueness** for the tuple `(wrbversion, qualifierplace, wrbqualifier, wrbspecifier_1, wrbspecifier_2)`.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with: `Duplicate entry found for wrbversion, qualifierplace, wrbqualifier, wrbspecifier_1, wrbspecifier_2.`
+
+#### `i_check_specifiers_not_equal` / `u_check_specifiers_not_equal`
+**When they run:** BEFORE INSERT / BEFORE UPDATE
+
+**What they do:** Apply two rules: (1) `wrbspecifier_1` must **not equal** `wrbspecifier_2`; (2) if `wrbspecifier_2` is not NULL, then `wrbspecifier_1` must **not be NULL**.
+
+**If the check passes:** Statement proceeds.
+
+**If the check fails:** Aborts with either `wrbspecifier_1 and wrbspecifier_2 must not be equal` or `wrbspecifier_1 must not be NULL when wrbspecifier_2 is not NULL`.
+
 
 ---
 
