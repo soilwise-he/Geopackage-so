@@ -1,6 +1,9 @@
 ## Observable Properties from GPkg
 
-Full list:
+Here as an [Excel](https://github.com/soilwise-he/Geopackage-so/blob/main/geopackage/ObsProps/ObsProp.xlsx) file
+
+**Full list:**
+
 name
 Aciexc
 Aciext
