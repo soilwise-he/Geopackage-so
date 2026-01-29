@@ -36,7 +36,9 @@ The unitOfMeasure is part of the SWE-Common structure description found in resul
 | `code` | `TEXT` |  | The Unified Code for Units of Measure is a code system intended to include all units of measures being contemporarily used in international science, engineering, and business. |
 | `label` | `TEXT` |  | A word or phrase used to name or describe something, often to identify or classify it. |
 | `symbol` | `TEXT` |  | Standardized, unambiguous string used to represent a unit of measure. Symbols are designed for machine-to-machine communication and ensure consistent interpretation of units across systems and applications. |
-| `qudt_unit` | `TEXT` |  | Is an entity that represents a standardized measure of a physical quantity. |
+| `qudt_unit` | `TEXT` |  | QUDT code, unit expressed using QUDT (Quantities, Units, Dimensions, and Data Types). https://qudt.org/vocab/unit/ |
+| `base_qudt_unit` | `TEXT` |  | Base QUDT unit to define conversionmultiplier & conversionoffset. Generally SI (International System of Units) apart from pH; m/m; mm/m; a. Conversion offset and multiplier are referred as conversion factors from the UCUM unit to the Base QUDT. |
+| `base_qudt_label` | `TEXT` |  | QUDT label of the Base QUDT unit to define conversionmultiplier & conversionoffset. Generally SI (International System of Units) apart from pH; m/m; mm/m; a. Conversion offset and multiplier are referred as conversion factors from the UCUM unit to the Base QUDT unit.|
 | `conversionoffset` | `REAL` |  | Is the value added after applying the multiplier, used for units that do not start at zero relative to the reference unit. |
 | `conversionmultiplier` | `REAL` |  | Is the scaling factor used to convert a value from one unit to its reference unit (typically the SI base unit for that dimension). |
 
