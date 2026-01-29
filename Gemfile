@@ -9,3 +9,4 @@ gem "faraday-retry"
 
 gem "jekyll-seo-tag"
 gem "jekyll-feed"
+gem "jekyll-gfm-admonitions"
