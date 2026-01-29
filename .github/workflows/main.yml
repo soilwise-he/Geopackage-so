@@ -21,12 +21,14 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
+          bundler-cache: true 
 
-      - name: Install Jekyll and theme
-        run: gem install jekyll jekyll-theme-primer
+      - name: Install Jekyll and Plugins
+        run: |
+          gem install jekyll jekyll-remote-theme jekyll-relative-links jekyll-github-metadata
 
       - name: Build site with Jekyll
-        run: jekyll build --source documentation --destination _site
+        run: jekyll build --source documentation --destination _site --trace
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
