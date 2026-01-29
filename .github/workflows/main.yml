@@ -24,8 +24,8 @@ jobs:
           bundler-cache: true 
 
       - name: Build site with Jekyll
-        run: bundle exec jekyll build --source documentation --destination _site --trace  
-
+        run: bundle exec jekyll build --source documentation --destination _site --config documentation/_config.yml --trace
+      
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
