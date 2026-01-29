@@ -1,0 +1,10 @@
+title: Geopackage-so Documentation
+description: Technical documentation published from GitHub
+theme: minima
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
