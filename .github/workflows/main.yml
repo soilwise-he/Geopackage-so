@@ -23,11 +23,8 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true 
 
-      - name: Install Jekyll and Plugins
-        run: gem install jekyll jekyll-remote-theme jekyll-relative-links jekyll-github-metadata
-
       - name: Build site with Jekyll
-        run: jekyll build --source documentation --destination _site --trace
+        run: bundle exec jekyll build --source documentation --destination _site --trace  
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
