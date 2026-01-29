@@ -24,8 +24,7 @@ jobs:
           bundler-cache: true 
 
       - name: Install Jekyll and Plugins
-        run: |
-          gem install jekyll jekyll-remote-theme jekyll-relative-links jekyll-github-metadata
+        run: gem install jekyll jekyll-remote-theme jekyll-relative-links jekyll-github-metadata
 
       - name: Build site with Jekyll
         run: jekyll build --source documentation --destination _site --trace
