@@ -1,4 +1,4 @@
-<h1 align="center">Soilwise GeoPackage</h1>
+<h1 align="center">SoilWise GeoPackage</h1>
 
 
 ![Soilvise poster](assets/soilvise_poster.webp)
