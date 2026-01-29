@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <h1 align="center">SoilWise GeoPackage</h1>
 
 
