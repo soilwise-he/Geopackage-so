@@ -1,7 +1,7 @@
 title: Geopackage-so Documentation
 description: Technical documentation published from GitHub
 
-remote_theme: pages-themes/primer@v0.2.0
+remote_theme: pages-themes/primer
 
 plugins:
   - jekyll-remote-theme
