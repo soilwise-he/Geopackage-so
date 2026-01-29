@@ -23,7 +23,7 @@ jobs:
           ruby-version: '3.1'
 
       - name: Install Jekyll and theme
-        run: gem install jekyll minima
+        run: gem install jekyll jekyll-theme-primer
 
       - name: Build site with Jekyll
         run: jekyll build --source documentation --destination _site
