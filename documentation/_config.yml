@@ -1,12 +1,13 @@
 title: Geopackage-so Documentation
 description: Technical documentation published from GitHub
-
 remote_theme: pages-themes/primer
 
 plugins:
   - jekyll-remote-theme
   - jekyll-relative-links
   - jekyll-github-metadata
+  - jekyll-seo-tag
+  - jekyll-feed
 
 markdown: kramdown
 kramdown:
