@@ -22,14 +22,11 @@ jobs:
         with:
           ruby-version: '3.1'
 
-      - name: Install Jekyll
+      - name: Install Jekyll and theme
         run: gem install jekyll minima
 
       - name: Build site with Jekyll
-        run: |
-          jekyll build \
-            --source documentation \
-            --destination _site
+        run: jekyll build --source documentation --destination _site
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
