@@ -49,7 +49,7 @@ For detailed information on how to initiate edit mode for a custom form, refer t
 - **`guid`** - **Global identifier** in UUID format, stored as text. The field is **optional**. It's **automatically managed via triggers**.
 
 > [!IMPORTANT]
-> On opening, the **ID** group is collapsed: there’s no need to edit these manually because **both fields are system‑managed** (`id` by the SQLite engine, `guid` by triggers), reducing errors and ensuring identifier consistency over time.
+> On opening, the **ID** group is collapsed: there is no need to edit these manually, as **both fields are system‑managed** (the `id` by the SQLite engine and the `guid` by triggers), reducing errors and ensuring identifier consistency over time.
 
 ### INSPIRE ID Group
 
