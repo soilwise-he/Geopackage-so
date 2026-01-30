@@ -29,13 +29,4 @@ Below is the index of the technical documentation available in this repository:
 [Navigating GeoPackage Tables via Forms](./navigating_via_form.md)  
 [Editing Records Through a QGIS Form](./edit_form.md)  
 [Saving Edits in QGIS Forms](./save_form.md)  
-
-
-- `rename_geopackage.md`  
-- `navigating_via_form.md`  
-- `edit_form.md`  
-- `save_form.md`  
-- `Soil Site.md`  
-- `Soil Plot.md`  
-
-*(The remainder of the list will be completed separately.)*
+[Soil Site Form](./soilsite.md)  
