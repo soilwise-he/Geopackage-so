@@ -46,7 +46,7 @@ For detailed information on how to initiate edit mode for a custom form, refer t
 
 - **`id`** - Primary **AUTO_INCREMENT INTEGER PRIMARY KEY**; it’s the required identifier for GeoPackage tables and is assigned automatically on insert.
 
-- **`guid`** - **Global identifier** in UUID format, stored as text.This field is **optional**, but in this project it is **automatically managed via triggers**.
+- **`guid`** - **Global identifier** in UUID format, stored as text. The field is **optional**. It's **automatically managed via triggers**.
 
 > [!IMPORTANT]
 > On opening, the **ID** group is collapsed: there’s no need to edit these manually because **both fields are system‑managed** (`id` by the SQLite engine, `guid` by triggers), reducing errors and ensuring identifier consistency over time.
