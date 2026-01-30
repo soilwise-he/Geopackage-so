@@ -33,7 +33,7 @@ In the toolbar, select the "Add Polygon Feature" icon ⑤ and draw the geometry 
        alt="Fig.1" align="left" width="500">
 Right-click to close the geometry, and the data entry form will appear. ⑦
 
-You can modify the data using the various widgets provided by the form.
+Use the widgets provided by the form to modify data.
 </p>
 <br clear="all"><br>
 
