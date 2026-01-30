@@ -15,7 +15,7 @@ The "Soil Site" it's a **polygonal geographic entity**. The first step To create
        alt="Fig.1" align="left" width="500">
 Right-click in the "Layers" panel on the "soilsite", ① and from the menu, select "Toggle Editing" ②.
   
-It is also possible to select only the "Soil Site" layer ① and click the "Toggle Editing", ③ button in the toolbar.
+Alternatively, select only the “Soil Site” layer ① and click the “Toggle Editing” button ③ in the toolbar.
 </p>
 <br clear="all"><br>
 
