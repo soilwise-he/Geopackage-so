@@ -40,6 +40,13 @@ Use the widgets provided by the form to modify data.
 
 For detailed information on how to initiate edit mode for a custom form, refer to the [Editing Records Through a QGIS Form](./edit_form.md) documentation.
 
+### REQUIRED fields
+- `id`: primary key (auto-incrementing)
+- `geometry`: POLYGON 
+- `Soil Investigation Purpose`: TEXT (codelist)
+- `Valid From`: DATETIME (default: today)
+- `Begin Lifespan version`: DATETIME (default: today)
+  
 ### ID Group
 <p>
   <img src="../assets/group_id.webp"
@@ -80,16 +87,8 @@ https://epanet.eea.europa.eu/Eionet/reportnet/docs/noise/guidelines/inspire_iden
 > In particular, `localid` + `namespace` form a stable identifier; `versionid` helps track changes over time.
 
 
-### REQUIRED fields
-
-- `id`: primary key (auto-incrementing)
-- **`geometry`**: POLYGON (manual editing)
-- **`Soil Investigation Purpose`**: TEXT (codelist)
-- `Valid From`: DATETIME (default: today)
-- `Begin Lifespan version`: DATETIME (default: today)
-
 ### Attribute Reference
-For a more in‑depth and comprehensive understanding of the attributes exposed within the custom form, it is recommended to consult the [documentation](../tables/soilsite.md) associated with the soilsite table. This reference provides detailed descriptions of each attribute, including their purpose, data types, and their role within the broader data model. Reviewing this information can help ensure correct data interpretation and proper form configuration, especially when implementing advanced validation rules or integrating the form into more complex editing workflows.
+For an  overview of the **attributes used in the custom form**, refer to the soilsite table  [documentation](../tables/soilsite.md). It provides the key definitions and data types needed to correctly interpret the fields and configure the form within the data model.
 
 ## Save
 
