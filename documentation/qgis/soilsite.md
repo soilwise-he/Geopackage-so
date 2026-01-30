@@ -38,7 +38,7 @@ Use the widgets provided by the form to modify data.
 <br clear="all"><br>
 
 
-For detailed information on initiating edit mode for a custom form, refer to the [Editing Records Through a QGIS Form](./edit_form.md).documentation.
+For detailed information on how to initiate edit mode for a custom form, refer to the [Editing Records Through a QGIS Form](./edit_form.md) documentation.
 
 ### ID Group
 
