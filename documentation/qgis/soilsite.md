@@ -82,11 +82,11 @@ https://epanet.eea.europa.eu/Eionet/reportnet/docs/noise/guidelines/inspire_iden
 
 ### REQUIRED fields
 
-- `id` primary key, autoincrement
-- `geometry` POLYGON
-- `Soil Investigation Purpose` TEXT
-- `Valid From` DATETIME  DEFAULT Today
-- `Begin Lifespan version` DATETIME  DEFAULT Today
+- `id`: primary key (auto-incrementing)
+- **`geometry`**: POLYGON (manual editing)
+- **`Soil Investigation Purpose`**: TEXT (Codelist)
+- **`Valid From`**: DATETIME (DEFAULT: Today)
+- **`Begin Lifespan version`**: DATETIME (DEFAULT: Today)
 
 ### Attribute Reference
 For a more in‑depth and comprehensive understanding of the attributes exposed within the custom form, it is recommended to consult the [documentation](../tables/soilsite.md) associated with the soilsite table. This reference provides detailed descriptions of each attribute, including their purpose, data types, and their role within the broader data model. Reviewing this information can help ensure correct data interpretation and proper form configuration, especially when implementing advanced validation rules or integrating the form into more complex editing workflows.
