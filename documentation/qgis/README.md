@@ -30,3 +30,6 @@ Below is the index of the technical documentation available in this repository:
 [Editing Records Through a QGIS Form](./edit_form.md)  
 [Saving Edits in QGIS Forms](./save_form.md)  
 [Soil Site Form](./soilsite.md)  
+[Soil Plot Form](./soilplot.md)  
+[Soil Profile Form](./soilprofile.md)  
+[Profile Element Form](./profileelement.md)  
