@@ -60,9 +60,9 @@ Selection tools ④ ⑤ determine which records can be opened or edited through 
 # Tooltip
 
 <p>
-  <img src="../assets/form_01.webp"
+  <img src="../assets/Tooltip.webp"
        alt="Fig.1" align="left" width="500">
-These tooltips provide concise, context‑specific descriptions of the attributes when the user **hovers over their labels**. They offer additional clarification on the fields’ purpose and meaning within the form, helping users correctly interpret the data without leaving the editing interface.
+These tooltips provide concise, context‑specific descriptions ① of the attributes when the user <strong>hovers over their labels</strong>. They offer additional clarification on the fields’ purpose and meaning within the form, helping users correctly interpret the data without leaving the editing interface.
 </p>
 <br clear="all"><br> 
 
