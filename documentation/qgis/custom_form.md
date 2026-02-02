@@ -56,6 +56,18 @@ Selection tools ④ ⑤ determine which records can be opened or edited through 
 >Selection is an essential part of the editing workflow, as it controls which records are loaded into the form.
 
 
+
+# Tooltip
+
+<p>
+  <img src="../assets/form_01.webp"
+       alt="Fig.1" align="left" width="500">
+These tooltips provide concise, context‑specific descriptions of the attributes when the user **hovers over their labels**. They offer additional clarification on the fields’ purpose and meaning within the form, helping users correctly interpret the data without leaving the editing interface.
+</p>
+<br clear="all"><br> 
+
+
+
 >[!TIP]
 >For more details, refer to the official QGIS [documentation](https://docs.qgis.org/3.44/en/docs/user_manual/working_with_vector/attribute_table.html)
 
