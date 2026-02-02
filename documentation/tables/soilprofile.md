@@ -28,14 +28,14 @@ This behavior is enforced at database level through triggers.
 ### Observed (`isderived = 0`)
 - **Location required**: the **`location`** column **must be NOT NULL** and must reference an existing **`soilplot.guid`**. The column is **UNIQUE**, thus a single observed profile can be associated to a given `soilplot`. Triggers reject inserts/updates that violate these rules.  
 - **Relations**: the observed profile can appear as **`guid_related`** in the `isderivedfrom` association (i.e., a derived profile is based on one or more observed profiles). Triggers ensure the referenced profile is indeed observed.  
-- **O&M integration (`datastream`)**: when a `datastream` is linked to an **Observed Soil Profile**, logic resolves **Profile → Plot → Site** and sets **`datastream.guid_thing`** to the **SoilSite** GUID (creating the `thing` on demand if missing).
+
 
 ### Derived (`isderived = 1`)
 - **No point location**: the **`location`** column **must remain `NULL`** (non point‑located profile). Triggers prevent non‑null values.  
 - **Relations**:  
   - may appear as **`guid_base`** in `isderivedfrom`, linking the derived profile to its observed sources; triggers check type coherence.  
   - may be associated with `soilbody` through `derivedprofilepresenceinsoilbody`; triggers ensure the referenced profile is derived and enforce percentage sum constraints.  
-- **O&M integration (`datastream`)**: when a `datastream` is linked to a **Derived Soil Profile**, **`datastream.guid_thing`** is set directly to the **derived profile** GUID (with on‑demand creation of the `thing`).
+
 
 
 >[!WARNING]
