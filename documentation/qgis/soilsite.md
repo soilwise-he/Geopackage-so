@@ -42,7 +42,6 @@ For detailed information on how to initiate edit mode for a custom form, refer t
 
 ### REQUIRED fields
 - `id`: primary key (auto-incrementing)
-- `geometry`: POLYGON 
 - `Soil Investigation Purpose`: TEXT (codelist)
 - `Valid From`: DATETIME (default: today)
 - `Begin Lifespan version`: DATETIME (default: today)
@@ -86,7 +85,13 @@ https://epanet.eea.europa.eu/Eionet/reportnet/docs/noise/guidelines/inspire_iden
 > These fields are not mandatory, but **filling them out is strongly recommended**: they help uniquely identify the record in forms and across data exchanges.  
 > In particular, `localid` + `namespace` form a stable identifier; `versionid` helps track changes over time.
 
-
+## Constraints
+- **CHECK**: `validfrom <= validto` (enforced via BEFORE INSERT/UPDATE triggers).
+- **CHECK**: `beginlifespanversion <= endlifespanversion` (BEFORE INSERT).
+- **Codelist**: `soilinvestigationpurpose ∈ codelist(id)` where `collection='SoilInvestigationPurposeValue'` (BEFORE INSERT/UPDATE).
+- **GUID immutability**: `guid` auto-generated on INSERT; updates to `guid` aborted.
+- **Versioning**: on UPDATE of business fields, `beginlifespanversion` set to current time if `endlifespanversion` is NULL or future; update aborted if `endlifespanversion` is past.
+  
 ### Attribute Reference
 For an  overview of the **attributes used in the custom form**, refer to the soilsite table  [documentation](../tables/soilsite.md). It provides the key definitions and data types needed to correctly interpret the fields and configure the form within the data model.
 
