@@ -20,6 +20,11 @@ The main widget types used include:
 
 These widgets allow the form to guide the user and enforce the data‑entry rules defined in the underlying data model.
 
+>[!IMPORTANT]
+>When the **Relation Reference** widget contains a large number of entries, it is possible to quickly **filter the list by typing one or more letters** into the text input field.
+>The list is automatically filtered in real time based on the entered characters, allowing faster and easier selection of the desired item.
+
+
 
 ## Purpose of Customized Forms
 
