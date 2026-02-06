@@ -15,7 +15,7 @@ While QGIS serves as the main interface for interactive data inspection and edit
 
 These complementary tools support more complex data‑processing scenarios such as bulk imports, schema transformations, QC procedures, and integration with external systems.
 
-For a complete understanding of the database structure, its constraints, relationships, and the required loading logic, users should refer to the [**Data Loading & Modelling Guide**](./data_loading.md) , which defines the conceptual and structural foundations of the Geopackage.
+For a complete understanding of the database structure, its constraints, relationships, and the required loading logic, users should refer to the [**Data Loading & Modelling Guide**](../data_loading.md) , which defines the conceptual and structural foundations of the Geopackage.
 
 
 
