@@ -27,6 +27,7 @@ Below is the index of the technical documentation available in this repository:
 [Renaming the Soilwise GeoPackage](./rename_geopackage.md)  
 [Customized Attribute Forms in QGIS](./custom_form.md)  
 [Navigating GeoPackage Tables via Forms](./navigating_via_form.md)  
+[Importing Geometric Features](./importing_geometric_features.md)  
 [Editing Records Through a QGIS Form](./edit_form.md)  
 [Saving Edits in QGIS Forms](./save_form.md)  
 [Soil Site Form](./soilsite.md)  
