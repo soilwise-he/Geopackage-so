@@ -148,6 +148,10 @@ Use the following buttons to manage child layers during data editing.
 ### Attribute Reference
 For an  overview of the **attributes used in the custom form**, refer to the soilsite table  [documentation](../tables/soilplot.md). It provides the key definitions and data types needed to correctly interpret the fields and configure the form within the data model.
 
+## Datastream Relationship
+Since this table is relationally linked to a SensorThings **Datastream**, you can add further domain‑specific properties in an STA2‑compatible way by correctly populating the [Datastream](./datastream.md) and [Observation](./observation.md) tables. 
+
+In practice, Datastream holds the series‑level context of the time series, while each Observation record carries the measurement‑level details, reflecting the SensorThings data model in which every observation is organized under a datastream.
 
 ## Save
 

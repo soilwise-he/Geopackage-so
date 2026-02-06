@@ -33,5 +33,5 @@ Below is the index of the technical documentation available in this repository:
 [Soil Plot Form](./soilplot.md)  
 [Soil Profile Form](./soilprofile.md)  
 [Profile Element Form](./profileelement.md)  
-[Datastream Form](./datastrteam.md)  
+[Datastream Form](./datastream.md)  
 [Observation Form](./observation.md)  
