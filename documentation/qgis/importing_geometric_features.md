@@ -44,14 +44,14 @@ Let’s look at each step in detail.
 QGIS allows the import of geometries from various formats, such as CSV, Shapefile, or other GeoPackages. In this example, we will import data from a CSV file.
 
 <p>
-  <img src="./assets/geom_01.webp"
+  <img src="../assets/geom_01.webp"
        alt="Fig.1" align="left" width="500">
 Click the <strong>Open Data Source Manager</strong> button ① in the QGIS toolbar.
 </p>
 <br clear="all"><br>
 
 <p>
-  <img src="./assets/geom_02.webp"
+  <img src="../assets/geom_02.webp"
        alt="Fig.1" align="left" width="500">
   In the window that opens, you can choose from various data sources to import.
   In our example, select <strong>CSV</strong> ② as the source format and proceed with importing the desired file ③.
@@ -76,7 +76,7 @@ Click the <strong>Open Data Source Manager</strong> button ① in the QGIS toolb
 
 
 <p>
-  <img src="./assets/geom_03.webp"
+  <img src="../assets/geom_03.webp"
        alt="Fig.1" align="left" width="500">
 Import the newly created layer (if it is not already present in the project).
    
@@ -86,7 +86,7 @@ Right‑click the layer name ⑦ and, from the context menu, select <strong>Open
 
 
 <p>
-  <img src="./assets/geom_04.webp"
+  <img src="../assets/geom_04.webp"
        alt="Fig.1" align="left" width="500">
 <strong>Select all</strong> geometries ⑨
    
@@ -97,7 +97,7 @@ Right‑click the layer name ⑦ and, from the context menu, select <strong>Open
 ### 3) Pasting geometries
 
 <p>
-  <img src="./assets/geom_05.webp"
+  <img src="../assets/geom_05.webp"
        alt="Fig.1" align="left" width="500">
 Enable <strong>editing mode</strong> on the destination GeoPackage layer using the <strong>Toggle Editing</strong> button ⑪.  
    
@@ -122,7 +122,7 @@ The plugin includes two geoprocessing tools:
 - **ETL_LOAD** — allows easy matching of the source table with the destination geometry table.
 
   <p>
-  <img src="./assets/geom_06.webp"
+  <img src="../assets/geom_06.webp"
        alt="Fig.1" align="left" width="500">
 
 </p>
@@ -133,7 +133,7 @@ The plugin includes two geoprocessing tools:
 - **Append Feature To Layer** — handles the copy–paste operation with additional advanced options.
 
   <p>
-  <img src="./assets/geom_07.webp"
+  <img src="../assets/geom_07.webp"
        alt="Fig.1" align="left" width="500">
 
 </p>
