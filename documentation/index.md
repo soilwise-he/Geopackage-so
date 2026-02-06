@@ -206,7 +206,7 @@ For each table, you will find its **purpose**, **key fields**, any **geometry**,
 
 
 ## Relationship Summary 
-[This document](./relationship_summary.md) helps you understand **how tables are connected**.  
+[This document](./relationships_summary.md) helps you understand **how tables are connected**.  
 It highlights the most relevant links and suggests when tables should be used together—useful to navigate between **core entities** and **supporting tables**.
 
 
@@ -215,6 +215,3 @@ It highlights the most relevant links and suggests when tables should be used to
 It clarifies what happens to **related records** and how to keep data **consistent** when modifying “parent” or “child” data.
 
 
-## Geometric Feature Import
-If some tables contain **geometries** (points, lines, polygons), [this document](./geometric_feature_import.md) explains **how they are imported and managed**.  
-It indicates what to expect in terms of **geometry type** and **spatial reference**, and how to keep geometries **usable** for analysis.
