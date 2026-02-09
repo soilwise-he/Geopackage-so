@@ -227,14 +227,25 @@ Codelists used for the `wrbreferencesoilgroup` field depending on the selected w
 **Codelist URL:** https://obrl-soil.github.io/wrbsoil2022/
 
 **Field:** `wrbqualifier`  
+**Codelist:** `WRBSpecifierValue (2014)`  
+**Codelist Authority:** WRB 2014-2015  
+**Codelist URL:** http://stats-class.fao.uniroma2.it/wrbsoil2014/
+
+**Fields:** `wrbspecifier_1` - `wrbspecifier_2` 
 **Codelist:** `WRBSpecifierValue (2006)`  
 **Codelist Authority:** INSPIRE  
-**Codelist URL:** http://inspire.ec.europa.eu/codelist/WRBSpecifierValue
+**Codelist URL:** http://inspire.ec.europa.eu/codelist/WRBSpecifierValue 
 
 **Fields:** `wrbspecifier_1` - `wrbspecifier_2` 
 **Codelist:** `WRBSpecifierValue (2022)`  
 **Codelist Authority:** ORBL‑SOIL  
 **Codelist URL:** https://obrl-soil.github.io/wrbsoil2022/
+
+**Fields:** `wrbspecifier_1` - `wrbspecifier_2` 
+**Codelist:** `WRBSpecifierValue (2014)`  
+**Codelist Authority:** UNCCD  
+**Codelist URL:** https://catalogue.unccd.int/402_a-i3794e.pdf
+
 
 ##  How to Populate the `codelist` Table for Codespace Management
 
