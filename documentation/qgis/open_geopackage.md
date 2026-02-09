@@ -3,7 +3,7 @@
 
 ## Introduction
 
-The **SoilWise GeoPackage** contains an **embedded QGIS project** named **`PRJ_SO`** that exposes **preconfigured custom forms** to guide users in **data entry** and **visualization** 
+The **SoilWise GeoPackage** contains an **embedded QGIS project** named **`_PRJ_SO`** that exposes **preconfigured custom forms** to guide users in **data entry** and **visualization** 
 
 This capability is available **even in the “empty” GeoPackage**, providing a consistent, ready‑to‑use working environment from the very beginning.
 
@@ -11,7 +11,7 @@ From a technical standpoint, the QGIS project is **stored directly inside the Ge
 
 Opening is **one‑click**: select the **embedded project** from the GeoPackage and the SoilWise environment loads exactly as designed, with **forms, styles, and settings** ready to use.
 
-## Open the PRJ_SO Project
+## Open the _PRJ_SO Project
 
 Open Qgis.
 
@@ -32,7 +32,7 @@ Search the file system for the Geopackage
 file you want to use.
 
 Inside the newly connected file, ③ you will
-find the `PRJ_SO` project. ④
+find the `_PRJ_SO` project. ④
 
 Double-click on it, and the project will open.
 </p>
