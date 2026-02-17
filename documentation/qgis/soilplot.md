@@ -77,8 +77,7 @@ For detailed information on initiating edit mode for a custom form, refer to the
 >An **INSPIRE ID** is the **external unique identifier** assigned to each spatial object in INSPIRE datasets; it ensures **uniqueness** and **persistence** and allows external applications to reliably reference the same object over time.
 The identifier **must not be changed** during the object’s life cycle; it can also be published as a **URI** to facilitate web-based referencing. [^1]
 
-[^1]: Creating INSPIRE external unique object identifiers in the scope of the END reporting.
-https://epanet.eea.europa.eu/Eionet/reportnet/docs/noise/guidelines/inspire_identifiers_doc.pdf 
+[^1]: [Creating INSPIRE external unique object identifiers in the scope of the END reporting](https://epanet.eea.europa.eu/Eionet/reportnet/docs/noise/guidelines/inspire_identifiers_doc.pdf)
 
 #### Fields
 

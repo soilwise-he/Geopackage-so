@@ -19,6 +19,7 @@ In these cases, it is recommended to:
 Collapse unnecessary sections ④ to free up vertical space.
 Reduce the width of the left panel (the one showing the list of records) by dragging the divider ⑤, thus reclaiming horizontal space and improving field readability.
 </p>
+<br clear="all"><br>
 
 ## Child‑to‑Parent Navigation
 <p>

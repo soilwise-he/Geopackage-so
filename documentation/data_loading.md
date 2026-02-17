@@ -1,7 +1,7 @@
 
 # SOILWISE Soil GeoPackage Template — Data Loading & Modelling Guide
 
-**Goal.** Provide a complete, deterministic **loading order** and **data entry rules** to populate the database that implements the INSPIRE Soil application schema. The guide covers the logical flow **Site → Plot → Profile → Elements**, the **Observed vs Derived** distinction, **Horizon vs Layer** behaviour, **classifications**, **associations**, and **STA2 (datastream/observation)** integration. References to the INSPIRE Technical Guidelines and Feature Concept Dictionary are provided as footnotes.[^2][^3][^4][^5]
+**Goal.** Provide a complete, deterministic **loading order** and **data entry rules** to populate the database that implements the INSPIRE Soil application schema. The guide covers the logical flow **Site → Plot → Profile → Elements**, the **Observed vs Derived** distinction, **Horizon vs Layer** behaviour, **classifications**, **associations**, and **STA2 (datastream/observation)** integration. References to the INSPIRE Technical Guidelines and Feature Concept Dictionary are provided as footnotes.[^1]
 
 
 
@@ -11,7 +11,7 @@
 - **Observed Soil Profile**: a soil profile **found at a specific location**, described from a trial pit or a borehole. 
 - **Derived Soil Profile**: a **non point‑located** reference profile for a soil type in a wider area.
 
-(See official INSPIRE definitions.)[^3]
+(See official INSPIRE definitions.)[^2][^3]
 
 ### Profile Element → Horizon vs Layer
 - **Profile Element** is an abstract type grouping the vertical slices that compose a soil profile. It specialises into:
@@ -24,7 +24,7 @@
 
 ## 2) Conventions & prerequisites
 
-- **Authoritative source** for table structures, constraints, and triggers: the DDL shipped with this repository.[^1]
+- **Authoritative source** for table structures, constraints, and triggers: the DDL shipped with this repository.
 - **Code lists.** Values are validated via the `codelist` table. You **must preload** every collection you plan to use *before* you insert domain records (e.g., `SoilInvestigationPurposeValue`, `SoilPlotTypeValue`, `LayerTypeValue`, `EventProcessValue`, `EventEnvironmentValue`, `LayerGenesisProcessStateValue`, `LithologyValue`, FAO/WRB codelists, `wrbversion`, `Category`).
 - **Temporal rules.** Many tables implement: `beginlifespanversion = now()` on insert; `beginlifespanversion` auto‑update upon relevant changes; checks on `validfrom ≤ validto` and `beginlifespanversion < endlifespanversion`.
 - **GUIDs.** If `guid` is NULL on insert, the DB generates a UUIDv4‑like lowercase value; updates to `guid` are blocked by triggers.
@@ -36,7 +36,7 @@
 1. **Lookups:** `codelist`, `unitofmeasure`  
 2. **Spatial features:** `soilsite`  
 3. **`soilplot`** (FK → `soilsite`)  
-4. **`soilprofile`** — choose type via `isderived` (Observed or Derived; see §4.3)  
+4. **`soilprofile`** — choose type via `isderived` (Observed or Derived)  
 5. **`isderivedfrom`** — link Derived ↔ Observed profiles  
 6. **`soilbody`**, then **`soilbody_geom`**  
 7. **`derivedprofilepresenceinsoilbody`** — assign Derived profiles with shares (≤ 100 per soilbody)  
@@ -62,7 +62,7 @@
 - **FK**: `locatedon` → `soilsite.guid` (Site must exist first).
 
 ### 4.3 `soilprofile` (Observed vs Derived)
-- **Type switch**: `isderived` → `0 = Observed`, `1 = Derived`.[^3]
+- **Type switch**: `isderived` → `0 = Observed`, `1 = Derived`.[^2][^3]
 - **Observed (`isderived=0`)**: `location` **NOT NULL** and references **`soilplot.guid`**; `location` is **UNIQUE** (one observed profile per plot).
 - **Derived (`isderived=1`)**: `location` **MUST be NULL** (non point‑located profile).
 - **WRB pairing**: `wrbversion` ∈ `wrbversion` collection; `wrbreferencesoilgroup` must match the year‑specific collection coherent with `wrbversion` (INSPIRE/2014/2022).
@@ -161,22 +161,9 @@
 
 
 
-## References
 
-[^1]: **GeoPackage Template DDL (tables, constraints, triggers)**.  
-./DDL_SO_14.sql
-
-[^2]: **INSPIRE Technical Guidelines — Soil (2024, entry page)**.  
-https://inspire-mif.github.io/technical-guidelines/data/so/
-
-[^3]: **Observed & Derived Soil Profile — Feature Concept Dictionary**.  
-Observed: https://inspire.ec.europa.eu/featureconcept/ObservedSoilProfile  
-Derived: https://inspire.ec.europa.eu/featureconcept/DerivedSoilProfile
-
-[^4]: **Horizon/Layer/ProfileElement — Feature Concept Dictionary**.  
-Soil Horizon: https://inspire.ec.europa.eu/featureconcept/SoilHorizon  
-Soil Layer: https://inspire.ec.europa.eu/featureconcept/SoilLayer  
-Profile Element: https://inspire.ec.europa.eu/featureconcept/ProfileElement:1
-
-[^5]: **INSPIRE Soil — Overview slide deck (Site–Plot–Profile–Horizon/Layer)**.  
-https://zenodo.org/records/13970777/files/II3-INSPIRE-Soil.pdf
+[^1]: [**INSPIRE Technical Guidelines — Soil (2024, entry page)**](https://inspire-mif.github.io/technical-guidelines/data/so/)
+[^2]: [**Observed**](https://inspire.ec.europa.eu/featureconcept/ObservedSoilProfile)  
+[^3]: [**Derived**](https://inspire.ec.europa.eu/featureconcept/DerivedSoilProfile)
+[^4]: [**Soil Horizon**](https://inspire.ec.europa.eu/featureconcept/SoilHorizon)  
+[^5]: [**Soil Layer**](https://inspire.ec.europa.eu/featureconcept/SoilLayer)  

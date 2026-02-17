@@ -51,8 +51,6 @@ Double-click on it, and the project will open.
 >To resolve this issue, please refer to the solutions described in the documentation [How to Handle Issues Caused by Renaming the Soilwise GeoPackage](./rename_geopackage.md) 
 
 
-[^1]: **QGIS User Manual – Working with Project Files**.  
-https://docs.qgis.org/latest/en/docs/user_manual/introduction/project_files.html
+[^1]: [**QGIS User Manual – Working with Project Files**](https://docs.qgis.org/latest/en/docs/user_manual/introduction/project_files.html)
 
-[^2]: **GIS StackExchange – “Save as Project vs. Save as GeoPackage?”** (comment on how QGIS stores the project in the `qgis_projects` table as a zipped QGZ/XML).  
-https://gis.stackexchange.com/questions/457189/save-as-project-vs-save-as-geopackage
+[^2]: [**GIS StackExchange – “Save as Project vs. Save as GeoPackage?”** (comment on how QGIS stores the project in the `qgis_projects` table as a zipped QGZ/XML)](https://gis.stackexchange.com/questions/457189/save-as-project-vs-save-as-geopackage)
