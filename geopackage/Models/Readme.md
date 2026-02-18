@@ -6,3 +6,5 @@ The developing team worked on a few demonstrative models (without parameters):
 2) Weighted average of Soil organic carbon at standard depths (0-30) for soilProfiles: SoiWise_CO_0_30.model3 & CO_0_30.qml (to be uploaded yet).
 
 Both models are linked to QGIS styles so that the generated outputs can be displayed using a preconfigured visualization style.
+
+<img width="831" height="414" alt="image" src="https://github.com/user-attachments/assets/4bb01b0a-386b-4f84-922f-9fa635d276b6" />
