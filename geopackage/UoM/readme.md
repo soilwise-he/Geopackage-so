@@ -30,7 +30,7 @@ Then, applicable UoM can be provided for that Observable Property.
 | 16 | g/g | Gram per gram | g/g | GM-PER-GM | KiloGM-PER-KiloGM | Kilogram per Kilogram | 0 | 1 |
 | 17 | g/kg | Gram per kilogram | g/kg | GM-PER-KiloGM | KiloGM-PER-KiloGM | Kilogram per Kilogram | 0 | 0.001 |
 | 18 | J/m3.K | Joule per cubic meter per Kelvin | J/m³·K | J-PER-CentiM3-K | J-PER-M3-K | Joule per Cubic Metre Kelvin | 0 | 1 |
-| 19 | nmol/g·h | Nanomole per Gram Hour | nmol.g-1.h-1 | NanoMOL-PER-GM-HR | NanoMOL-PER-GM-HR | Mole per Second Kilogram | 0 | 1 |
+| 19 | nmol/g·h | Nanomole per Gram Hour | nmol.g-1.h-1 | NanoMOL-PER-GM-HR | NanoMOL-PER-GM-HR | Nanomole per Gram per Hour  | 0 | 1 |
 | 20 | kPa | Kilopascal | kPa | KiloPA | PA | Pascal | 0 | 1000 |
 | 21 | m | Meter | m | M | M | Metre | 0 | 1 |
 | 22 | m/m | Meter per meter (ratio) | m/m |  | MilliM-PER-M | Millimetre per Metre | 0 | 1000 |
