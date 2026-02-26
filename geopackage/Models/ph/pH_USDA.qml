@@ -1,25 +1,25 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.44.0-Solothurn" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Actions|AttributeTable|Relations" readOnly="0">
+<qgis styleCategories="LayerConfiguration|Symbology|Fields|Forms|Actions|AttributeTable|Relations" readOnly="0" version="3.44.0-Solothurn">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
     <Searchable>1</Searchable>
     <Private>0</Private>
   </flags>
-  <renderer-v2 attr="Average_pH" referencescale="-1" graduatedMethod="GraduatedColor" symbollevels="0" type="graduatedSymbol" enableorderby="0" forceraster="0">
+  <renderer-v2 type="graduatedSymbol" forceraster="0" referencescale="-1" enableorderby="0" attr="Average_pH" symbollevels="0" graduatedMethod="GraduatedColor">
     <ranges>
-      <range render="true" upper="4.500000000000000" uuid="{0ad2f535-963f-4dad-a058-e78f0de7084e}" symbol="0" lower="0.000000000000000" label="Extremely acid (pH &lt;4,5)&#xa;"/>
-      <range render="true" upper="5.000000000000000" uuid="{e0e69ce6-d52c-4a4c-81bb-8e8ee23b4d75}" symbol="1" lower="4.500000000000000" label="Very strongly acid (pH 4,5-5,0)&#xa;"/>
-      <range render="true" upper="6.000000000000000" uuid="{47ac9924-7e52-4de9-a139-b359238b4465}" symbol="2" lower="5.000000000000000" label="Moderatly acid (pH 5,1-6,0)&#xa;"/>
-      <range render="true" upper="6.500000000000000" uuid="{047c00d1-2f5c-448c-a518-b99101669811}" symbol="3" lower="6.000000000000000" label="Slightly acid (pH 6,1-6,5)&#xa;"/>
-      <range render="true" upper="7.300000000000000" uuid="{4f082536-9d66-4335-8f7d-26bb88a094c6}" symbol="4" lower="6.500000000000000" label="Neutral (pH 6,6-7,3)"/>
-      <range render="true" upper="7.800000000000000" uuid="{0eda7e96-a36d-4d72-bfed-0956f63f42ac}" symbol="5" lower="7.300000000000000" label="Slightly alkaline (pH 7,4-7,8)&#xa;"/>
-      <range render="true" upper="8.400000000000000" uuid="{6b0edfde-1cea-4af3-844d-395e7ee6734d}" symbol="6" lower="7.800000000000000" label="Moderatly alkaline (pH 7,9-8,4)&#xa;"/>
-      <range render="true" upper="9.000000000000000" uuid="{9817176b-c19d-4755-9158-cf289ae6ca13}" symbol="7" lower="8.400000000000000" label="Very strongly alkaline (pH 8,5-9,0)&#xa;"/>
-      <range render="true" upper="14.000000000000000" uuid="{fe3b08fa-173f-44fa-9bb2-c56b18ea4672}" symbol="8" lower="9.000000000000000" label="Extremely alkaline (pH >9,0)&#xa;"/>
+      <range upper="4.500000000000000" symbol="0" render="true" lower="0.000000000000000" label="Extremely acid (pH &lt;4,5)" uuid="{0ad2f535-963f-4dad-a058-e78f0de7084e}"/>
+      <range upper="5.000000000000000" symbol="1" render="true" lower="4.500000000000000" label="Very strongly acid (pH 4,5-5,0)" uuid="{e0e69ce6-d52c-4a4c-81bb-8e8ee23b4d75}"/>
+      <range upper="6.000000000000000" symbol="2" render="true" lower="5.000000000000000" label="Moderatly acid (pH 5,1-6,0)" uuid="{47ac9924-7e52-4de9-a139-b359238b4465}"/>
+      <range upper="6.500000000000000" symbol="3" render="true" lower="6.000000000000000" label="Slightly acid (pH 6,1-6,5)" uuid="{047c00d1-2f5c-448c-a518-b99101669811}"/>
+      <range upper="7.300000000000000" symbol="4" render="true" lower="6.500000000000000" label="Neutral (pH 6,6-7,3)" uuid="{4f082536-9d66-4335-8f7d-26bb88a094c6}"/>
+      <range upper="7.800000000000000" symbol="5" render="true" lower="7.300000000000000" label="Slightly alkaline (pH 7,4-7,8)" uuid="{0eda7e96-a36d-4d72-bfed-0956f63f42ac}"/>
+      <range upper="8.400000000000000" symbol="6" render="true" lower="7.800000000000000" label="Moderatly alkaline (pH 7,9-8,4)" uuid="{6b0edfde-1cea-4af3-844d-395e7ee6734d}"/>
+      <range upper="9.000000000000000" symbol="7" render="true" lower="8.400000000000000" label="Very strongly alkaline (pH 8,5-9,0)" uuid="{9817176b-c19d-4755-9158-cf289ae6ca13}"/>
+      <range upper="14.000000000000000" symbol="8" render="true" lower="9.000000000000000" label="Extremely alkaline (pH >9,0)" uuid="{fe3b08fa-173f-44fa-9bb2-c56b18ea4672}"/>
     </ranges>
     <symbols>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="0" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="0" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -27,7 +27,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -58,7 +58,7 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="1" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="1" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -66,7 +66,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -97,7 +97,7 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="2" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="2" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -105,7 +105,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -136,7 +136,7 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="3" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="3" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -144,7 +144,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -175,7 +175,7 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="4" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="4" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -183,7 +183,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -214,7 +214,7 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="5" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="5" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -222,7 +222,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -253,7 +253,7 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="6" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="6" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -261,7 +261,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -292,7 +292,7 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="7" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="7" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -300,7 +300,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -331,7 +331,7 @@
           </data_defined_properties>
         </layer>
       </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="8" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="8" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -339,7 +339,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -372,7 +372,7 @@
       </symbol>
     </symbols>
     <source-symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="0" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="0" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -380,7 +380,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{a0e6b845-8fe5-4b53-a343-2531dc151ffd}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -424,8 +424,8 @@
       </Option>
     </colorramp>
     <classificationMethod id="Jenks">
-      <symmetricMode symmetrypoint="0" enabled="0" astride="0"/>
-      <labelFormat format="%1 - %2" labelprecision="2" trimtrailingzeroes="0"/>
+      <symmetricMode astride="0" enabled="0" symmetrypoint="0"/>
+      <labelFormat labelprecision="2" trimtrailingzeroes="0" format="%1 - %2"/>
       <parameters>
         <Option/>
       </parameters>
@@ -444,7 +444,7 @@
   <selection mode="Default">
     <selectionColor invalid="1"/>
     <selectionSymbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" is_animated="0" frame_rate="10" name="" force_rhr="0">
+      <symbol type="marker" is_animated="0" name="" frame_rate="10" alpha="1" clip_to_extent="1" force_rhr="0">
         <data_defined_properties>
           <Option type="Map">
             <Option type="QString" value="" name="name"/>
@@ -452,7 +452,7 @@
             <Option type="QString" value="collection" name="type"/>
           </Option>
         </data_defined_properties>
-        <layer class="SimpleMarker" pass="0" id="{959bdaea-e1e5-495e-a294-4e08c7118837}" enabled="1" locked="0">
+        <layer pass="0" enabled="1" id="{959bdaea-e1e5-495e-a294-4e08c7118837}" locked="0" class="SimpleMarker">
           <Option type="Map">
             <Option type="QString" value="0" name="angle"/>
             <Option type="QString" value="square" name="cap_style"/>
@@ -561,70 +561,70 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias field="id" index="0" name=""/>
-    <alias field="guid" index="1" name=""/>
-    <alias field="inspireid_localid" index="2" name=""/>
-    <alias field="inspireid_namespace" index="3" name=""/>
-    <alias field="inspireid_versionid" index="4" name=""/>
-    <alias field="soilplottype" index="5" name=""/>
-    <alias field="beginlifespanversion" index="6" name=""/>
-    <alias field="endlifespanversion" index="7" name=""/>
-    <alias field="locatedon" index="8" name=""/>
-    <alias field="Average_pH" index="9" name=""/>
+    <alias index="0" field="id" name=""/>
+    <alias index="1" field="guid" name=""/>
+    <alias index="2" field="inspireid_localid" name=""/>
+    <alias index="3" field="inspireid_namespace" name=""/>
+    <alias index="4" field="inspireid_versionid" name=""/>
+    <alias index="5" field="soilplottype" name=""/>
+    <alias index="6" field="beginlifespanversion" name=""/>
+    <alias index="7" field="endlifespanversion" name=""/>
+    <alias index="8" field="locatedon" name=""/>
+    <alias index="9" field="Average_pH" name=""/>
   </aliases>
   <defaults>
-    <default expression="" field="id" applyOnUpdate="0"/>
-    <default expression="" field="guid" applyOnUpdate="0"/>
-    <default expression="" field="inspireid_localid" applyOnUpdate="0"/>
-    <default expression="" field="inspireid_namespace" applyOnUpdate="0"/>
-    <default expression="" field="inspireid_versionid" applyOnUpdate="0"/>
-    <default expression="" field="soilplottype" applyOnUpdate="0"/>
-    <default expression="" field="beginlifespanversion" applyOnUpdate="0"/>
-    <default expression="" field="endlifespanversion" applyOnUpdate="0"/>
-    <default expression="" field="locatedon" applyOnUpdate="0"/>
-    <default expression="" field="Average_pH" applyOnUpdate="0"/>
+    <default applyOnUpdate="0" field="id" expression=""/>
+    <default applyOnUpdate="0" field="guid" expression=""/>
+    <default applyOnUpdate="0" field="inspireid_localid" expression=""/>
+    <default applyOnUpdate="0" field="inspireid_namespace" expression=""/>
+    <default applyOnUpdate="0" field="inspireid_versionid" expression=""/>
+    <default applyOnUpdate="0" field="soilplottype" expression=""/>
+    <default applyOnUpdate="0" field="beginlifespanversion" expression=""/>
+    <default applyOnUpdate="0" field="endlifespanversion" expression=""/>
+    <default applyOnUpdate="0" field="locatedon" expression=""/>
+    <default applyOnUpdate="0" field="Average_pH" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" field="id" notnull_strength="0" unique_strength="0" constraints="0"/>
-    <constraint exp_strength="0" field="guid" notnull_strength="0" unique_strength="0" constraints="0"/>
-    <constraint exp_strength="0" field="inspireid_localid" notnull_strength="0" unique_strength="0" constraints="0"/>
-    <constraint exp_strength="0" field="inspireid_namespace" notnull_strength="0" unique_strength="0" constraints="0"/>
-    <constraint exp_strength="0" field="inspireid_versionid" notnull_strength="0" unique_strength="0" constraints="0"/>
-    <constraint exp_strength="0" field="soilplottype" notnull_strength="0" unique_strength="0" constraints="0"/>
-    <constraint exp_strength="0" field="beginlifespanversion" notnull_strength="0" unique_strength="0" constraints="0"/>
-    <constraint exp_strength="0" field="endlifespanversion" notnull_strength="0" unique_strength="0" constraints="0"/>
-    <constraint exp_strength="0" field="locatedon" notnull_strength="0" unique_strength="0" constraints="0"/>
-    <constraint exp_strength="0" field="Average_pH" notnull_strength="0" unique_strength="0" constraints="0"/>
+    <constraint unique_strength="0" field="id" constraints="0" notnull_strength="0" exp_strength="0"/>
+    <constraint unique_strength="0" field="guid" constraints="0" notnull_strength="0" exp_strength="0"/>
+    <constraint unique_strength="0" field="inspireid_localid" constraints="0" notnull_strength="0" exp_strength="0"/>
+    <constraint unique_strength="0" field="inspireid_namespace" constraints="0" notnull_strength="0" exp_strength="0"/>
+    <constraint unique_strength="0" field="inspireid_versionid" constraints="0" notnull_strength="0" exp_strength="0"/>
+    <constraint unique_strength="0" field="soilplottype" constraints="0" notnull_strength="0" exp_strength="0"/>
+    <constraint unique_strength="0" field="beginlifespanversion" constraints="0" notnull_strength="0" exp_strength="0"/>
+    <constraint unique_strength="0" field="endlifespanversion" constraints="0" notnull_strength="0" exp_strength="0"/>
+    <constraint unique_strength="0" field="locatedon" constraints="0" notnull_strength="0" exp_strength="0"/>
+    <constraint unique_strength="0" field="Average_pH" constraints="0" notnull_strength="0" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="guid"/>
-    <constraint exp="" desc="" field="inspireid_localid"/>
-    <constraint exp="" desc="" field="inspireid_namespace"/>
-    <constraint exp="" desc="" field="inspireid_versionid"/>
-    <constraint exp="" desc="" field="soilplottype"/>
-    <constraint exp="" desc="" field="beginlifespanversion"/>
-    <constraint exp="" desc="" field="endlifespanversion"/>
-    <constraint exp="" desc="" field="locatedon"/>
-    <constraint exp="" desc="" field="Average_pH"/>
+    <constraint field="id" exp="" desc=""/>
+    <constraint field="guid" exp="" desc=""/>
+    <constraint field="inspireid_localid" exp="" desc=""/>
+    <constraint field="inspireid_namespace" exp="" desc=""/>
+    <constraint field="inspireid_versionid" exp="" desc=""/>
+    <constraint field="soilplottype" exp="" desc=""/>
+    <constraint field="beginlifespanversion" exp="" desc=""/>
+    <constraint field="endlifespanversion" exp="" desc=""/>
+    <constraint field="locatedon" exp="" desc=""/>
+    <constraint field="Average_pH" exp="" desc=""/>
   </constraintExpressions>
   <expressionfields/>
   <attributeactions>
     <defaultAction key="Canvas" value="{00000000-0000-0000-0000-000000000000}"/>
   </attributeactions>
-  <attributetableconfig actionWidgetStyle="dropDown" sortOrder="0" sortExpression="">
+  <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
     <columns>
-      <column type="field" width="-1" name="id" hidden="0"/>
-      <column type="field" width="-1" name="guid" hidden="0"/>
-      <column type="field" width="-1" name="inspireid_localid" hidden="0"/>
-      <column type="field" width="-1" name="inspireid_namespace" hidden="0"/>
-      <column type="field" width="-1" name="inspireid_versionid" hidden="0"/>
-      <column type="field" width="-1" name="soilplottype" hidden="0"/>
-      <column type="field" width="-1" name="beginlifespanversion" hidden="0"/>
-      <column type="field" width="-1" name="endlifespanversion" hidden="0"/>
-      <column type="field" width="-1" name="locatedon" hidden="0"/>
-      <column type="field" width="-1" name="Average_pH" hidden="0"/>
-      <column type="actions" width="-1" hidden="1"/>
+      <column type="field" hidden="0" width="-1" name="id"/>
+      <column type="field" hidden="0" width="-1" name="guid"/>
+      <column type="field" hidden="0" width="-1" name="inspireid_localid"/>
+      <column type="field" hidden="0" width="-1" name="inspireid_namespace"/>
+      <column type="field" hidden="0" width="-1" name="inspireid_versionid"/>
+      <column type="field" hidden="0" width="-1" name="soilplottype"/>
+      <column type="field" hidden="0" width="-1" name="beginlifespanversion"/>
+      <column type="field" hidden="0" width="-1" name="endlifespanversion"/>
+      <column type="field" hidden="0" width="-1" name="locatedon"/>
+      <column type="field" hidden="0" width="-1" name="Average_pH"/>
+      <column type="actions" hidden="1" width="-1"/>
     </columns>
   </attributetableconfig>
   <conditionalstyles>
@@ -680,16 +680,16 @@ def my_form_open(dialog, layer, feature):
     <field labelOnTop="0" name="soilplottype"/>
   </labelOnTop>
   <reuseLastValue>
-    <field reuseLastValue="0" name="Average_pH"/>
-    <field reuseLastValue="0" name="beginlifespanversion"/>
-    <field reuseLastValue="0" name="endlifespanversion"/>
-    <field reuseLastValue="0" name="guid"/>
-    <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="inspireid_localid"/>
-    <field reuseLastValue="0" name="inspireid_namespace"/>
-    <field reuseLastValue="0" name="inspireid_versionid"/>
-    <field reuseLastValue="0" name="locatedon"/>
-    <field reuseLastValue="0" name="soilplottype"/>
+    <field name="Average_pH" reuseLastValue="0"/>
+    <field name="beginlifespanversion" reuseLastValue="0"/>
+    <field name="endlifespanversion" reuseLastValue="0"/>
+    <field name="guid" reuseLastValue="0"/>
+    <field name="id" reuseLastValue="0"/>
+    <field name="inspireid_localid" reuseLastValue="0"/>
+    <field name="inspireid_namespace" reuseLastValue="0"/>
+    <field name="inspireid_versionid" reuseLastValue="0"/>
+    <field name="locatedon" reuseLastValue="0"/>
+    <field name="soilplottype" reuseLastValue="0"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
