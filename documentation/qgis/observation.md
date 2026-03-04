@@ -123,18 +123,6 @@ If range limits are defined in the parent Datastream:
 
 If **no bounds** are specified in the Datastream, **any value of the correct type** is accepted.
 
-#### Result Type: Text
-
-**value of type Text**  
-Used to represent free-text or descriptive values.
-
-<p>
-  <img src="../assets/value_text.webp"
-       alt="Fig.1" align="left" width="500">
-</p>
-<br clear="all"><br>
-
-
 
 > [!IMPORTANT]
 >Only values of the **correct type**—as defined in the parent Datastream—can be persisted.  

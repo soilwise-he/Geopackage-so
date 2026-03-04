@@ -9,8 +9,6 @@ To open the Datastream custom forms, go to the Layers panel, right‑click the `
 
 ## Edit
 
-Unlike most attribute‑only tables, **Datastream** includes an **optional geometry** (observedarea as POLYGON, EPSG:3035). This makes editing slightly more complex because a Datastream can behave either as a feature layer (when a geometry is present) or simply as an attribute table (when geometry is NULL). Both cases are valid.
-
 <p>
   <img src="../assets/datas_01.webp"
        alt="Fig.1" align="left" width="500">
@@ -20,26 +18,6 @@ Alternatively, select only the “datastream” layer ① and click the “Toggl
 </p>
 <br clear="all"><br>
 
-### With geometry
-<p>
-  <img src="../assets/datas_02.webp"
-       alt="Fig.1" align="left" width="500">
-A small pencil icon ④ will appear, indicating that the feature is in edit mode.
-  
-In the toolbar, select the "Add Polygon Feature" icon ⑤ and draw the geometry of the new "Datastream". ⑥
-</p>
-<br clear="all"><br>
-
-<p>
-  <img src="../assets/datas_03.webp"
-       alt="Fig.1" align="left" width="500">
-Right-click to close the geometry, and the data entry form will appear. ⑦
-
-Use the widgets provided by the form to modify data.
-</p>
-<br clear="all"><br>
-
-### Without geometry
 <p>
   <img src="../assets/datas_04.webp"
        alt="Fig.1" align="left" width="500">
@@ -81,9 +59,7 @@ Use the following buttons to manage child layers during data editing.
 
 **Save child layer edit** ② commits the pending edits for the child layer to the GeoPackage. Use this to persist changes without leaving the parent form.
 
-**Add Polygon Feature** ③ tool in QGIS allows users to create new polygon geometries within an editable vector layer.
-
-**Add child feature** ④ creates a new child record pre‑linked to the current parent (relation fields are auto‑populated by the form’s relation widget), ensuring correct foreign keys and preventing orphan rows.
+**Add child feature** ③ creates a new child record pre‑linked to the current parent (relation fields are auto‑populated by the form’s relation widget), ensuring correct foreign keys and preventing orphan rows.
 
 ### REQUIRED fields
 - `id`: primary key (auto-incrementing)
@@ -112,16 +88,17 @@ Use the following buttons to manage child layers during data editing.
 
 The custom form dynamically adapts its layout and available fields based on the selected **Result Type**. ①
 
-When a Result Type is chosen, the form automatically displays only the fields that are required or optional for that specific type, while hiding or disabling fields that are not allowed.  
-This behavior ensures a correct and consistent definition of the Result Type and prevents invalid configurations.
-
-Each Result Type enforces a specific set of **required**, **optional**, and **forbidden** fields, as described below.
-
 <p>
   <img src="../assets/resut_type_type.webp"
        alt="Fig.1" align="left" width="500">
 </p>
 <br clear="all"><br>
+
+When a Result Type is chosen, the form automatically displays only the fields that are required or optional for that specific type, while hiding or disabling fields that are not allowed.  
+This behavior ensures a correct and consistent definition of the Result Type and prevents invalid configurations.
+
+Each Result Type enforces a specific set of **required**, **optional**, and **forbidden** fields, as described below.
+
 
 > [!IMPORTANT]
 >  For further details about the **Result Type** definition, validation rules, and related constraints, please refer to the  [documentation](../tables/datastream.md) of the **Datastream** table.
@@ -215,23 +192,7 @@ Used to represent measurable quantities associated with a numeric value and a un
 > [!IMPORTANT]
 >  Additional units of measure can be added to the system by inserting new records into the [**`unitofmeasure`** ](../tables/unitofmeasure.md)  table.
 
-#### Result Type: Text
 
-**Description**  
-Used to represent free-text or descriptive values.
-
-<p>
-  <img src="../assets/resut_type_text.webp"
-       alt="Fig.1" align="left" width="500">
-</p>
-<br clear="all"><br>
-
-
-**Forbidden fields**
-- `iduom`
-- `codespace`
-- `value_min`
-- `value_max`
 
 ### Observed Property - Sensor - Observing Procedure  - Thing
 
@@ -256,14 +217,15 @@ Each dropdown list displays **only the rows available in the corresponding Geopa
 
 The list of available **Observing Procedures** is dynamically filtered based on the selected **Observed Property**.
 
-> [!IMPORTANT]
-> This filtering is performed according to the relationships defined between **Observed Property** and **Observing Procedure** in the  
-**`obsprocedure_obsdproperty`** table. Only Observing Procedures that are explicitly linked to the selected Observed Property will be available for selection.
-
 > [!WARNING]
 > **Validation Constraint**  
 > If the selected **Observed Property – Observing Procedure** key pair is **not present** in the  
 > **`obsprocedure_obsdproperty`** table, the system will raise an error and **prevent the insertion of the Datastream record**.
+
+> [!IMPORTANT]
+> This filtering is performed according to the relationships defined between **Observed Property** and **Observing Procedure** in the  
+**`obsprocedure_obsdproperty`** table. Only Observing Procedures that are explicitly linked to the selected Observed Property will be available for selection.
+
 
 > [!NOTE]
 > The Geopackage is distributed with a predefined set of **GLOSIS Observed Property – Observing Procedure** records,  
