@@ -22,7 +22,7 @@ The model works **exclusively on the SoilWise GeoPackage** and uses the followin
 ## 3) Parameters / Constants
 - **Datastream filter (pH in H₂O):**
   - `guid_observedproperty = '2422dfa9-82a2-4e73-9f63-630d055dcd43'`  - [pH](http://w3id.org/glosis/model/codelists/physioChemicalPropertyCode-pH) 
-  - `guid_observingprocedure = 'a6cbc33c-872b-45bb-85ba-18b35fbf6813'`  - [pHH2O_ratio1-5](http://w3id.org/glosis/model/procedure/pHProcedure-pHH2O_ratio1-5) 
+  - `guid_observingprocedure = '43adf8b8-b78c-4ef2-8d78-69e7d8c69d8a'`  - [pHH2O_ratio1-2.5](http://w3id.org/glosis/model/procedure/pHProcedure-pHH2O_ratio1-2.5) 
 
 
 ## 4) Workflow (condensed)

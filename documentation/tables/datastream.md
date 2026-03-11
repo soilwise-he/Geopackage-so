@@ -149,7 +149,12 @@ Any foreign keys (FK) from other tables reference this table’s GUID field rath
 
 | Name | Unique | Columns | Origin | Partial |
 |------|--------|---------|--------|---------|
-| `sqlite_autoindex_datastream_1` | Yes | `guid` | `u` | No |
+| `idx_ds_guid_observingprocedure` | No | `guid_observingprocedure` | `c` | No |
+| `idx_ds_guid_soilsite` | No | `guid_soilsite` | `c` | No |
+| `idx_ds_guid_soilprofile` | No | `guid_soilprofile` | `c` | No |
+| `idx_ds_guid_profileelement` | No | `guid_profileelement` | `c` | No |
+| `idx_ds_guid_soilderivedobject` | No | `guid_soilderivedobject` | `c` | No |
+| `idx_datastream_type` | No | `type` | `c` | No |
 
 ### Triggers
 For every trigger you will find:

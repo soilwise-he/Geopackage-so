@@ -561,67 +561,52 @@ INSERT INTO "codelist" (id, label, collection) VALUES ('http://inspire.ec.europa
 INSERT INTO "codelist" (id, label, collection) VALUES ('http://inspire.ec.europa.eu/codelist/FAOPrimeValue/3', '3', 'FAOPrimeValue');
 
 
--- *** INTERNAL *** codelist for managing forms 
+
 -- OtherHorizonNotationType
 -- FEATURE otherhorizonnotationtype
--- CODELIST for internal management of Qgis forms
-
-INSERT INTO "codelist" (id, label, collection) VALUES ('WRBdiagnostichorizon', 'WRB', 'OtherHorizonNotationTypeValue');
-INSERT INTO "codelist" (id, label, collection) VALUES ('USDAdiagnostichorizon', 'USDA', 'OtherHorizonNotationTypeValue');
-
-
--- WRBdiagnostichorizon
--- FEATURE otherhorizonnotationtype
--- CODELIST ORBL
+-- CODELIST ORBL (INSPIRE - VOID)
 -- https://obrl-soil.github.io/wrbsoil2022/
 
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-albich', 'Albic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-anthh', 'Anthraquic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-argich', 'Argic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-calch', 'Calcic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-cambich', 'Cambic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-chernh', 'Chernic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-cohesich', 'Cohesic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-cryich', 'Cryic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-durich', 'Duric', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-feralh', 'Ferralic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-ferich', 'Ferric', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-folich', 'Folic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-fragh', 'Fragic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-gypsih', 'Gypsic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-histih', 'Histic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-hydrh', 'Hydragric', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-iragh', 'Irragric', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-limonich', 'Limonic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-mollh', 'Mollic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-natrich', 'Natric', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-nitich', 'Nitic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-panpaich', 'Panpaic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-hortih', 'Hortic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-pcalch', 'Petrocalcic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-pdurich', 'Petroduric', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-pgypsich', 'Petrogypsic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-pplinthich', 'Petroplinthic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-pisoph', 'Pisoplinthic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-plaggh', 'Plaggic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-plinth', 'Plinthic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-preth', 'Pretic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-protvh', 'Protovertic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-salich', 'Salic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-sombrh', 'Sombric', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-spodich', 'Spodic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-terich', 'Terric', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-thionh', 'Thionic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-tsitelich', 'Tsitelic', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-umbrich', 'Umbric', 'WRBdiagnostichorizon');
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-verth', 'Vertic', 'WRBdiagnostichorizon');
-
--- *** EXAMPLE *** 
--- diagnostichorizon
--- FEATURE otherhorizonnotationtype
--- CODELIST CREA
-
-INSERT INTO "codelist" (id, label, collection) VALUES ('https://crea.gov.it/infosuoli/vocabularies/USDA/diagnostichorizon/12386', 'Void', 'USDAdiagnostichorizon');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-albich', 'Albic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-anthh', 'Anthraquic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-argich', 'Argic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-calch', 'Calcic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-cambich', 'Cambic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-chernh', 'Chernic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-cohesich', 'Cohesic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-cryich', 'Cryic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-durich', 'Duric', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-feralh', 'Ferralic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-ferich', 'Ferric', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-folich', 'Folic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-fragh', 'Fragic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-gypsih', 'Gypsic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-histih', 'Histic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-hydrh', 'Hydragric', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-iragh', 'Irragric', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-limonich', 'Limonic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-mollh', 'Mollic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-natrich', 'Natric', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-nitich', 'Nitic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-panpaich', 'Panpaic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-hortih', 'Hortic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-pcalch', 'Petrocalcic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-pdurich', 'Petroduric', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-pgypsich', 'Petrogypsic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-pplinthich', 'Petroplinthic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-pisoph', 'Pisoplinthic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-plaggh', 'Plaggic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-plinth', 'Plinthic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-preth', 'Pretic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-protvh', 'Protovertic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-salich', 'Salic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-sombrh', 'Sombric', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-spodich', 'Spodic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-terich', 'Terric', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-thionh', 'Thionic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-tsitelich', 'Tsitelic', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-umbrich', 'Umbric', 'OtherHorizonNotationTypeValue');
+INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-verth', 'Vertic', 'OtherHorizonNotationTypeValue');
 
 
 
@@ -1046,6 +1031,243 @@ INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github
 INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-05.html#sec-ye', 'Yermic', 'WRBQualifierValue2022');
 
 
+-- WRBQualifierValue (2014)
+-- FEATURE wrbqualifiergrouptype
+-- CODELIST WRB 2014-2015
+-- http://stats-class.fao.uniroma2.it/wrbsoil2014/
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Abruptic', 'Abruptic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Aceric', 'Aceric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Acric', 'Acric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Acroxic', 'Acroxic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Aeolic', 'Aeolic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Akrofluvic', 'Akrofluvic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Akromineralic', 'Akromineralic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Akroskeletic', 'Akroskeletic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Albic', 'Albic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Alcalic', 'Alcalic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Alic', 'Alic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Aluandic', 'Aluandic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Andic', 'Andic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Anthraquic', 'Anthraquic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Anthric', 'Anthric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Anthromollic', 'Anthromollic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Anthrotoxic', 'Anthrotoxic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Anthroumbric', 'Anthroumbric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Archaic', 'Archaic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Arenic', 'Arenic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Areninovic', 'Areninovic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Argisodic', 'Argisodic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Aric', 'Aric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Aridic', 'Aridic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Arzic', 'Arzic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Brunic', 'Brunic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Calcaric', 'Calcaric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Calcic', 'Calcic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Calcifractic', 'Calcifractic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Cambic', 'Cambic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Capillaric', 'Capillaric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Carbic', 'Carbic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Carbonatic', 'Carbonatic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Carbonic', 'Carbonic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Chernic', 'Chernic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Chloridic', 'Chloridic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Chromic', 'Chromic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Clayic', 'Clayic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Clayinovic', 'Clayinovic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Colluvic', 'Colluvic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Columnic', 'Columnic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Cryic', 'Cryic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Cutanic', 'Cutanic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Densic', 'Densic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Differentic', 'Differentic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Dolomitic', 'Dolomitic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Drainic', 'Drainic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Duric', 'Duric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Dystric', 'Dystric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Ekranic', 'Ekranic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Entic', 'Entic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Escalic', 'Escalic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Eutric', 'Eutric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Eutrisilic', 'Eutrisilic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Evapocrustic', 'Evapocrustic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Ferralic', 'Ferralic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Ferric', 'Ferric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Ferritic', 'Ferritic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Fibric', 'Fibric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Floatic', 'Floatic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Fluvic', 'Fluvic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Folic', 'Folic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Fractic', 'Fractic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Fragic', 'Fragic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Fulvic', 'Fulvic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Garbic', 'Garbic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Gelic', 'Gelic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Gelistagnic', 'Gelistagnic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Geoabruptic', 'Geoabruptic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Geric', 'Geric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Gibbsic', 'Gibbsic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Gilgaic', 'Gilgaic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Glacic', 'Glacic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Gleyic', 'Gleyic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Glossic', 'Glossic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Greyzemic', 'Greyzemic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Grumic', 'Grumic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Gypsic', 'Gypsic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Gypsifractic', 'Gypsifractic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Gypsiric', 'Gypsiric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Haplic', 'Haplic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hemic', 'Hemic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Histic', 'Histic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hortic', 'Hortic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Humic', 'Humic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hydragric', 'Hydragric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hydric', 'Hydric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hydrophobic', 'Hydrophobic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyperalic', 'Hyperalic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyperartefactic', 'Hyperartefactic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypercalcic', 'Hypercalcic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyperduric', 'Hyperduric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyperdystric', 'Hyperdystric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypereutric', 'Hypereutric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyperferritic', 'Hyperferritic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypergypsic', 'Hypergypsic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyperhumic', 'Hyperhumic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyperhydragric', 'Hyperhydragric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypermagnesic', 'Hypermagnesic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypernatric', 'Hypernatric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyperorganic', 'Hyperorganic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypersalic', 'Hypersalic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypersideralic', 'Hypersideralic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyperspodic', 'Hyperspodic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypersulfidic', 'Hypersulfidic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypertechnic', 'Hypertechnic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyperthionic', 'Hyperthionic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypocalcic', 'Hypocalcic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypogypsic', 'Hypogypsic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hyposulfidic', 'Hyposulfidic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Hypothionic', 'Hypothionic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Immissic', 'Immissic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Inclinic', 'Inclinic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Infraandic', 'Infraandic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Infraspodic', 'Infraspodic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Irragric', 'Irragric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Isolatic', 'Isolatic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Lamellic', 'Lamellic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Lapiadic', 'Lapiadic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Laxic', 'Laxic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Leptic', 'Leptic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Lignic', 'Lignic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Limnic', 'Limnic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Linic', 'Linic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Lithic', 'Lithic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Lixic', 'Lixic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Loamic', 'Loamic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Loaminovic', 'Loaminovic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Luvic', 'Luvic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Magnesic', 'Magnesic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Manganiferric', 'Manganiferric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Mawic', 'Mawic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Mazic', 'Mazic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Melanic', 'Melanic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Mesotrophic', 'Mesotrophic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Mineralic', 'Mineralic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Mollic', 'Mollic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Murshic', 'Murshic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Muusic', 'Muusic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Natric', 'Natric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Nechic', 'Nechic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Neocambic', 'Neocambic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Nitic', 'Nitic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Nudiargic', 'Nudiargic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Nudilithic', 'Nudilithic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Nudinatric', 'Nudinatric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Nudipetric', 'Nudipetric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Ochric', 'Ochric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Oligeoeutric', 'Oligeoeutric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Ombric', 'Ombric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Organotransportic', 'Organotransportic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Ornithic', 'Ornithic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Orthidystric', 'Orthidystric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Orthieutric', 'Orthieutric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Orthofluvic', 'Orthofluvic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Orthomineralic', 'Orthomineralic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Orthoskeletic', 'Orthoskeletic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Ortsteinic', 'Ortsteinic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Oxyaquic', 'Oxyaquic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Oxygleyic', 'Oxygleyic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Pachic', 'Pachic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Pellic', 'Pellic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Petric', 'Petric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Petrocalcic', 'Petrocalcic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Petroduric', 'Petroduric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Petrogleyic', 'Petrogleyic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Petrogypsic', 'Petrogypsic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Petroplinthic', 'Petroplinthic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Petrosalic', 'Petrosalic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Phytotoxic', 'Phytotoxic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Pisoplinthic', 'Pisoplinthic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Placic', 'Placic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Plaggic', 'Plaggic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Plinthic', 'Plinthic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Plinthofractic', 'Plinthofractic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Posic', 'Posic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Pretic', 'Pretic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Profondic', 'Profondic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Profundihumic', 'Profundihumic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Protic', 'Protic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Protoandic', 'Protoandic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Protoargic', 'Protoargic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Protoaridic', 'Protoaridic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Protocalcic', 'Protocalcic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Protosalic', 'Protosalic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Protosodic', 'Protosodic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Protospodic', 'Protospodic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Protostagnic', 'Protostagnic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Prototechnic', 'Prototechnic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Prototephric', 'Prototephric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Protovertic', 'Protovertic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Puffic', 'Puffic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Radiotoxic', 'Radiotoxic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Raptic', 'Raptic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Reductaquic', 'Reductaquic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Reductic', 'Reductic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Reductigleyic', 'Reductigleyic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Relictigleyic', 'Relictigleyic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Relictistagnic', 'Relictistagnic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Relictiturbic', 'Relictiturbic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Relocatic', 'Relocatic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Rendzic', 'Rendzic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Retic', 'Retic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Rheic', 'Rheic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Rhodic', 'Rhodic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Rockic', 'Rockic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Rubic', 'Rubic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Rustic', 'Rustic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Salic', 'Salic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Sapric', 'Sapric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Sideralic', 'Sideralic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Silandic', 'Silandic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Siltic', 'Siltic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Siltinovic', 'Siltinovic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Skeletic', 'Skeletic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Sodic', 'Sodic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Sombric', 'Sombric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Someric', 'Someric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Somerimollic', 'Somerimollic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Somerirendzic', 'Somerirendzic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Someriumbric', 'Someriumbric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Spodic', 'Spodic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Spolic', 'Spolic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Stagnic', 'Stagnic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Subaquatic', 'Subaquatic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Sulfidic', 'Sulfidic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Sulfatic', 'Sulphatic', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Takyric', 'Takyric', 'WRBQualifierValue2014');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Technic', 'Technic', 'WRBQualifierValue2014');
+
+
+
+
 -- WRBSpecifiers (2006)
 -- FEATURE wrbqualifiergrouptype
 -- CODELIST INSPIRE 
@@ -1079,6 +1301,23 @@ INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github
 INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-06.html#specifiers#Poly', 'Poly', 'WRBSpecifierValue2022');
 INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-06.html#specifiers#Supra', 'Supra', 'WRBSpecifierValue2022');
 INSERT INTO "codelist" (id, label, collection) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-06.html#specifiers#Thapto', 'Thapto', 'WRBSpecifierValue2022');
+
+
+
+-- WRBSpecifierValue (2014)
+-- FEATURE wrbqualifiergrouptype
+-- CODELIST UNCDD
+-- https://catalogue.unccd.int/402_a-i3794e.pdf
+INSERT INTO codelist (id, label, collection) VALUES ('https://catalogue.unccd.int/402_a-i3794e.pdf#Amphi', 'Amphi', 'WRBSpecifierValue2014');
+INSERT INTO codelist (id, label, collection) VALUES ('https://catalogue.unccd.int/402_a-i3794e.pdf#Ano', 'Ano', 'WRBSpecifierValue2014');
+INSERT INTO codelist (id, label, collection) VALUES ('https://catalogue.unccd.int/402_a-i3794e.pdf#Bathy', 'Bathy', 'WRBSpecifierValue2014');
+INSERT INTO codelist (id, label, collection) VALUES ('https://catalogue.unccd.int/402_a-i3794e.pdf#Endo', 'Endo', 'WRBSpecifierValue2014');
+INSERT INTO codelist (id, label, collection) VALUES ('https://catalogue.unccd.int/402_a-i3794e.pdf#Epi', 'Epi', 'WRBSpecifierValue2014');
+INSERT INTO codelist (id, label, collection) VALUES ('https://catalogue.unccd.int/402_a-i3794e.pdf#Kato', 'Kato', 'WRBSpecifierValue2014');
+INSERT INTO codelist (id, label, collection) VALUES ('https://catalogue.unccd.int/402_a-i3794e.pdf#Panto', 'Panto', 'WRBSpecifierValue2014');
+INSERT INTO codelist (id, label, collection) VALUES ('https://catalogue.unccd.int/402_a-i3794e.pdf#Supra', 'Supra', 'WRBSpecifierValue2014');
+INSERT INTO codelist (id, label, collection) VALUES ('https://catalogue.unccd.int/402_a-i3794e.pdf#Thapto', 'Thapto', 'WRBSpecifierValue2014');
+
 
 
 -- *** INTERNAL *** codelist for managing forms 
@@ -1127,6 +1366,8 @@ INSERT INTO "codelist" (id, label, collection) VALUES ('https://agroportal.lirmm
 INSERT INTO "codelist" (id, label, collection) VALUES ('https://lod.nal.usda.gov/nalt/17521', 'Sensor', 'ProcessParameterNameValue');
 INSERT INTO "codelist" (id, label, collection) VALUES ('https://lod.nal.usda.gov/nalt/136977', 'Expert attribution', 'ProcessParameterNameValue');
 INSERT INTO "codelist" (id, label, collection) VALUES ('https://lod.nal.usda.gov/nalt/52488', 'Classificazione, classe, categoria', 'ProcessParameterNameValue');
+
+
 
 
 -- ResponsiblePartyRole
@@ -1378,10 +1619,10 @@ INSERT INTO "codelist" (id, label, collection) VALUES ('Text', 'Text', 'resultTy
 --
 
 -- 
-/*
+
 -- TEST category codes
 
-
+/*
 INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode', 'biologicalFeaturesValueCode', 'Category');
 INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingLocationValueCode', 'coatingLocationValueCode', 'Category');
 INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode', 'coatingNatureValueCode', 'Category');
@@ -1426,3 +1667,1135 @@ INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/m
 INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-SP', 'Slickensides', 'Slickensides');
 INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-ST', 'Silt coatings', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
 */
+
+-- Coded values for properties
+-- CODELIST GLOSIS
+
+
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode', 'weatherConditionsValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode', 'coatingAbundanceValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatheringValueCode', 'weatheringValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingContrastValueCode', 'coatingContrastValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingFormValueCode', 'coatingFormValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode', 'biologicalFeaturesValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingLocationValueCode', 'coatingLocationValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode', 'coatingNatureValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceDryValueCode', 'consistenceDryValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceMoistValueCode', 'consistenceMoistValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/contrastValueCode', 'contrastValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDepthValueCode', 'cracksDepthValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDistanceValueCode', 'cracksDistanceValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksWidthValueCode', 'cracksWidthValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode', 'cropClassValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bleachedSandValueCode', 'bleachedSandValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode', 'erosionActivityPeriodValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode', 'erosionAreaAffectedValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode', 'erosionCategoryValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionDegreeValueCode', 'erosionDegreeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode', 'erosionTotalAreaAffectedValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryClassificationValueCode', 'boundaryClassificationValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentCoverValueCode', 'fragmentCoverValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode', 'fragmentsClassValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode', 'fragmentsSizeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumContentValueCode', 'gypsumContentValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumFormsValueCode', 'gypsumFormsValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryDistinctnessValueCode', 'boundaryDistinctnessValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode', 'humanInfluenceClassValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode', 'landUseClassValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryTopographyValueCode', 'boundaryTopographyValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landformComplexValueCode', 'landformComplexValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode', 'bulkDensityMineralValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode', 'lithologyValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode', 'bulkDensityPeatValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode', 'majorLandFormValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode', 'mineralConcColourValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesContentValueCode', 'carbonatesContentValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcHardnessValueCode', 'mineralConcHardnessValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcKindValueCode', 'mineralConcKindValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode', 'mineralConcNatureValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode', 'mineralConcShapeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcSizeValueCode', 'mineralConcSizeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode', 'mineralConcVolumeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralFragmentsValueCode', 'mineralFragmentsValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode', 'mottlesAbundanceValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode', 'carbonatesFormsValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesSizeValueCode', 'mottlesSizeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDecompostionValueCode', 'peatDecompostionValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDrainageValueCode', 'peatDrainageValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatVolumeValueCode', 'peatVolumeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationContinuityValueCode', 'cementationContinuityValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalAbundanceValueCode', 'biologicalAbundanceValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationDegreeValueCode', 'cementationDegreeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode', 'physiographyValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/plasticityValueCode', 'plasticityValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/poresAbundanceValueCode', 'poresAbundanceValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/porosityClassValueCode', 'porosityClassValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode', 'profileDescriptionStatusValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockAbundanceValueCode', 'rockAbundanceValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode', 'rockOutcropsCoverValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode', 'rockOutcropsDistanceValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockShapeValueCode', 'rockShapeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode', 'rockSizeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationFabricValueCode', 'cementationFabricValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode', 'rootsAbundanceValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltContentValueCode', 'saltContentValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltCoverValueCode', 'saltCoverValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltThicknessValueCode', 'saltThicknessValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode', 'cementationNatureValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode', 'sandyTextureValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingConsistenceValueCode', 'sealingConsistenceValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingThicknessValueCode', 'sealingThicknessValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeFormValueCode', 'slopeFormValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode', 'slopeGradientClassValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopePathwaysValueCode', 'slopePathwaysValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/stickinessValueCode', 'stickinessValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureGradeValueCode', 'structureGradeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureSizeValueCode', 'structureSizeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode', 'surfaceAgeValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode', 'vegetationClassValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsClassificationValueCode', 'voidsClassificationValueCode', 'Category');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsDiameterValueCode', 'voidsDiameterValueCode', 'Category');
+
+
+-- weatherConditions
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/weatherConditionsValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-OV', 'overcast', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-PC', 'partly cloudy', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-RA', 'rain', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-SL', 'sleet', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-SN', 'snow', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-SU', 'sunny/clear', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-WC1', 'no rain in the last month', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-WC2', 'no rain in the last week', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-WC3', 'no rain in the last 24 hours', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-WC4', 'rainy without heavy rain in the last 24 hours', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-WC5', 'heavier rain for some days or rainstorm in the last 24 hours', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatherConditionsValueCode-WC6', 'extremely rainy time or snow melting', 'http://w3id.org/glosis/model/codelists/weatherConditionsValueCode');
+-- coatingAbundance
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode-A', 'Abundant', 'http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode-C', 'Common', 'http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode-D', 'Dominant', 'http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode-F', 'Few', 'http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode-M', 'Many', 'http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode-V', 'Very few', 'http://w3id.org/glosis/model/codelists/coatingAbundanceValueCode');
+-- weathering
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/weatheringValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatheringValueCode-F', 'Fresh or slightly weathered', 'http://w3id.org/glosis/model/codelists/weatheringValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatheringValueCode-S', 'Strongly weathered', 'http://w3id.org/glosis/model/codelists/weatheringValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/weatheringValueCode-W', 'Weathered', 'http://w3id.org/glosis/model/codelists/weatheringValueCode');
+-- coatingContrast
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/coatingContrastValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingContrastValueCode-D', 'Distinct', 'http://w3id.org/glosis/model/codelists/coatingContrastValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingContrastValueCode-F', 'Faint', 'http://w3id.org/glosis/model/codelists/coatingContrastValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingContrastValueCode-P', 'Prominent', 'http://w3id.org/glosis/model/codelists/coatingContrastValueCode');
+-- coatingForm
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/coatingFormValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingFormValueCode-C', 'Continuous', 'http://w3id.org/glosis/model/codelists/coatingFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingFormValueCode-CI', 'Continuous irregular (non-uniform, heterogeneous)', 'http://w3id.org/glosis/model/codelists/coatingFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingFormValueCode-DC', 'Discontinuous circular', 'http://w3id.org/glosis/model/codelists/coatingFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingFormValueCode-DE', 'Dendroidal', 'http://w3id.org/glosis/model/codelists/coatingFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingFormValueCode-DI', 'Discontinuous irregular', 'http://w3id.org/glosis/model/codelists/coatingFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingFormValueCode-O', 'Other', 'http://w3id.org/glosis/model/codelists/coatingFormValueCode');
+-- biologicalFeatures
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode-A', 'Artefacts', 'http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode-B', 'Burrows (unspecified)', 'http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode-BI', 'Infilled large burrows', 'http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode-BO', 'Open large burrows', 'http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode-C', 'Charcoal', 'http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode-E', 'Earthworm channels', 'http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode-I', 'Other insect activity', 'http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode-P', 'Pedotubules', 'http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode-T', 'Termite or ant channels and nests', 'http://w3id.org/glosis/model/codelists/biologicalFeaturesValueCode');
+-- coatingLocation
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/coatingLocationValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingLocationValueCode-BR', 'Bridges between sand grains', 'http://w3id.org/glosis/model/codelists/coatingLocationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingLocationValueCode-CF', 'Coarse fragments', 'http://w3id.org/glosis/model/codelists/coatingLocationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingLocationValueCode-LA', 'Lamellae (clay bands)', 'http://w3id.org/glosis/model/codelists/coatingLocationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingLocationValueCode-NS', 'No specific location', 'http://w3id.org/glosis/model/codelists/coatingLocationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingLocationValueCode-P', 'Pedfaces', 'http://w3id.org/glosis/model/codelists/coatingLocationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingLocationValueCode-PH', 'Horizontal pedfaces', 'http://w3id.org/glosis/model/codelists/coatingLocationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingLocationValueCode-PV', 'Vertical pedfaces', 'http://w3id.org/glosis/model/codelists/coatingLocationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingLocationValueCode-VO', 'Voids', 'http://w3id.org/glosis/model/codelists/coatingLocationValueCode');
+-- coatingNature
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/coatingNatureValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-C', 'Clay', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-CC', 'Calcium carbonate', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-CH', 'Clay and humus (organic matter)', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-CS', 'Clay and sesquioxides', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-GB', 'Gibbsite', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-H', 'Humus', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-HC', 'Hypodermic coatings (Hypodermic coatings, as used here, are field-scale features, commonly only expressed as hydromorphic features. Micromorphological hypodermic coatings include non-redox features [Bullock et al., 1985].)', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-JA', 'Jarosite', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-MN', 'Manganese', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-PF', 'Pressure faces', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-S', 'Sesquioxides', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-SA', 'Sand coatings', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-SF', 'Shiny faces (as in nitic horizon)', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-SI', 'Slickensides, predominantly intersecting (Slickensides are polished and grooved ped surfaces that are produced by aggregates sliding one past another.)', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-SL', 'Silica (opal)', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-SN', 'Slickensides, non intersecting', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-SP', 'Slickensides, partly intersecting', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/coatingNatureValueCode-ST', 'Silt coatings', 'http://w3id.org/glosis/model/codelists/coatingNatureValueCode');
+-- consistenceDry
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/consistenceDryValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceDryValueCode-EHA', 'Extremely hard', 'http://w3id.org/glosis/model/codelists/consistenceDryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceDryValueCode-HA', 'Hard', 'http://w3id.org/glosis/model/codelists/consistenceDryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceDryValueCode-HVH', 'hard to very hard', 'http://w3id.org/glosis/model/codelists/consistenceDryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceDryValueCode-LO', 'Loose', 'http://w3id.org/glosis/model/codelists/consistenceDryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceDryValueCode-SHA', 'Slightly hard', 'http://w3id.org/glosis/model/codelists/consistenceDryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceDryValueCode-SHH', 'slightly hard to hard', 'http://w3id.org/glosis/model/codelists/consistenceDryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceDryValueCode-SO', 'Soft', 'http://w3id.org/glosis/model/codelists/consistenceDryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceDryValueCode-SSH', 'soft to slightly hard', 'http://w3id.org/glosis/model/codelists/consistenceDryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceDryValueCode-VHA', 'Very hard', 'http://w3id.org/glosis/model/codelists/consistenceDryValueCode');
+-- consistenceMoist
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/consistenceMoistValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceMoistValueCode-EFI', 'Extremely firm', 'http://w3id.org/glosis/model/codelists/consistenceMoistValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceMoistValueCode-FI', 'Firm', 'http://w3id.org/glosis/model/codelists/consistenceMoistValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceMoistValueCode-FR', 'Friable', 'http://w3id.org/glosis/model/codelists/consistenceMoistValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceMoistValueCode-LO', 'Loose', 'http://w3id.org/glosis/model/codelists/consistenceMoistValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceMoistValueCode-VFI', 'Very firm', 'http://w3id.org/glosis/model/codelists/consistenceMoistValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/consistenceMoistValueCode-VFR', 'Very friable', 'http://w3id.org/glosis/model/codelists/consistenceMoistValueCode');
+-- contrast
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/contrastValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/contrastValueCode-D', 'Distinct', 'http://w3id.org/glosis/model/codelists/contrastValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/contrastValueCode-F', 'Faint', 'http://w3id.org/glosis/model/codelists/contrastValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/contrastValueCode-P', 'Prominent', 'http://w3id.org/glosis/model/codelists/contrastValueCode');
+-- cracksDepth
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/cracksDepthValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDepthValueCode-D', 'Deep 10–20', 'http://w3id.org/glosis/model/codelists/cracksDepthValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDepthValueCode-M', 'Medium 2–10', 'http://w3id.org/glosis/model/codelists/cracksDepthValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDepthValueCode-S', 'Surface < 2', 'http://w3id.org/glosis/model/codelists/cracksDepthValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDepthValueCode-V', 'Very deep > 20', 'http://w3id.org/glosis/model/codelists/cracksDepthValueCode');
+-- cracksDistance
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/cracksDistanceValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDistanceValueCode-C', 'Very closely spaced < 0.2', 'http://w3id.org/glosis/model/codelists/cracksDistanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDistanceValueCode-D', 'Closely spaced 0.2–0.5', 'http://w3id.org/glosis/model/codelists/cracksDistanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDistanceValueCode-M', 'Moderately widely spaced 0.5–2', 'http://w3id.org/glosis/model/codelists/cracksDistanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDistanceValueCode-V', 'Very widely spaced > 5', 'http://w3id.org/glosis/model/codelists/cracksDistanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksDistanceValueCode-W', 'Widely spaced 2–5', 'http://w3id.org/glosis/model/codelists/cracksDistanceValueCode');
+-- cracksWidth
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/cracksWidthValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksWidthValueCode-E', 'Extremely wide > 10cm', 'http://w3id.org/glosis/model/codelists/cracksWidthValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksWidthValueCode-F', 'Fine < 1cm', 'http://w3id.org/glosis/model/codelists/cracksWidthValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksWidthValueCode-M', 'Medium 1cm–2cm', 'http://w3id.org/glosis/model/codelists/cracksWidthValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksWidthValueCode-V', 'Very wide 5cm–10cm', 'http://w3id.org/glosis/model/codelists/cracksWidthValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cracksWidthValueCode-W', 'Wide 2cm–5cm', 'http://w3id.org/glosis/model/codelists/cracksWidthValueCode');
+-- cropClass
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/cropClassValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ce', 'Cereals', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ce_Ba', 'Barley', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ce_Ma', 'Maize', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ce_Mi', 'Millet', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ce_Oa', 'Oats', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ce_Pa', 'Rice, paddy', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ce_Ri', 'Rice, dry', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ce_Ry', 'Rye', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ce_So', 'Sorghum', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ce_Wh', 'Wheat', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fi', 'Fibre crops', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fi_Co', 'Cotton', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fi_Ju', 'Jute', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fo', 'Fodder plants', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fo_Al', 'Alfalfa', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fo_Cl', 'Clover', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fo_Gr', 'Grasses', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fo_Ha', 'Hay', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fo_Le', 'Leguminous', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fo_Ma', 'Maize', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fo_Pu', 'Pumpkins', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fr', 'Fruits and melons', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fr_Ap', 'Apples', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fr_Ba', 'Bananas', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fr_Ci', 'Citrus', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fr_Gr', 'Grapes, Wine, Raisins', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fr_Ma', 'Mangoes', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Fr_Me', 'Melons', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Lu', 'Semi-luxury foods and tobacco', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Lu_Cc', 'Cocoa', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Lu_Co', 'Coffee', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Lu_Te', 'Tea', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Lu_To', 'Tobacco', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Oi', 'Oilcrops', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Oi_Cc', 'Coconuts', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Oi_Gr', 'Groundnuts', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Oi_Li', 'Linseed', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Oi_Op', 'Oil-palm', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Oi_Ra', 'Rape', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Oi_Se', 'Sesame', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Oi_So', 'Soybeans', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Oi_Su', 'Sunflower', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ol', 'Olives', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ot', 'Other crops', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ot_Pa', 'Palm (fibres, kernels)', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ot_Ru', 'Rubber', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ot_Sc', 'Sugar cane', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Pu', 'Pulses', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Pu_Be', 'Beans', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Pu_Le', 'Lentils', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Pu_Pe', 'Peas', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ro', 'Roots and tubers', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ro_Ca', 'Cassava', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ro_Po', 'Potatoes', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ro_Su', 'Sugar beets', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ro_Ya', 'Yams', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cropClassValueCode-Ve', 'Vegetables', 'http://w3id.org/glosis/model/codelists/cropClassValueCode');
+-- bleachedSand
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/bleachedSandValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bleachedSandValueCode-0', 'Bleached sand of surface coverage 0-2%', 'http://w3id.org/glosis/model/codelists/bleachedSandValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bleachedSandValueCode-1', 'Bleached sand of surface coverage 2-15%', 'http://w3id.org/glosis/model/codelists/bleachedSandValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bleachedSandValueCode-2', 'Bleached sand of surface coverage 15-40%', 'http://w3id.org/glosis/model/codelists/bleachedSandValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bleachedSandValueCode-3', 'Bleached sand of surface coverage  40-80%', 'http://w3id.org/glosis/model/codelists/bleachedSandValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bleachedSandValueCode-4', 'Bleached sand of surface coverage more than 80%', 'http://w3id.org/glosis/model/codelists/bleachedSandValueCode');
+-- erosionActivityPeriod
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode-A', 'Active at present', 'http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode-H', 'Active in historical times', 'http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode-N', 'Period of activity not known', 'http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode-R', 'Active in recent past', 'http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode-X', 'Accelerated and natural erosion not distinguished', 'http://w3id.org/glosis/model/codelists/erosionActivityPeriodValueCode');
+-- erosionAreaAffected
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode-0', 'Zero', 'http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode-1', 'Between 0% and 5%', 'http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode-2', 'Between 5% and 10%', 'http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode-3', 'Between 10% and 25%', 'http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode-4', 'Between 25% and 50%', 'http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode-5', 'More than 50%', 'http://w3id.org/glosis/model/codelists/erosionAreaAffectedValueCode');
+-- erosionCategory
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/erosionCategoryValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-A', 'Wind (aeolian) erosion or deposition', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-AD', 'Wind deposition', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-AM', 'Wind erosion and deposition', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-AS', 'Shifting sands', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-AZ', 'Salt deposition', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-M', 'Mass movement', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-N', 'No evidence of erosion', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-NK', 'Not known', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-W', 'Water erosion or deposition', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-WA', 'Water and wind erosion', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-WD', 'Deposition by water', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-WG', 'Gully erosion', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-WR', 'Rill erosion', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-WS', 'Sheet erosion', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionCategoryValueCode-WT', 'Tunnel erosion', 'http://w3id.org/glosis/model/codelists/erosionCategoryValueCode');
+-- erosionDegree
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/erosionDegreeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionDegreeValueCode-E', 'Extreme', 'http://w3id.org/glosis/model/codelists/erosionDegreeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionDegreeValueCode-M', 'Moderate', 'http://w3id.org/glosis/model/codelists/erosionDegreeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionDegreeValueCode-S', 'Slight', 'http://w3id.org/glosis/model/codelists/erosionDegreeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionDegreeValueCode-V', 'Severe', 'http://w3id.org/glosis/model/codelists/erosionDegreeValueCode');
+-- erosionTotalAreaAffected
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode-0', 'Zero', 'http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode-1', 'Between 0% and 5%', 'http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode-2', 'Between 5% and 10%', 'http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode-3', 'Between 10% and 25%', 'http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode-4', 'Between 25% and 50%', 'http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode-5', 'More than 50%', 'http://w3id.org/glosis/model/codelists/erosionTotalAreaAffectedValueCode');
+-- boundaryClassification
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/boundaryClassificationValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryClassificationValueCode-C', 'Clear', 'http://w3id.org/glosis/model/codelists/boundaryClassificationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryClassificationValueCode-D', 'Diffuse', 'http://w3id.org/glosis/model/codelists/boundaryClassificationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryClassificationValueCode-S', 'Sharp', 'http://w3id.org/glosis/model/codelists/boundaryClassificationValueCode');
+-- fragmentCover
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/fragmentCoverValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentCoverValueCode-A', 'Abundant', 'http://w3id.org/glosis/model/codelists/fragmentCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentCoverValueCode-C', 'Common', 'http://w3id.org/glosis/model/codelists/fragmentCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentCoverValueCode-D', 'Dominant', 'http://w3id.org/glosis/model/codelists/fragmentCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentCoverValueCode-F', 'Few', 'http://w3id.org/glosis/model/codelists/fragmentCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentCoverValueCode-M', 'Many', 'http://w3id.org/glosis/model/codelists/fragmentCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentCoverValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/fragmentCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentCoverValueCode-V', 'Very few', 'http://w3id.org/glosis/model/codelists/fragmentCoverValueCode');
+-- fragmentsClass
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/fragmentsClassValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode-FGF1', 'FragmentsGravimetricFraction01', 'http://w3id.org/glosis/model/codelists/fragmentsClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode-FGF2', 'FragmentsGravimetricFraction02', 'http://w3id.org/glosis/model/codelists/fragmentsClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode-FGF3', 'FragmentsGravimetricFraction03', 'http://w3id.org/glosis/model/codelists/fragmentsClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode-FGF4', 'FragmentsGravimetricFraction04', 'http://w3id.org/glosis/model/codelists/fragmentsClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode-FGT', 'FragmentsGravimetricTotal', 'http://w3id.org/glosis/model/codelists/fragmentsClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode-FV1', 'FragmentsVolumetric01', 'http://w3id.org/glosis/model/codelists/fragmentsClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode-FV2', 'FragmentsVolumetric02', 'http://w3id.org/glosis/model/codelists/fragmentsClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode-FV3', 'FragmentsVolumetric03', 'http://w3id.org/glosis/model/codelists/fragmentsClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode-FVE', 'FragmentsVolumetricEstimate', 'http://w3id.org/glosis/model/codelists/fragmentsClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsClassValueCode-FVT', 'FragmentsVolumetricTotal', 'http://w3id.org/glosis/model/codelists/fragmentsClassValueCode');
+-- fragmentsSize
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode-B', 'Boulders', 'http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode-C', 'Coarse gravel', 'http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode-F', 'Fine gravel', 'http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode-L', 'Large boulders', 'http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode-M', 'Medium gravel', 'http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode-S', 'Stones', 'http://w3id.org/glosis/model/codelists/fragmentsSizeValueCode');
+-- gypsumContent
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/gypsumContentValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumContentValueCode-EX', 'Extremely gypsiric', 'http://w3id.org/glosis/model/codelists/gypsumContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumContentValueCode-MO', 'Moderately gypsiric', 'http://w3id.org/glosis/model/codelists/gypsumContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumContentValueCode-N', 'Non-gypsiric', 'http://w3id.org/glosis/model/codelists/gypsumContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumContentValueCode-SL', 'Slightly gypsiric', 'http://w3id.org/glosis/model/codelists/gypsumContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumContentValueCode-ST', 'Strongly gypsiric', 'http://w3id.org/glosis/model/codelists/gypsumContentValueCode');
+-- gypsumForms
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/gypsumFormsValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumFormsValueCode-D', 'disperse powdery gypsum', 'http://w3id.org/glosis/model/codelists/gypsumFormsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumFormsValueCode-G', 'gazha', 'http://w3id.org/glosis/model/codelists/gypsumFormsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumFormsValueCode-HL', 'hard cemented layer or layers of gypsum', 'http://w3id.org/glosis/model/codelists/gypsumFormsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/gypsumFormsValueCode-SC', 'soft concretions', 'http://w3id.org/glosis/model/codelists/gypsumFormsValueCode');
+-- boundaryDistinctness
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/boundaryDistinctnessValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryDistinctnessValueCode-A', 'Abrupt', 'http://w3id.org/glosis/model/codelists/boundaryDistinctnessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryDistinctnessValueCode-C', 'Clear', 'http://w3id.org/glosis/model/codelists/boundaryDistinctnessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryDistinctnessValueCode-D', 'Diffuse', 'http://w3id.org/glosis/model/codelists/boundaryDistinctnessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryDistinctnessValueCode-G', 'Gradual', 'http://w3id.org/glosis/model/codelists/boundaryDistinctnessValueCode');
+-- humanInfluenceClass
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-AC', 'Archaeological (burial mound, midden)', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-AD', 'Artificial drainage', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-BP', 'Borrow pit', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-BR', 'Burning', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-BU', 'Bunding', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-CL', 'Clearing', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-CR', 'Impact crater', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-DU', 'Dump (not specified)', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-FE', 'Application of fertilizers', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-IB', 'Border irrigation', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-ID', 'Drip irrigation', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-IF', 'Furrow irrigation', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-IP', 'Flood irrigation', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-IS', 'Sprinkler irrigation', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-IU', 'Irrigation (not specified)', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-LF', 'Landfill (also sanitary)', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-LV', 'Levelling', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-ME', 'Raised beds (engineering purposes)', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-MI', 'Mine (surface, including openpit, gravel and quarries)', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-MO', 'Organic additions (not specified)', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-MP', 'Plaggen', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-MR', 'Raised beds (agricultural purposes)', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-MS', 'Sand additions', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-MU', 'Mineral additions (not specified)', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-N', 'No influence', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-NK', 'Not known', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-PL', 'Ploughing', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-PO', 'Pollution', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-SA', 'Scalped area', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-SC', 'Surface compaction', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-TE', 'Terracing', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-VE', 'Vegetation strongly disturbed', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-VM', 'Vegetation moderately disturbed', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-VS', 'Vegetation slightly disturbed', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode-VU', 'Vegetation disturbed (not specified)', 'http://w3id.org/glosis/model/codelists/humanInfluenceClassValueCode');
+-- landUseClass
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/landUseClassValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-A', 'Crop agriculture (cropping)', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AA', 'Annual field cropping', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AA1', 'Shifting cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AA2', 'Fallow system cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AA3', 'Ley system cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AA4', 'Rainfed arable cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AA5', 'Wet rice cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AA6', 'Irrigated cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AP', 'Perennial field cropping', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AP1', 'Non-irrigated cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AP2', 'Irrigated cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AT', 'Tree and shrub cropping', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AT1', 'Non-irrigated tree crop cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AT2', 'Irrigated tree crop cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AT3', 'Non-irrigated shrub crop cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-AT4', 'Irrigated shrub crop cultivation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-F', 'F = Forestry', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-FN', 'Natural forest and woodland', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-FN1', 'Selective felling', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-FN2', 'Clear felling', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-FP', 'Plantation forestry', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-H', 'Animal husbandry', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-HE', 'Extensive grazing', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-HE1', 'Nomadism', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-HE2', 'Semi-nomadism', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-HE3', 'Ranching', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-HI', 'Intensive grazing', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-HI1', 'Animal production', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-HI2', 'Dairying', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-M', 'M = Mixed farming', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-MF', 'Agroforestry', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-MP', 'Agropastoralism', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-Oi', 'Other land uses', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-P', 'P = Nature protection', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-PD', 'Degradation control', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-PD1', 'Without interference', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-PD2', 'With interference', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-PN', 'Nature and game preservation', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-PN1', 'Reserves', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-PN2', 'Parks', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-PN3', 'Wildlife management', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-S', 'S = Settlement, industry', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-SC', 'Recreational use', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-SD', 'Disposal sites', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-SI', 'Industrial use', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-SR', 'Residential use', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-ST', 'Transport', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-SX', 'Excavations', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-U', 'Not used and not managed', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landUseClassValueCode-Y', 'Military area', 'http://w3id.org/glosis/model/codelists/landUseClassValueCode');
+-- boundaryTopography
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/boundaryTopographyValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryTopographyValueCode-B', 'Broken', 'http://w3id.org/glosis/model/codelists/boundaryTopographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryTopographyValueCode-I', 'Irregular', 'http://w3id.org/glosis/model/codelists/boundaryTopographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryTopographyValueCode-S', 'Smooth', 'http://w3id.org/glosis/model/codelists/boundaryTopographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/boundaryTopographyValueCode-W', 'Wavy', 'http://w3id.org/glosis/model/codelists/boundaryTopographyValueCode');
+-- landformComplex
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/landformComplexValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landformComplexValueCode-CU', 'Cuesta-shaped', 'http://w3id.org/glosis/model/codelists/landformComplexValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landformComplexValueCode-DO', 'Dome-shaped', 'http://w3id.org/glosis/model/codelists/landformComplexValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landformComplexValueCode-DU', 'Dune-shaped', 'http://w3id.org/glosis/model/codelists/landformComplexValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landformComplexValueCode-IM', 'With intermontane plains (occupying > 15%)', 'http://w3id.org/glosis/model/codelists/landformComplexValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landformComplexValueCode-IN', 'Inselberg covered (occupying > 1% of level land)', 'http://w3id.org/glosis/model/codelists/landformComplexValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landformComplexValueCode-KA', 'Strong karst', 'http://w3id.org/glosis/model/codelists/landformComplexValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landformComplexValueCode-RI', 'Ridged', 'http://w3id.org/glosis/model/codelists/landformComplexValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landformComplexValueCode-TE', 'Terraced', 'http://w3id.org/glosis/model/codelists/landformComplexValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/landformComplexValueCode-WE', 'With wetlands (occupying > 15%)', 'http://w3id.org/glosis/model/codelists/landformComplexValueCode');
+-- bulkDensityMineral
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode-BD1', 'Many pores, moist materials drop easily out of the auger.', 'http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode-BD2', 'Sample disintegrates into numerous fragments after application of weak pressure.', 'http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode-BD3', 'Knife can be pushed into the moist soil with weak pressure, sample disintegrates into few fragments, which may be further divided.', 'http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode-BD4', 'Knife penetrates only 1–2 cm into the moist soil, some effort required, sample disintegrates into few fragments, which cannot be subdivided further.', 'http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode-BD5', 'Very large pressure necessary to force knife into the soil, no further disintegration of sample.', 'http://w3id.org/glosis/model/codelists/bulkDensityMineralValueCode');
+-- lithology
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/lithologyValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-I', 'igneous rock', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IA', 'acid igneous', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IA1', 'diorite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IA2', 'grano-diorite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IA3', 'quartz-diorite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IA4', 'rhyolite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IB', 'basic igneous', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IB1', 'gabbro', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IB2', 'basalt', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IB3', 'dolerite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-II', 'intermediate igneous', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-II1', 'andesite, trachyte, phonolite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-II2', 'diorite-syenite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IP', 'pyroclastic', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IP1', 'tuff, tuffite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IP2', 'volcanic scoria/breccia', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IP3', 'volcanic ash', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IP4', 'ignimbrite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IU', 'ultrabasic igneous', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IU1', 'peridotite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IU2', 'pyroxenite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-IU3', 'ilmenite, magnetite, ironstone, serpentine', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-M', 'metamorphic rock', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MA', 'acid metamorphic', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MA1', 'quartzite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MA2', 'gneiss, migmatite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MA3', 'slate, phyllite (pelitic rocks)', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MA4', 'schist', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MB', 'basic metamorphic', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MB1', 'slate, phyllite (pelitic rocks)', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MB2', '(green)schist', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MB3', 'gneiss rich in Fe–Mg minerals', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MB4', 'metamorphic limestone (marble)', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MB5', 'amphibolite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MB6', 'eclogite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MU', 'ultrabasic metamorphic', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-MU1', 'serpentinite, greenstone', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-S', 'sedimentary rock (consolidated)', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SC', 'clastic sediments', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SC1', 'conglomerate, breccia', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SC2', 'sandstone, greywacke, arkose', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SC3', 'silt-, mud-, claystone', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SC4', 'shale', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SC5', 'ironstone', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SE', 'evaporites', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SE1', 'anhydrite, gypsum', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SE2', 'halite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SO', 'carbonatic, organic', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SO1', 'limestone, other carbonate rock', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SO2', 'marl and other mixtures', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-SO3', 'coals, bitumen and related rocks', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-U', 'sedimentary rock (unconsolidated)', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UA', 'anthropogenic/technogenic', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UA1', 'redeposited natural material', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UA2', 'industrial/artisanal deposits', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UC', 'colluvial', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UC1', 'slope deposits', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UC2', 'lahar', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UE', 'eolian', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UE1', 'loess', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UE2', 'sand', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UF', 'fluvial', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UF1', 'sand and gravel', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UF2', 'clay, silt and loam', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UG', 'glacial', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UG1', 'moraine', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UG2', 'UG2 glacio-fluvial sand', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UG3', 'UG3 glacio-fluvial gravel', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UK', 'kryogenic', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UK1', 'periglacial rock debris', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UK2', 'periglacial solifluction layer', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UL', 'lacustrine', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UL1', 'sand', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UL2', 'silt and clay', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UM', 'marine, estuarine', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UM1', 'sand', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UM2', 'clay and silt', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UO', 'organic', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UO1', 'rainwater-fed moor peat', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UO2', 'groundwater-fed bog peat', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UR', 'weathered residuum', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UR1', 'bauxite, laterite', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UU', 'unspecified deposits', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UU1', 'clay', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UU2', 'loam and silt', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UU3', 'sand', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UU4', 'gravelly sand', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/lithologyValueCode-UU5', 'gravel, broken rock', 'http://w3id.org/glosis/model/codelists/lithologyValueCode');
+-- bulkDensityPeat
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode-BD1', 'Very low', 'http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode-BD2', 'Low', 'http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode-BD3', 'Moderate low', 'http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode-BD4', 'Moderate high', 'http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode-BD5', 'Strong (hemic)', 'http://w3id.org/glosis/model/codelists/bulkDensityPeatValueCode');
+-- majorLandForm
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/majorLandFormValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-L', 'level land', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-LD', 'depression', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-LL', 'plateau', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-LP', 'plain', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-LV', 'valley floor', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-S', 'sloping land', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-SE', 'medium-gradient escarpment zone', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-SH', 'medium-gradient hill', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-SM', 'medium-gradient mountain', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-SP', 'dissected plain', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-SV', 'medium-gradient valley', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-T', 'steep land', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-TE', 'high-gradient escarpment zone', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-TH', 'high-gradient hill', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-TM', 'high-gradient mountain', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/majorLandFormValueCode-TV', 'high-gradient valley', 'http://w3id.org/glosis/model/codelists/majorLandFormValueCode');
+-- mineralConcColour
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/mineralConcColourValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-BB', 'Bluish-black', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-BL', 'Black', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-BR', 'Brown', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-BS', 'Brownish', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-BU', 'Blue', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-GE', 'Greenish', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-GR', 'Grey', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-GS', 'Greyish', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-MC', 'Multicoloured', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-RB', 'Reddish brown', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-RE', 'Red', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-RS', 'Reddish', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-RY', 'Reddish yellow', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-WH', 'White', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-YB', 'Yellowish brown', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-YE', 'Yellow', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcColourValueCode-YR', 'Yellowish red', 'http://w3id.org/glosis/model/codelists/mineralConcColourValueCode');
+-- carbonatesContent
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/carbonatesContentValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesContentValueCode-EX', 'Extremely calcareous', 'http://w3id.org/glosis/model/codelists/carbonatesContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesContentValueCode-MO', 'Moderately calcareous', 'http://w3id.org/glosis/model/codelists/carbonatesContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesContentValueCode-N', 'Non-calcareous', 'http://w3id.org/glosis/model/codelists/carbonatesContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesContentValueCode-SL', 'Slightly calcareous', 'http://w3id.org/glosis/model/codelists/carbonatesContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesContentValueCode-ST', 'Strongly calcareous', 'http://w3id.org/glosis/model/codelists/carbonatesContentValueCode');
+-- mineralConcHardness
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/mineralConcHardnessValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcHardnessValueCode-B', 'Both hard and soft.', 'http://w3id.org/glosis/model/codelists/mineralConcHardnessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcHardnessValueCode-H', 'Hard', 'http://w3id.org/glosis/model/codelists/mineralConcHardnessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcHardnessValueCode-S', 'Soft', 'http://w3id.org/glosis/model/codelists/mineralConcHardnessValueCode');
+-- mineralConcKind
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/mineralConcKindValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcKindValueCode-C', 'Concretion', 'http://w3id.org/glosis/model/codelists/mineralConcKindValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcKindValueCode-IC', 'Crack infillings', 'http://w3id.org/glosis/model/codelists/mineralConcKindValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcKindValueCode-IP', 'Pore infillings', 'http://w3id.org/glosis/model/codelists/mineralConcKindValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcKindValueCode-N', 'Nodule', 'http://w3id.org/glosis/model/codelists/mineralConcKindValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcKindValueCode-O', 'Other', 'http://w3id.org/glosis/model/codelists/mineralConcKindValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcKindValueCode-R', 'Residual rock fragment', 'http://w3id.org/glosis/model/codelists/mineralConcKindValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcKindValueCode-S', 'Soft segregation (or soft accumulation)', 'http://w3id.org/glosis/model/codelists/mineralConcKindValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcKindValueCode-SC', 'Soft concretion', 'http://w3id.org/glosis/model/codelists/mineralConcKindValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcKindValueCode-T', 'Crystal', 'http://w3id.org/glosis/model/codelists/mineralConcKindValueCode');
+-- mineralConcNature
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-C', 'Clay (argillaceous)', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-CS', 'Clay–sesquioxides', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-F', 'Iron (ferruginous)', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-FM', 'Iron–manganese (sesquioxides)', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-GB', 'Gibbsite', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-GY', 'Gypsum (gypsiferous)', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-JA', 'Jarosite', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-K', 'Carbonates (calcareous)', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-KQ', 'Carbonates–silica', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-M', 'Manganese (manganiferous)', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-NK', 'Not known', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-Q', 'Silica (siliceous)', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-S', 'Sulphur (sulphurous)', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode-SA', 'Salt (saline)', 'http://w3id.org/glosis/model/codelists/mineralConcNatureValueCode');
+-- mineralConcShape
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode-A', 'Angular', 'http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode-E', 'Elongated', 'http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode-F', 'Flat', 'http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode-I', 'Irregular', 'http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode-R', 'Rounded (spherical)', 'http://w3id.org/glosis/model/codelists/mineralConcShapeValueCode');
+-- mineralConcSize
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/mineralConcSizeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcSizeValueCode-C', 'Coarse', 'http://w3id.org/glosis/model/codelists/mineralConcSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcSizeValueCode-F', 'Fine', 'http://w3id.org/glosis/model/codelists/mineralConcSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcSizeValueCode-M', 'Medium', 'http://w3id.org/glosis/model/codelists/mineralConcSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcSizeValueCode-V', 'Very fine', 'http://w3id.org/glosis/model/codelists/mineralConcSizeValueCode');
+-- mineralConcVolume
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode-A', 'Abundant', 'http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode-C', 'Common', 'http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode-D', 'Dominant', 'http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode-F', 'Few', 'http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode-M', 'Many', 'http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode-V', 'Very few', 'http://w3id.org/glosis/model/codelists/mineralConcVolumeValueCode');
+-- mineralFragments
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/mineralFragmentsValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralFragmentsValueCode-FE', 'Feldspar', 'http://w3id.org/glosis/model/codelists/mineralFragmentsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralFragmentsValueCode-MI', 'Mica', 'http://w3id.org/glosis/model/codelists/mineralFragmentsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mineralFragmentsValueCode-QU', 'Quartz', 'http://w3id.org/glosis/model/codelists/mineralFragmentsValueCode');
+-- mottlesAbundance
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode-A', 'Abundant', 'http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode-C', 'Common', 'http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode-F', 'Few', 'http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode-M', 'Many', 'http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode-V', 'Very few', 'http://w3id.org/glosis/model/codelists/mottlesAbundanceValueCode');
+-- carbonatesForms
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode-D', 'disperse powdery lime', 'http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode-HC', 'hard concretions', 'http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode-HHC', 'hard hollow concretions', 'http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode-HL', 'hard cemented layer or layers of carbonates (less than 10 cm thick)', 'http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode-M', 'marl layer', 'http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode-PM', 'pseudomycelia* (carbonate infillings in pores, resembling mycelia)', 'http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode-SC', 'soft concretions', 'http://w3id.org/glosis/model/codelists/carbonatesFormsValueCode');
+-- mottlesSize
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/mottlesSizeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesSizeValueCode-A', 'Coarse', 'http://w3id.org/glosis/model/codelists/mottlesSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesSizeValueCode-F', 'F Fine', 'http://w3id.org/glosis/model/codelists/mottlesSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesSizeValueCode-M', 'M Medium', 'http://w3id.org/glosis/model/codelists/mottlesSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/mottlesSizeValueCode-V', 'Very fine', 'http://w3id.org/glosis/model/codelists/mottlesSizeValueCode');
+-- peatDecompostion
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/peatDecompostionValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDecompostionValueCode-D1', 'very low', 'http://w3id.org/glosis/model/codelists/peatDecompostionValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDecompostionValueCode-D2', 'low', 'http://w3id.org/glosis/model/codelists/peatDecompostionValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDecompostionValueCode-D3', 'moderate', 'http://w3id.org/glosis/model/codelists/peatDecompostionValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDecompostionValueCode-D4', 'strong', 'http://w3id.org/glosis/model/codelists/peatDecompostionValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDecompostionValueCode-D5.1', 'moderately strong', 'http://w3id.org/glosis/model/codelists/peatDecompostionValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDecompostionValueCode-D5.2', 'very strong', 'http://w3id.org/glosis/model/codelists/peatDecompostionValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDecompostionValueCode-Fibric', 'Fibric', 'http://w3id.org/glosis/model/codelists/peatDecompostionValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDecompostionValueCode-Hemic', 'Hemic', 'http://w3id.org/glosis/model/codelists/peatDecompostionValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDecompostionValueCode-Sapric', 'Sapric', 'http://w3id.org/glosis/model/codelists/peatDecompostionValueCode');
+-- peatDrainage
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/peatDrainageValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDrainageValueCode-DC1', 'Undrained', 'http://w3id.org/glosis/model/codelists/peatDrainageValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDrainageValueCode-DC2', 'Weakly drained', 'http://w3id.org/glosis/model/codelists/peatDrainageValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDrainageValueCode-DC3', 'Moderately drained', 'http://w3id.org/glosis/model/codelists/peatDrainageValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatDrainageValueCode-DC4', 'Well drained', 'http://w3id.org/glosis/model/codelists/peatDrainageValueCode');
+-- peatVolume
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/peatVolumeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatVolumeValueCode-SV1', 'Less than 3%', 'http://w3id.org/glosis/model/codelists/peatVolumeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatVolumeValueCode-SV2', 'Between 3% and 5%', 'http://w3id.org/glosis/model/codelists/peatVolumeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatVolumeValueCode-SV3', 'Between 5% and 8%', 'http://w3id.org/glosis/model/codelists/peatVolumeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatVolumeValueCode-SV4', 'Between 8% and 12%', 'http://w3id.org/glosis/model/codelists/peatVolumeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/peatVolumeValueCode-SV5', 'More than or equal to 12 %', 'http://w3id.org/glosis/model/codelists/peatVolumeValueCode');
+-- cementationContinuity
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/cementationContinuityValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationContinuityValueCode-B', 'Broken', 'http://w3id.org/glosis/model/codelists/cementationContinuityValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationContinuityValueCode-C', 'Continuous', 'http://w3id.org/glosis/model/codelists/cementationContinuityValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationContinuityValueCode-D', 'Discontinuous', 'http://w3id.org/glosis/model/codelists/cementationContinuityValueCode');
+-- biologicalAbundance
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/biologicalAbundanceValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalAbundanceValueCode-C', 'Common', 'http://w3id.org/glosis/model/codelists/biologicalAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalAbundanceValueCode-F', 'Few', 'http://w3id.org/glosis/model/codelists/biologicalAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalAbundanceValueCode-M', 'Many', 'http://w3id.org/glosis/model/codelists/biologicalAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/biologicalAbundanceValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/biologicalAbundanceValueCode');
+-- cementationDegree
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/cementationDegreeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationDegreeValueCode-C', 'Cemented', 'http://w3id.org/glosis/model/codelists/cementationDegreeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationDegreeValueCode-I', 'Indurated', 'http://w3id.org/glosis/model/codelists/cementationDegreeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationDegreeValueCode-M', 'Moderately cemented', 'http://w3id.org/glosis/model/codelists/cementationDegreeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationDegreeValueCode-N', 'Non-cemented and non-compacted', 'http://w3id.org/glosis/model/codelists/cementationDegreeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationDegreeValueCode-W', 'Weakly cemented', 'http://w3id.org/glosis/model/codelists/cementationDegreeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationDegreeValueCode-Y', 'Compacted but non-cemented', 'http://w3id.org/glosis/model/codelists/cementationDegreeValueCode');
+-- physiography
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/physiographyValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode-BOdl', 'Bottom (drainage line)', 'http://w3id.org/glosis/model/codelists/physiographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode-BOf', 'Bottom (flat)', 'http://w3id.org/glosis/model/codelists/physiographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode-CR', 'Crest (summit)', 'http://w3id.org/glosis/model/codelists/physiographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode-HI', 'Higher part (rise)', 'http://w3id.org/glosis/model/codelists/physiographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode-IN', 'Intermediate part (talf)', 'http://w3id.org/glosis/model/codelists/physiographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode-LO', 'Lower part (and dip)', 'http://w3id.org/glosis/model/codelists/physiographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode-LS', 'Lower slope (foot slope)', 'http://w3id.org/glosis/model/codelists/physiographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode-MS', 'Middle slope (back slope)', 'http://w3id.org/glosis/model/codelists/physiographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode-TS', 'Toe slope', 'http://w3id.org/glosis/model/codelists/physiographyValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/physiographyValueCode-UP', 'Upper slope (shoulder)', 'http://w3id.org/glosis/model/codelists/physiographyValueCode');
+-- plasticity
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/plasticityValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/plasticityValueCode-NPL', 'Non-plastic', 'http://w3id.org/glosis/model/codelists/plasticityValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/plasticityValueCode-PL', 'Plastic', 'http://w3id.org/glosis/model/codelists/plasticityValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/plasticityValueCode-PVP', 'plastic to very plastic', 'http://w3id.org/glosis/model/codelists/plasticityValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/plasticityValueCode-SPL', 'Slightly plastic', 'http://w3id.org/glosis/model/codelists/plasticityValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/plasticityValueCode-SPP', 'slightly plastic to plastic', 'http://w3id.org/glosis/model/codelists/plasticityValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/plasticityValueCode-VPL', 'Very plastic', 'http://w3id.org/glosis/model/codelists/plasticityValueCode');
+-- poresAbundance
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/poresAbundanceValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/poresAbundanceValueCode-C', 'Common', 'http://w3id.org/glosis/model/codelists/poresAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/poresAbundanceValueCode-F', 'Few', 'http://w3id.org/glosis/model/codelists/poresAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/poresAbundanceValueCode-M', 'Many', 'http://w3id.org/glosis/model/codelists/poresAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/poresAbundanceValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/poresAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/poresAbundanceValueCode-V', 'Very few', 'http://w3id.org/glosis/model/codelists/poresAbundanceValueCode');
+-- porosityClass
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/porosityClassValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/porosityClassValueCode-1', 'Very low', 'http://w3id.org/glosis/model/codelists/porosityClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/porosityClassValueCode-2', 'Low', 'http://w3id.org/glosis/model/codelists/porosityClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/porosityClassValueCode-3', 'Medium', 'http://w3id.org/glosis/model/codelists/porosityClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/porosityClassValueCode-4', 'High', 'http://w3id.org/glosis/model/codelists/porosityClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/porosityClassValueCode-5', 'Very high', 'http://w3id.org/glosis/model/codelists/porosityClassValueCode');
+-- profileDescriptionStatus
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode-1', 'Reference profile description', 'http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode-1.1', 'Reference profile description - no sampling', 'http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode-2', 'Routine profile description', 'http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode-2.1', 'Routine profile description - no sampling', 'http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode-3', 'Incomplete description', 'http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode-3.1', 'Incomplete description - no sampling', 'http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode-4', 'Soil augering description', 'http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode-4.1', 'Soil augering description - no sampling', 'http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode-5', 'Other descriptions', 'http://w3id.org/glosis/model/codelists/profileDescriptionStatusValueCode');
+-- rockAbundance
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/rockAbundanceValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockAbundanceValueCode-A', 'Abundant', 'http://w3id.org/glosis/model/codelists/rockAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockAbundanceValueCode-C', 'Common', 'http://w3id.org/glosis/model/codelists/rockAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockAbundanceValueCode-D', 'Dominant', 'http://w3id.org/glosis/model/codelists/rockAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockAbundanceValueCode-F', 'Few', 'http://w3id.org/glosis/model/codelists/rockAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockAbundanceValueCode-M', 'Many', 'http://w3id.org/glosis/model/codelists/rockAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockAbundanceValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/rockAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockAbundanceValueCode-S', 'Stone line', 'http://w3id.org/glosis/model/codelists/rockAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockAbundanceValueCode-V', 'Very few', 'http://w3id.org/glosis/model/codelists/rockAbundanceValueCode');
+-- rockOutcropsCover
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode-A', 'Abundant', 'http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode-C', 'Common', 'http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode-D', 'Dominant', 'http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode-F', 'Few', 'http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode-M', 'Many', 'http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode-V', 'Very few', 'http://w3id.org/glosis/model/codelists/rockOutcropsCoverValueCode');
+-- rockOutcropsDistance
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode-1', 'More than 50m', 'http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode-2', 'Between 20m and 50m', 'http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode-3', 'Between 5m and 20m', 'http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode-4', 'Between 2m and 5m', 'http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode-5', 'Less than 2', 'http://w3id.org/glosis/model/codelists/rockOutcropsDistanceValueCode');
+-- rockShape
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/rockShapeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockShapeValueCode-A', 'Angular', 'http://w3id.org/glosis/model/codelists/rockShapeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockShapeValueCode-F', 'Flat', 'http://w3id.org/glosis/model/codelists/rockShapeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockShapeValueCode-R', 'Rounded', 'http://w3id.org/glosis/model/codelists/rockShapeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockShapeValueCode-S', 'Subrounded', 'http://w3id.org/glosis/model/codelists/rockShapeValueCode');
+-- rockSize
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/rockSizeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-A', 'Artefacts', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-AC', 'Coarse artefacts', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-AF', 'Fine artefacts', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-AM', 'Medium artefacts', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-AV', 'Very fine artefacts', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-BL', 'Boulders and large boulders', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-C', 'Combination of classes', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-CS', 'Coarse gravel and stones', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-FM', 'Fine and medium gravel/artefacts', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-MC', 'Medium and coarse gravel/artefacts', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-R', 'Rock fragments', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-RB', 'Boulders', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-RC', 'Coarse gravel', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-RF', 'Fine gravel', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-RL', 'Large boulders', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-RM', 'Medium gravel', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-RS', 'Stones', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rockSizeValueCode-SB', 'Stones and boulders', 'http://w3id.org/glosis/model/codelists/rockSizeValueCode');
+-- cementationFabric
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/cementationFabricValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationFabricValueCode-D', 'Nodular', 'http://w3id.org/glosis/model/codelists/cementationFabricValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationFabricValueCode-Pi', 'Pisolithic', 'http://w3id.org/glosis/model/codelists/cementationFabricValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationFabricValueCode-Pl', 'Platy', 'http://w3id.org/glosis/model/codelists/cementationFabricValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationFabricValueCode-V', 'Vesicular', 'http://w3id.org/glosis/model/codelists/cementationFabricValueCode');
+-- rootsAbundance
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode-C', 'Common', 'http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode-F', 'Few', 'http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode-M', 'Many', 'http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode-V', 'Very few', 'http://w3id.org/glosis/model/codelists/rootsAbundanceValueCode');
+-- saltContent
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/saltContentValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltContentValueCode-EX', 'Extremely salty', 'http://w3id.org/glosis/model/codelists/saltContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltContentValueCode-MO', 'Moderately salty', 'http://w3id.org/glosis/model/codelists/saltContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltContentValueCode-N', '(nearly)Not salty', 'http://w3id.org/glosis/model/codelists/saltContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltContentValueCode-SL', 'Slightly salty', 'http://w3id.org/glosis/model/codelists/saltContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltContentValueCode-ST', 'Strongly salty', 'http://w3id.org/glosis/model/codelists/saltContentValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltContentValueCode-VST', 'Very strongly salty', 'http://w3id.org/glosis/model/codelists/saltContentValueCode');
+-- saltCover
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/saltCoverValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltCoverValueCode-0', 'None', 'http://w3id.org/glosis/model/codelists/saltCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltCoverValueCode-1', 'Low', 'http://w3id.org/glosis/model/codelists/saltCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltCoverValueCode-2', 'Moderate', 'http://w3id.org/glosis/model/codelists/saltCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltCoverValueCode-3', 'High', 'http://w3id.org/glosis/model/codelists/saltCoverValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltCoverValueCode-4', 'Dominant', 'http://w3id.org/glosis/model/codelists/saltCoverValueCode');
+-- saltThickness
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/saltThicknessValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltThicknessValueCode-C', 'Thick', 'http://w3id.org/glosis/model/codelists/saltThicknessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltThicknessValueCode-F', 'Thin', 'http://w3id.org/glosis/model/codelists/saltThicknessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltThicknessValueCode-M', 'Medium', 'http://w3id.org/glosis/model/codelists/saltThicknessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltThicknessValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/saltThicknessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/saltThicknessValueCode-V', 'Very thick', 'http://w3id.org/glosis/model/codelists/saltThicknessValueCode');
+-- cementationNature
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/cementationNatureValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-C', 'Clay', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-CS', 'Clay–sesquioxides', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-F', 'Iron', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-FM', 'Iron–manganese (sesquioxides)', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-FO', 'Iron–organic matter', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-GY', 'Gypsum', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-I', 'Ice', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-K', 'Carbonates', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-KQ', 'Carbonates–silica', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-M', 'Mechanical', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-NK', 'Not known', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-P', 'Ploughing', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/cementationNatureValueCode-Q', 'Silica', 'http://w3id.org/glosis/model/codelists/cementationNatureValueCode');
+-- sandyTexture
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/sandyTextureValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode-CS', 'Coarse sand', 'http://w3id.org/glosis/model/codelists/sandyTextureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode-CSL', 'Coarse sandy loam', 'http://w3id.org/glosis/model/codelists/sandyTextureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode-FS', 'Fine sand', 'http://w3id.org/glosis/model/codelists/sandyTextureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode-FSL', 'Fine sandy loam', 'http://w3id.org/glosis/model/codelists/sandyTextureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode-LCS', 'Loamy coarse sand', 'http://w3id.org/glosis/model/codelists/sandyTextureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode-LFS', 'Loamy fine sand', 'http://w3id.org/glosis/model/codelists/sandyTextureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode-LVFS', 'Loamy very fine sand', 'http://w3id.org/glosis/model/codelists/sandyTextureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode-MS', 'Medium sand', 'http://w3id.org/glosis/model/codelists/sandyTextureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode-US', 'Sand, unsorted', 'http://w3id.org/glosis/model/codelists/sandyTextureValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sandyTextureValueCode-VFS', 'Very fine sand', 'http://w3id.org/glosis/model/codelists/sandyTextureValueCode');
+-- sealingConsistence
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/sealingConsistenceValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingConsistenceValueCode-E', 'Extremely hard', 'http://w3id.org/glosis/model/codelists/sealingConsistenceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingConsistenceValueCode-H', 'Hard', 'http://w3id.org/glosis/model/codelists/sealingConsistenceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingConsistenceValueCode-S', 'Slightly hard', 'http://w3id.org/glosis/model/codelists/sealingConsistenceValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingConsistenceValueCode-V', 'Very hard', 'http://w3id.org/glosis/model/codelists/sealingConsistenceValueCode');
+-- sealingThickness
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/sealingThicknessValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingThicknessValueCode-C', 'Thick', 'http://w3id.org/glosis/model/codelists/sealingThicknessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingThicknessValueCode-F', 'Thin', 'http://w3id.org/glosis/model/codelists/sealingThicknessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingThicknessValueCode-M', 'Medium', 'http://w3id.org/glosis/model/codelists/sealingThicknessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingThicknessValueCode-N', 'None', 'http://w3id.org/glosis/model/codelists/sealingThicknessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/sealingThicknessValueCode-V', 'Very thick', 'http://w3id.org/glosis/model/codelists/sealingThicknessValueCode');
+-- slopeForm
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/slopeFormValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeFormValueCode-C', 'concave', 'http://w3id.org/glosis/model/codelists/slopeFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeFormValueCode-S', 'straight', 'http://w3id.org/glosis/model/codelists/slopeFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeFormValueCode-T', 'terraced', 'http://w3id.org/glosis/model/codelists/slopeFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeFormValueCode-V', 'convex', 'http://w3id.org/glosis/model/codelists/slopeFormValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeFormValueCode-X', 'complex (irregular)', 'http://w3id.org/glosis/model/codelists/slopeFormValueCode');
+-- slopeGradientClass
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode-1', 'Flat', 'http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode-10', 'Very steep', 'http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode-2', 'Level', 'http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode-3', 'Nearly level', 'http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode-4', 'Very gently sloping', 'http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode-5', 'Gently sloping', 'http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode-6', 'Sloping', 'http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode-7', 'Strongly sloping', 'http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode-8', 'Moderately steep', 'http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode-9', 'Steep', 'http://w3id.org/glosis/model/codelists/slopeGradientClassValueCode');
+-- slopePathways
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/slopePathwaysValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopePathwaysValueCode-CC', 'CC', 'http://w3id.org/glosis/model/codelists/slopePathwaysValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopePathwaysValueCode-CS', 'CS', 'http://w3id.org/glosis/model/codelists/slopePathwaysValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopePathwaysValueCode-CV', 'CV', 'http://w3id.org/glosis/model/codelists/slopePathwaysValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopePathwaysValueCode-SC', 'SC', 'http://w3id.org/glosis/model/codelists/slopePathwaysValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopePathwaysValueCode-SS', 'SS', 'http://w3id.org/glosis/model/codelists/slopePathwaysValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopePathwaysValueCode-SV', 'SV', 'http://w3id.org/glosis/model/codelists/slopePathwaysValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopePathwaysValueCode-VC', 'VC', 'http://w3id.org/glosis/model/codelists/slopePathwaysValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopePathwaysValueCode-VS', 'VS', 'http://w3id.org/glosis/model/codelists/slopePathwaysValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/slopePathwaysValueCode-VV', 'VV', 'http://w3id.org/glosis/model/codelists/slopePathwaysValueCode');
+-- stickiness
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/stickinessValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/stickinessValueCode-NST', 'Non-sticky', 'http://w3id.org/glosis/model/codelists/stickinessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/stickinessValueCode-SSS', 'slightly sticky to sticky', 'http://w3id.org/glosis/model/codelists/stickinessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/stickinessValueCode-SST', 'Slightly sticky', 'http://w3id.org/glosis/model/codelists/stickinessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/stickinessValueCode-ST', 'Sticky', 'http://w3id.org/glosis/model/codelists/stickinessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/stickinessValueCode-SVS', 'sticky to very sticky', 'http://w3id.org/glosis/model/codelists/stickinessValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/stickinessValueCode-VST', 'Very sticky', 'http://w3id.org/glosis/model/codelists/stickinessValueCode');
+-- structureGrade
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/structureGradeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureGradeValueCode-MO', 'Moderate', 'http://w3id.org/glosis/model/codelists/structureGradeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureGradeValueCode-MS', 'Moderate to strong', 'http://w3id.org/glosis/model/codelists/structureGradeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureGradeValueCode-ST', 'Strong', 'http://w3id.org/glosis/model/codelists/structureGradeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureGradeValueCode-WE', 'Weak', 'http://w3id.org/glosis/model/codelists/structureGradeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureGradeValueCode-WM', 'Weak to moderate', 'http://w3id.org/glosis/model/codelists/structureGradeValueCode');
+-- structureSize
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/structureSizeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureSizeValueCode-CO', 'Coarse/thick', 'http://w3id.org/glosis/model/codelists/structureSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureSizeValueCode-EC', 'Extremely coarse', 'http://w3id.org/glosis/model/codelists/structureSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureSizeValueCode-FI', 'Fine/thin', 'http://w3id.org/glosis/model/codelists/structureSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureSizeValueCode-ME', 'Medium', 'http://w3id.org/glosis/model/codelists/structureSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureSizeValueCode-VC', 'Very coarse/thick', 'http://w3id.org/glosis/model/codelists/structureSizeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/structureSizeValueCode-VF', 'Very fine/thin', 'http://w3id.org/glosis/model/codelists/structureSizeValueCode');
+-- surfaceAge
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/surfaceAgeValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-Ha', 'Holocene anthropogeomorphic', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-Hn', 'Holocene natural', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-O', 'Older, pre-Tertiary land surfaces', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-T', 'Tertiary land surfaces', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-Ya', 'Young anthropogeomorphic', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-Yn', 'Young natural', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-lPf', 'Late Pleistocene, without periglacial influence.', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-lPi', 'Late Pleistocene, ice covered', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-lPp', 'Late Pleistocene, periglacial', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-oPf', 'Older Pleistocene, without periglacial influence.', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-oPi', 'Older Pleistocene, ice covered', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-oPp', 'Older Pleistocene, with periglacial influence', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-vYa', 'Very young anthropogeomorphic', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/surfaceAgeValueCode-vYn', 'Very young natural', 'http://w3id.org/glosis/model/codelists/surfaceAgeValueCode');
+-- vegetationClass
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/vegetationClassValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-B', 'Groundwater-fed bog peat', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-D', 'Dwarf shrub', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-DD', 'Deciduous dwarf shrub', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-DE', 'Evergreen dwarf shrub', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-DS', 'Semi-deciduous dwarf shrub', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-DT', 'Tundra', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-DX', 'Xermomorphic dwarf shrub', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-F', 'Closed forest', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-FC', 'Coniferous forest', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-FD', 'Deciduous forest', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-FE', 'Evergreen broad-leaved forest', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-FS', 'Semi-deciduous forest', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-FX', 'Xeromorphic forest', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-H', 'Herbaceous', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-HF', 'Forb', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-HM', 'Medium grassland', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-HS', 'Short grassland', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-HT', 'Tall grassland', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-M', 'Rainwater-fed moor peat', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-S', 'Shrub', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-SD', 'Deciduous shrub', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-SE', 'Evergreen shrub', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-SS', 'Semi-deciduous shrub', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-SX', 'Xeromorphic shrub', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-W', 'Woodland', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-WD', 'Deciduous woodland', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-WE', 'Evergreen woodland', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-WS', 'Semi-deciduous woodland', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/vegetationClassValueCode-WX', 'Xeromorphic woodland', 'http://w3id.org/glosis/model/codelists/vegetationClassValueCode');
+-- voidsClassification
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/voidsClassificationValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsClassificationValueCode-B', 'Vesicular', 'http://w3id.org/glosis/model/codelists/voidsClassificationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsClassificationValueCode-C', 'Channels', 'http://w3id.org/glosis/model/codelists/voidsClassificationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsClassificationValueCode-I', 'Interstitial', 'http://w3id.org/glosis/model/codelists/voidsClassificationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsClassificationValueCode-P', 'Planes', 'http://w3id.org/glosis/model/codelists/voidsClassificationValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsClassificationValueCode-V', 'Vughs', 'http://w3id.org/glosis/model/codelists/voidsClassificationValueCode');
+-- voidsDiameter
+-- CODELIST GLOSIS
+-- http://w3id.org/glosis/model/codelists/voidsDiameterValueCode
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsDiameterValueCode-C', 'Coarse', 'http://w3id.org/glosis/model/codelists/voidsDiameterValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsDiameterValueCode-F', 'Fine', 'http://w3id.org/glosis/model/codelists/voidsDiameterValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsDiameterValueCode-FF', 'fine and very fine', 'http://w3id.org/glosis/model/codelists/voidsDiameterValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsDiameterValueCode-FM', 'fine and medium', 'http://w3id.org/glosis/model/codelists/voidsDiameterValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsDiameterValueCode-M', 'Medium', 'http://w3id.org/glosis/model/codelists/voidsDiameterValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsDiameterValueCode-MC', 'medium and coarse', 'http://w3id.org/glosis/model/codelists/voidsDiameterValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsDiameterValueCode-V', 'Very fine', 'http://w3id.org/glosis/model/codelists/voidsDiameterValueCode');
+INSERT INTO "codelist" (id, label, collection) VALUES ('http://w3id.org/glosis/model/codelists/voidsDiameterValueCode-VC', 'Very coarse', 'http://w3id.org/glosis/model/codelists/voidsDiameterValueCode');

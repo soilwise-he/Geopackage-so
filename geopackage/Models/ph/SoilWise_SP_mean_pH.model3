@@ -30,7 +30,7 @@
         <Option name="EXPRESSION" type="List">
           <Option type="Map">
             <Option name="source" type="int" value="2"/>
-            <Option name="static_value" type="QString" value="&quot;guid_observedproperty&quot; = '2422dfa9-82a2-4e73-9f63-630d055dcd43' &#xd;&#xa;and &#xd;&#xa;&quot;guid_observingprocedure&quot; = 'a6cbc33c-872b-45bb-85ba-18b35fbf6813' "/>
+            <Option name="static_value" type="QString" value="&quot;guid_observedproperty&quot; = '2422dfa9-82a2-4e73-9f63-630d055dcd43' &#xd;&#xa;and &#xd;&#xa;&quot;guid_observingprocedure&quot; = '43adf8b8-b78c-4ef2-8d78-69e7d8c69d8a' "/>
           </Option>
         </Option>
         <Option name="INPUT" type="List">
@@ -179,7 +179,7 @@
         <Option name="PREFIX" type="List">
           <Option type="Map">
             <Option name="source" type="int" value="2"/>
-            <Option name="static_value" type="QString" value=""/>
+            <Option name="static_value" type="invalid"/>
           </Option>
         </Option>
       </Option>
@@ -255,7 +255,7 @@
         <Option name="PREFIX" type="List">
           <Option type="Map">
             <Option name="source" type="int" value="2"/>
-            <Option name="static_value" type="QString" value=""/>
+            <Option name="static_value" type="invalid"/>
           </Option>
         </Option>
       </Option>
@@ -332,7 +332,7 @@
         <Option name="PREFIX" type="List">
           <Option type="Map">
             <Option name="source" type="int" value="2"/>
-            <Option name="static_value" type="QString" value=""/>
+            <Option name="static_value" type="invalid"/>
           </Option>
         </Option>
       </Option>

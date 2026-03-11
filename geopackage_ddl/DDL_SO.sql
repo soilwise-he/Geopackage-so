@@ -252,6 +252,8 @@ CREATE TABLE soilplot
 
 -- spatial index
 CREATE INDEX idx_soilplot_geom ON soilplot(soilplotlocation);
+-- index
+CREATE INDEX IF NOT EXISTS idx_soilplot_locatedon ON soilplot(locatedon);
 
 -- Contents soilplot ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
@@ -413,6 +415,8 @@ CREATE TABLE soilprofile
       ON UPDATE CASCADE
 );
 
+-- index
+CREATE INDEX IF NOT EXISTS idx_soilprofile_isderived ON soilprofile(isderived);
 
 -- Contents soilprofile ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
@@ -605,6 +609,7 @@ BEGIN
     SELECT RAISE(ABORT, 'Table soilprofile: Invalid value for wrbversion. Must be present in id of wrbreferencesoilgroupvalue codelist.');
 END;
 --                                
+
 
 /* 
  ██████  ████████ ██   ██ ███████ ██████  ███████  ██████  ██ ██      ███    ██  █████  ███    ███ ███████ ████████ ██    ██ ██████  ███████ 
@@ -1322,6 +1327,9 @@ CREATE TABLE profileelement
       ON UPDATE CASCADE
 );
 
+-- index
+CREATE INDEX IF NOT EXISTS idx_profileelement_ispartof ON profileelement(ispartof);
+
 -- Contents profileelement ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
   table_name,
@@ -1611,6 +1619,7 @@ END;
 --
 
 
+
 /* 
 ███████  █████   ██████  ██   ██  ██████  ██████  ██ ███████  ██████  ███    ██ ███    ██  ██████  ████████  █████  ████████ ██  ██████  ███    ██ ████████ ██    ██ ██████  ███████ 
 ██      ██   ██ ██    ██ ██   ██ ██    ██ ██   ██ ██    ███  ██    ██ ████   ██ ████   ██ ██    ██    ██    ██   ██    ██    ██ ██    ██ ████   ██    ██     ██  ██  ██   ██ ██      
@@ -1835,9 +1844,9 @@ CREATE TABLE otherhorizonnotationtype
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     guid TEXT UNIQUE,
     horizonnotation                      TEXT NOT NULL, --Codelist otherhorizonnotationtypevalue
-    diagnostichorizon                    TEXT, -- Codelist wrbdiagnostichorizonvalue 
-    isoriginalclassification             BOOLEAN  DEFAULT 0 NOT NULL, 
-    otherhorizonnotation TEXT
+    --diagnostichorizon                    TEXT, -- Codelist wrbdiagnostichorizonvalue 
+    isoriginalclassification             BOOLEAN  DEFAULT 0 NOT NULL
+    --otherhorizonnotation TEXT
 );
 
 -- Contents otherhorizonnotationtype ---------------------------------------------------------------------------------------
@@ -1909,7 +1918,7 @@ BEGIN
 END;
 --
 
-
+/*
 CREATE TRIGGER i_diagnostichorizon
 BEFORE INSERT ON otherhorizonnotationtype
 FOR EACH ROW
@@ -1926,7 +1935,7 @@ BEGIN
     SELECT RAISE(ABORT, 'Table otherhorizonnotationtype: Invalid value for diagnostichorizon. Must be present in the relativecodelist.');
 END;
 --
-
+*/
 
 /*
  ██████  ████████ ██   ██ ███████ ██████  ██   ██  ██████  ██████  ██ ███████  ██████  ███    ██         ██████  ██████   ██████  ███████ ██ ██      ███████ ███████ ██      ███████ ███    ███ ███████ ███    ██ ████████ 
@@ -2348,7 +2357,7 @@ CREATE TABLE datastream
     value_min REAL,
     value_max REAL,
     --
-    observedarea POLYGON,
+    --observedarea POLYGON,
     phenomenontime_start DATETIME, 
     phenomenontime_end DATETIME,
     resulttime_start DATETIME,
@@ -2357,8 +2366,7 @@ CREATE TABLE datastream
 
 
     -- FK block
-    --idfeature INTEGER,  -- It is not clear whether the presence of at least one between UltimateFeatureOfInterest and ProximateFeatureOfInterest is mandatory.
-    guid_thing TEXT NOT NULL,
+    guid_thing TEXT,
     guid_sensor TEXT NOT NULL,
     guid_observedproperty TEXT NOT NULL,
     guid_observingprocedure TEXT,
@@ -2561,9 +2569,16 @@ CREATE TABLE datastream
 -- JSON mime type ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('datastream', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', 'application/json', null);
 
+-- index
+CREATE INDEX IF NOT EXISTS idx_ds_guid_observingprocedure ON datastream(guid_observingprocedure);
+CREATE INDEX IF NOT EXISTS idx_ds_guid_soilsite          ON datastream(guid_soilsite);
+CREATE INDEX IF NOT EXISTS idx_ds_guid_soilprofile       ON datastream(guid_soilprofile);
+CREATE INDEX IF NOT EXISTS idx_ds_guid_profileelement    ON datastream(guid_profileelement);
+CREATE INDEX IF NOT EXISTS idx_ds_guid_soilderivedobject ON datastream(guid_soilderivedobject);
+CREATE INDEX IF NOT EXISTS idx_datastream_type ON datastream(type);
 
 -- spatial index
-CREATE INDEX idx_datastream_geom ON datastream(observedarea);
+-- CREATE INDEX idx_datastream_geom ON datastream(observedarea);
 
 -- Contents datastream --------------------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
@@ -2579,7 +2594,7 @@ INSERT INTO gpkg_contents (
   srs_id
 ) VALUES (
   'datastream', -- table name
-  'features', -- data type
+  'attributes', -- data type
   'ds_ss', -- unique table identifier
   'datastream Table', -- table description
   strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
@@ -2587,9 +2602,10 @@ INSERT INTO gpkg_contents (
   NULL,
   NULL,
   NULL,
-  3035 -- EPSG spatial reference system code
+  NULL -- EPSG spatial reference system code
 );
 
+/*
 -- Geometry datastream ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_geometry_columns (
   table_name,
@@ -2606,6 +2622,8 @@ INSERT INTO gpkg_geometry_columns (
   0, -- if the geometry has a Z coordinate (0 = no, 1 = yes, 2 = optional)
   0 -- if the geometry has a M coordinate (0 = no, 1 = yes, 2 = optional)
 );
+*/
+
 
 -- Trigger datastream ---------------------------------------------------------------------------------------
 CREATE TRIGGER datastreamguid
@@ -2694,6 +2712,9 @@ BEGIN
     SELECT RAISE(ABORT, 'Table datastream: Invalid value for codespace. Must be present in id of Category codelist.');
 END;
 
+
+
+
 /* 
 ██    ██ ███    ██ ██ ████████  ██████  ███████ ███    ███ ███████  █████  ███████ ██    ██ ██████  ███████ 
 ██    ██ ████   ██ ██    ██    ██    ██ ██      ████  ████ ██      ██   ██ ██      ██    ██ ██   ██ ██      
@@ -2711,6 +2732,8 @@ CREATE TABLE unitofmeasure
     label TEXT,
     symbol TEXT,
     qudt_unit TEXT,
+    base_qudt_unit TEXT,
+    base_qudt_label TEXT,
     conversionoffset REAL, 
     conversionmultiplier REAL
 );
@@ -2754,7 +2777,7 @@ INSERT INTO gpkg_contents (
  ██████  ██████  ███████ ███████ ██   ██   ████   ███████ ██████  ██      ██   ██  ██████  ██      ███████ ██   ██    ██       ██    
 */
 
--- Table sensor ---------------------------------------------------------------------------------------
+-- Table observedproperty ---------------------------------------------------------------------------------------
 CREATE TABLE  observedproperty
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -3157,7 +3180,8 @@ CREATE TABLE  observation
     FOREIGN KEY (guid_datastream) REFERENCES datastream(guid) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
+-- index
+CREATE INDEX IF NOT EXISTS idx_observation_guid_datastream ON observation(guid_datastream);
 
 -- JSON mime type ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_data_columns (table_name, column_name, name, title, description, mime_type, constraint_name) VALUES ('observation', 'properties', 'Properties', 'Properties', 'A JSON Object containing user-annotated properties as key-value pairs.', 'application/json', null);
@@ -3213,8 +3237,12 @@ BEGIN
     END;
 END;
 
+-- =========================================================
 
--- Trigger observation + datastream ---------------------------------------------------------------------------------------
+-- Trigger observation + datastream ------------------------
+
+-- =========================================================
+
 
 -- =========================================================
 -- 1) Keep datastream.phenomenontime_* synchronized with
@@ -3913,6 +3941,9 @@ create table codelist
     --parent         TEXT
 );
 
+-- index
+CREATE INDEX IF NOT EXISTS idx_codelist_collection_id ON codelist(collection, id);
+
 -- Contents  codelist -----------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
   table_name,
@@ -3940,3 +3971,160 @@ INSERT INTO gpkg_contents (
 
 
 
+/*
+██    ██ ██ ███████ ██     ██ ███████ 
+██    ██ ██ ██      ██     ██ ██      
+██    ██ ██ █████   ██  █  ██ ███████ 
+ ██  ██  ██ ██      ██ ███ ██      ██ 
+  ████   ██ ███████  ███ ███  ███████ 
+*/
+
+
+CREATE VIEW view_observation AS
+SELECT
+    ------------------------------------------------------------------
+    -- PADRI (risaliti usando soilplot come nodo intermedio)
+    ------------------------------------------------------------------
+    COALESCE(
+        pe_parent_site.inspireid_localid,
+        sp_parent_site.inspireid_localid,
+        soilsite.inspireid_localid
+    ) AS ssLocalid,
+
+    COALESCE(
+        pe_parent_profile.inspireid_localid,
+        soilprofile.inspireid_localid
+    ) AS spLocalid,
+
+    profileelement.inspireid_localid AS peLocalid,
+
+    ------------------------------------------------------------------
+    -- isderived (label) subito dopo peLocalid
+    ------------------------------------------------------------------
+    CASE
+        WHEN datastream.guid_profileelement IS NOT NULL THEN
+            CASE pe_parent_profile.isderived
+                WHEN 1 THEN 'Derived'
+                WHEN 0 THEN 'Observed'
+            END
+        WHEN datastream.guid_soilprofile IS NOT NULL THEN
+            CASE soilprofile.isderived
+                WHEN 1 THEN 'Derived'
+                WHEN 0 THEN 'Observed'
+            END
+        ELSE NULL
+    END AS isderived,
+
+    ------------------------------------------------------------------
+    -- Tipo FOI
+    ------------------------------------------------------------------
+    CASE
+        WHEN datastream.guid_profileelement    IS NOT NULL THEN 'Profile Element'
+        WHEN datastream.guid_soilprofile       IS NOT NULL THEN 'Soil Profile'
+        WHEN datastream.guid_soilsite          IS NOT NULL THEN 'Soil Site'
+        WHEN datastream.guid_soilderivedobject IS NOT NULL THEN 'Soil Derived Object'
+        ELSE 'None'
+    END AS FOIType,
+
+    ------------------------------------------------------------------
+    -- Campi profondità (solo PE)
+    ------------------------------------------------------------------
+    profileelement.profileelementdepthrange_uppervalue AS upperLimit,
+    profileelement.profileelementdepthrange_lowervalue AS lowerLimit,
+
+    ------------------------------------------------------------------
+    -- Observation info
+    ------------------------------------------------------------------
+    observation.phenomenontime_start AS time,
+
+    -- MODIFICA #1: property da observedproperty
+    observedproperty.name AS property,
+
+    -- MODIFICA #2: subito dopo, il code dell'unità di misura
+    unitofmeasure.symbol AS uom,
+
+    observingprocedure.name          AS procedure,
+    observation.result_text          AS category_value,
+    observation.result_boolean       AS boolean_value,
+
+    ------------------------------------------------------------------
+    -- Valori numerici distinti per type
+    ------------------------------------------------------------------
+    CASE WHEN datastream.type = 'Quantity'
+         THEN observation.result_real
+         ELSE NULL
+    END AS quantity_value,
+
+    CASE WHEN datastream.type = 'Count'
+         THEN observation.result_real
+         ELSE NULL
+    END AS count_value
+
+FROM observation
+JOIN datastream
+     ON observation.guid_datastream = datastream.guid
+
+-- nuova JOIN (NOT NULL in schema, si può usare JOIN “inner”)
+JOIN observedproperty
+     ON datastream.guid_observedproperty = observedproperty.guid
+
+-- unità di misura: presente solo per type='Quantity' → LEFT JOIN
+LEFT JOIN unitofmeasure
+     ON datastream.code_unitofmeasure = unitofmeasure.code
+
+LEFT JOIN observingprocedure
+     ON datastream.guid_observingprocedure = observingprocedure.guid
+
+------------------------------------------------------------------
+-- FOI dirette
+------------------------------------------------------------------
+LEFT JOIN soilsite
+     ON datastream.guid_soilsite = soilsite.guid
+
+LEFT JOIN soilprofile
+     ON datastream.guid_soilprofile = soilprofile.guid
+
+LEFT JOIN profileelement
+     ON datastream.guid_profileelement = profileelement.guid
+
+LEFT JOIN soilderivedobject
+     ON datastream.guid_soilderivedobject = soilderivedobject.guid
+
+------------------------------------------------------------------
+-- Padri dei profileelement → soilprofile
+------------------------------------------------------------------
+LEFT JOIN soilprofile AS pe_parent_profile
+     ON profileelement.ispartof = pe_parent_profile.guid
+
+------------------------------------------------------------------
+-- Padri dei soilprofile → soilplot
+------------------------------------------------------------------
+LEFT JOIN soilplot AS pe_parent_plot
+     ON pe_parent_profile.location = pe_parent_plot.guid
+
+LEFT JOIN soilplot AS sp_parent_plot
+     ON soilprofile.location = sp_parent_plot.guid
+
+------------------------------------------------------------------
+-- Padri dei soilplot → soilsite
+------------------------------------------------------------------
+LEFT JOIN soilsite AS pe_parent_site
+     ON pe_parent_plot.locatedon = pe_parent_site.guid
+
+LEFT JOIN soilsite AS sp_parent_site
+     ON sp_parent_plot.locatedon = sp_parent_site.guid;
+
+
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change
+) VALUES (
+  'view_observation',
+  'attributes',
+  'v_obs',
+  'View_Observation',
+  strftime('%Y-%m-%dT%H:%M:%fZ','now')
+);

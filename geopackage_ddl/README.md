@@ -28,6 +28,8 @@ To do this:
     - Contains Data Manipulation Language (DML) statements.
     - Populates the codelist table with required values for correct functionality.
 
+- `DML_SO_PPU_Glosis.sql`
+    - Database schema population script importing all GLOSIS-compliant soil properties and procedures, including ad-hoc defined units of measure..
 
 ---
 
