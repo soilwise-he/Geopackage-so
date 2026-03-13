@@ -30,6 +30,7 @@ Below is the index of the technical documentation available in this repository:
 [Importing Geometric Features](./importing_geometric_features.md)  
 [Editing Records Through a QGIS Form](./edit_form.md)  
 [Saving Edits in QGIS Forms](./save_form.md)  
+[Export a Layer as an Excel File](./export_to_excel.md)  
 [Soil Site Form](./soilsite.md)  
 [Soil Plot Form](./soilplot.md)  
 [Soil Profile Form](./soilprofile.md)  

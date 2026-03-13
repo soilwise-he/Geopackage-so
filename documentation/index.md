@@ -169,6 +169,7 @@ For each table, you will find its **purpose**, **key fields**, any **geometry**,
 - [soilsite](./tables/soilsite.md)
 - [thing](./tables/thing.md)
 - [unitofmeasure](./tables/unitofmeasure.md)
+- [view observation](./tables/view_observation.md)
 - [wrbqualifiergroup_profile](./tables/wrbqualifiergroup_profile.md)
 - [wrbqualifiergrouptype](./tables/wrbqualifiergrouptype.md)
 
