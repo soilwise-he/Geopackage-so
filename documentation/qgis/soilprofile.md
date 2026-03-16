@@ -50,12 +50,14 @@ The **Soil Profile** data-entry form must adapt dynamically according to the val
 When users select <strong>Observed</strong> -  <strong>The checkbox is unchecked</strong> ①<br>
 <br>
 The form automatically shows the elements related to point‑location and to the contextual relations available for observed profiles.<br>
+<br>
 The <strong>Soil Plot section</strong> becomes visible, ② allowing the selection of the associated soilplot.guid.<br> 
 <br>
 The <strong>Derived Soil Profile section</strong> (representing the isderivedfrom relation where the observed profile may appear as guid_related) also appears,③ along with the <strong>SoilDerived Object</strong> relation area ④.<br>
 Attempts to store a NULL or invalid location are blocked by database triggers, ensuring data consistency. <br>
 <br>
 Interface elements specific to derived profiles—such as derived‑only constraints or soil‑body‑percentage definitions—do not appear while the profile is in Observed mode.<br>
+<br>
 Database logic prevents these derived‑only relations from being created for an observed profile.
 </p>
 <br clear="all"><br>

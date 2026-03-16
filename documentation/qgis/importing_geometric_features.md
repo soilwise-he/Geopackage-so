@@ -131,12 +131,11 @@ The plugin includes two geoprocessing tools:
 
 - **ETL_LOAD** — allows easy matching of the source table with the destination geometry table.
 
-  <p>
+<p>
   <a href="../assets/geom_06.webp" target="_blank">
     <img src="../assets/geom_06.webp"
          alt="Fig.1" align="left" width="500">
   </a>
-
 </p>
 
 <br clear="all"><br>
@@ -144,12 +143,11 @@ The plugin includes two geoprocessing tools:
 
 - **Append Feature To Layer** — handles the copy–paste operation with additional advanced options.
 
-  <p>
+<p>
   <a href="../assets/geom_07.webp" target="_blank">
     <img src="../assets/geom_07.webp"
          alt="Fig.1" align="left" width="500">
   </a>
-
 </p>
 
 <br clear="all"><br>

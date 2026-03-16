@@ -8,25 +8,29 @@ The parent–child relationship is fundamental for modeling complex data in an o
 You can explore the GeoPackage tables using [forms](./custom_form.md). 
 ## Parent‑to‑Child Navigation
 <p>
-  <img src="../assets/nav_form_01.webp"
-       alt="Fig.1" align="left" width="500">
-The relationships defined between the tables enable the display of subforms for related records: to show them, <strong>expand</strong>  the corresponding section by clicking the icon ①.
-Navigation can proceed through additional related layers by further expanding the nested forms ②.
-
-When there are many relationships and the available screen space is limited (depending on your monitor's resolution), some content may not be fully displayed ③. 
-
-In these cases, it is recommended to:
-Collapse unnecessary sections ④ to free up vertical space.
+  <a href="../assets/nav_form_01.webp" target="_blank">
+    <img src="../assets/nav_form_01.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+The relationships defined between the tables enable the display of subforms for related records: to show them, <strong>expand</strong>  the corresponding section by clicking the icon ①.<br>
+Navigation can proceed through additional related layers by further expanding the nested forms ②.<br>
+<br>
+When there are many relationships and the available screen space is limited (depending on your monitor's resolution), some content may not be fully displayed ③. <br>
+<br>
+In these cases, it is recommended to:<br>
+Collapse unnecessary sections ④ to free up vertical space.<br>
 Reduce the width of the left panel (the one showing the list of records) by dragging the divider ⑤, thus reclaiming horizontal space and improving field readability.
 </p>
 <br clear="all"><br>
 
 ## Child‑to‑Parent Navigation
 <p>
-  <img src="../assets/nav_form_02.webp"
-       alt="Fig.1" align="left" width="500">
-Navigation to the parent record is performed through the button ⑥ associated with the foreign key field. 
-  
+  <a href="../assets/nav_form_02.webp" target="_blank">
+    <img src="../assets/nav_form_02.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+Navigation to the parent record is performed through the button ⑥ associated with the foreign key field. <br>
+<br>  
 Clicking it opens the form ⑦  of the corresponding record.
 </p>
 <br clear="all"><br>
