@@ -20,8 +20,10 @@ A Soil Profile does not contain any geometry. To enable editing through forms, f
 
 ### ID Group
 <p>
-  <img src="../assets/group_id.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/group_id.webp" target="_blank">
+    <img src="../assets/group_id.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -41,17 +43,19 @@ The **Soil Profile** data-entry form must adapt dynamically according to the val
 #### `Is Derived = 0` → **Observed Soil Profile**
 
 <p>
-  <img src="../assets/observed.webp"
-       alt="Fig.1" align="left" width="500">
-When users select <strong>Observed</strong> -  <strong>The checkbox is unchecked</strong> ①
-
-The form automatically shows the elements related to point‑location and to the contextual relations available for observed profiles.
-The <strong>Soil Plot section</strong> becomes visible, ② allowing the selection of the associated soilplot.guid. 
-
-The <strong>Derived Soil Profile section</strong> (representing the isderivedfrom relation where the observed profile may appear as guid_related) also appears,③ along with the <strong>SoilDerived Object</strong> relation area ④.
-Attempts to store a NULL or invalid location are blocked by database triggers, ensuring data consistency. 
-
-Interface elements specific to derived profiles—such as derived‑only constraints or soil‑body‑percentage definitions—do not appear while the profile is in Observed mode.
+  <a href="../assets/observed.webp" target="_blank">
+    <img src="../assets/observed.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+When users select <strong>Observed</strong> -  <strong>The checkbox is unchecked</strong> ①<br>
+<br>
+The form automatically shows the elements related to point‑location and to the contextual relations available for observed profiles.<br>
+The <strong>Soil Plot section</strong> becomes visible, ② allowing the selection of the associated soilplot.guid.<br> 
+<br>
+The <strong>Derived Soil Profile section</strong> (representing the isderivedfrom relation where the observed profile may appear as guid_related) also appears,③ along with the <strong>SoilDerived Object</strong> relation area ④.<br>
+Attempts to store a NULL or invalid location are blocked by database triggers, ensuring data consistency. <br>
+<br>
+Interface elements specific to derived profiles—such as derived‑only constraints or soil‑body‑percentage definitions—do not appear while the profile is in Observed mode.<br>
 Database logic prevents these derived‑only relations from being created for an observed profile.
 </p>
 <br clear="all"><br>
@@ -59,17 +63,19 @@ Database logic prevents these derived‑only relations from being created for an
 #### `Is Derived = 1` → **Derived Soil Profile**
 
 <p>
-  <img src="../assets/derived.webp"
-       alt="Fig.1" align="left" width="500">
-When users select <strong>Derived</strong> - <strong>The checkbox is checked</strong> ①
-
-The form adjusts by hiding all location‑related components, including the Soil Plot section, since derived profiles are not point‑located. Any non‑NULL value in the location field is rejected by database triggers.
-
-In this mode, the form exposes only the relational structures applicable to derived profiles:
-
+  <a href="../assets/derived.webp" target="_blank">
+    <img src="../assets/derived.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+When users select <strong>Derived</strong> - <strong>The checkbox is checked</strong> ①<br>
+<br>
+The form adjusts by hiding all location‑related components, including the Soil Plot section, since derived profiles are not point‑located. Any non‑NULL value in the location field is rejected by database triggers.<br>
+<br>
+In this mode, the form exposes only the relational structures applicable to derived profiles:<br>
+<br>
 the <strong>Is Derived From section</strong>, ② which represents the association to observed profiles through the isderivedfrom table (where the derived profile appears as guid_base)
-the Derived Presence in <strong>Soil Body section</strong>,③ corresponding to the derivedprofilepresenceinsoilbody table, used to express the percentage‑based presence of the derived profile within a Soil Body
-
+the Derived Presence in <strong>Soil Body section</strong>,③ corresponding to the derivedprofilepresenceinsoilbody table, used to express the percentage‑based presence of the derived profile within a Soil Body.<br>
+<br>
 These interface elements reflect the constraints, type‑coherence checks, and consistency rules enforced at database level.
 </p>
 <br clear="all"><br>
@@ -77,8 +83,10 @@ These interface elements reflect the constraints, type‑coherence checks, and c
 
 ### INSPIRE ID Group
 <p>
-  <img src="../assets/group_inspireid.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/group_inspireid.webp" target="_blank">
+    <img src="../assets/group_inspireid.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -102,8 +110,10 @@ Editing child elements directly within a parent form improves data quality and s
 
 ### Sub Form 
 <p>
-  <img src="../assets/spr_sub_wrb.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/spr_sub_wrb.webp" target="_blank">
+    <img src="../assets/spr_sub_wrb.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 

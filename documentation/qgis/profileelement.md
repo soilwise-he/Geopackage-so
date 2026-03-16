@@ -21,8 +21,10 @@ A Profile Element does not contain any geometry. To enable editing through forms
 
 ### ID Group
 <p>
-  <img src="../assets/group_id.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/group_id.webp" target="_blank">
+    <img src="../assets/group_id.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -46,12 +48,14 @@ The **Profile Element** data-entry form adapts dynamically based on the value of
 #### `Is a Layer = 0` → **Horizon**
 
 <p>
-  <img src="../assets/horizon.webp"
-       alt="Fig.1" align="left" width="500">
-When users select <strong>Horizon</strong> -  <strong>The checkbox is unchecked</strong> ①
-  
-The sections <strong>FAO Horizon Notation Type</strong> ② and <strong>Other Horizon Notation Type</strong> ③ are <strong>visible</strong>.
-
+  <a href="../assets/horizon.webp" target="_blank">
+    <img src="../assets/horizon.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+When users select <strong>Horizon</strong> -  <strong>The checkbox is unchecked</strong> ①<br>
+<br>  
+The sections <strong>FAO Horizon Notation Type</strong> ② and <strong>Other Horizon Notation Type</strong> ③ are <strong>visible</strong>.<br>
+<br>
 The section <strong>Layer Parameter</strong> is <strong>hidden</strong> (layer‑only attributes are not applicable and are rejected by triggers if present).
 </p>
 <br clear="all"><br>
@@ -59,12 +63,14 @@ The section <strong>Layer Parameter</strong> is <strong>hidden</strong> (layer�
 #### `Is a Layer = 1` → **Layer**
 
 <p>
-  <img src="../assets/layer.webp"
-       alt="Fig.1" align="left" width="500">
-When users select <strong>Layer</strong> - <strong>The checkbox is checked</strong> ①
-  
-The section <strong>Layer Parameter</strong> ② is <strong>visible</strong> (for `layertype`, `layerrocktype`, `layergenesisprocess`, `layergenesisenviroment`, `layergenesisprocessstate`).
-  
+  <a href="../assets/layer.webp" target="_blank">
+    <img src="../assets/layer.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+When users select <strong>Layer</strong> - <strong>The checkbox is checked</strong> ①<br>
+<br>  
+The section <strong>Layer Parameter</strong> ② is <strong>visible</strong> (for `layertype`, `layerrocktype`, `layergenesisprocess`, `layergenesisenviroment`, `layergenesisprocessstate`).<br>
+<br>  
 The sections <strong>FAO Horizon Notation Type</strong> and <strong>Other Horizon Notation Type</strong> are <strong>hidden</strong> (notation applies to Horizons only and is blocked by triggers for Layers).
 </p>
 <br clear="all"><br>
@@ -72,8 +78,10 @@ The sections <strong>FAO Horizon Notation Type</strong> and <strong>Other Horizo
 
 ### INSPIRE ID Group
 <p>
-  <img src="../assets/group_inspireid.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/group_inspireid.webp" target="_blank">
+    <img src="../assets/group_inspireid.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -97,8 +105,10 @@ Editing child elements directly within a parent form improves data quality and s
 
 ### Sub Form 
 <p>
-  <img src="../assets/sub_base.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/sub_base.webp" target="_blank">
+    <img src="../assets/sub_base.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 

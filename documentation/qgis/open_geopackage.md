@@ -16,8 +16,10 @@ Opening is **one‑click**: select the **embedded project** from the GeoPackage 
 Open Qgis.
 
 <p>
-  <img src="../assets/01_Qgis.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/01_Qgis.webp" target="_blank">
+    <img src="../assets/01_Qgis.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 In the Browser Tab, right-click on the
 Geopackage icon ① and click on “New
 Connection”. ②
@@ -26,14 +28,16 @@ Connection”. ②
 <br clear="all"><br>
 
 <p>
-  <img src="../assets/02_Qgis.webp"
-       alt="Fig.2" align="left" width="500">
+  <a href="../assets/02_Qgis.webp" target="_blank">
+    <img src="../assets/02_Qgis.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 Search the file system for the Geopackage
-file you want to use.
-
+file you want to use.<br>
+<br>
 Inside the newly connected file, ③ you will
-find the `_PRJ_SO` project. ④
-
+find the `_PRJ_SO` project. ④<br>
+<br>
 Double-click on it, and the project will open.
 </p>
 

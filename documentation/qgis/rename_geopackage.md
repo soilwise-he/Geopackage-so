@@ -19,8 +19,10 @@ Follow the steps below to restore all layer connections:
 
 
 <p>
-  <img src="../assets/rename_01.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/rename_01.webp" target="_blank">
+    <img src="../assets/rename_01.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 Click <strong>“Keep Unavailable Layers”</strong> ① in the warning dialog.  
 </p>
 
@@ -30,18 +32,22 @@ Click <strong>“Keep Unavailable Layers”</strong> ① in the warning dialog.
 >The **Auto‑Find** button usually fails to resolve the issue.  It is therefore recommended to follow the instructions below.
 
 <p>
-  <img src="../assets/rename_02.webp"
-       alt="Fig.1" align="left" width="500">
-QGIS will load all layers, but they will show a <strong>warning triangle icon</strong> ② indicating that their data sources cannot be found.
-
+  <a href="../assets/rename_02.webp" target="_blank">
+    <img src="../assets/rename_02.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+QGIS will load all layers, but they will show a <strong>warning triangle icon</strong> ② indicating that their data sources cannot be found.<br>
+<br>
 Right‑click any broken layer ③ and choose <strong>“Repair Data Source”</strong> ④.
 </p>
 
 <br clear="all"><br> <br>
 
 <p>
-  <img src="../assets/rename_03.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/rename_03.webp" target="_blank">
+    <img src="../assets/rename_03.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 A new window will appear. Select the <strong>correct GeoPackage file</strong> with the new name ⑤.
 </p>
 

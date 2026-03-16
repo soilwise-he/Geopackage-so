@@ -11,28 +11,34 @@ To open the Soil Site custom forms, go to the Layers panel, right‑click the `s
 The "Soil Site" it's a **polygonal geographic entity**. The first step To create a new Soil Site feature is to define its geometry.
 
 <p>
-  <img src="../assets/soilsite_01.webp"
-       alt="Fig.1" align="left" width="500">
-Right-click in the "Layers" panel on the "soilsite", ① and from the menu, select "Toggle Editing" ②.
-  
+  <a href="../assets/soilsite_01.webp" target="_blank">
+    <img src="../assets/soilsite_01.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+Right-click in the "Layers" panel on the "soilsite", ① and from the menu, select "Toggle Editing" ②.<br>
+<br> 
 Alternatively, select only the “Soil Site” layer ① and click the “Toggle Editing” button ③ in the toolbar.
 </p>
 <br clear="all"><br>
 
 <p>
-  <img src="../assets/soilsite_02.webp"
-       alt="Fig.1" align="left" width="500">
-A small pencil icon ④ will appear, indicating that the feature is in edit mode.
-  
+  <a href="../assets/soilsite_02.webp" target="_blank">
+    <img src="../assets/soilsite_02.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+A small pencil icon ④ will appear, indicating that the feature is in edit mode.<br>
+<br>  
 In the toolbar, select the "Add Polygon Feature" icon ⑤ and draw the geometry of the new "Soil Site". ⑥
 </p>
 <br clear="all"><br>
 
 <p>
-  <img src="../assets/soilsite_03.webp"
-       alt="Fig.1" align="left" width="500">
-Right-click to close the geometry, and the data entry form will appear. ⑦
-
+  <a href="../assets/soilsite_03.webp" target="_blank">
+    <img src="../assets/soilsite_03.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+Right-click to close the geometry, and the data entry form will appear. ⑦<br>
+<br>
 Use the widgets provided by the form to modify data.
 </p>
 <br clear="all"><br>
@@ -48,8 +54,10 @@ For detailed information on how to initiate edit mode for a custom form, refer t
   
 ### ID Group
 <p>
-  <img src="../assets/group_id.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/group_id.webp" target="_blank">
+    <img src="../assets/group_id.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -64,8 +72,10 @@ For detailed information on how to initiate edit mode for a custom form, refer t
 
 ### INSPIRE ID Group
 <p>
-  <img src="../assets/group_inspireid.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/group_inspireid.webp" target="_blank">
+    <img src="../assets/group_inspireid.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 

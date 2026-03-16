@@ -43,15 +43,18 @@ Customized forms are used to:
 
 
 <p>
-  <img src="../assets/form_01.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/form_01.webp" target="_blank">
+    <img src="../assets/form_01.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 On the left side of the interface, a panel ① lists all the records belonging to the layer.  
-Selecting a record from this list displays its attribute content on the right-hand side ②, using the associated customized form.
-
-The attribute toolbar provides two main viewing modes ③:
-<strong>Form View</strong>  Displays the attribute form for a single record at a time.
-<strong>Table View</strong> Shows the attributes in tabular mode, useful for multi-record inspection and quick selection operations.
-
+Selecting a record from this list displays its attribute content on the right-hand side ②, using the associated customized form. <br>
+<br>
+The attribute toolbar provides two main viewing modes ③:<br>
+<br>
+<strong>Form View</strong>  Displays the attribute form for a single record at a time.<br>
+<strong>Table View</strong> Shows the attributes in tabular mode, useful for multi-record inspection and quick selection operations.<br>
+<br>
 Selection tools ④ ⑤ determine which records can be opened or edited through the form.  
 </p>
 <br clear="all"><br> 
@@ -65,8 +68,10 @@ Selection tools ④ ⑤ determine which records can be opened or edited through 
 # Tooltip
 
 <p>
-  <img src="../assets/Tooltip.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/Tooltip.webp" target="_blank">
+    <img src="../assets/Tooltip.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 These tooltips provide concise, context‑specific descriptions ① of the attributes when the user <strong>hovers over their labels</strong>. They offer additional clarification on the fields’ purpose and meaning within the form, helping users correctly interpret the data without leaving the editing interface.
 </p>
 <br clear="all"><br> 

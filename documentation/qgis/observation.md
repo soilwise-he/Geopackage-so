@@ -21,8 +21,10 @@ A Observation does not contain any geometry. To enable editing through forms, fo
 
 ### ID Group
 <p>
-  <img src="../assets/group_id.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/group_id.webp" target="_blank">
+    <img src="../assets/group_id.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -57,8 +59,10 @@ This guarantees integrity even if records are inserted or modified **outside the
 Represent binary values (true/false).
 
 <p>
-  <img src="../assets/value_boolean.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/value_boolean.webp" target="_blank">
+    <img src="../assets/value_boolean.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -71,8 +75,10 @@ Represent categorical or classified values defined within a controlled code list
 Only codes that are valid for the **codespace** selected in the Datastream appear in the dropdown list. 
 
 <p>
-  <img src="../assets/value_category.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/value_category.webp" target="_blank">
+    <img src="../assets/value_category.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -86,8 +92,10 @@ Only codes that are valid for the **codespace** selected in the Datastream appea
 Used to represent integer counts or occurrences.
 
 <p>
-  <img src="../assets/value_count.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/value_count.webp" target="_blank">
+    <img src="../assets/value_count.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -109,8 +117,10 @@ If **no bounds** are specified in the Datastream, **any value of the correct typ
 Used to represent measurable quantities associated with a numeric value and a unit of measure.
 
 <p>
-  <img src="../assets/value_quantity.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/value_quantity.webp" target="_blank">
+    <img src="../assets/value_quantity.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 

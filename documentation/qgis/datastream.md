@@ -10,28 +10,34 @@ To open the Datastream custom forms, go to the Layers panel, right‑click the `
 ## Edit
 
 <p>
-  <img src="../assets/datas_01.webp"
-       alt="Fig.1" align="left" width="500">
-Right-click in the "Layers" panel on the "datastream", ① and from the menu, select "Toggle Editing" ②.
-  
+  <a href="../assets/datas_01.webp" target="_blank">
+    <img src="../assets/datas_01.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+Right-click in the "Layers" panel on the "datastream", ① and from the menu, select "Toggle Editing" ②.<br>
+<br> 
 Alternatively, select only the “datastream” layer ① and click the “Toggle Editing” button ③ in the toolbar.
 </p>
 <br clear="all"><br>
 
 <p>
-  <img src="../assets/datas_04.webp"
-       alt="Fig.1" align="left" width="500">
-A small pencil icon ④ will appear, indicating that the feature is in edit mode.
-  
+  <a href="../assets/datas_04.webp" target="_blank">
+    <img src="../assets/datas_04.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+A small pencil icon ④ will appear, indicating that the feature is in edit mode.<br>
+<br>  
 Right-click in the "Layers" panel on the "datastream", and from the menu, select "Open Attribute Table" ⑤
 </p>
 <br clear="all"><br>
 
 <p>
-  <img src="../assets/datas_05.webp"
-       alt="Fig.1" align="left" width="500">
-Click the "Add Feature" buttn; ⑥ a new data‑entry form will appear on the right. ⑦
-
+  <a href="../assets/datas_05.webp" target="_blank">
+    <img src="../assets/datas_05.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+Click the "Add Feature" buttn; ⑥ a new data‑entry form will appear on the right. ⑦<br>
+<br>
 Use the widgets provided by the form to modify data.
 </p>
 <br clear="all"><br>
@@ -48,8 +54,10 @@ Context‑aware data entry: Working inside the parent form (e.g. Soil Site, Soil
 Integrity by design: The QGIS relation editor widget exposes dedicated child‑layer controls and honors relationship cardinalities, minimizing orphan data and key mismatches. It includes built‑in actions for Add child feature and Save child edits. 
 
 <p>
-  <img src="../assets/datas_06.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/datas_06.webp" target="_blank">
+    <img src="../assets/datas_06.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -70,8 +78,10 @@ Use the following buttons to manage child layers during data editing.
 
 ### ID Group
 <p>
-  <img src="../assets/group_id.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/group_id.webp" target="_blank">
+    <img src="../assets/group_id.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -89,8 +99,10 @@ Use the following buttons to manage child layers during data editing.
 The custom form dynamically adapts its layout and available fields based on the selected **Result Type**. ①
 
 <p>
-  <img src="../assets/resut_type_type.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/resut_type_type.webp" target="_blank">
+    <img src="../assets/resut_type_type.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -110,8 +122,10 @@ Each Result Type enforces a specific set of **required**, **optional**, and **fo
 Used to represent binary values (true/false).
 
 <p>
-  <img src="../assets/resut_type_boolean.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/resut_type_boolean.webp" target="_blank">
+    <img src="../assets/resut_type_boolean.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -128,8 +142,10 @@ Used to represent binary values (true/false).
 Used to represent categorical or classified values defined within a controlled code list.
 
 <p>
-  <img src="../assets/resut_type_category.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/resut_type_category.webp" target="_blank">
+    <img src="../assets/resut_type_category.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -150,8 +166,10 @@ Used to represent categorical or classified values defined within a controlled c
 Used to represent integer counts or occurrences.
 
 <p>
-  <img src="../assets/resut_type_count.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/resut_type_count.webp" target="_blank">
+    <img src="../assets/resut_type_count.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -174,8 +192,10 @@ Used to represent integer counts or occurrences.
 Used to represent measurable quantities associated with a numeric value and a unit of measure.
 
 <p>
-  <img src="../assets/resut_type_quantity.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/resut_type_quantity.webp" target="_blank">
+    <img src="../assets/resut_type_quantity.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -197,8 +217,10 @@ Used to represent measurable quantities associated with a numeric value and a un
 ### Observed Property - Sensor - Observing Procedure  - Thing
 
 <p>
-  <img src="../assets/datas_relations.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/datas_relations.webp" target="_blank">
+    <img src="../assets/datas_relations.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -235,8 +257,10 @@ The list of available **Observing Procedures** is dynamically filtered based on 
 ### Feature 
 
 <p>
-  <img src="../assets/datas_feature.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/datas_feature.webp" target="_blank">
+    <img src="../assets/datas_feature.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>  
 

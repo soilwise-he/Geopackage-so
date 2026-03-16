@@ -12,33 +12,36 @@ To open the Soil Plot custom forms, go to the Layers panel, right‑click the `s
 The "Soil Plot" it's a **point-based geographic entity**. The first step To create a new Soil Plot feature is to define its geometry.
 
 <p>
-  <img src="../assets/soilplot_01.webp"
-       alt="Fig.1" align="left" width="500">
-Right-click in the "Layers" panel on the "soilsite", ① and from the menu, select "Toggle Editing" ②.
-  
+  <a href="../assets/soilplot_01.webp" target="_blank">
+    <img src="../assets/soilplot_01.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+Right-click in the "Layers" panel on the "soilsite", ① and from the menu, select "Toggle Editing" ②.<br>
+<br>  
 It is also possible to select only the "Soil Site" layer ① and click the "Toggle Editing", ③ button in the toolbar.
 </p>
 <br clear="all"><br>
 
 <p>
-  <img src="../assets/soilplot_02.webp"
-       alt="Fig.1" align="left" width="500">
-A small pencil icon ④ will appear, indicating that the feature is in edit mode.
-  
-In the toolbar, select the "Add Point Feature" icon ⑤.
-
-
+  <a href="../assets/soilplot_02.webp" target="_blank">
+    <img src="../assets/soilplot_02.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+A small pencil icon ④ will appear, indicating that the feature is in edit mode.<br>
+<br>  
+In the toolbar, select the "Add Point Feature" icon ⑤.<br>
+<br>
 To add a new point, **click directly on the map** ⑥.   A marker will be created at the exact location where you click
-
-
 </p>
 <br clear="all"><br>
 
 <p>
-  <img src="../assets/soilplot_03.webp"
-       alt="Fig.1" align="left" width="500">
-As soon as the point is created, the data entry form will open. ⑦
-
+  <a href="../assets/soilplot_03.webp" target="_blank">
+    <img src="../assets/soilplot_03.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
+As soon as the point is created, the data entry form will open. ⑦<br>
+<br>
 You can modify the data using the various widgets provided by the form.
 </p>
 <br clear="all"><br>
@@ -53,8 +56,10 @@ For detailed information on initiating edit mode for a custom form, refer to the
   
 ### ID Group
 <p>
-  <img src="../assets/group_id.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/group_id.webp" target="_blank">
+    <img src="../assets/group_id.webp"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
@@ -69,8 +74,10 @@ For detailed information on initiating edit mode for a custom form, refer to the
 
 ### INSPIRE ID Group
 <p>
-  <img src="../assets/group_inspireid.webp"
-       alt="Fig.1" align="left" width="500">
+  <a href="../assets/group_inspireid" target="_blank">
+    <img src="../assets/group_inspireid"
+         alt="Fig.1" align="left" width="500">
+  </a>
 </p>
 <br clear="all"><br>
 
