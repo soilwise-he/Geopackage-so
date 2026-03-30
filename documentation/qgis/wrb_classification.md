@@ -57,7 +57,7 @@ Navigate to the "WRB Qualifier" tab, ④ click the pencil icon <strong>"Toggle e
 <br>
 A window will open ⑦ allowing you to insert both prefixes and suffixes and their position within the classification.<br>
 <br>
-The <strong>"Soil Prile" field</strong> ⑧ will already contain the name of the selected "Soil Profile".<br>
+The <strong>"Soil Profile" field</strong> ⑧ will already contain the name of the selected "Soil Profile".<br>
 <br>
 Define the position ⑨ of the prefix or suffix within the classification.<br>
 <br>
