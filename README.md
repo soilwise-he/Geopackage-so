@@ -1,7 +1,7 @@
 # SoilWise Geopackage-so
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Zenodo DOI](https://zenodo.org/badge/doi/10.5281/zenodo.18246824.svg)](https://doi.org/10.5281/zenodo.18246824)
+[![Zenodo DOI](https://zenodo.org/badge/doi/10.5281/zenodo.19465867.svg)](https://doi.org/10.5281/zenodo.19465867)
 ![QGIS](https://img.shields.io/badge/QGIS-3.44%2B-589632?logo=qgis&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite3-3-003B57?logo=sqlite&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
