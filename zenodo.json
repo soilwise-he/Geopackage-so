@@ -1,0 +1,135 @@
+{
+  "title": "SoilWise GeoPackage",
+  "description": "<p dir=\"auto\">This repository provides resources for working with the&nbsp;<strong>INSPIRE Soil (SO)</strong>&nbsp;data model in&nbsp;<strong>GeoPackage</strong>&nbsp;format.<br>It also includes an implementation based on the&nbsp;<strong>OGC SensorThings API 2.0 (draft)</strong>&nbsp;to expose soil observations and related metadata as interoperable time\u2011series via HTTP and MQTT. SensorThings 2.0 provides an open, geospatial\u2011enabled and unified way to interconnect sensor\u2011data\u2011producing devices, data, and applications over the Web. It defines a core data model aligned with OGC/ISO&nbsp;<strong>Observations, Measurements and Samples (ISO 19156:2023)</strong>, an abstract REST API, and protocol bindings for&nbsp;<strong>HTTP</strong>&nbsp;and&nbsp;<strong>MQTT</strong>, supporting CRUD operations, advanced filtering, customizable responses, and push notifications for data changes (via MQTT).&nbsp;<em>Note: SensorThings API 2.0 is currently a draft standard under development.</em><br>References: [STA 2.0 draft (OGC 23\u2011019)](<a href=\"https://hylkevds.github.io/23-019/23-019.html#_13d7055erThings\" rel=\"nofollow\">https://hylkevds.github.io/23-019/23-019.html#_13d7055erThings</a>&nbsp;overview (OGC)](<a href=\"https://www.ogc.org/standards/sensorthings/\" rel=\"nofollow\">https://www.ogc.org/standards/sensorthings/</a>)</p>\n<p dir=\"auto\">Updates previous versions developed within the&nbsp;<strong>EJP SOIL</strong>&nbsp;project (<a href=\"https://github.com/ejpsoil/inspire_soil_gpkg_template\">https://github.com/ejpsoil/inspire_soil_gpkg_template</a>), with the goal of conforming to both&nbsp;<strong>OMS</strong>&nbsp;(<a href=\"https://docs.ogc.org/as/20-082r4/20-082r4.html\" rel=\"nofollow\">https://docs.ogc.org/as/20-082r4/20-082r4.html</a>) and&nbsp;<strong>SensorThings API</strong>&nbsp;(<a href=\"https://www.ogc.org/standards/sensorthings/\" rel=\"nofollow\">https://www.ogc.org/standards/sensorthings/</a>) standards.</p>",
+  "upload_type": "publication",
+  "publication_type": "report",
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "publication_date": "2026-03-31",
+  "version": "1.0.0",
+  "keywords": [
+    "INSPIRE Directive",
+    "healthy soils",
+    "SoilWise",
+    "soil information",
+    "interoperability"
+  ],
+  "contributors": [
+          {
+	  "name": "Morrone, Stefania",
+      "affiliation": "Epsilon Italia",
+    },
+  "creators": [
+          {
+      "name": "L'Abate, Giovanni",
+      "affiliation": "Consiglio per la Ricerca in Agricoltura e l'analisi dell'economia agraria (CREA)",
+      "orcid": "0000-0003-4018-7570"
+	  "role": "Contact person"
+    },
+        {
+      "name": "Lachi, Andrea",
+      "affiliation": "Consiglio per la Ricerca in Agricoltura e l'analisi dell'economia agraria (CREA)",
+      "orcid": "0009-0005-4789-6267"
+    },
+      {
+      "name": "Fantappi\u00e8, Maria",
+      "affiliation": "Consiglio per la Ricerca in Agricoltura e l'analisi dell'economia agraria (CREA)",
+      "orcid": "0000-0001-6223-1099"
+    },
+    {
+      "name": "Schleidt, Kathi",
+      "affiliation": "DataCove e.U.",
+      "orcid": "0000-0002-8011-7350"
+    },
+    {
+      "name": "van Genuchten, Paul",
+      "affiliation": "ISRIC World Soil Information",
+      "orcid": "0000-0002-4789-174X"
+    }
+  ],
+  "grants": [
+    {
+      "id": "101112838"
+    }
+  ],
+  "communities": [
+    {
+      "identifier": "soilwise-he"
+    }
+  ],
+  "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.18246824",
+        "relation_type": {
+          "id": "isvariantformof",
+          "title": {
+            "de": "Ist eine Variante von",
+            "en": "Is variant form of"
+          }
+        },
+        "resource_type": {
+          "id": "publication-deliverable",
+          "title": {
+            "de": "Projektergebnis",
+            "en": "Project deliverable"
+          }
+        },
+        "scheme": "doi"
+      },
+      {
+        "identifier": "https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/overview?view=themeOverview&theme=so",
+        "relation_type": {
+          "id": "isdocumentedby",
+          "title": {
+            "de": "Wird dokumentiert von",
+            "en": "Is documented by"
+          }
+        },
+        "resource_type": {
+          "id": "publication-softwaredocumentation",
+          "title": {
+            "de": "Softwaredokumentation",
+            "en": "Software documentation"
+          }
+        },
+        "scheme": "url"
+      },
+      {
+        "identifier": "https://www.ogc.org/standards/sensorthings/",
+        "relation_type": {
+          "id": "isdocumentedby",
+          "title": {
+            "de": "Wird dokumentiert von",
+            "en": "Is documented by"
+          }
+        },
+        "resource_type": {
+          "id": "publication-standard",
+          "title": {
+            "de": "Standard",
+            "en": "Standard"
+          }
+        },
+        "scheme": "url"
+      },
+      {
+        "identifier": "https://www.geopackage.org/",
+        "relation_type": {
+          "id": "isdocumentedby",
+          "title": {
+            "de": "Wird dokumentiert von",
+            "en": "Is documented by"
+          }
+        },
+        "resource_type": {
+          "id": "publication-standard",
+          "title": {
+            "de": "Standard",
+            "en": "Standard"
+          }
+        },
+        "scheme": "url"
+      }
+    ],
+  "language": "eng"
+}
