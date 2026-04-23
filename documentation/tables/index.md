@@ -14,7 +14,7 @@ This page provides a **technical entry point**: how the schema is organised, whi
 ## Relational Structure of the GeoPackage (INSPIRE UML + STA2 Transposition)
 
 <p>
-  <a href="../assets/db_structure.web" target="_blank">
+  <a href="../assets/db_structure.webp" target="_blank">
     <img src="../assets/db_structure.webp"
          alt="Fig.1"
          style="width: 100%; height: auto; display: block;">
