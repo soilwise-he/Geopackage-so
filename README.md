@@ -11,23 +11,23 @@
 ## Abstract
 This repository provides resources for working with the **INSPIRE Soil (SO)** data model in **GeoPackage** format.  
 It also includes an implementation based on the **OGC SensorThings API 2.0 (draft)** to expose soil observations and related metadata as interoperable time‑series via HTTP and MQTT. SensorThings 2.0 provides an open, geospatial‑enabled and unified way to interconnect sensor‑data‑producing devices, data, and applications over the Web. It defines a core data model aligned with OGC/ISO **Observations, Measurements and Samples (ISO 19156:2023)**, an abstract REST API, and protocol bindings for **HTTP** and **MQTT**, supporting CRUD operations, advanced filtering, customizable responses, and push notifications for data changes (via MQTT). *Note: SensorThings API 2.0 is currently a draft standard under development.*  
-References: [STA 2.0 draft (OGC 23‑019)](https://hylkevds.github.io/23-019/23-019.html#_13d7055erThings overview (OGC)](https://www.ogc.org/standards/sensorthings/)
+References: [STA 2.0 draft (OGC 23‑019)](https://hylkevds.github.io/23-019/23-019.html) [SensorThings overview (OGC)](https://www.ogc.org/standards/sensorthings/)
 
-Updates previous versions developed within the **EJP SOIL** project (https://github.com/ejpsoil/inspire_soil_gpkg_template), with the goal of conforming to both **OMS** (https://docs.ogc.org/as/20-082r4/20-082r4.html) and **SensorThings API** (https://www.ogc.org/standards/sensorthings/) standards.
+Updates [previous versions developed within the **EJP SOIL** project](https://github.com/ejpsoil/inspire_soil_gpkg_template), with the goal of conforming to both [**OMS**](https://docs.ogc.org/as/20-082r4/20-082r4.html) and [**SensorThings API**](https://www.ogc.org/standards/sensorthings/) standards.
 
-The **first version** of the INSPIRE Soil (SO) GeoPackage was developed under the H2020 **European Joint Research Programme EJP SOIL** (https://ejpsoil.eu/), the work package 6 aimed at supporting harmonised soil information and reporting. A so‑called “Software framework for a shared agricultural soil information system”, deliverable **EJP SOIL_D6.4**, was produced to enable transcoding and streamlining of interoperable and harmonised national agricultural soil data into **ESDAC** (https://esdac.jrc.ec.europa.eu/), as foreseen in the Grant Agreement, and in general to enable **INSPIRE‑compliant** soil data sharing.
+The **first version** of the INSPIRE Soil (SO) GeoPackage was developed under the H2020 [**European Joint Research Programme EJP SOIL**](https://ejpsoil.eu/), the work package 6 aimed at supporting harmonised soil information and reporting. A so‑called “Software framework for a shared agricultural soil information system”, deliverable **EJP SOIL_D6.4**, was produced to enable transcoding and streamlining of interoperable and harmonised national agricultural soil data into [**ESDAC**](https://esdac.jrc.ec.europa.eu/), as foreseen in the Grant Agreement, and in general to enable **INSPIRE‑compliant** soil data sharing.
 
 ---
 
 ## Knowledge Sources
 This work is based on the following primary normative and technical resources:
 
-- INSPIRE Soil theme: conceptual model (UML), feature catalogue, and implementation guidance (INSPIRE Soil Technical Guidelines).
-- INSPIRE Good Practice: GeoPackage encoding for INSPIRE datasets.
-- OGC GeoPackage standard.
-- OGC SensorThings API 2.0 (STA2, draft) for observation/time‑series exposure via HTTP/MQTT.
-- OMS / ISO 19156:2023 alignment for observation semantics.
-- EJP SOIL INSPIRE‑SO GeoPackage template as baseline.
+- INSPIRE Soil theme: [conceptual model (UML)](https://inspire-mif.github.io/uml-models/approved/html/index.htm?guid=23A2AB9E-FE7C-4861-87DD-68973CC103A0), feature catalogue, and [implementation guidance](https://knowledge-base.inspire.ec.europa.eu/publications/inspire-data-specification-soil-technical-guidelines_en) (INSPIRE Soil Technical Guidelines).
+- [INSPIRE Good Practice: GeoPackage encoding for INSPIRE datasets](https://github.com/INSPIRE-MIF/gp-geopackage-encodings/blob/main/spec/GeoPackage_Good_Practice_initiation_fiche.md).
+- [OGC GeoPackage standard](https://www.geopackage.org/).
+- [OGC SensorThings API 2.0](https://hylkevds.github.io/23-019/23-019.html)  (STA2, draft) for observation/time‑series exposure via HTTP/MQTT.
+- [OMS / ISO 19156:2023](https://www.iso.org/standard/82463.html) alignment for observation semantics.
+- [EJP SOIL INSPIRE‑SO GeoPackage](https://github.com/ejpsoil/inspire_soil_gpkg_template) template as baseline.
 
 ---
 
