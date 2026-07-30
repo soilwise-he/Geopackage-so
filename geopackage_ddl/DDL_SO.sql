@@ -4113,3 +4113,38 @@ LEFT JOIN soilsite AS pe_parent_site
 
 LEFT JOIN soilsite AS sp_parent_site
      ON sp_parent_plot.locatedon = sp_parent_site.guid;
+
+-- ============================================================================
+-- STA alignment reference tables (added: GeoPackage -> SensorThings mapping)
+-- Constant reference data, consumed by GeoPackage->STA transformations.
+-- sta_featuretype : INSPIRE soil feature class -> STA FeatureType (name + concept URI)
+-- sta_relationrole: INSPIRE association (FK column) -> STA FeatureRelation RelationRole
+-- Both aspatial ('attributes'), like the codelist tables.
+-- ============================================================================
+
+CREATE TABLE sta_featuretype
+(
+    id            INTEGER PRIMARY KEY,
+    ftid          TEXT NOT NULL,   -- stable STA reference key (FeatureType @id)
+    source_table  TEXT NOT NULL,   -- model table this FeatureType is derived from
+    name          TEXT NOT NULL,   -- STA FeatureType.name
+    definition    TEXT NOT NULL,   -- STA FeatureType.definition = INSPIRE feature-concept URI
+    description   TEXT
+);
+INSERT INTO gpkg_contents (table_name, data_type, identifier, description, last_change)
+VALUES ('sta_featuretype','attributes','STA FeatureType','INSPIRE class -> STA FeatureType mapping (STA alignment).', strftime('%Y-%m-%dT%H:%M:%fZ','now'));
+
+CREATE TABLE sta_relationrole
+(
+    id                INTEGER PRIMARY KEY,
+    roleid            TEXT NOT NULL,   -- stable STA reference key (RelationRole @id)
+    name              TEXT NOT NULL,   -- RelationRole.name        (child -> parent)
+    inversename       TEXT NOT NULL,   -- RelationRole.inverseName (parent -> child)
+    source_table      TEXT NOT NULL,   -- child table holding the FK
+    fk_column         TEXT NOT NULL,   -- FK column encoding this association
+    target_table      TEXT NOT NULL,   -- parent table the FK points to
+    definition        TEXT,
+    inversedefinition TEXT
+);
+INSERT INTO gpkg_contents (table_name, data_type, identifier, description, last_change)
+VALUES ('sta_relationrole','attributes','STA RelationRole','INSPIRE association (FK) -> STA FeatureRelation RelationRole mapping (STA alignment).', strftime('%Y-%m-%dT%H:%M:%fZ','now'));
