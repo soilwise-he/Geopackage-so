@@ -38,11 +38,13 @@ Below is the index of the technical documentation available in this repository:
 [Profile Element Form](./profileelement.md)  
 [Datastream Form](./datastream.md)  
 [Observation Form](./observation.md)  
+ 
 
-# QGIS Model Designer — Smart GeoPackage Analysis
+# QGIS Model Designer: GeoPackage Toolkit
 
-A set of **ready‑to‑use QGIS models** that demonstrate how to automate transformations, joins, and statistical summaries on GeoPackage data with just a few clicks.
-Compact, reproducible workflows that showcase the capabilities and simplicity of the Model Designer for technical users.
+A collection of **ready-to-use QGIS models** for processing, analysing, and transferring GeoPackage data with just a few clicks. <br>
+The toolkit includes compact and reproducible workflows for data transformations, joins, statistical summaries, and the selective transfer of missing records between source and target GeoPackages.
 
+[Incremental GeoPackage Data Transfer](./gpkg_to_gpkg_tool.md)  
 [Mean Profile pH](./ph.md)  
 [Soil Organic Carbon (SOC) 0–30 cm](./soc.md)  
