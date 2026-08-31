@@ -32,8 +32,8 @@ Below is the index of the technical documentation available in this repository:
 [Saving Edits in QGIS Forms](./save_form.md)  <br>
 [Export a Layer as an Excel File](./export_to_excel.md)  <br>
 [Soil Site Form](./soilsite.md) <br> 
-[Soil Plot Form](./soilplot.md) <br>  
-[Soil Profile Form](./soilprofile.md)  <br>
+[Soil Plot Form](./soilplot.md) <br>
+[Soil Profile Form](./soilprofile.md) <br>
 [WRB Classification in the Soilwise GeoPackage](./wrb_classification.md)  <br>
 [Profile Element Form](./profileelement.md) <br> 
 [Datastream Form](./datastream.md)  <br>
