@@ -37,7 +37,8 @@ Below is the index of the technical documentation available in this repository:
 [WRB Classification in the Soilwise GeoPackage](./wrb_classification.md)  
 [Profile Element Form](./profileelement.md)  
 [Datastream Form](./datastream.md)  
-[Observation Form](./observation.md)  
+[Observation Form](./observation.md)
+[Observation View](./view_observation.md)  
  
 
 # QGIS Model Designer: GeoPackage Toolkit
@@ -45,6 +46,7 @@ Below is the index of the technical documentation available in this repository:
 A collection of **ready-to-use QGIS models** for processing, analysing, and transferring GeoPackage data with just a few clicks. <br>
 The toolkit includes compact and reproducible workflows for data transformations, joins, statistical summaries, and the selective transfer of missing records between source and target GeoPackages.
 
+[How to Use Processing Models in QGIS](./how_to_use_models.md)
 [Incremental GeoPackage Data Transfer](./gpkg_to_gpkg_tool.md)  
 [Mean Profile pH](./ph.md)  
 [Soil Organic Carbon (SOC) 0–30 cm](./soc.md)  
