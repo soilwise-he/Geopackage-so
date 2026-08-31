@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>SoilWise Geopackage | SoilWise Geopackage Documentation</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="SoilWise Geopackage" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="SoilWise Geopackage Documentation" />
+<meta name="twitter:description" property="og:description" content="SoilWise Geopackage Documentation" />
+<link rel="canonical" href="https://soilwise-he.github.io/Geopackage-so/qgis/export_to_excel.html" />
+<meta property="og:url" content="https://soilwise-he.github.io/Geopackage-so/qgis/export_to_excel.html" />
+<meta property="og:site_name" content="SoilWise Geopackage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SoilWise Geopackage" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"SoilWise Geopackage Documentation","headline":"SoilWise Geopackage","url":"https://soilwise-he.github.io/Geopackage-so/qgis/export_to_excel.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Geopackage-so/assets/css/style.css?v=50ee7ee560fe85dda0b244256fd87ad97473d941">
+    <!-- MathJax v3 -->
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+
+  <style>.markdown-alert{padding:.5rem 1rem;margin-bottom:1rem;color:inherit;border-left:.25em solid #30363d}.markdown-alert>:first-child{margin-top:0}.markdown-alert>:last-child{margin-bottom:0}.markdown-alert .markdown-alert-title{display:flex;font-weight:500;align-items:center;line-height:1}.markdown-alert svg{margin-right:.5rem!important}.markdown-alert svg path{fill:currentColor}.markdown-alert.markdown-alert-note{border-left-color:#4493f8}.markdown-alert.markdown-alert-note .markdown-alert-title{color:#4493f8}.markdown-alert.markdown-alert-important{border-left-color:#ab7df8}.markdown-alert.markdown-alert-important .markdown-alert-title{color:#ab7df8}.markdown-alert.markdown-alert-warning{border-left-color:#9e6a03}.markdown-alert.markdown-alert-warning .markdown-alert-title{color:#d29922}.markdown-alert.markdown-alert-tip{border-left-color:#238636}.markdown-alert.markdown-alert-tip .markdown-alert-title{color:#3fb950}.markdown-alert.markdown-alert-caution{border-left-color:#da3633}.markdown-alert.markdown-alert-caution .markdown-alert-title{color:#f85149}</style></head>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a[href^="http"]');
+    links.forEach(function (a) {
+      try {
+        var url = new URL(a.href, document.baseURI);
+        if (url.hostname !== location.hostname) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+      } catch (e) {}
+    });
+  });
+  </script>
+  
+<!-- ▼▼▼ Unico blocco centrale: SIDEBAR a sinistra + CONTENUTO a destra ▼▼▼ -->
+    <div class="docs-shell">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <!-- ==========================
+ Sidebar (Search + Navigation)
+ ========================== -->
+<!-- SEARCH (English labels) -->
+<div class="search-box">
+  <label for="docs-search" class="sr-only">Search documentation</label>
+  <input id="docs-search" type="search" placeholder="Search..." autocomplete="off" />
+  <ul id="docs-search-results" class="search-results" aria-live="polite"></ul>
+</div>
+<hr class="sidebar-sep" />
+
+<!-- NAVIGATION -->
+<nav class="docs-nav" aria-label="Sections">
+  <ul class="nav-root">
+    
+    
+    
+    
+    
+
+    
+      <li class="nav-group">
+        <span class="nav-group-title">Documentation</span>
+        <ul class="nav-group-list">
+            
+            <li>
+              <a href="/Geopackage-so/">index</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/cascade_summary.html">cascade summary</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/data_loading.html">data loading</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/relationships_summary.html">relationships summary</a>
+            </li>
+          
+        </ul>
+      </li>
+    
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QGIS</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qgis/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/custom_form.html">custom form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/edit_form.html">edit form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/export_to_excel.html">export to excel</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_documentation.html">gpkg to gpkg documentation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_tool.html">gpkg to gpkg tool</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/how_to_use_models.html">how to use models</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/importing_geometric_features.html">importing geometric features</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/navigating_via_form.html">navigating via form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/open_geopackage.html">open geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/ph.html">ph</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/rename_geopackage.html">rename geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/save_form.html">save form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soc.html">soc</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/view_observation.html">view observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/wrb_classification.html">wrb classification</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QFIELD</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qfield/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/install.html">install</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/interface.html">interface</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/use_plugin.html">use plugin</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">TABLES</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/tables/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/codelist.html">codelist</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/derivedprofilepresenceinsoilbody.html">derivedprofilepresenceinsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/faohorizonnotationtype.html">faohorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonobservedsoilprofile.html">isbasedonobservedsoilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilbody.html">isbasedonsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilderivedobject.html">isbasedonsoilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isderivedfrom.html">isderivedfrom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observedproperty.html">observedproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observingprocedure.html">observingprocedure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_obsdproperty.html">obsprocedure obsdproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_sensor.html">obsprocedure sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizon_profileelement.html">otherhorizon profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizonnotationtype.html">otherhorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/othersoilnametype.html">othersoilnametype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/sensor.html">sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody.html">soilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody_geom.html">soilbody geom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilderivedobject.html">soilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/thing.html">thing</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/unitofmeasure.html">unitofmeasure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergroup_profile.html">wrbqualifiergroup profile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergrouptype.html">wrbqualifiergrouptype</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+
+  </ul>
+</nav>
+
+<!-- LUNR.JS (client-side search) -->
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+(function() {
+  const input = document.getElementById('docs-search');
+  const results = document.getElementById('docs-search-results');
+  let idx = null, docs = [];
+
+  // Helper: produce a clean label (no .md, dashes/underscores -> spaces)
+  function prettifyLabel(title, url) {
+    // fallback: take the last path segment from the URL
+    let label = (title && title.length) ? title : (url.split('/').pop() || url);
+    label = label.replace(/\.md$/i, '');
+    label = label.replace(/[-_]+/g, ' ');
+    return label;
+  }
+
+  fetch('/Geopackage-so/search.json')
+    .then(r => r.json())
+    .then(data => {
+      docs = data;
+      idx = lunr(function () {
+        this.ref('url');
+        this.field('title', { boost: 10 });
+        this.field('content');
+        data.forEach(function (doc) { this.add(doc); }, this);
+      });
+    })
+    .catch(() => { /* no-op */ });
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim();
+    results.innerHTML = '';
+    if (!idx || q.length < 2) return;
+    const matches = idx.search(q);
+    matches.slice(0, 12).forEach(m => {
+      const item = docs.find(d => d.url === m.ref);
+      if (!item) return;
+      const label = prettifyLabel(item.title, item.url);
+      const li = document.createElement('li');
+      li.className = 'search-item';
+      li.innerHTML = '<a href="' + item.url + '">' + label + '</a>';
+      results.appendChild(li);
+    });
+  });
+})();
+</script>
+
+      </aside>
+
+      <div class="container-lg px-3 my-5">
+        
+          <h1><a href="https://soilwise-he.github.io/Geopackage-so/">SoilWise Geopackage</a></h1>
+        
+
+        <section class="docs-main markdown-body">
+          <h1 id="export-to-excel">Export to Excel</h1>
+
+<p>QGIS supports exporting layers to a wide range of formats to help you share, analyze, and report your data beyond the GIS environment. This short guide focuses specifically on <strong>exporting to Microsoft Excel (XLSX)</strong> using the project view <strong><code class="language-plaintext highlighter-rouge">view_observation</code></strong> as the working example. The same workflow applies—often with only minor differences—to <strong>most vector layers and database views</strong> you might have in your project.</p>
+
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg> Tip</p><p>For further information on the  View Observation,  refer to the view <a href="../tables/view_observation.html">documentation</a></p>
+</div>
+
+<h2 id="export-the-view-observation-in-excel">Export the View Observation in Excel</h2>
+
+<p>
+  <a href="../assets/exp_exc_01.webp" target="_blank">
+    <img src="../assets/exp_exc_01.webp" alt="Fig.1" align="left" width="500" />
+  </a>
+① <strong>Select the object to export</strong> (in this case, your view) and <strong>right‑click</strong> to open the **context menu**.  <br />
+ <br />  
+② Choose <strong>Export</strong>.  <br />
+ <br />
+③ Click <strong>ave Features As…</strong> to open the <strong>Export</strong> dialog. <br />
+
+</p>
+<p><br clear="all" /><br /></p>
+
+<p>
+  <a href="../assets/exp_exc_02.webp" target="_blank">
+    <img src="../assets/exp_exc_02.webp" alt="Fig.1" align="left" width="500" />
+  </a>
+  ④ In the <strong>Export</strong> dialog, select the <strong>output format</strong> you need (for Excel: `MS Office Open XML spreadsheet [XLSX]`).  
+</p>
+<p><br clear="all" /><br /></p>
+
+<p>
+  <a href="../assets/exp_exc_03.webp" target="_blank">
+    <img src="../assets/exp_exc_03.webp" alt="Fig.1" align="left" width="500" />
+  </a>
+⑤ Set the <strong>output file name</strong> and <strong>location</strong>. If needed, choose <strong>which fields to export</strong> ⑥ (by default, **all fields** are exported).  <br />
+ <br />
+⑦ <strong>By flagging "Use aliases for exported name"</strong>: column headers are exported using the <strong>field aliases</strong> (or the <strong>Export name</strong> set in the field mapping) instead of the raw database field names. This is useful when the file is intended for <strong>non‑technical users</strong> or when you need <strong>translated headers</strong> If the option is not selected, the <strong>original field names</strong> will be used.<br />
+ <br />
+⑧  <strong>By flagging "Replace all selected raw field values by displayed values"</strong>: exports the <strong>values as displayed in QGIS</strong> (i.e., formatted values) instead of the raw database values—for example, <strong>Value Relation</strong> labels instead of keys, formatted <strong>date/time</strong> booleans as <strong>“Yes/No”</strong>, numeric formatting, etc. Enable this when you want a more <strong>human‑readable</strong> output; leave it unchecked if you need the <strong>original codes</strong> for further data processing.<br />
+ <br />
+⑨ <strong>(Optional)</strong> Tick the option to <strong>add the exported file back to the current project</strong> after export (e.g., *Add saved file to map*), then click <strong>OK</strong> ⑩ to finish.
+</p>
+<p><br clear="all" /><br /></p>
+
+
+        </section>
+
+        
+          <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+            This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/qgis/export_to_excel.md">Improve this page</a>.
+          </div>
+        
+      </div>
+    </div>
+    <!-- ▲▲▲ Fine blocco centrale ▲▲▲ -->
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/qgis/export_to_excel.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js"
+            integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg="
+            crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

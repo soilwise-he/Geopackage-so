@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>SoilWise Geopackage | SoilWise Geopackage Documentation</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="SoilWise Geopackage" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="SoilWise Geopackage Documentation" />
+<meta name="twitter:description" property="og:description" content="SoilWise Geopackage Documentation" />
+<link rel="canonical" href="https://soilwise-he.github.io/Geopackage-so/qgis/soilprofile.html" />
+<meta property="og:url" content="https://soilwise-he.github.io/Geopackage-so/qgis/soilprofile.html" />
+<meta property="og:site_name" content="SoilWise Geopackage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SoilWise Geopackage" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"SoilWise Geopackage Documentation","headline":"SoilWise Geopackage","url":"https://soilwise-he.github.io/Geopackage-so/qgis/soilprofile.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Geopackage-so/assets/css/style.css?v=50ee7ee560fe85dda0b244256fd87ad97473d941">
+    <!-- MathJax v3 -->
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+
+  <style>.markdown-alert{padding:.5rem 1rem;margin-bottom:1rem;color:inherit;border-left:.25em solid #30363d}.markdown-alert>:first-child{margin-top:0}.markdown-alert>:last-child{margin-bottom:0}.markdown-alert .markdown-alert-title{display:flex;font-weight:500;align-items:center;line-height:1}.markdown-alert svg{margin-right:.5rem!important}.markdown-alert svg path{fill:currentColor}.markdown-alert.markdown-alert-note{border-left-color:#4493f8}.markdown-alert.markdown-alert-note .markdown-alert-title{color:#4493f8}.markdown-alert.markdown-alert-important{border-left-color:#ab7df8}.markdown-alert.markdown-alert-important .markdown-alert-title{color:#ab7df8}.markdown-alert.markdown-alert-warning{border-left-color:#9e6a03}.markdown-alert.markdown-alert-warning .markdown-alert-title{color:#d29922}.markdown-alert.markdown-alert-tip{border-left-color:#238636}.markdown-alert.markdown-alert-tip .markdown-alert-title{color:#3fb950}.markdown-alert.markdown-alert-caution{border-left-color:#da3633}.markdown-alert.markdown-alert-caution .markdown-alert-title{color:#f85149}</style></head>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a[href^="http"]');
+    links.forEach(function (a) {
+      try {
+        var url = new URL(a.href, document.baseURI);
+        if (url.hostname !== location.hostname) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+      } catch (e) {}
+    });
+  });
+  </script>
+  
+<!-- ▼▼▼ Unico blocco centrale: SIDEBAR a sinistra + CONTENUTO a destra ▼▼▼ -->
+    <div class="docs-shell">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <!-- ==========================
+ Sidebar (Search + Navigation)
+ ========================== -->
+<!-- SEARCH (English labels) -->
+<div class="search-box">
+  <label for="docs-search" class="sr-only">Search documentation</label>
+  <input id="docs-search" type="search" placeholder="Search..." autocomplete="off" />
+  <ul id="docs-search-results" class="search-results" aria-live="polite"></ul>
+</div>
+<hr class="sidebar-sep" />
+
+<!-- NAVIGATION -->
+<nav class="docs-nav" aria-label="Sections">
+  <ul class="nav-root">
+    
+    
+    
+    
+    
+
+    
+      <li class="nav-group">
+        <span class="nav-group-title">Documentation</span>
+        <ul class="nav-group-list">
+            
+            <li>
+              <a href="/Geopackage-so/">index</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/cascade_summary.html">cascade summary</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/data_loading.html">data loading</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/relationships_summary.html">relationships summary</a>
+            </li>
+          
+        </ul>
+      </li>
+    
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QGIS</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qgis/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/custom_form.html">custom form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/edit_form.html">edit form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/export_to_excel.html">export to excel</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_documentation.html">gpkg to gpkg documentation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_tool.html">gpkg to gpkg tool</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/how_to_use_models.html">how to use models</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/importing_geometric_features.html">importing geometric features</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/navigating_via_form.html">navigating via form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/open_geopackage.html">open geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/ph.html">ph</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/rename_geopackage.html">rename geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/save_form.html">save form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soc.html">soc</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/view_observation.html">view observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/wrb_classification.html">wrb classification</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QFIELD</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qfield/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/install.html">install</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/interface.html">interface</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/use_plugin.html">use plugin</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">TABLES</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/tables/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/codelist.html">codelist</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/derivedprofilepresenceinsoilbody.html">derivedprofilepresenceinsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/faohorizonnotationtype.html">faohorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonobservedsoilprofile.html">isbasedonobservedsoilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilbody.html">isbasedonsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilderivedobject.html">isbasedonsoilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isderivedfrom.html">isderivedfrom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observedproperty.html">observedproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observingprocedure.html">observingprocedure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_obsdproperty.html">obsprocedure obsdproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_sensor.html">obsprocedure sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizon_profileelement.html">otherhorizon profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizonnotationtype.html">otherhorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/othersoilnametype.html">othersoilnametype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/sensor.html">sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody.html">soilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody_geom.html">soilbody geom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilderivedobject.html">soilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/thing.html">thing</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/unitofmeasure.html">unitofmeasure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergroup_profile.html">wrbqualifiergroup profile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergrouptype.html">wrbqualifiergrouptype</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+
+  </ul>
+</nav>
+
+<!-- LUNR.JS (client-side search) -->
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+(function() {
+  const input = document.getElementById('docs-search');
+  const results = document.getElementById('docs-search-results');
+  let idx = null, docs = [];
+
+  // Helper: produce a clean label (no .md, dashes/underscores -> spaces)
+  function prettifyLabel(title, url) {
+    // fallback: take the last path segment from the URL
+    let label = (title && title.length) ? title : (url.split('/').pop() || url);
+    label = label.replace(/\.md$/i, '');
+    label = label.replace(/[-_]+/g, ' ');
+    return label;
+  }
+
+  fetch('/Geopackage-so/search.json')
+    .then(r => r.json())
+    .then(data => {
+      docs = data;
+      idx = lunr(function () {
+        this.ref('url');
+        this.field('title', { boost: 10 });
+        this.field('content');
+        data.forEach(function (doc) { this.add(doc); }, this);
+      });
+    })
+    .catch(() => { /* no-op */ });
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim();
+    results.innerHTML = '';
+    if (!idx || q.length < 2) return;
+    const matches = idx.search(q);
+    matches.slice(0, 12).forEach(m => {
+      const item = docs.find(d => d.url === m.ref);
+      if (!item) return;
+      const label = prettifyLabel(item.title, item.url);
+      const li = document.createElement('li');
+      li.className = 'search-item';
+      li.innerHTML = '<a href="' + item.url + '">' + label + '</a>';
+      results.appendChild(li);
+    });
+  });
+})();
+</script>
+
+      </aside>
+
+      <div class="container-lg px-3 my-5">
+        
+          <h1><a href="https://soilwise-he.github.io/Geopackage-so/">SoilWise Geopackage</a></h1>
+        
+
+        <section class="docs-main markdown-body">
+          
+<h1 id="soil-profile-form">Soil Profile Form</h1>
+
+<h2 id="open">Open</h2>
+<p>To open the Soil Profile custom forms, go to the Layers panel, right‑click the <code class="language-plaintext highlighter-rouge">soilprofile</code> layer, and choose <strong>Open Attribute Table</strong> from the context menu.</p>
+
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg> Tip</p><p>For further information on the custom forms, consult the documents <a href="/Geopackage-so/qgis/custom_form.html">Customized Attribute Forms in QGIS</a> and <a href="/Geopackage-so/qgis/navigating_via_form.html">Navigating GeoPackage Tables via Forms</a></p>
+</div>
+
+<h2 id="edit">Edit</h2>
+
+<p>A Soil Profile does not contain any geometry. To enable editing through forms, follow the instructions provided in the document <a href="/Geopackage-so/qgis/edit_form.html">Editing Records Through a QGIS Form</a>.</p>
+
+<h3 id="required-fields">REQUIRED fields</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">id</code>: primary key (auto-incrementing)</li>
+  <li><code class="language-plaintext highlighter-rouge">Begin Lifespan version</code>: DATETIME (default: today)</li>
+  <li><code class="language-plaintext highlighter-rouge">Valid From</code>: DATETIME (default: today)</li>
+  <li><code class="language-plaintext highlighter-rouge">isderived</code>: BOOLEAN (default: 0)</li>
+  <li><code class="language-plaintext highlighter-rouge">isoriginalclassification</code>: BOOLEAN (default: 1)</li>
+</ul>
+
+<h3 id="id-group">ID Group</h3>
+<p>
+  <a href="../assets/group_id.webp" target="_blank">
+    <img src="../assets/group_id.webp" alt="Fig.1" align="left" width="500" />
+  </a>
+</p>
+<p><br clear="all" /><br /></p>
+
+<h4 id="fields">Fields</h4>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">id</code></strong> - Primary <strong>AUTO_INCREMENT INTEGER PRIMARY KEY</strong>; it’s the required identifier for GeoPackage tables and is assigned automatically on insert.</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">guid</code></strong> - <strong>Global identifier</strong> in UUID format, stored as text. The field is <strong>optional</strong>. It’s <strong>automatically managed via triggers</strong>.</p>
+  </li>
+</ul>
+
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-report" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Important</p><p>On opening, the <strong>ID</strong> group is collapsed: there is no need for manual editing, as <strong>both fields are system‑managed</strong> (the <code class="language-plaintext highlighter-rouge">id</code> by the SQLite engine and the <code class="language-plaintext highlighter-rouge">guid</code> by triggers), reducing errors and ensuring identifier consistency over time.</p>
+</div>
+
+<h3 id="dynamic-form-behaviour-based-on-is-derived">Dynamic Form Behaviour Based on <code class="language-plaintext highlighter-rouge">Is Derived</code></h3>
+
+<p>The <strong>Soil Profile</strong> data-entry form must adapt dynamically according to the value of the field <code class="language-plaintext highlighter-rouge">soilprofile.isderived</code>, which determines whether the profile is <strong>Observed</strong> (<code class="language-plaintext highlighter-rouge">0</code>) or <strong>Derived</strong> (<code class="language-plaintext highlighter-rouge">1</code>). This behaviour follows the INSPIRE Soil data model and is strictly enforced in the GeoPackage through database triggers and CHECK constraints.</p>
+
+<h4 id="is-derived--0--observed-soil-profile"><code class="language-plaintext highlighter-rouge">Is Derived = 0</code> → <strong>Observed Soil Profile</strong></h4>
+
+<p>
+  <a href="../assets/observed.webp" target="_blank">
+    <img src="../assets/observed.webp" alt="Fig.1" align="left" width="500" />
+  </a>
+When users select <strong>Observed</strong> -  <strong>The checkbox is unchecked</strong> ①<br />
+<br />
+The form automatically shows the elements related to point‑location and to the contextual relations available for observed profiles.<br />
+<br />
+The <strong>Soil Plot section</strong> becomes visible, ② allowing the selection of the associated soilplot.guid.<br /> 
+<br />
+The <strong>Derived Soil Profile section</strong> (representing the isderivedfrom relation where the observed profile may appear as guid_related) also appears,③ along with the <strong>SoilDerived Object</strong> relation area ④.<br />
+Attempts to store a NULL or invalid location are blocked by database triggers, ensuring data consistency. <br />
+<br />
+Interface elements specific to derived profiles—such as derived‑only constraints or soil‑body‑percentage definitions—do not appear while the profile is in Observed mode.<br />
+<br />
+Database logic prevents these derived‑only relations from being created for an observed profile.
+</p>
+<p><br clear="all" /><br /></p>
+
+<h4 id="is-derived--1--derived-soil-profile"><code class="language-plaintext highlighter-rouge">Is Derived = 1</code> → <strong>Derived Soil Profile</strong></h4>
+
+<p>
+  <a href="../assets/derived.webp" target="_blank">
+    <img src="../assets/derived.webp" alt="Fig.1" align="left" width="500" />
+  </a>
+When users select <strong>Derived</strong> - <strong>The checkbox is checked</strong> ①<br />
+<br />
+The form adjusts by hiding all location‑related components, including the Soil Plot section, since derived profiles are not point‑located. Any non‑NULL value in the location field is rejected by database triggers.<br />
+<br />
+In this mode, the form exposes only the relational structures applicable to derived profiles:<br />
+<br />
+the <strong>Is Derived From section</strong>, ② which represents the association to observed profiles through the isderivedfrom table (where the derived profile appears as guid_base)
+the Derived Presence in <strong>Soil Body section</strong>,③ corresponding to the derivedprofilepresenceinsoilbody table, used to express the percentage‑based presence of the derived profile within a Soil Body.<br />
+<br />
+These interface elements reflect the constraints, type‑coherence checks, and consistency rules enforced at database level.
+</p>
+<p><br clear="all" /><br /></p>
+
+<h3 id="inspire-id-group">INSPIRE ID Group</h3>
+<p>
+  <a href="../assets/group_inspireid.webp" target="_blank">
+    <img src="../assets/group_inspireid.webp" alt="Fig.1" align="left" width="500" />
+  </a>
+</p>
+<p><br clear="all" /><br /></p>
+
+<blockquote>
+  <p>An <strong>INSPIRE ID</strong> is the <strong>external unique identifier</strong> assigned to each spatial object in INSPIRE datasets; it ensures <strong>uniqueness</strong> and <strong>persistence</strong> and allows external applications to reliably reference the same object over time.
+The identifier <strong>must not be changed</strong> during the object’s life cycle; it can also be published as a <strong>URI</strong> to facilitate web-based referencing. <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></p>
+</blockquote>
+
+<h4 id="fields-1">Fields</h4>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Local id</code></strong> — Local identifier assigned by the data provider; <strong>unique</strong> within its namespace.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Namespace</code></strong> — Namespace that uniquely identifies the data source/domain of the spatial object.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Version id</code></strong> — Identifier of the specific <strong>version</strong> of the object; <strong>optional (voidable)</strong> and used to distinguish different versions of the same object.</li>
+</ul>
+
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-report" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Important</p><p>These fields are not mandatory, but <strong>filling them out is strongly recommended</strong>: they help uniquely identify the record in forms and across data exchanges.<br />
+In particular, <code class="language-plaintext highlighter-rouge">localid</code> + <code class="language-plaintext highlighter-rouge">namespace</code> form a stable identifier; <code class="language-plaintext highlighter-rouge">versionid</code> helps track changes over time.</p>
+</div>
+
+<h3 id="editing-child-elements-in-qgis-forms">Editing Child Elements in QGIS Forms</h3>
+<p>Editing child elements directly within a parent form improves data quality and speed: it keeps users in context, guarantees referential integrity through predefined relations, and reduces errors by enforcing database rules at the moment of entry. In your GeoPackage, several relationships are validated by triggers and codelist checks, so capturing child data where it belongs (inside the parent form) closely aligns UI behavior with DB constraints.</p>
+
+<h3 id="sub-form">Sub Form</h3>
+<p>
+  <a href="../assets/spr_sub_wrb.webp" target="_blank">
+    <img src="../assets/spr_sub_wrb.webp" alt="Fig.1" align="left" width="500" />
+  </a>
+</p>
+<p><br clear="all" /><br /></p>
+
+<p>Use the following buttons to manage child layers during data editing.</p>
+
+<p><strong>Toggle editing mode for child layer</strong> ① enables editing on the related (child) layer embedded in the form; once active, you can add/modify/delete child records directly from the parent record’s view.</p>
+
+<p><strong>Save child layer edit</strong> ② commits the pending edits for the child layer to the GeoPackage. Use this to persist changes without leaving the parent form.</p>
+
+<p><strong>Add child feature</strong> ③ creates a new child record pre‑linked to the current parent (relation fields are auto‑populated by the form’s relation widget), ensuring correct foreign keys and preventing orphan rows.</p>
+
+<h3 id="sub-form-wrb-qualifier">Sub Form WRB Qualifier</h3>
+<p><strong>Purpose</strong>: attaches WRB qualifier groups to a soil profile with an explicit qualifierposition (ordering).</p>
+
+<p><strong>DB enforcement</strong>: triggers align wrbversion between profile and qualifier group, and ensure qualifierposition is unique per qualifierplace within the same profile.</p>
+
+<p><strong>Form hint</strong>: expose as a child list on the Soil Profile form; use Add child feature to add qualifiers in order, and Save child layer edit to commit.</p>
+
+<h3 id="sub-form-other-soil-name">Sub Form Other Soil Name</h3>
+<p><strong>Purpose</strong>: stores additional soil names and related classification flags for a profile.</p>
+
+<p><strong>DB enforcement</strong>: codelist checks on othersoilname_type; GUID immutability; cascading rules via FK to soilprofile.</p>
+
+<p><strong>Form hint</strong>: present as a child panel in the Soil Profile form for quick insertion of multiple alternative names; Save child layer edit to persist</p>
+
+<h3 id="sub-form-derived-soil-profile-visible-if-isderived--true---is-derived-from-visible-if-isderived--false">Sub Form Derived Soil Profile (<em>Visible if <code class="language-plaintext highlighter-rouge">isderived</code> = TRUE</em>) - Is Derived From (<em>Visible if <code class="language-plaintext highlighter-rouge">isderived</code> = FALSE</em>)</h3>
+<p><strong>Purpose</strong>: records the association Derived Soil Profile (guid_base) → Observed Soil Profile (guid_related).</p>
+
+<p><strong>DB enforcement</strong>: triggers guarantee that guid_base points to a derived profile and guid_related to an observed one; duplicates of the same pair are prevented.</p>
+
+<p><strong>Form hint</strong>: embed this as a child table under Derived Soil Profile; use Add child feature to append observed sources and Save child layer edit to persist.</p>
+
+<h3 id="constraints">Constraints</h3>
+<ul>
+  <li><strong>CHECK</strong>: <code class="language-plaintext highlighter-rouge">validfrom &lt;= validto</code> (BEFORE INSERT/UPDATE).</li>
+  <li><strong>CHECK</strong>: <code class="language-plaintext highlighter-rouge">beginlifespanversion &lt; endlifespanversion</code> (BEFORE INSERT).</li>
+  <li><strong>Observed/Derived location rule</strong>: if <code class="language-plaintext highlighter-rouge">isderived=1</code> then <code class="language-plaintext highlighter-rouge">location</code> must be NULL; if <code class="language-plaintext highlighter-rouge">isderived=0</code> then <code class="language-plaintext highlighter-rouge">location</code> must be NOT NULL (BEFORE INSERT/UPDATE).</li>
+  <li><strong>WRB version membership</strong>: <code class="language-plaintext highlighter-rouge">wrbversion ∈ codelist(id)</code> where <code class="language-plaintext highlighter-rouge">collection='wrbversion'</code> when not NULL (BEFORE INSERT/UPDATE).</li>
+  <li><strong>WRB RSG + version coherence</strong>: if <code class="language-plaintext highlighter-rouge">wrbversion</code> targets a specific year, <code class="language-plaintext highlighter-rouge">wrbreferencesoilgroup</code> must belong to the corresponding year collection (BEFORE INSERT/UPDATE).</li>
+  <li><strong>GUID immutability</strong> and <strong>versioning refresh</strong> on UPDATE.</li>
+</ul>
+
+<h3 id="attribute-reference">Attribute Reference</h3>
+<p>For an  overview of the <strong>attributes used in the custom form</strong>, refer to the soilsite table  <a href="/Geopackage-so/tables/soilplot.html">documentation</a>. It provides the key definitions and data types needed to correctly interpret the fields and configure the form within the data model.</p>
+
+<h2 id="datastream-relationship">Datastream Relationship</h2>
+<p>Since this table is relationally linked to a SensorThings <strong>Datastream</strong>, you can add further domain‑specific properties in an STA2‑compatible way by correctly populating the <a href="/Geopackage-so/qgis/datastream.html">Datastream</a> and <a href="/Geopackage-so/qgis/observation.html">Observation</a> tables.</p>
+
+<p>In practice, Datastream holds the series‑level context of the time series, while each Observation record carries the measurement‑level details, reflecting the SensorThings data model in which every observation is organized under a datastream.</p>
+
+<h2 id="save">Save</h2>
+
+<p>For a more comprehensive overview of form‑saving workflows, refer to the detailed documentation in <a href="/Geopackage-so/qgis/save_form.html">Saving Edits in QGIS Forms</a>.</p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="https://epanet.eea.europa.eu/Eionet/reportnet/docs/noise/guidelines/inspire_identifiers_doc.pdf">Creating INSPIRE external unique object identifiers in the scope of the END reporting</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        </section>
+
+        
+          <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+            This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/qgis/soilprofile.md">Improve this page</a>.
+          </div>
+        
+      </div>
+    </div>
+    <!-- ▲▲▲ Fine blocco centrale ▲▲▲ -->
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/qgis/soilprofile.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js"
+            integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg="
+            crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>SoilWise Geopackage | SoilWise Geopackage Documentation</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="SoilWise Geopackage" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="SoilWise Geopackage Documentation" />
+<meta name="twitter:description" property="og:description" content="SoilWise Geopackage Documentation" />
+<link rel="canonical" href="https://soilwise-he.github.io/Geopackage-so/tables/observation.html" />
+<meta property="og:url" content="https://soilwise-he.github.io/Geopackage-so/tables/observation.html" />
+<meta property="og:site_name" content="SoilWise Geopackage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SoilWise Geopackage" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"SoilWise Geopackage Documentation","headline":"SoilWise Geopackage","url":"https://soilwise-he.github.io/Geopackage-so/tables/observation.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Geopackage-so/assets/css/style.css?v=50ee7ee560fe85dda0b244256fd87ad97473d941">
+    <!-- MathJax v3 -->
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+
+  <style>.markdown-alert{padding:.5rem 1rem;margin-bottom:1rem;color:inherit;border-left:.25em solid #30363d}.markdown-alert>:first-child{margin-top:0}.markdown-alert>:last-child{margin-bottom:0}.markdown-alert .markdown-alert-title{display:flex;font-weight:500;align-items:center;line-height:1}.markdown-alert svg{margin-right:.5rem!important}.markdown-alert svg path{fill:currentColor}.markdown-alert.markdown-alert-note{border-left-color:#4493f8}.markdown-alert.markdown-alert-note .markdown-alert-title{color:#4493f8}.markdown-alert.markdown-alert-important{border-left-color:#ab7df8}.markdown-alert.markdown-alert-important .markdown-alert-title{color:#ab7df8}.markdown-alert.markdown-alert-warning{border-left-color:#9e6a03}.markdown-alert.markdown-alert-warning .markdown-alert-title{color:#d29922}.markdown-alert.markdown-alert-tip{border-left-color:#238636}.markdown-alert.markdown-alert-tip .markdown-alert-title{color:#3fb950}.markdown-alert.markdown-alert-caution{border-left-color:#da3633}.markdown-alert.markdown-alert-caution .markdown-alert-title{color:#f85149}</style></head>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a[href^="http"]');
+    links.forEach(function (a) {
+      try {
+        var url = new URL(a.href, document.baseURI);
+        if (url.hostname !== location.hostname) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+      } catch (e) {}
+    });
+  });
+  </script>
+  
+<!-- ▼▼▼ Unico blocco centrale: SIDEBAR a sinistra + CONTENUTO a destra ▼▼▼ -->
+    <div class="docs-shell">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <!-- ==========================
+ Sidebar (Search + Navigation)
+ ========================== -->
+<!-- SEARCH (English labels) -->
+<div class="search-box">
+  <label for="docs-search" class="sr-only">Search documentation</label>
+  <input id="docs-search" type="search" placeholder="Search..." autocomplete="off" />
+  <ul id="docs-search-results" class="search-results" aria-live="polite"></ul>
+</div>
+<hr class="sidebar-sep" />
+
+<!-- NAVIGATION -->
+<nav class="docs-nav" aria-label="Sections">
+  <ul class="nav-root">
+    
+    
+    
+    
+    
+
+    
+      <li class="nav-group">
+        <span class="nav-group-title">Documentation</span>
+        <ul class="nav-group-list">
+            
+            <li>
+              <a href="/Geopackage-so/">index</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/cascade_summary.html">cascade summary</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/data_loading.html">data loading</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/relationships_summary.html">relationships summary</a>
+            </li>
+          
+        </ul>
+      </li>
+    
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QGIS</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qgis/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/custom_form.html">custom form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/edit_form.html">edit form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/export_to_excel.html">export to excel</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_documentation.html">gpkg to gpkg documentation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_tool.html">gpkg to gpkg tool</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/how_to_use_models.html">how to use models</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/importing_geometric_features.html">importing geometric features</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/navigating_via_form.html">navigating via form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/open_geopackage.html">open geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/ph.html">ph</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/rename_geopackage.html">rename geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/save_form.html">save form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soc.html">soc</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/view_observation.html">view observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/wrb_classification.html">wrb classification</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QFIELD</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qfield/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/install.html">install</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/interface.html">interface</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/use_plugin.html">use plugin</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">TABLES</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/tables/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/codelist.html">codelist</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/derivedprofilepresenceinsoilbody.html">derivedprofilepresenceinsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/faohorizonnotationtype.html">faohorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonobservedsoilprofile.html">isbasedonobservedsoilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilbody.html">isbasedonsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilderivedobject.html">isbasedonsoilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isderivedfrom.html">isderivedfrom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observedproperty.html">observedproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observingprocedure.html">observingprocedure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_obsdproperty.html">obsprocedure obsdproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_sensor.html">obsprocedure sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizon_profileelement.html">otherhorizon profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizonnotationtype.html">otherhorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/othersoilnametype.html">othersoilnametype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/sensor.html">sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody.html">soilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody_geom.html">soilbody geom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilderivedobject.html">soilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/thing.html">thing</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/unitofmeasure.html">unitofmeasure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergroup_profile.html">wrbqualifiergroup profile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergrouptype.html">wrbqualifiergrouptype</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+
+  </ul>
+</nav>
+
+<!-- LUNR.JS (client-side search) -->
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+(function() {
+  const input = document.getElementById('docs-search');
+  const results = document.getElementById('docs-search-results');
+  let idx = null, docs = [];
+
+  // Helper: produce a clean label (no .md, dashes/underscores -> spaces)
+  function prettifyLabel(title, url) {
+    // fallback: take the last path segment from the URL
+    let label = (title && title.length) ? title : (url.split('/').pop() || url);
+    label = label.replace(/\.md$/i, '');
+    label = label.replace(/[-_]+/g, ' ');
+    return label;
+  }
+
+  fetch('/Geopackage-so/search.json')
+    .then(r => r.json())
+    .then(data => {
+      docs = data;
+      idx = lunr(function () {
+        this.ref('url');
+        this.field('title', { boost: 10 });
+        this.field('content');
+        data.forEach(function (doc) { this.add(doc); }, this);
+      });
+    })
+    .catch(() => { /* no-op */ });
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim();
+    results.innerHTML = '';
+    if (!idx || q.length < 2) return;
+    const matches = idx.search(q);
+    matches.slice(0, 12).forEach(m => {
+      const item = docs.find(d => d.url === m.ref);
+      if (!item) return;
+      const label = prettifyLabel(item.title, item.url);
+      const li = document.createElement('li');
+      li.className = 'search-item';
+      li.innerHTML = '<a href="' + item.url + '">' + label + '</a>';
+      results.appendChild(li);
+    });
+  });
+})();
+</script>
+
+      </aside>
+
+      <div class="container-lg px-3 my-5">
+        
+          <h1><a href="https://soilwise-he.github.io/Geopackage-so/">SoilWise Geopackage</a></h1>
+        
+
+        <section class="docs-main markdown-body">
+          <h1 id="observation">Observation</h1>
+
+<h2 id="definition">Definition</h2>
+
+<blockquote>
+  <p><em>An Observation provides a value for an ObservedProperty of a Feature, as observed by a Sensor. This value can be of any type, as described by the resultType of the Datastream that Observation is associated with.</em> <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>SensorThings API 2.0 (23-019)</strong> <em>(DRAFT)</em>,<br />
+version 23-019.<br />
+https://hylkevds.github.io/23-019/23-019.html</p>
+</blockquote>
+
+<h2 id="result-compliance-based-on-datastreamtype">Result Compliance Based on <code class="language-plaintext highlighter-rouge">datastream.type</code></h2>
+<p>Two BEFORE triggers (INSERT and UPDATE) apply expected structure and domain rules to the observation’s <code class="language-plaintext highlighter-rouge">result</code>, according to the type defined in the linked datastream row:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">observation_bi_type_constraints</code> (BEFORE INSERT)</li>
+  <li><code class="language-plaintext highlighter-rouge">observation_bu_type_constraints</code> (BEFORE UPDATE OF result_*, iddatastream)</li>
+</ul>
+
+<p>The rules by type are:</p>
+
+<h3 id="quantity">Quantity</h3>
+<ul>
+  <li>Expected structure: only <code class="language-plaintext highlighter-rouge">result_real</code> NOT NULL; <code class="language-plaintext highlighter-rouge">result_text</code> and <code class="language-plaintext highlighter-rouge">result_boolean</code> must be NULL.</li>
+  <li>Constraints with respect to the bounds (if configured in the datastream):
+    <ul>
+      <li>if <code class="language-plaintext highlighter-rouge">value_min</code> is not NULL → <code class="language-plaintext highlighter-rouge">result_real &gt;= value_min</code>;</li>
+      <li>if <code class="language-plaintext highlighter-rouge">value_max</code> is not NULL → <code class="language-plaintext highlighter-rouge">result_real &lt;= value_max</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="category">Category</h3>
+<ul>
+  <li>Expected structure: only <code class="language-plaintext highlighter-rouge">result_text</code> NOT NULL; <code class="language-plaintext highlighter-rouge">result_real</code> and <code class="language-plaintext highlighter-rouge">result_boolean</code> must be NULL.</li>
+  <li>Codelist membership: <code class="language-plaintext highlighter-rouge">result_text</code> must exist as <code class="language-plaintext highlighter-rouge">codelist.id</code> in the collection equal to <code class="language-plaintext highlighter-rouge">datastream.codespace</code> (join by collection).</li>
+</ul>
+
+<h3 id="boolean">Boolean</h3>
+<ul>
+  <li>Expected structure: only <code class="language-plaintext highlighter-rouge">result_boolean</code> NOT NULL with value 0 or 1; <code class="language-plaintext highlighter-rouge">result_text</code> and <code class="language-plaintext highlighter-rouge">result_real</code> must be NULL.</li>
+</ul>
+
+<h3 id="count">Count</h3>
+<ul>
+  <li>Expected structure: only <code class="language-plaintext highlighter-rouge">result_real</code> NOT NULL, but it must be integer in value (comparison <code class="language-plaintext highlighter-rouge">result_real = CAST(result_real AS INTEGER)</code>). <code class="language-plaintext highlighter-rouge">result_text</code> and <code class="language-plaintext highlighter-rouge">result_boolean</code> must be NULL.</li>
+  <li>Constraints with respect to the bounds (if present in the datastream):
+    <ul>
+      <li>if <code class="language-plaintext highlighter-rouge">value_min</code> is not NULL → <code class="language-plaintext highlighter-rouge">result_real &gt;= value_min</code>;</li>
+      <li>if <code class="language-plaintext highlighter-rouge">value_max</code> is not NULL → <code class="language-plaintext highlighter-rouge">result_real &lt;= value_max</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="text">Text</h3>
+<ul>
+  <li>Expected structure: only <code class="language-plaintext highlighter-rouge">result_text</code> NOT NULL; <code class="language-plaintext highlighter-rouge">result_real</code> and <code class="language-plaintext highlighter-rouge">result_boolean</code> must be NULL.</li>
+</ul>
+
+<h3 id="bounds-consistency-between-datastream-and-observations-related-logic">Bounds Consistency Between Datastream and Observations (Related Logic)</h3>
+<p>Although they are not triggers “of the observation table,” two triggers on <code class="language-plaintext highlighter-rouge">datastream</code> ensure that any changes to <code class="language-plaintext highlighter-rouge">value_min</code>/<code class="language-plaintext highlighter-rouge">value_max</code> do not make existing observations inconsistent:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">datastream_bu_bounds_validate_observations</code> (BEFORE UPDATE OF value_min, value_max) blocks the update if there exist observations (for that datastream) with <code class="language-plaintext highlighter-rouge">result_real</code> outside the new limits. Applies to types Quantity and Count.</li>
+  <li>In addition, <code class="language-plaintext highlighter-rouge">datastream_bi/bu_bounds_consistency</code> prevent setting <code class="language-plaintext highlighter-rouge">value_min &gt; value_max</code> when both are non-NULL.</li>
+  <li>For Count, <code class="language-plaintext highlighter-rouge">datastream_bi/bu_count_bounds_are_integers</code> enforce that the extrema, if present, are integers in value (the “integer” form is verified with numeric cast, e.g., 3.0 is accepted).</li>
+</ul>
+
+<p>This family therefore guarantees semantic stability: you cannot tighten a series’ admissibility interval in such a way as to “expel” measurements already acquired.</p>
+
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-report" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Important</p><h3 id="error-messages-and-diagnosis">Error Messages and Diagnosis</h3>
+<p>The triggers use <code class="language-plaintext highlighter-rouge">RAISE(ABORT, '...')</code> with specific messages (e.g., “Type Quantity: result_real is below value_min.”, “Type Category: result_text must exist in codelist…”), facilitating diagnosis during data ingestion and ETL automation.</p>
+</div>
+
+<h2 id="alignment-of-the-datastream-time-window">Alignment of the Datastream Time Window</h2>
+<p>To maintain in <code class="language-plaintext highlighter-rouge">datastream</code> a consistent summary of the temporal coverage of its observations, there are three triggers that recompute the fields <code class="language-plaintext highlighter-rouge">datastream.phenomenontime_start</code> (MIN) and <code class="language-plaintext highlighter-rouge">datastream.phenomenontime_end</code> (MAX) with respect to all related rows in <code class="language-plaintext highlighter-rouge">observation</code>:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">observation_ai_recalc_ds_times</code> (AFTER INSERT): upon a new insert, recomputes MIN/MAX on the datastream of <code class="language-plaintext highlighter-rouge">NEW.iddatastream</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">observation_au_recalc_ds_times</code> (AFTER UPDATE OF phenomenontime_*, iddatastream): recomputes for the new datastream; if the observation has been moved across series, it also recomputes for the old datastream.</li>
+  <li><code class="language-plaintext highlighter-rouge">observation_ad_recalc_ds_times</code> (AFTER DELETE): upon deletion, recomputes MIN/MAX on the datastream of <code class="language-plaintext highlighter-rouge">OLD.iddatastream</code>.</li>
+</ul>
+
+<p>To support these recurring aggregations, recommended indexes are defined:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">idx_observation_ds_times (iddatastream, phenomenontime_start, phenomenontime_end)</code></li>
+</ul>
+
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Warning</p><p>Records that do not comply with the defined constraints <strong>shall be rejected by the system and shall not be persisted</strong> in the GeoPackage.</p>
+</div>
+
+<p>&nbsp;</p>
+
+<p>
+  <img src="../assets/observation.svg" alt="TABELLA SOILSITE EXP" align="left" width="420" />
+ <!--
+  <strong>TABELLA SOILSITE EXP</strong><br>
+   Lorem Ipsum.
+ -->
+</p>
+
+<p><br clear="all" /></p>
+<p>&nbsp;</p>
+
+<h2 id="table-observation">Table: <code class="language-plaintext highlighter-rouge">observation</code></h2>
+
+<h3 id="columns">Columns</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Constraints</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">id</code></td>
+      <td><code class="language-plaintext highlighter-rouge">INTEGER</code></td>
+      <td>PRIMARY KEY</td>
+      <td>A unique, read-only attribute that serves as an identifier for the entity.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">guid</code></td>
+      <td><code class="language-plaintext highlighter-rouge">TEXT</code></td>
+      <td> </td>
+      <td>Universally unique identifier.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">phenomenontime_start</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DATETIME</code></td>
+      <td>NOT NULL, DEFAULT strftime(‘%Y-%m-%dT%H:%M:%fZ’, ‘now’)</td>
+      <td>The time instant when the Observation happens, or the start time if it happens over a period.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">phenomenontime_end</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DATETIME</code></td>
+      <td> </td>
+      <td>The end time if the Observation happens over a period.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result_text</code></td>
+      <td><code class="language-plaintext highlighter-rouge">TEXT</code></td>
+      <td> </td>
+      <td>The estimated value of an ObservedProperty from the Observation, when the Type is Category or Text.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result_real</code></td>
+      <td><code class="language-plaintext highlighter-rouge">REAL</code></td>
+      <td> </td>
+      <td>The estimated value of an ObservedProperty from the Observation, when the Type is Quantity or Count.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result_boolean</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BOOLEAN</code></td>
+      <td> </td>
+      <td>The estimated value of an ObservedProperty from the Observation, when the Type is Boolean.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">resulttime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DATETIME</code></td>
+      <td> </td>
+      <td>The time of the Observation’s result was generated.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">validtime_start</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DATETIME</code></td>
+      <td> </td>
+      <td>The start time of the period during which the result may be used.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">validtime_end</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DATETIME</code></td>
+      <td> </td>
+      <td>The end time of the period during which the result may be used.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">properties</code></td>
+      <td><code class="language-plaintext highlighter-rouge">TEXT</code></td>
+      <td> </td>
+      <td>mime type: ‘application/json’. A JSON Object containing user-annotated properties as key-value pairs.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">guid_datastream</code></td>
+      <td><code class="language-plaintext highlighter-rouge">TEXT</code></td>
+      <td>NOT NULL</td>
+      <td>Foreign key to the Datstream table, guid field.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="table-identifiers">Table Identifiers</h3>
+<p>In this table, the primary key is the <em>id</em> field (integer, auto-incrementing).<br />
+There is also a text field named <strong>GUID</strong>, which stores a <em>UUID</em> (Universally Unique Identifier) compliant with RFC 4122.</p>
+
+<p>Although GUID is not mandatory at the schema level (it is not declared NOT NULL), its functional requirement is enforced by two triggers:</p>
+<ul>
+  <li><strong>observationguid (INSERT)</strong> trigger: if GUID is missing or empty, a correctly formatted UUID is generated and inserted automatically.</li>
+  <li><strong>observationguidupdate (UPDATE)</strong> trigger: prevents any modification of GUID after insertion, making it immutable (effectively behaving as a stable key).</li>
+</ul>
+
+<p>Any foreign keys (FK) from other tables reference this table’s GUID field rather than the id field, ensuring stable and interoperable references across datasets and database instances.</p>
+
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> Note</p><p><strong>GUID management</strong> is handled by database triggers, which ensure their automatic generation at the time of record insertion, <strong>without any user involvement</strong>.</p>
+</div>
+
+<h3 id="relationships-as-child">Relationships (as child)</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">observation.guid_datastream</code> → <code class="language-plaintext highlighter-rouge">datastream.guid</code> (<strong>ON UPDATE</strong> CASCADE, <strong>ON DELETE</strong> CASCADE)
+    <ul>
+      <li><em>Note:</em> delete on <code class="language-plaintext highlighter-rouge">datastream</code> cascades to <code class="language-plaintext highlighter-rouge">observation</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="referenced-by-as-parent">Referenced by (as parent)</h3>
+<ul>
+  <li>None</li>
+</ul>
+
+<h3 id="indexes">Indexes</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Unique</th>
+      <th>Columns</th>
+      <th>Origin</th>
+      <th>Partial</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">idx_observation_guid_datastream</code></td>
+      <td>No</td>
+      <td><code class="language-plaintext highlighter-rouge">guid_datastream</code></td>
+      <td><code class="language-plaintext highlighter-rouge">c</code></td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="triggers">Triggers</h3>
+<p>For every trigger you will find:</p>
+
+<ul>
+  <li><strong>When it runs</strong> (BEFORE/AFTER, INSERT/UPDATE/DELETE)</li>
+  <li><strong>What it reads and compares</strong> (columns, lookups in other tables)</li>
+  <li><strong>What happens on success</strong> (the statement proceeds, optional updates)</li>
+  <li><strong>What happens on failure</strong> (the exact error text raised)</li>
+</ul>
+
+<h4 id="observationguid"><code class="language-plaintext highlighter-rouge">observationguid</code></h4>
+<p><strong>When they run:</strong> AFTER INSERT (per row)</p>
+
+<p><strong>What they do:</strong> If <code class="language-plaintext highlighter-rouge">NEW.guid</code> is <code class="language-plaintext highlighter-rouge">NULL</code>, generates a lowercase UUID (v4‑like) and sets it on the inserted row.</p>
+
+<p><strong>If the check passes:</strong> The row is updated with the generated GUID; insert proceeds (no message).</p>
+
+<p><strong>If the check fails:</strong> No failure path — it only assigns when GUID is missing.</p>
+
+<h4 id="observationguidupdate"><code class="language-plaintext highlighter-rouge">observationguidupdate</code></h4>
+<p><strong>When they run:</strong> AFTER UPDATE OF <code class="language-plaintext highlighter-rouge">guid</code> (per row)</p>
+
+<p><strong>What they do:</strong> Compares <code class="language-plaintext highlighter-rouge">NEW.guid</code> with <code class="language-plaintext highlighter-rouge">OLD.guid</code> to block GUID changes.</p>
+
+<p><strong>If the check passes:</strong> If <code class="language-plaintext highlighter-rouge">NEW.guid = OLD.guid</code>, the update proceeds.</p>
+
+<p><strong>If the check fails:</strong> Aborts with: <code class="language-plaintext highlighter-rouge">Cannot update guid column.</code></p>
+
+<h4 id="observation_bi_type_constraints"><code class="language-plaintext highlighter-rouge">observation_bi_type_constraints</code></h4>
+<p><strong>When they run:</strong> BEFORE INSERT (per row)</p>
+
+<p><strong>What they do:</strong> Reads <code class="language-plaintext highlighter-rouge">NEW.result_text</code>, <code class="language-plaintext highlighter-rouge">NEW.result_real</code>, <code class="language-plaintext highlighter-rouge">NEW.result_boolean</code>, <code class="language-plaintext highlighter-rouge">NEW.guid_datastream</code>; looks up the linked <code class="language-plaintext highlighter-rouge">datastream.type</code>, <code class="language-plaintext highlighter-rouge">value_min</code>, <code class="language-plaintext highlighter-rouge">value_max</code>, <code class="language-plaintext highlighter-rouge">codespace</code>; for <code class="language-plaintext highlighter-rouge">Category</code>, checks <code class="language-plaintext highlighter-rouge">result_text ∈ codelist.id</code> where <code class="language-plaintext highlighter-rouge">codelist.collection = datastream.codespace</code>.</p>
+
+<p><strong>If the check passes:</strong> Insert proceeds (shape, bounds and membership satisfied for the given <code class="language-plaintext highlighter-rouge">datastream.type</code>).</p>
+
+<p><strong>If the check fails:</strong> Aborts with one of (depending on <code class="language-plaintext highlighter-rouge">datastream.type</code>):<br />
+<code class="language-plaintext highlighter-rouge">Type Quantity: result_real must be NOT NULL; result_text and result_boolean must be NULL.</code>;<br />
+<code class="language-plaintext highlighter-rouge">Type Quantity: result_real is below value_min.</code>;<br />
+<code class="language-plaintext highlighter-rouge">Type Quantity: result_real exceeds value_max.</code>;<br />
+<code class="language-plaintext highlighter-rouge">Type Category: result_text must be NOT NULL; result_real and result_boolean must be NULL.</code>;<br />
+<code class="language-plaintext highlighter-rouge">Type Category: result_text must exist in codelist.id for the collection equal to the datastream codespace.</code>;<br />
+<code class="language-plaintext highlighter-rouge">Type Boolean: result_boolean must be 0 or 1; result_text and result_real must be NULL.</code>;<br />
+<code class="language-plaintext highlighter-rouge">Type Count: result_real must be an integer; result_text and result_boolean must be NULL.</code>;<br />
+<code class="language-plaintext highlighter-rouge">Type Count: result_real is below value_min.</code>;<br />
+<code class="language-plaintext highlighter-rouge">Type Count: result_real exceeds value_max.</code>;<br />
+<code class="language-plaintext highlighter-rouge">Type Text: result_text must be NOT NULL; result_real and result_boolean must be NULL.</code></p>
+
+<h4 id="observation_bu_type_constraints"><code class="language-plaintext highlighter-rouge">observation_bu_type_constraints</code></h4>
+<p><strong>When they run:</strong> BEFORE UPDATE OF <code class="language-plaintext highlighter-rouge">result_text</code>, <code class="language-plaintext highlighter-rouge">result_real</code>, <code class="language-plaintext highlighter-rouge">result_boolean</code>, <code class="language-plaintext highlighter-rouge">guid_datastream</code> (per row)</p>
+
+<p><strong>What they do:</strong> Re‑applies the same shape/bounds/membership checks as the INSERT trigger, against the (possibly changed) <code class="language-plaintext highlighter-rouge">datastream</code>.</p>
+
+<p><strong>If the check passes:</strong> Update proceeds.</p>
+
+<p><strong>If the check fails:</strong> Aborts with the same messages listed for <code class="language-plaintext highlighter-rouge">observation_bi_type_constraints</code>.</p>
+
+<h4 id="observation_bi_result_text_in_codespace"><code class="language-plaintext highlighter-rouge">observation_bi_result_text_in_codespace</code></h4>
+<p><strong>When they run:</strong> BEFORE INSERT (per row)</p>
+
+<p><strong>What they do:</strong> Only if <code class="language-plaintext highlighter-rouge">NEW.result_text IS NOT NULL</code> <strong>and</strong> the linked <code class="language-plaintext highlighter-rouge">datastream.type = 'Category'</code>: checks membership of <code class="language-plaintext highlighter-rouge">NEW.result_text</code> in <code class="language-plaintext highlighter-rouge">codelist.id</code> where <code class="language-plaintext highlighter-rouge">collection = datastream.codespace</code>.</p>
+
+<p><strong>If the check passes:</strong> Insert proceeds.</p>
+
+<p><strong>If the check fails:</strong> Aborts with: <code class="language-plaintext highlighter-rouge">Insert denied: result_text must exist in codelist.id within the collection equal to the linked datastream codespace (type=Category).</code></p>
+
+<h4 id="observation_bu_result_text_in_codespace"><code class="language-plaintext highlighter-rouge">observation_bu_result_text_in_codespace</code></h4>
+<p><strong>When they run:</strong> BEFORE INSERT (per row) <em>(note: despite the “_bu_” name, it’s defined as BEFORE INSERT in the DDL)</em></p>
+
+<p><strong>What they do:</strong> Same condition and membership check as the previous trigger.</p>
+
+<p><strong>If the check passes:</strong> Insert proceeds.</p>
+
+<p><strong>If the check fails:</strong> Aborts with: <code class="language-plaintext highlighter-rouge">Insert denied: result_text must exist in codelist.id within the collection equal to the linked datastream codespace (type=Category).</code></p>
+
+<h4 id="observation_ai_recalc_ds_times"><code class="language-plaintext highlighter-rouge">observation_ai_recalc_ds_times</code></h4>
+<p><strong>When they run:</strong> AFTER INSERT (per row)</p>
+
+<p><strong>What they do:</strong> Recomputes the parent datastream’s time range using all observations for <code class="language-plaintext highlighter-rouge">NEW.guid_datastream</code>: <code class="language-plaintext highlighter-rouge">phenomenontime_start = MIN(phenomenontime_start)</code>; <code class="language-plaintext highlighter-rouge">phenomenontime_end = MAX(COALESCE(phenomenontime_end, phenomenontime_start))</code>.</p>
+
+<p><strong>If the check passes:</strong> Updates the <code class="language-plaintext highlighter-rouge">datastream</code> range; insert succeeds.</p>
+
+<p><strong>If the check fails:</strong> No specific failure path (ordinary DML errors aside).</p>
+
+<h4 id="observation_au_recalc_ds_times"><code class="language-plaintext highlighter-rouge">observation_au_recalc_ds_times</code></h4>
+<p><strong>When they run:</strong> AFTER UPDATE OF <code class="language-plaintext highlighter-rouge">phenomenontime_start</code>, <code class="language-plaintext highlighter-rouge">phenomenontime_end</code>, <code class="language-plaintext highlighter-rouge">guid_datastream</code> (per row)</p>
+
+<p><strong>What they do:</strong> Recomputes the range for the <strong>new</strong> <code class="language-plaintext highlighter-rouge">guid_datastream</code>; if the row moved between datastreams, also recomputes the <strong>old</strong> one.</p>
+
+<p><strong>If the check passes:</strong> Updates the affected <code class="language-plaintext highlighter-rouge">datastream</code>(s); update succeeds.</p>
+
+<p><strong>If the check fails:</strong> No specific failure path.</p>
+
+<h4 id="observation_ad_recalc_ds_times"><code class="language-plaintext highlighter-rouge">observation_ad_recalc_ds_times</code></h4>
+<p><strong>When they run:</strong> AFTER DELETE (per row)</p>
+
+<p><strong>What they do:</strong> Recomputes the parent datastream’s time range from remaining observations for <code class="language-plaintext highlighter-rouge">OLD.guid_datastream</code>.</p>
+
+<p><strong>If the check passes:</strong> Updates the <code class="language-plaintext highlighter-rouge">datastream</code> range; delete succeeds.</p>
+
+<p><strong>If the check fails:</strong> No specific failure path.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Hylke van der Schaaf — <strong>Open Geospatial Consortium (OGC)</strong>, <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        </section>
+
+        
+          <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+            This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/tables/observation.md">Improve this page</a>.
+          </div>
+        
+      </div>
+    </div>
+    <!-- ▲▲▲ Fine blocco centrale ▲▲▲ -->
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/tables/observation.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js"
+            integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg="
+            crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

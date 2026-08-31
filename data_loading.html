@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>SoilWise Geopackage | SoilWise Geopackage Documentation</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="SoilWise Geopackage" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="SoilWise Geopackage Documentation" />
+<meta name="twitter:description" property="og:description" content="SoilWise Geopackage Documentation" />
+<link rel="canonical" href="https://soilwise-he.github.io/Geopackage-so/data_loading.html" />
+<meta property="og:url" content="https://soilwise-he.github.io/Geopackage-so/data_loading.html" />
+<meta property="og:site_name" content="SoilWise Geopackage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SoilWise Geopackage" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"SoilWise Geopackage Documentation","headline":"SoilWise Geopackage","url":"https://soilwise-he.github.io/Geopackage-so/data_loading.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Geopackage-so/assets/css/style.css?v=50ee7ee560fe85dda0b244256fd87ad97473d941">
+    <!-- MathJax v3 -->
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+
+  </head>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a[href^="http"]');
+    links.forEach(function (a) {
+      try {
+        var url = new URL(a.href, document.baseURI);
+        if (url.hostname !== location.hostname) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+      } catch (e) {}
+    });
+  });
+  </script>
+  
+<!-- ▼▼▼ Unico blocco centrale: SIDEBAR a sinistra + CONTENUTO a destra ▼▼▼ -->
+    <div class="docs-shell">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <!-- ==========================
+ Sidebar (Search + Navigation)
+ ========================== -->
+<!-- SEARCH (English labels) -->
+<div class="search-box">
+  <label for="docs-search" class="sr-only">Search documentation</label>
+  <input id="docs-search" type="search" placeholder="Search..." autocomplete="off" />
+  <ul id="docs-search-results" class="search-results" aria-live="polite"></ul>
+</div>
+<hr class="sidebar-sep" />
+
+<!-- NAVIGATION -->
+<nav class="docs-nav" aria-label="Sections">
+  <ul class="nav-root">
+    
+    
+    
+    
+    
+
+    
+      <li class="nav-group">
+        <span class="nav-group-title">Documentation</span>
+        <ul class="nav-group-list">
+            
+            <li>
+              <a href="/Geopackage-so/">index</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/cascade_summary.html">cascade summary</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/data_loading.html">data loading</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/relationships_summary.html">relationships summary</a>
+            </li>
+          
+        </ul>
+      </li>
+    
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QGIS</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qgis/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/custom_form.html">custom form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/edit_form.html">edit form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/export_to_excel.html">export to excel</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_documentation.html">gpkg to gpkg documentation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_tool.html">gpkg to gpkg tool</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/how_to_use_models.html">how to use models</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/importing_geometric_features.html">importing geometric features</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/navigating_via_form.html">navigating via form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/open_geopackage.html">open geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/ph.html">ph</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/rename_geopackage.html">rename geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/save_form.html">save form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soc.html">soc</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/view_observation.html">view observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/wrb_classification.html">wrb classification</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QFIELD</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qfield/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/install.html">install</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/interface.html">interface</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/use_plugin.html">use plugin</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">TABLES</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/tables/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/codelist.html">codelist</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/derivedprofilepresenceinsoilbody.html">derivedprofilepresenceinsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/faohorizonnotationtype.html">faohorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonobservedsoilprofile.html">isbasedonobservedsoilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilbody.html">isbasedonsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilderivedobject.html">isbasedonsoilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isderivedfrom.html">isderivedfrom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observedproperty.html">observedproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observingprocedure.html">observingprocedure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_obsdproperty.html">obsprocedure obsdproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_sensor.html">obsprocedure sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizon_profileelement.html">otherhorizon profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizonnotationtype.html">otherhorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/othersoilnametype.html">othersoilnametype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/sensor.html">sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody.html">soilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody_geom.html">soilbody geom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilderivedobject.html">soilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/thing.html">thing</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/unitofmeasure.html">unitofmeasure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergroup_profile.html">wrbqualifiergroup profile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergrouptype.html">wrbqualifiergrouptype</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+
+  </ul>
+</nav>
+
+<!-- LUNR.JS (client-side search) -->
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+(function() {
+  const input = document.getElementById('docs-search');
+  const results = document.getElementById('docs-search-results');
+  let idx = null, docs = [];
+
+  // Helper: produce a clean label (no .md, dashes/underscores -> spaces)
+  function prettifyLabel(title, url) {
+    // fallback: take the last path segment from the URL
+    let label = (title && title.length) ? title : (url.split('/').pop() || url);
+    label = label.replace(/\.md$/i, '');
+    label = label.replace(/[-_]+/g, ' ');
+    return label;
+  }
+
+  fetch('/Geopackage-so/search.json')
+    .then(r => r.json())
+    .then(data => {
+      docs = data;
+      idx = lunr(function () {
+        this.ref('url');
+        this.field('title', { boost: 10 });
+        this.field('content');
+        data.forEach(function (doc) { this.add(doc); }, this);
+      });
+    })
+    .catch(() => { /* no-op */ });
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim();
+    results.innerHTML = '';
+    if (!idx || q.length < 2) return;
+    const matches = idx.search(q);
+    matches.slice(0, 12).forEach(m => {
+      const item = docs.find(d => d.url === m.ref);
+      if (!item) return;
+      const label = prettifyLabel(item.title, item.url);
+      const li = document.createElement('li');
+      li.className = 'search-item';
+      li.innerHTML = '<a href="' + item.url + '">' + label + '</a>';
+      results.appendChild(li);
+    });
+  });
+})();
+</script>
+
+      </aside>
+
+      <div class="container-lg px-3 my-5">
+        
+          <h1><a href="https://soilwise-he.github.io/Geopackage-so/">SoilWise Geopackage</a></h1>
+        
+
+        <section class="docs-main markdown-body">
+          
+<h1 id="soilwise-soil-geopackage-template--data-loading--modelling-guide">SOILWISE Soil GeoPackage Template — Data Loading &amp; Modelling Guide</h1>
+
+<p><strong>Goal.</strong> Provide a complete, deterministic <strong>loading order</strong> and <strong>data entry rules</strong> to populate the database that implements the INSPIRE Soil application schema. The guide covers the logical flow <strong>Site → Plot → Profile → Elements</strong>, the <strong>Observed vs Derived</strong> distinction, <strong>Horizon vs Layer</strong> behaviour, <strong>classifications</strong>, <strong>associations</strong>, and <strong>STA2 (datastream/observation)</strong> integration. References to the INSPIRE Technical Guidelines and Feature Concept Dictionary are provided as footnotes.<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></p>
+
+<h2 id="1-concepts-at-a-glance">1) Concepts at a glance</h2>
+
+<h3 id="observed-vs-derived-soil-profile">Observed vs Derived Soil Profile</h3>
+<ul>
+  <li><strong>Observed Soil Profile</strong>: a soil profile <strong>found at a specific location</strong>, described from a trial pit or a borehole.</li>
+  <li><strong>Derived Soil Profile</strong>: a <strong>non point‑located</strong> reference profile for a soil type in a wider area.</li>
+</ul>
+
+<p>(See official INSPIRE definitions.)<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup><sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></p>
+
+<h3 id="profile-element--horizon-vs-layer">Profile Element → Horizon vs Layer</h3>
+<ul>
+  <li><strong>Profile Element</strong> is an abstract type grouping the vertical slices that compose a soil profile. It specialises into:
+    <ul>
+      <li><strong>Soil Horizon</strong>: pedogenetically formed, relatively homogeneous layer, approximately parallel to the surface, recognised by morphological/analytical characteristics;</li>
+      <li><strong>Soil Layer</strong>: an <strong>arbitrary</strong> (often depth‑based) slice or a <strong>grouping of horizons</strong> for operational purposes, not necessarily matching pedogenic boundaries.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>(See official INSPIRE definitions.)<sup id="fnref:4"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup><sup id="fnref:5"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup></p>
+
+<h2 id="2-conventions--prerequisites">2) Conventions &amp; prerequisites</h2>
+
+<ul>
+  <li><strong>Authoritative source</strong> for table structures, constraints, and triggers: the DDL shipped with this repository.</li>
+  <li><strong>Code lists.</strong> Values are validated via the <code class="language-plaintext highlighter-rouge">codelist</code> table. You <strong>must preload</strong> every collection you plan to use <em>before</em> you insert domain records (e.g., <code class="language-plaintext highlighter-rouge">SoilInvestigationPurposeValue</code>, <code class="language-plaintext highlighter-rouge">SoilPlotTypeValue</code>, <code class="language-plaintext highlighter-rouge">LayerTypeValue</code>, <code class="language-plaintext highlighter-rouge">EventProcessValue</code>, <code class="language-plaintext highlighter-rouge">EventEnvironmentValue</code>, <code class="language-plaintext highlighter-rouge">LayerGenesisProcessStateValue</code>, <code class="language-plaintext highlighter-rouge">LithologyValue</code>, FAO/WRB codelists, <code class="language-plaintext highlighter-rouge">wrbversion</code>, <code class="language-plaintext highlighter-rouge">Category</code>).</li>
+  <li><strong>Temporal rules.</strong> Many tables implement: <code class="language-plaintext highlighter-rouge">beginlifespanversion = now()</code> on insert; <code class="language-plaintext highlighter-rouge">beginlifespanversion</code> auto‑update upon relevant changes; checks on <code class="language-plaintext highlighter-rouge">validfrom ≤ validto</code> and <code class="language-plaintext highlighter-rouge">beginlifespanversion &lt; endlifespanversion</code>.</li>
+  <li><strong>GUIDs.</strong> If <code class="language-plaintext highlighter-rouge">guid</code> is NULL on insert, the DB generates a UUIDv4‑like lowercase value; updates to <code class="language-plaintext highlighter-rouge">guid</code> are blocked by triggers.</li>
+</ul>
+
+<h2 id="3-recommended-loading-order-deterministic">3) Recommended loading order (deterministic)</h2>
+
+<ol>
+  <li><strong>Lookups:</strong> <code class="language-plaintext highlighter-rouge">codelist</code>, <code class="language-plaintext highlighter-rouge">unitofmeasure</code></li>
+  <li><strong>Spatial features:</strong> <code class="language-plaintext highlighter-rouge">soilsite</code></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">soilplot</code></strong> (FK → <code class="language-plaintext highlighter-rouge">soilsite</code>)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">soilprofile</code></strong> — choose type via <code class="language-plaintext highlighter-rouge">isderived</code> (Observed or Derived)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">isderivedfrom</code></strong> — link Derived ↔ Observed profiles</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">soilbody</code></strong>, then <strong><code class="language-plaintext highlighter-rouge">soilbody_geom</code></strong></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">derivedprofilepresenceinsoilbody</code></strong> — assign Derived profiles with shares (≤ 100 per soilbody)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">profileelement</code></strong> (then, for Horizons only: <code class="language-plaintext highlighter-rouge">faohorizonnotationtype</code>, <code class="language-plaintext highlighter-rouge">otherhorizonnotationtype</code> + <code class="language-plaintext highlighter-rouge">otherhorizon_profileelement</code>)</li>
+  <li><strong>WRB qualifiers:</strong> <code class="language-plaintext highlighter-rouge">wrbqualifiergrouptype</code>, then <code class="language-plaintext highlighter-rouge">wrbqualifiergroup_profile</code></li>
+  <li><strong>STA2 master data:</strong> <code class="language-plaintext highlighter-rouge">observedproperty</code>, <code class="language-plaintext highlighter-rouge">sensor</code>, <code class="language-plaintext highlighter-rouge">observingprocedure</code>, <code class="language-plaintext highlighter-rouge">obsprocedure_obsdproperty</code>, <code class="language-plaintext highlighter-rouge">obsprocedure_sensor</code></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">datastream</code></strong> — set the FOI; triggers resolve and/or create the target <code class="language-plaintext highlighter-rouge">thing</code></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">observation</code></strong> — value‑level checks per <code class="language-plaintext highlighter-rouge">datastream.type</code></li>
+  <li><strong>(Optional)</strong> <code class="language-plaintext highlighter-rouge">soilderivedobject</code> and its relations: <code class="language-plaintext highlighter-rouge">isbasedonobservedsoilprofile</code>, <code class="language-plaintext highlighter-rouge">isbasedonsoilbody</code>, <code class="language-plaintext highlighter-rouge">isbasedonsoilderivedobject</code></li>
+</ol>
+
+<blockquote>
+  <p><strong>Why this order?</strong> Each step unlocks the next (FKs and triggers). For instance: Plots need Sites; Observed Profiles need Plots; Derived–Observed links need both sides; Elements need Profiles; Notations and WRB need both codelists and target types; Datastreams require master data and FOI; Observations require Datastreams and, for Category, a codespace collection.</p>
+</blockquote>
+
+<h2 id="4-tablespecific-rules-summary">4) Table‑specific rules (summary)</h2>
+
+<h3 id="41-soilsite-polygon">4.1 <code class="language-plaintext highlighter-rouge">soilsite</code> (POLYGON)</h3>
+<ul>
+  <li><strong>Required</strong>: <code class="language-plaintext highlighter-rouge">geometry</code>, <code class="language-plaintext highlighter-rouge">soilinvestigationpurpose</code> ∈ <code class="language-plaintext highlighter-rouge">SoilInvestigationPurposeValue</code>.</li>
+  <li><strong>Temporal checks</strong>: <code class="language-plaintext highlighter-rouge">validfrom ≤ validto</code>; <code class="language-plaintext highlighter-rouge">beginlifespanversion &lt; endlifespanversion</code>.</li>
+</ul>
+
+<h3 id="42-soilplot-point">4.2 <code class="language-plaintext highlighter-rouge">soilplot</code> (POINT)</h3>
+<ul>
+  <li><strong>Required</strong>: <code class="language-plaintext highlighter-rouge">soilplotlocation</code>, <code class="language-plaintext highlighter-rouge">soilplottype</code> ∈ <code class="language-plaintext highlighter-rouge">SoilPlotTypeValue</code>.</li>
+  <li><strong>FK</strong>: <code class="language-plaintext highlighter-rouge">locatedon</code> → <code class="language-plaintext highlighter-rouge">soilsite.guid</code> (Site must exist first).</li>
+</ul>
+
+<h3 id="43-soilprofile-observed-vs-derived">4.3 <code class="language-plaintext highlighter-rouge">soilprofile</code> (Observed vs Derived)</h3>
+<ul>
+  <li><strong>Type switch</strong>: <code class="language-plaintext highlighter-rouge">isderived</code> → <code class="language-plaintext highlighter-rouge">0 = Observed</code>, <code class="language-plaintext highlighter-rouge">1 = Derived</code>.<sup id="fnref:2:1"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup><sup id="fnref:3:1"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></li>
+  <li><strong>Observed (<code class="language-plaintext highlighter-rouge">isderived=0</code>)</strong>: <code class="language-plaintext highlighter-rouge">location</code> <strong>NOT NULL</strong> and references <strong><code class="language-plaintext highlighter-rouge">soilplot.guid</code></strong>; <code class="language-plaintext highlighter-rouge">location</code> is <strong>UNIQUE</strong> (one observed profile per plot).</li>
+  <li><strong>Derived (<code class="language-plaintext highlighter-rouge">isderived=1</code>)</strong>: <code class="language-plaintext highlighter-rouge">location</code> <strong>MUST be NULL</strong> (non point‑located profile).</li>
+  <li><strong>WRB pairing</strong>: <code class="language-plaintext highlighter-rouge">wrbversion</code> ∈ <code class="language-plaintext highlighter-rouge">wrbversion</code> collection; <code class="language-plaintext highlighter-rouge">wrbreferencesoilgroup</code> must match the year‑specific collection coherent with <code class="language-plaintext highlighter-rouge">wrbversion</code> (INSPIRE/2014/2022).</li>
+  <li><strong>Temporal checks</strong> as in §4.1.</li>
+</ul>
+
+<h3 id="44-isderivedfrom-derived--observed">4.4 <code class="language-plaintext highlighter-rouge">isderivedfrom</code> (Derived → Observed)</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">guid_base</code> → <code class="language-plaintext highlighter-rouge">soilprofile.guid</code> with <code class="language-plaintext highlighter-rouge">isderived=1</code>; <code class="language-plaintext highlighter-rouge">guid_related</code> → <code class="language-plaintext highlighter-rouge">soilprofile.guid</code> with <code class="language-plaintext highlighter-rouge">isderived=0</code>. Triggers enforce types and uniqueness.</li>
+</ul>
+
+<h3 id="45-soilbody--soilbody_geom">4.5 <code class="language-plaintext highlighter-rouge">soilbody</code> &amp; <code class="language-plaintext highlighter-rouge">soilbody_geom</code></h3>
+<ul>
+  <li>Create <code class="language-plaintext highlighter-rouge">soilbody</code> first, then <code class="language-plaintext highlighter-rouge">soilbody_geom</code> (MULTIPOLYGON) referencing it.</li>
+</ul>
+
+<h3 id="46-derivedprofilepresenceinsoilbody">4.6 <code class="language-plaintext highlighter-rouge">derivedprofilepresenceinsoilbody</code></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">guid_soilprofile</code> must be <strong>Derived</strong>.</li>
+  <li>Sum of <code class="language-plaintext highlighter-rouge">lowervalue</code> for the same <code class="language-plaintext highlighter-rouge">guid_soilbody</code> must <strong>not exceed 100.00</strong> (trigger).</li>
+</ul>
+
+<h3 id="47-profileelement--horizon-vs-layer">4.7 <code class="language-plaintext highlighter-rouge">profileelement</code> → Horizon vs Layer</h3>
+<ul>
+  <li><strong>Type switch</strong>: <code class="language-plaintext highlighter-rouge">profileelementtype</code> → <code class="language-plaintext highlighter-rouge">0 = HORIZON</code>, <code class="language-plaintext highlighter-rouge">1 = LAYER</code>. (See INSPIRE definitions.)<sup id="fnref:4:1"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup><sup id="fnref:5:1"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup></li>
+  <li><strong>Depth integrity</strong>: at least one of <code class="language-plaintext highlighter-rouge">…_uppervalue</code> / <code class="language-plaintext highlighter-rouge">…_lowervalue</code> must be set; if both are set, <code class="language-plaintext highlighter-rouge">uppervalue &lt; lowervalue</code> (depth increases downward).</li>
+  <li><strong>Parent</strong>: <code class="language-plaintext highlighter-rouge">ispartof</code> → <code class="language-plaintext highlighter-rouge">soilprofile.guid</code>.</li>
+</ul>
+
+<p><strong>Horizon (<code class="language-plaintext highlighter-rouge">profileelementtype=0</code>)</strong></p>
+<ul>
+  <li>Layer‑specific fields <strong>must be NULL</strong>: <code class="language-plaintext highlighter-rouge">layertype</code>, <code class="language-plaintext highlighter-rouge">layerrocktype</code>, <code class="language-plaintext highlighter-rouge">layergenesisprocess</code>, <code class="language-plaintext highlighter-rouge">layergenesisenviroment</code>, <code class="language-plaintext highlighter-rouge">layergenesisprocessstate</code>.</li>
+  <li><strong>Horizon notation enabled</strong>: may link to <code class="language-plaintext highlighter-rouge">faohorizonnotationtype</code> (1:1) and to <code class="language-plaintext highlighter-rouge">otherhorizonnotationtype</code> via <code class="language-plaintext highlighter-rouge">otherhorizon_profileelement</code> (N:M). Triggers enforce that the target is a Horizon.</li>
+</ul>
+
+<p><strong>Layer (<code class="language-plaintext highlighter-rouge">profileelementtype=1</code>)</strong></p>
+<ul>
+  <li>Domain validations:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">layertype</code> ∈ <code class="language-plaintext highlighter-rouge">LayerTypeValue</code>; <code class="language-plaintext highlighter-rouge">layerrocktype</code> ∈ <code class="language-plaintext highlighter-rouge">LithologyValue</code>;</li>
+      <li><code class="language-plaintext highlighter-rouge">layergenesisprocess</code> ∈ <code class="language-plaintext highlighter-rouge">EventProcessValue</code>; <code class="language-plaintext highlighter-rouge">layergenesisenviroment</code> ∈ <code class="language-plaintext highlighter-rouge">EventEnvironmentValue</code>;</li>
+      <li><code class="language-plaintext highlighter-rouge">layergenesisprocessstate</code> ∈ <code class="language-plaintext highlighter-rouge">LayerGenesisProcessStateValue</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Geogenic guardrails</strong>: when <code class="language-plaintext highlighter-rouge">layertype</code> ≠ geogenic, genesis‑related fields <strong>must be NULL</strong>.</li>
+  <li><strong>Horizon notation is not applicable</strong> (triggers block it).</li>
+</ul>
+
+<h3 id="48-horizon-notation">4.8 Horizon notation</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">faohorizonnotationtype</code></strong> (1:1 to Horizon via <code class="language-plaintext highlighter-rouge">guid_profileelement</code>): FAO masters/subordinates/prime from their codelists; trigger ensures the PE is a Horizon.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">otherhorizonnotationtype</code></strong> + <strong><code class="language-plaintext highlighter-rouge">otherhorizon_profileelement</code></strong> (N:M): <code class="language-plaintext highlighter-rouge">horizonnotation</code> ∈ <code class="language-plaintext highlighter-rouge">OtherHorizonNotationTypeValue</code>; <code class="language-plaintext highlighter-rouge">diagnostichorizon</code> must belong to the collection indicated by <code class="language-plaintext highlighter-rouge">horizonnotation</code>.</li>
+</ul>
+
+<h3 id="49-wrb-qualifiers">4.9 WRB qualifiers</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">wrbqualifiergrouptype</code></strong> (qualifier group library):
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">wrbversion</code> ∈ <code class="language-plaintext highlighter-rouge">wrbversion</code>; <code class="language-plaintext highlighter-rouge">qualifierplace</code> ∈ <code class="language-plaintext highlighter-rouge">WRBQualifierPlaceValue</code>;</li>
+      <li><code class="language-plaintext highlighter-rouge">wrbqualifier</code> and <code class="language-plaintext highlighter-rouge">wrbspecifier_1/_2</code> must come from year‑specific collections coherent with <code class="language-plaintext highlighter-rouge">wrbversion</code>.</li>
+      <li>Uniqueness: <code class="language-plaintext highlighter-rouge">(wrbversion, qualifierplace, wrbqualifier, wrbspecifier_1, wrbspecifier_2)</code>.</li>
+      <li>Logic: <code class="language-plaintext highlighter-rouge">_1</code> required if <code class="language-plaintext highlighter-rouge">_2</code> is set; <code class="language-plaintext highlighter-rouge">_1</code> and <code class="language-plaintext highlighter-rouge">_2</code> must differ.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">wrbqualifiergroup_profile</code></strong> (attach groups to profiles): version <strong>match</strong> (profile vs group) enforced; <code class="language-plaintext highlighter-rouge">qualifierposition</code> <strong>unique</strong> per <code class="language-plaintext highlighter-rouge">(soilprofile, qualifierplace)</code>.</li>
+</ul>
+
+<h3 id="410-soilderivedobject-and-linkages">4.10 Soilderivedobject and linkages</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">soilderivedobject</code></strong> (POLYGON) can represent thematic outputs (derived maps/envelopes).</li>
+  <li><strong>Associations</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">isbasedonobservedsoilprofile</code> (link to <strong>Observed</strong> profiles);</li>
+      <li><code class="language-plaintext highlighter-rouge">isbasedonsoilbody</code>;</li>
+      <li><code class="language-plaintext highlighter-rouge">isbasedonsoilderivedobject</code> (hierarchies of derived objects).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="411-sta2-master-data">4.11 STA2 master data</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">observedproperty</code></strong>: <code class="language-plaintext highlighter-rouge">name</code>; <code class="language-plaintext highlighter-rouge">definition</code> must be a well‑formed URI (checked). Optional JSON <code class="language-plaintext highlighter-rouge">properties</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">sensor</code></strong>: <code class="language-plaintext highlighter-rouge">name</code>; if <code class="language-plaintext highlighter-rouge">metadata</code> is set, <code class="language-plaintext highlighter-rouge">encodingtype</code> must be <code class="language-plaintext highlighter-rouge">PDF</code> or <code class="language-plaintext highlighter-rouge">HTML</code>; otherwise both NULL.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">observingprocedure</code></strong>: <code class="language-plaintext highlighter-rouge">name</code>; optional <code class="language-plaintext highlighter-rouge">definition</code> URI.</li>
+  <li><strong>N:M registries</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">obsprocedure_obsdproperty</code> (procedure ↔ property) — the pair is <strong>required</strong> if a procedure is set on a <code class="language-plaintext highlighter-rouge">datastream</code>;</li>
+      <li><code class="language-plaintext highlighter-rouge">obsprocedure_sensor</code> (procedure ↔ sensor) — optional.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="412-datastream-series-definition--foi">4.12 <code class="language-plaintext highlighter-rouge">datastream</code> (series definition &amp; FOI)</h3>
+<ul>
+  <li><strong>Type &amp; combinations</strong>: <code class="language-plaintext highlighter-rouge">type ∈ {'Quantity','Category','Boolean','Count','Text'}</code> with table‑level checks:
+    <ul>
+      <li><strong>Quantity</strong>: requires <code class="language-plaintext highlighter-rouge">code_unitofmeasure</code> and forbids <code class="language-plaintext highlighter-rouge">codespace</code> and categorical bounds;</li>
+      <li><strong>Category</strong>: requires <code class="language-plaintext highlighter-rouge">codespace</code> (well‑formed URI and a <code class="language-plaintext highlighter-rouge">codelist.collection</code>), forbids units and numeric bounds;</li>
+      <li><strong>Boolean/Count/Text</strong>: shape and bounds rules apply at <code class="language-plaintext highlighter-rouge">observation</code> level (see below).</li>
+    </ul>
+  </li>
+  <li><strong>FOI multiplicity</strong>: exactly <strong>1</strong> among <code class="language-plaintext highlighter-rouge">guid_soilsite</code>, <code class="language-plaintext highlighter-rouge">guid_soilprofile</code>, <code class="language-plaintext highlighter-rouge">guid_profileelement</code>, <code class="language-plaintext highlighter-rouge">guid_soilderivedobject</code>.</li>
+  <li><strong>Auto‑resolve to <code class="language-plaintext highlighter-rouge">thing</code></strong> (triggered):
+    <ul>
+      <li>FOI = <strong>SoilSite</strong> → <code class="language-plaintext highlighter-rouge">guid_thing = SoilSite.guid</code>;</li>
+      <li>FOI = <strong>SoilProfile (Derived)</strong> → <code class="language-plaintext highlighter-rouge">guid_thing = SoilProfile.guid</code>;</li>
+      <li>FOI = <strong>SoilProfile (Observed)</strong> → resolve to <strong>SoilSite</strong> via <code class="language-plaintext highlighter-rouge">SoilPlot</code> (Profile→Plot→Site);</li>
+      <li>FOI = <strong>ProfileElement</strong> → if parent profile is <strong>Derived</strong>, use the <strong>profile</strong>; if <strong>Observed</strong>, use the <strong>site</strong> via Plot;</li>
+      <li>FOI = <strong>SoilDerivedObject</strong> → <code class="language-plaintext highlighter-rouge">guid_thing = Soilderivedobject.guid</code>.
+Missing <code class="language-plaintext highlighter-rouge">thing</code> rows are created <strong>on demand</strong> with reasonable defaults.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="413-observation-values">4.13 <code class="language-plaintext highlighter-rouge">observation</code> (values)</h3>
+<ul>
+  <li><strong>Uniqueness</strong>: <code class="language-plaintext highlighter-rouge">(phenomenontime_start, guid_datastream)</code>.</li>
+  <li><strong>Shape by <code class="language-plaintext highlighter-rouge">datastream.type</code></strong> (enforced by triggers):
+    <ul>
+      <li><strong>Quantity</strong>: <code class="language-plaintext highlighter-rouge">result_real</code> only; apply numeric bounds if defined;</li>
+      <li><strong>Category</strong>: <code class="language-plaintext highlighter-rouge">result_text</code> only; must belong to <code class="language-plaintext highlighter-rouge">codelist.id</code> within the <code class="language-plaintext highlighter-rouge">codespace</code> collection;</li>
+      <li><strong>Boolean</strong>: <code class="language-plaintext highlighter-rouge">result_boolean ∈ {0,1}</code> only;</li>
+      <li><strong>Count</strong>: <code class="language-plaintext highlighter-rouge">result_real</code> must be <strong>integer in value</strong>; obey numeric bounds if defined;</li>
+      <li><strong>Text</strong>: <code class="language-plaintext highlighter-rouge">result_text</code> only.</li>
+    </ul>
+  </li>
+  <li><strong>Datastream range maintenance</strong>: <code class="language-plaintext highlighter-rouge">datastream.phenomenontime_*</code> is recalculated from member observations on insert/update/delete.</li>
+</ul>
+
+<h2 id="5-troubleshooting-checklist">5) Troubleshooting checklist</h2>
+
+<ul>
+  <li><strong>Code list errors</strong> → Preload the exact <code class="language-plaintext highlighter-rouge">collection</code> and <code class="language-plaintext highlighter-rouge">id</code> values referenced by the target column.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">soilprofile</code> rejects insert</strong> → Check <code class="language-plaintext highlighter-rouge">isderived</code> vs <code class="language-plaintext highlighter-rouge">location</code> rule; verify WRB version/group pairing.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">derivedprofilepresenceinsoilbody</code> fails</strong> → The sum of <code class="language-plaintext highlighter-rouge">lowervalue</code> for the same <code class="language-plaintext highlighter-rouge">soilbody</code> would exceed <strong>100</strong>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">profileelement</code> fails</strong> → Depth range order (<code class="language-plaintext highlighter-rouge">upper &lt; lower</code>), Horizon/Layer field constraints, geogenic rule.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">wrbqualifiergroup_profile</code> fails</strong> → <code class="language-plaintext highlighter-rouge">wrbversion</code> mismatch or duplicate <code class="language-plaintext highlighter-rouge">qualifierposition</code> for the same <code class="language-plaintext highlighter-rouge">qualifierplace</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">datastream</code> fails</strong> → FOI multiplicity (must be 0 or 1); type/combination checks; required <code class="language-plaintext highlighter-rouge">(procedure, property)</code> pair.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">observation</code> fails</strong> → Shape/type mismatch, bounds violation, or Category value not in the <code class="language-plaintext highlighter-rouge">codespace</code> collection.</li>
+  <li><strong>Unexpected FOI → thing mapping</strong> → Review the resolution rules in §4.12 (Observed Profile &amp; some ProfileElements resolve to <strong>SoilSite</strong>).</li>
+</ul>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="https://inspire-mif.github.io/technical-guidelines/data/so/"><strong>INSPIRE Technical Guidelines — Soil (2024, entry page)</strong></a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://inspire.ec.europa.eu/featureconcept/ObservedSoilProfile"><strong>Observed</strong></a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:3">
+      <p><a href="https://inspire.ec.europa.eu/featureconcept/DerivedSoilProfile"><strong>Derived</strong></a> <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:3:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:4">
+      <p><a href="https://inspire.ec.europa.eu/featureconcept/SoilHorizon"><strong>Soil Horizon</strong></a> <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:4:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:5">
+      <p><a href="https://inspire.ec.europa.eu/featureconcept/SoilLayer"><strong>Soil Layer</strong></a> <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:5:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+  </ol>
+</div>
+
+        </section>
+
+        
+          <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+            This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/data_loading.md">Improve this page</a>.
+          </div>
+        
+      </div>
+    </div>
+    <!-- ▲▲▲ Fine blocco centrale ▲▲▲ -->
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/data_loading.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js"
+            integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg="
+            crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

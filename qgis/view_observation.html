@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>SoilWise Geopackage | SoilWise Geopackage Documentation</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="SoilWise Geopackage" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="SoilWise Geopackage Documentation" />
+<meta name="twitter:description" property="og:description" content="SoilWise Geopackage Documentation" />
+<link rel="canonical" href="https://soilwise-he.github.io/Geopackage-so/qgis/view_observation.html" />
+<meta property="og:url" content="https://soilwise-he.github.io/Geopackage-so/qgis/view_observation.html" />
+<meta property="og:site_name" content="SoilWise Geopackage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SoilWise Geopackage" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"SoilWise Geopackage Documentation","headline":"SoilWise Geopackage","url":"https://soilwise-he.github.io/Geopackage-so/qgis/view_observation.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Geopackage-so/assets/css/style.css?v=50ee7ee560fe85dda0b244256fd87ad97473d941">
+    <!-- MathJax v3 -->
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+
+  <style>.markdown-alert{padding:.5rem 1rem;margin-bottom:1rem;color:inherit;border-left:.25em solid #30363d}.markdown-alert>:first-child{margin-top:0}.markdown-alert>:last-child{margin-bottom:0}.markdown-alert .markdown-alert-title{display:flex;font-weight:500;align-items:center;line-height:1}.markdown-alert svg{margin-right:.5rem!important}.markdown-alert svg path{fill:currentColor}.markdown-alert.markdown-alert-note{border-left-color:#4493f8}.markdown-alert.markdown-alert-note .markdown-alert-title{color:#4493f8}.markdown-alert.markdown-alert-important{border-left-color:#ab7df8}.markdown-alert.markdown-alert-important .markdown-alert-title{color:#ab7df8}.markdown-alert.markdown-alert-warning{border-left-color:#9e6a03}.markdown-alert.markdown-alert-warning .markdown-alert-title{color:#d29922}.markdown-alert.markdown-alert-tip{border-left-color:#238636}.markdown-alert.markdown-alert-tip .markdown-alert-title{color:#3fb950}.markdown-alert.markdown-alert-caution{border-left-color:#da3633}.markdown-alert.markdown-alert-caution .markdown-alert-title{color:#f85149}</style></head>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a[href^="http"]');
+    links.forEach(function (a) {
+      try {
+        var url = new URL(a.href, document.baseURI);
+        if (url.hostname !== location.hostname) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+      } catch (e) {}
+    });
+  });
+  </script>
+  
+<!-- ▼▼▼ Unico blocco centrale: SIDEBAR a sinistra + CONTENUTO a destra ▼▼▼ -->
+    <div class="docs-shell">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <!-- ==========================
+ Sidebar (Search + Navigation)
+ ========================== -->
+<!-- SEARCH (English labels) -->
+<div class="search-box">
+  <label for="docs-search" class="sr-only">Search documentation</label>
+  <input id="docs-search" type="search" placeholder="Search..." autocomplete="off" />
+  <ul id="docs-search-results" class="search-results" aria-live="polite"></ul>
+</div>
+<hr class="sidebar-sep" />
+
+<!-- NAVIGATION -->
+<nav class="docs-nav" aria-label="Sections">
+  <ul class="nav-root">
+    
+    
+    
+    
+    
+
+    
+      <li class="nav-group">
+        <span class="nav-group-title">Documentation</span>
+        <ul class="nav-group-list">
+            
+            <li>
+              <a href="/Geopackage-so/">index</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/cascade_summary.html">cascade summary</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/data_loading.html">data loading</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/relationships_summary.html">relationships summary</a>
+            </li>
+          
+        </ul>
+      </li>
+    
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QGIS</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qgis/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/custom_form.html">custom form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/edit_form.html">edit form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/export_to_excel.html">export to excel</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_documentation.html">gpkg to gpkg documentation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_tool.html">gpkg to gpkg tool</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/how_to_use_models.html">how to use models</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/importing_geometric_features.html">importing geometric features</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/navigating_via_form.html">navigating via form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/open_geopackage.html">open geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/ph.html">ph</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/rename_geopackage.html">rename geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/save_form.html">save form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soc.html">soc</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/view_observation.html">view observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/wrb_classification.html">wrb classification</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QFIELD</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qfield/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/install.html">install</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/interface.html">interface</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/use_plugin.html">use plugin</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">TABLES</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/tables/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/codelist.html">codelist</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/derivedprofilepresenceinsoilbody.html">derivedprofilepresenceinsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/faohorizonnotationtype.html">faohorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonobservedsoilprofile.html">isbasedonobservedsoilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilbody.html">isbasedonsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilderivedobject.html">isbasedonsoilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isderivedfrom.html">isderivedfrom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observedproperty.html">observedproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observingprocedure.html">observingprocedure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_obsdproperty.html">obsprocedure obsdproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_sensor.html">obsprocedure sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizon_profileelement.html">otherhorizon profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizonnotationtype.html">otherhorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/othersoilnametype.html">othersoilnametype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/sensor.html">sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody.html">soilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody_geom.html">soilbody geom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilderivedobject.html">soilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/thing.html">thing</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/unitofmeasure.html">unitofmeasure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergroup_profile.html">wrbqualifiergroup profile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergrouptype.html">wrbqualifiergrouptype</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+
+  </ul>
+</nav>
+
+<!-- LUNR.JS (client-side search) -->
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+(function() {
+  const input = document.getElementById('docs-search');
+  const results = document.getElementById('docs-search-results');
+  let idx = null, docs = [];
+
+  // Helper: produce a clean label (no .md, dashes/underscores -> spaces)
+  function prettifyLabel(title, url) {
+    // fallback: take the last path segment from the URL
+    let label = (title && title.length) ? title : (url.split('/').pop() || url);
+    label = label.replace(/\.md$/i, '');
+    label = label.replace(/[-_]+/g, ' ');
+    return label;
+  }
+
+  fetch('/Geopackage-so/search.json')
+    .then(r => r.json())
+    .then(data => {
+      docs = data;
+      idx = lunr(function () {
+        this.ref('url');
+        this.field('title', { boost: 10 });
+        this.field('content');
+        data.forEach(function (doc) { this.add(doc); }, this);
+      });
+    })
+    .catch(() => { /* no-op */ });
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim();
+    results.innerHTML = '';
+    if (!idx || q.length < 2) return;
+    const matches = idx.search(q);
+    matches.slice(0, 12).forEach(m => {
+      const item = docs.find(d => d.url === m.ref);
+      if (!item) return;
+      const label = prettifyLabel(item.title, item.url);
+      const li = document.createElement('li');
+      li.className = 'search-item';
+      li.innerHTML = '<a href="' + item.url + '">' + label + '</a>';
+      results.appendChild(li);
+    });
+  });
+})();
+</script>
+
+      </aside>
+
+      <div class="container-lg px-3 my-5">
+        
+          <h1><a href="https://soilwise-he.github.io/Geopackage-so/">SoilWise Geopackage</a></h1>
+        
+
+        <section class="docs-main markdown-body">
+          <h1 id="observation-view">Observation View</h1>
+
+<h2 id="purpose">Purpose</h2>
+
+<p><code class="language-plaintext highlighter-rouge">view_observation</code> presents observations in a <strong>wide format</strong>, where each observation occupies a single row and the related information is exposed through thematic columns. This format simplifies data browsing in QGIS, data export, and report generation, without requiring users to manually reconstruct the relationships between the normalized source tables.</p>
+
+<p>The query starts from the <code class="language-plaintext highlighter-rouge">observation</code> table and enriches each record with:</p>
+
+<ul>
+  <li>the Feature of Interest associated with the datastream;</li>
+  <li>the identifiers of the Soil Site, Soil Profile, and Profile Element;</li>
+  <li>the hierarchical traversal from Profile Element to Soil Profile and Soil Site;</li>
+  <li>the <code class="language-plaintext highlighter-rouge">Derived</code> or <code class="language-plaintext highlighter-rouge">Observed</code> classification of the relevant profile;</li>
+  <li>the depth interval of the Profile Element;</li>
+  <li>the observed property, unit of measure, and observing procedure;</li>
+  <li>categorical, Boolean, quantity, and count results.</li>
+</ul>
+
+<h2 id="nature-of-the-view-in-the-qgis-project">Nature of the View in the QGIS Project</h2>
+
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-report" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Important</p><p>In the QGIS project, <code class="language-plaintext highlighter-rouge">view_observation</code> is not a persistent database view stored in the GeoPackage or database schema. It is a <strong>query-based layer</strong> whose <code class="language-plaintext highlighter-rouge">SELECT</code> statement is stored in the QGIS project configuration.</p>
+</div>
+
+<p>Consequently:</p>
+
+<ul>
+  <li>the query does not modify the data schema;</li>
+  <li>no <code class="language-plaintext highlighter-rouge">VIEW</code> object is automatically created in the database;</li>
+  <li>the layer depends on the source tables and relationships referenced by the query;</li>
+  <li>to distribute the layer correctly, the QGIS project containing its definition must also be distributed, unless the query is recreated in another project.</li>
+</ul>
+
+<p>The term <em>view</em> is therefore used in a functional sense, because the layer provides a derived representation of the data. From a technical perspective, however, it is a SQL query layer within the QGIS project.</p>
+
+<h2 id="data-refresh-behaviour">Data Refresh Behaviour</h2>
+
+<p>The query does not materialize or copy its results into the project. Whenever QGIS loads the <code class="language-plaintext highlighter-rouge">view_observation</code> layer, the data provider executes the <code class="language-plaintext highlighter-rouge">SELECT</code> statement again against the source tables.</p>
+
+<p>When the project is opened, the layer is reloaded, or its data source is refreshed, the displayed content is recalculated from the data currently stored in the GeoPackage or database.</p>
+
+<p>This behaviour means that:</p>
+
+<ul>
+  <li>newly inserted observations become available without manually regenerating an output table;</li>
+  <li>changes to existing records are reflected the next time the layer is loaded or refreshed;</li>
+  <li>records deleted from the source tables no longer appear in the result;</li>
+  <li>query performance depends on data volume, available indexes, and join complexity.</li>
+</ul>
+
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> Note</p><p>If the layer is already open, changes made through another application or database connection may require the QGIS <strong>Reload</strong> or <strong>Refresh</strong> command. Reopening the project also forces the layer to be loaded again.</p>
+</div>
+
+<h2 id="result-structure">Result Structure</h2>
+
+<p>Each row returned by the query corresponds to one record in the <code class="language-plaintext highlighter-rouge">observation</code> table.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Source or calculation</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Observation_id</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observation.guid</code></td>
+      <td>Unique observation identifier used by QGIS as the unique-value column for the query layer.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Soil Site</code></td>
+      <td><code class="language-plaintext highlighter-rouge">COALESCE</code> among the site resolved from the Profile Element, the site resolved from the Soil Profile, and the directly linked site</td>
+      <td>Local identifier of the Soil Site associated with the observation.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Soil Profile</code></td>
+      <td><code class="language-plaintext highlighter-rouge">COALESCE</code> between the parent profile of the Profile Element and the directly linked profile</td>
+      <td>Local identifier of the Soil Profile associated with the observation.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Profile Element</code></td>
+      <td><code class="language-plaintext highlighter-rouge">profileelement.inspireid_localid</code></td>
+      <td>Local identifier of the Profile Element directly associated with the datastream.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Is Derived</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CASE</code> expression based on the relevant profile’s <code class="language-plaintext highlighter-rouge">isderived</code> value</td>
+      <td>Returns <code class="language-plaintext highlighter-rouge">Derived</code>, <code class="language-plaintext highlighter-rouge">Observed</code>, or <code class="language-plaintext highlighter-rouge">NULL</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FOI Type</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CASE</code> expression based on the datastream FOI foreign keys</td>
+      <td>Feature of Interest type: <code class="language-plaintext highlighter-rouge">Profile Element</code>, <code class="language-plaintext highlighter-rouge">Soil Profile</code>, <code class="language-plaintext highlighter-rouge">Soil Site</code>, <code class="language-plaintext highlighter-rouge">Soil Derived Object</code>, or <code class="language-plaintext highlighter-rouge">None</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Upper Limit</code></td>
+      <td><code class="language-plaintext highlighter-rouge">profileelementdepthrange_uppervalue</code></td>
+      <td>Upper limit of the Profile Element depth interval.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Lower Limit</code></td>
+      <td><code class="language-plaintext highlighter-rouge">profileelementdepthrange_lowervalue</code></td>
+      <td>Lower limit of the Profile Element depth interval.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Phenomenon Time Start</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observation.phenomenontime_start</code></td>
+      <td>Start date and time of the observed phenomenon.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Observed Property</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observedproperty.name</code></td>
+      <td>Name of the property being observed.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Unit Of Measure</code></td>
+      <td><code class="language-plaintext highlighter-rouge">unitofmeasure.symbol</code></td>
+      <td>Unit-of-measure symbol, when available.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Observing Procedure</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observingprocedure.name</code></td>
+      <td>Name of the procedure used to produce the observation.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Category Value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observation.result_text</code></td>
+      <td>Textual or categorical observation result.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Boolean Value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observation.result_boolean</code></td>
+      <td>Boolean observation result.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Quantity Value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observation.result_real</code> when <code class="language-plaintext highlighter-rouge">datastream.type = 'Quantity'</code></td>
+      <td>Numeric value for observations belonging to Quantity datastreams.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Count Value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observation.result_real</code> when <code class="language-plaintext highlighter-rouge">datastream.type = 'Count'</code></td>
+      <td>Numeric value for observations belonging to Count datastreams.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Fields that are not applicable to the observation type or Feature of Interest are returned as <code class="language-plaintext highlighter-rouge">NULL</code>.</p>
+
+<h2 id="relationship-logic">Relationship Logic</h2>
+
+<h3 id="direct-features-of-interest">Direct Features of Interest</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">datastream</code> may refer directly to one of the following entities:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">soilsite</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">soilprofile</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">profileelement</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">soilderivedobject</code>.</li>
+</ul>
+
+<p>The <code class="language-plaintext highlighter-rouge">FOI Type</code> column identifies the linked entity type by checking which <code class="language-plaintext highlighter-rouge">guid_*</code> foreign key is populated in the datastream.</p>
+
+<h3 id="hierarchical-traversal">Hierarchical Traversal</h3>
+
+<p>When the Feature of Interest is a <code class="language-plaintext highlighter-rouge">Profile Element</code>, the query traverses the hierarchy as follows:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Profile Element
+    -&gt; Soil Profile
+        -&gt; Soil Plot
+            -&gt; Soil Site
+</code></pre></div></div>
+
+<p>When the Feature of Interest is a <code class="language-plaintext highlighter-rouge">Soil Profile</code>, the hierarchy is traversed as follows:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Soil Profile
+    -&gt; Soil Plot
+        -&gt; Soil Site
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">COALESCE</code> function returns the first available non-null identifier. This allows the <code class="language-plaintext highlighter-rouge">Soil Site</code> and <code class="language-plaintext highlighter-rouge">Soil Profile</code> columns to be populated both for direct relationships and for relationships resolved through the hierarchy.</p>
+
+<h3 id="derivedobserved-classification">Derived/Observed Classification</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">Is Derived</code> column is calculated only when the datastream is associated with a <code class="language-plaintext highlighter-rouge">Profile Element</code> or a <code class="language-plaintext highlighter-rouge">Soil Profile</code>:</p>
+
+<ul>
+  <li>for a <code class="language-plaintext highlighter-rouge">Profile Element</code>, the <code class="language-plaintext highlighter-rouge">isderived</code> value is read from its parent Soil Profile;</li>
+  <li>for a <code class="language-plaintext highlighter-rouge">Soil Profile</code>, the <code class="language-plaintext highlighter-rouge">isderived</code> value is read from the directly associated profile;</li>
+  <li><code class="language-plaintext highlighter-rouge">1</code> is mapped to <code class="language-plaintext highlighter-rouge">Derived</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">0</code> is mapped to <code class="language-plaintext highlighter-rouge">Observed</code>;</li>
+  <li>in all other cases, the result is <code class="language-plaintext highlighter-rouge">NULL</code>.</li>
+</ul>
+
+<h3 id="separation-of-numeric-results">Separation of Numeric Results</h3>
+
+<p>The value stored in <code class="language-plaintext highlighter-rouge">observation.result_real</code> is exposed through two separate output columns:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Quantity Value</code>, only for datastreams of type <code class="language-plaintext highlighter-rouge">Quantity</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">Count Value</code>, only for datastreams of type <code class="language-plaintext highlighter-rouge">Count</code>.</li>
+</ul>
+
+<p>This separation improves readability and export usability while preserving the normalized structure of the source tables.</p>
+
+<h2 id="sql-query-used-in-the-qgis-project">SQL Query Used in the QGIS Project</h2>
+
+<p>The following statement is the <code class="language-plaintext highlighter-rouge">SELECT</code> query associated with the <code class="language-plaintext highlighter-rouge">view_observation</code> layer. It does not include <code class="language-plaintext highlighter-rouge">CREATE VIEW</code>, because QGIS loads its result as a query-based layer.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Unique observation identifier used by QGIS</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="n">observation</span><span class="p">.</span><span class="n">guid</span> <span class="k">AS</span> <span class="nv">"Observation_id"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Parent entities, resolved through soilplot where required</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="n">COALESCE</span><span class="p">(</span>
+        <span class="n">pe_parent_site</span><span class="p">.</span><span class="n">inspireid_localid</span><span class="p">,</span>
+        <span class="n">sp_parent_site</span><span class="p">.</span><span class="n">inspireid_localid</span><span class="p">,</span>
+        <span class="n">soilsite</span><span class="p">.</span><span class="n">inspireid_localid</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="nv">"Soil Site"</span><span class="p">,</span>
+
+    <span class="n">COALESCE</span><span class="p">(</span>
+        <span class="n">pe_parent_profile</span><span class="p">.</span><span class="n">inspireid_localid</span><span class="p">,</span>
+        <span class="n">soilprofile</span><span class="p">.</span><span class="n">inspireid_localid</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="nv">"Soil Profile"</span><span class="p">,</span>
+
+    <span class="n">profileelement</span><span class="p">.</span><span class="n">inspireid_localid</span> <span class="k">AS</span> <span class="nv">"Profile Element"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Derived/Observed classification</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="k">CASE</span>
+        <span class="k">WHEN</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_profileelement</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">THEN</span>
+            <span class="k">CASE</span> <span class="n">pe_parent_profile</span><span class="p">.</span><span class="n">isderived</span>
+                <span class="k">WHEN</span> <span class="mi">1</span> <span class="k">THEN</span> <span class="s1">'Derived'</span>
+                <span class="k">WHEN</span> <span class="mi">0</span> <span class="k">THEN</span> <span class="s1">'Observed'</span>
+                <span class="k">ELSE</span> <span class="k">NULL</span>
+            <span class="k">END</span>
+
+        <span class="k">WHEN</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_soilprofile</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">THEN</span>
+            <span class="k">CASE</span> <span class="n">soilprofile</span><span class="p">.</span><span class="n">isderived</span>
+                <span class="k">WHEN</span> <span class="mi">1</span> <span class="k">THEN</span> <span class="s1">'Derived'</span>
+                <span class="k">WHEN</span> <span class="mi">0</span> <span class="k">THEN</span> <span class="s1">'Observed'</span>
+                <span class="k">ELSE</span> <span class="k">NULL</span>
+            <span class="k">END</span>
+
+        <span class="k">ELSE</span> <span class="k">NULL</span>
+    <span class="k">END</span> <span class="k">AS</span> <span class="nv">"Is Derived"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Feature of Interest type</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="k">CASE</span>
+        <span class="k">WHEN</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_profileelement</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+            <span class="k">THEN</span> <span class="s1">'Profile Element'</span>
+
+        <span class="k">WHEN</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_soilprofile</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+            <span class="k">THEN</span> <span class="s1">'Soil Profile'</span>
+
+        <span class="k">WHEN</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_soilsite</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+            <span class="k">THEN</span> <span class="s1">'Soil Site'</span>
+
+        <span class="k">WHEN</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_soilderivedobject</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+            <span class="k">THEN</span> <span class="s1">'Soil Derived Object'</span>
+
+        <span class="k">ELSE</span> <span class="s1">'None'</span>
+    <span class="k">END</span> <span class="k">AS</span> <span class="nv">"FOI Type"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Depth fields, applicable to Profile Elements only</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="n">profileelement</span><span class="p">.</span><span class="n">profileelementdepthrange_uppervalue</span> <span class="k">AS</span> <span class="nv">"Upper Limit"</span><span class="p">,</span>
+    <span class="n">profileelement</span><span class="p">.</span><span class="n">profileelementdepthrange_lowervalue</span> <span class="k">AS</span> <span class="nv">"Lower Limit"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Observation information</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="n">observation</span><span class="p">.</span><span class="n">phenomenontime_start</span> <span class="k">AS</span> <span class="nv">"Phenomenon Time Start"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Observed property</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="n">observedproperty</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="nv">"Observed Property"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Unit of measure</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="n">unitofmeasure</span><span class="p">.</span><span class="n">symbol</span> <span class="k">AS</span> <span class="nv">"Unit Of Measure"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Observing procedure</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="n">observingprocedure</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="nv">"Observing Procedure"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Categorical and Boolean results</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="n">observation</span><span class="p">.</span><span class="n">result_text</span> <span class="k">AS</span> <span class="nv">"Category Value"</span><span class="p">,</span>
+    <span class="n">observation</span><span class="p">.</span><span class="n">result_boolean</span> <span class="k">AS</span> <span class="nv">"Boolean Value"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Numeric value for Quantity observations</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="k">CASE</span>
+        <span class="k">WHEN</span> <span class="n">datastream</span><span class="p">.</span><span class="k">type</span> <span class="o">=</span> <span class="s1">'Quantity'</span>
+            <span class="k">THEN</span> <span class="n">observation</span><span class="p">.</span><span class="n">result_real</span>
+        <span class="k">ELSE</span> <span class="k">NULL</span>
+    <span class="k">END</span> <span class="k">AS</span> <span class="nv">"Quantity Value"</span><span class="p">,</span>
+
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="c1">-- Numeric value for Count observations</span>
+    <span class="c1">------------------------------------------------------------------</span>
+    <span class="k">CASE</span>
+        <span class="k">WHEN</span> <span class="n">datastream</span><span class="p">.</span><span class="k">type</span> <span class="o">=</span> <span class="s1">'Count'</span>
+            <span class="k">THEN</span> <span class="n">observation</span><span class="p">.</span><span class="n">result_real</span>
+        <span class="k">ELSE</span> <span class="k">NULL</span>
+    <span class="k">END</span> <span class="k">AS</span> <span class="nv">"Count Value"</span>
+
+<span class="k">FROM</span> <span class="n">observation</span>
+
+<span class="c1">------------------------------------------------------------------</span>
+<span class="c1">-- Datastream associated with the observation</span>
+<span class="c1">------------------------------------------------------------------</span>
+<span class="k">JOIN</span> <span class="n">datastream</span>
+    <span class="k">ON</span> <span class="n">observation</span><span class="p">.</span><span class="n">guid_datastream</span> <span class="o">=</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="c1">------------------------------------------------------------------</span>
+<span class="c1">-- Observed property</span>
+<span class="c1">------------------------------------------------------------------</span>
+<span class="k">JOIN</span> <span class="n">observedproperty</span>
+    <span class="k">ON</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_observedproperty</span> <span class="o">=</span> <span class="n">observedproperty</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="c1">------------------------------------------------------------------</span>
+<span class="c1">-- Unit of measure</span>
+<span class="c1">-- Normally available only for Quantity datastreams</span>
+<span class="c1">------------------------------------------------------------------</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">unitofmeasure</span>
+    <span class="k">ON</span> <span class="n">datastream</span><span class="p">.</span><span class="n">code_unitofmeasure</span> <span class="o">=</span> <span class="n">unitofmeasure</span><span class="p">.</span><span class="n">code</span>
+
+<span class="c1">------------------------------------------------------------------</span>
+<span class="c1">-- Observing procedure</span>
+<span class="c1">------------------------------------------------------------------</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">observingprocedure</span>
+    <span class="k">ON</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_observingprocedure</span> <span class="o">=</span> <span class="n">observingprocedure</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="c1">------------------------------------------------------------------</span>
+<span class="c1">-- Direct Features of Interest</span>
+<span class="c1">------------------------------------------------------------------</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">soilsite</span>
+    <span class="k">ON</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_soilsite</span> <span class="o">=</span> <span class="n">soilsite</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">soilprofile</span>
+    <span class="k">ON</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_soilprofile</span> <span class="o">=</span> <span class="n">soilprofile</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">profileelement</span>
+    <span class="k">ON</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_profileelement</span> <span class="o">=</span> <span class="n">profileelement</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">soilderivedobject</span>
+    <span class="k">ON</span> <span class="n">datastream</span><span class="p">.</span><span class="n">guid_soilderivedobject</span> <span class="o">=</span> <span class="n">soilderivedobject</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="c1">------------------------------------------------------------------</span>
+<span class="c1">-- Profile Element parent: Soil Profile</span>
+<span class="c1">------------------------------------------------------------------</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">soilprofile</span> <span class="k">AS</span> <span class="n">pe_parent_profile</span>
+    <span class="k">ON</span> <span class="n">profileelement</span><span class="p">.</span><span class="n">ispartof</span> <span class="o">=</span> <span class="n">pe_parent_profile</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="c1">------------------------------------------------------------------</span>
+<span class="c1">-- Soil Profile parent: Soil Plot</span>
+<span class="c1">------------------------------------------------------------------</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">soilplot</span> <span class="k">AS</span> <span class="n">pe_parent_plot</span>
+    <span class="k">ON</span> <span class="n">pe_parent_profile</span><span class="p">.</span><span class="k">location</span> <span class="o">=</span> <span class="n">pe_parent_plot</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">soilplot</span> <span class="k">AS</span> <span class="n">sp_parent_plot</span>
+    <span class="k">ON</span> <span class="n">soilprofile</span><span class="p">.</span><span class="k">location</span> <span class="o">=</span> <span class="n">sp_parent_plot</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="c1">------------------------------------------------------------------</span>
+<span class="c1">-- Soil Plot parent: Soil Site</span>
+<span class="c1">------------------------------------------------------------------</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">soilsite</span> <span class="k">AS</span> <span class="n">pe_parent_site</span>
+    <span class="k">ON</span> <span class="n">pe_parent_plot</span><span class="p">.</span><span class="n">locatedon</span> <span class="o">=</span> <span class="n">pe_parent_site</span><span class="p">.</span><span class="n">guid</span>
+
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">soilsite</span> <span class="k">AS</span> <span class="n">sp_parent_site</span>
+    <span class="k">ON</span> <span class="n">sp_parent_plot</span><span class="p">.</span><span class="n">locatedon</span> <span class="o">=</span> <span class="n">sp_parent_site</span><span class="p">.</span><span class="n">guid</span>
+</code></pre></div></div>
+
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> Note</p><p>Column aliases containing spaces are enclosed in double quotation marks. This ensures that they are interpreted correctly as SQL identifiers and improves SQL standards compliance.</p>
+</div>
+
+<h2 id="adding-a-view-to-a-qgis-project-with-db-manager">Adding a View to a QGIS Project with DB Manager</h2>
+
+<p>The following procedure adds the query to a QGIS project without creating a persistent view in the database.</p>
+
+<p>Open the QGIS project.
+If necessary, verify that the GeoPackage or database connection is available in the <strong>Browser</strong> panel.</p>
+
+<p>
+  <img src="../assets/view_01.webp" alt="voew" align="left" width="500" />
+① Open <strong>Database &gt; DB Manager</strong>. <br />
+② In the left-hand panel, locate and open the GeoPackage or database connection containing the source tables.<br />
+Select the database and ③ open <strong>SQL Window</strong> .<br />
+④ Paste the `SELECT` statement that you want to use to create the layer.<br />
+⑤ Execute the query to verify that it completes without errors and returns one row per observation.<br />
+⑥ Enable <strong>Load as new layer</strong>.<br />
+⑦ Select the unique identifier column under <strong>Column with unique values</strong>.<br />
+⑧ Do not specify a geometry column, because this query returns a non-spatial attribute layer.<br />
+⑨ Set the name of the new layer you want to create.<br />
+⑩ Enable <strong>Avoid selecting by feature id</strong>.<br />
+⑩ Load the result into the QGIS project.<br />
+Save the QGIS project so that the query and layer definition are stored in the project file.
+</p>
+<p><br clear="all" /><br /></p>
+
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> Note</p><p>Command names may vary slightly depending on the QGIS version and the user-interface language.</p>
+</div>
+
+<h2 id="creating-a-persistent-view-through-a-dbms">Creating a Persistent View Through a DBMS</h2>
+
+<p>The same SQL logic can also be used directly in a database management system. In this case, the <code class="language-plaintext highlighter-rouge">SELECT</code> statement must be preceded by <code class="language-plaintext highlighter-rouge">CREATE VIEW</code>:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">view_observation</span> <span class="k">AS</span>
+<span class="k">SELECT</span>
+    <span class="c1">-- Use the same column list and JOIN clauses as the QGIS query</span>
+    <span class="p">...</span>
+<span class="p">;</span>
+</code></pre></div></div>
+
+<p>To drop and recreate the view:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DROP</span> <span class="k">VIEW</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">view_observation</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">view_observation</span> <span class="k">AS</span>
+<span class="k">SELECT</span>
+    <span class="c1">-- Use the same column list and JOIN clauses as the QGIS query</span>
+    <span class="p">...</span>
+<span class="p">;</span>
+</code></pre></div></div>
+
+<p>When implemented as a persistent database view:</p>
+
+<ul>
+  <li>the view definition is stored in the database;</li>
+  <li>any authorized client can query it;</li>
+  <li>the results remain dynamic and are computed from current source data whenever the view is queried;</li>
+  <li>QGIS can connect directly to the view as a regular database object.</li>
+</ul>
+
+<h2 id="qgis-sql-layer-compared-with-a-persistent-dbms-view">QGIS SQL Layer Compared with a Persistent DBMS View</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>SQL layer in the QGIS project</th>
+      <th>Persistent view in the DBMS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Definition location</td>
+      <td>QGIS project file</td>
+      <td>Database</td>
+    </tr>
+    <tr>
+      <td>Data-schema modification</td>
+      <td>No</td>
+      <td>Yes, a <code class="language-plaintext highlighter-rouge">VIEW</code> object is created</td>
+    </tr>
+    <tr>
+      <td>Result refresh</td>
+      <td>Whenever the layer is loaded or refreshed</td>
+      <td>Whenever the view is queried</td>
+    </tr>
+    <tr>
+      <td>Availability</td>
+      <td>Within the QGIS project containing the query</td>
+      <td>To all authorized database clients</td>
+    </tr>
+    <tr>
+      <td>Portability</td>
+      <td>Requires the project or manual layer recreation</td>
+      <td>Requires access to the database</td>
+    </tr>
+    <tr>
+      <td>View-creation privileges</td>
+      <td>Not required</td>
+      <td>Generally required</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </section>
+
+        
+          <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+            This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/qgis/view_observation.md">Improve this page</a>.
+          </div>
+        
+      </div>
+    </div>
+    <!-- ▲▲▲ Fine blocco centrale ▲▲▲ -->
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/qgis/view_observation.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js"
+            integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg="
+            crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

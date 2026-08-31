@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>SoilWise Geopackage | SoilWise Geopackage Documentation</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="SoilWise Geopackage" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="SoilWise Geopackage Documentation" />
+<meta name="twitter:description" property="og:description" content="SoilWise Geopackage Documentation" />
+<link rel="canonical" href="https://soilwise-he.github.io/Geopackage-so/" />
+<meta property="og:url" content="https://soilwise-he.github.io/Geopackage-so/" />
+<meta property="og:site_name" content="SoilWise Geopackage" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SoilWise Geopackage" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"SoilWise Geopackage Documentation","headline":"SoilWise Geopackage","name":"SoilWise Geopackage","url":"https://soilwise-he.github.io/Geopackage-so/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/Geopackage-so/assets/css/style.css?v=50ee7ee560fe85dda0b244256fd87ad97473d941">
+    <!-- MathJax v3 -->
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+
+  <style>.markdown-alert{padding:.5rem 1rem;margin-bottom:1rem;color:inherit;border-left:.25em solid #30363d}.markdown-alert>:first-child{margin-top:0}.markdown-alert>:last-child{margin-bottom:0}.markdown-alert .markdown-alert-title{display:flex;font-weight:500;align-items:center;line-height:1}.markdown-alert svg{margin-right:.5rem!important}.markdown-alert svg path{fill:currentColor}.markdown-alert.markdown-alert-note{border-left-color:#4493f8}.markdown-alert.markdown-alert-note .markdown-alert-title{color:#4493f8}.markdown-alert.markdown-alert-important{border-left-color:#ab7df8}.markdown-alert.markdown-alert-important .markdown-alert-title{color:#ab7df8}.markdown-alert.markdown-alert-warning{border-left-color:#9e6a03}.markdown-alert.markdown-alert-warning .markdown-alert-title{color:#d29922}.markdown-alert.markdown-alert-tip{border-left-color:#238636}.markdown-alert.markdown-alert-tip .markdown-alert-title{color:#3fb950}.markdown-alert.markdown-alert-caution{border-left-color:#da3633}.markdown-alert.markdown-alert-caution .markdown-alert-title{color:#f85149}</style></head>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a[href^="http"]');
+    links.forEach(function (a) {
+      try {
+        var url = new URL(a.href, document.baseURI);
+        if (url.hostname !== location.hostname) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+      } catch (e) {}
+    });
+  });
+  </script>
+  
+<!-- ▼▼▼ Unico blocco centrale: SIDEBAR a sinistra + CONTENUTO a destra ▼▼▼ -->
+    <div class="docs-shell">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <!-- ==========================
+ Sidebar (Search + Navigation)
+ ========================== -->
+<!-- SEARCH (English labels) -->
+<div class="search-box">
+  <label for="docs-search" class="sr-only">Search documentation</label>
+  <input id="docs-search" type="search" placeholder="Search..." autocomplete="off" />
+  <ul id="docs-search-results" class="search-results" aria-live="polite"></ul>
+</div>
+<hr class="sidebar-sep" />
+
+<!-- NAVIGATION -->
+<nav class="docs-nav" aria-label="Sections">
+  <ul class="nav-root">
+    
+    
+    
+    
+    
+
+    
+      <li class="nav-group">
+        <span class="nav-group-title">Documentation</span>
+        <ul class="nav-group-list">
+            
+            <li>
+              <a href="/Geopackage-so/">index</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/cascade_summary.html">cascade summary</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/data_loading.html">data loading</a>
+            </li>
+          
+            
+            <li>
+              <a href="/Geopackage-so/relationships_summary.html">relationships summary</a>
+            </li>
+          
+        </ul>
+      </li>
+    
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QGIS</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qgis/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/custom_form.html">custom form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/edit_form.html">edit form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/export_to_excel.html">export to excel</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_documentation.html">gpkg to gpkg documentation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/gpkg_to_gpkg_tool.html">gpkg to gpkg tool</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/how_to_use_models.html">how to use models</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/importing_geometric_features.html">importing geometric features</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/navigating_via_form.html">navigating via form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/open_geopackage.html">open geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/ph.html">ph</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/rename_geopackage.html">rename geopackage</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/save_form.html">save form</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soc.html">soc</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/view_observation.html">view observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qgis/wrb_classification.html">wrb classification</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">QFIELD</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/qfield/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/install.html">install</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/interface.html">interface</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/qfield/use_plugin.html">use plugin</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+
+      
+      
+      
+
+      
+        <li class="nav-group">
+          <span class="nav-group-title">TABLES</span>
+          <ul class="nav-group-list">
+              
+              <li>
+                <a href="/Geopackage-so/tables/">index</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/codelist.html">codelist</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/datastream.html">datastream</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/derivedprofilepresenceinsoilbody.html">derivedprofilepresenceinsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/faohorizonnotationtype.html">faohorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonobservedsoilprofile.html">isbasedonobservedsoilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilbody.html">isbasedonsoilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isbasedonsoilderivedobject.html">isbasedonsoilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/isderivedfrom.html">isderivedfrom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observation.html">observation</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observedproperty.html">observedproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/observingprocedure.html">observingprocedure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_obsdproperty.html">obsprocedure obsdproperty</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/obsprocedure_sensor.html">obsprocedure sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizon_profileelement.html">otherhorizon profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/otherhorizonnotationtype.html">otherhorizonnotationtype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/othersoilnametype.html">othersoilnametype</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/profileelement.html">profileelement</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/sensor.html">sensor</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody.html">soilbody</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilbody_geom.html">soilbody geom</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilderivedobject.html">soilderivedobject</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilplot.html">soilplot</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilprofile.html">soilprofile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/soilsite.html">soilsite</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/thing.html">thing</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/unitofmeasure.html">unitofmeasure</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergroup_profile.html">wrbqualifiergroup profile</a>
+              </li>
+            
+              
+              <li>
+                <a href="/Geopackage-so/tables/wrbqualifiergrouptype.html">wrbqualifiergrouptype</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+
+  </ul>
+</nav>
+
+<!-- LUNR.JS (client-side search) -->
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+(function() {
+  const input = document.getElementById('docs-search');
+  const results = document.getElementById('docs-search-results');
+  let idx = null, docs = [];
+
+  // Helper: produce a clean label (no .md, dashes/underscores -> spaces)
+  function prettifyLabel(title, url) {
+    // fallback: take the last path segment from the URL
+    let label = (title && title.length) ? title : (url.split('/').pop() || url);
+    label = label.replace(/\.md$/i, '');
+    label = label.replace(/[-_]+/g, ' ');
+    return label;
+  }
+
+  fetch('/Geopackage-so/search.json')
+    .then(r => r.json())
+    .then(data => {
+      docs = data;
+      idx = lunr(function () {
+        this.ref('url');
+        this.field('title', { boost: 10 });
+        this.field('content');
+        data.forEach(function (doc) { this.add(doc); }, this);
+      });
+    })
+    .catch(() => { /* no-op */ });
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim();
+    results.innerHTML = '';
+    if (!idx || q.length < 2) return;
+    const matches = idx.search(q);
+    matches.slice(0, 12).forEach(m => {
+      const item = docs.find(d => d.url === m.ref);
+      if (!item) return;
+      const label = prettifyLabel(item.title, item.url);
+      const li = document.createElement('li');
+      li.className = 'search-item';
+      li.innerHTML = '<a href="' + item.url + '">' + label + '</a>';
+      results.appendChild(li);
+    });
+  });
+})();
+</script>
+
+      </aside>
+
+      <div class="container-lg px-3 my-5">
+        
+          <h1><a href="https://soilwise-he.github.io/Geopackage-so/">SoilWise Geopackage</a></h1>
+        
+
+        <section class="docs-main markdown-body">
+          <h1 align="center">SoilWise GeoPackage</h1>
+
+<p><img src="/Geopackage-so/assets/soilvise_poster.webp" alt="Soilvise poster" /></p>
+
+<h1 id="introduction-to-the-soilwise-geopackage-sqlite">Introduction to the <strong>SoilWise</strong> GeoPackage (SQLite)</h1>
+
+<p>The <strong>Soilwise</strong> GeoPackage is the relational (SQLite‑based) container adopted by the <strong>SoilWise</strong> project (Horizon Europe – Mission Soil) to enable <strong>exchange, storage, and GIS‑native use</strong> of soil data, with the explicit goal of making them <strong>FAIR</strong> and reusable across European policies, research, and land‑management workflows.<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup><sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup> SoilWise provides an <strong>integrated, actionable entry point</strong> to scattered soil data and knowledge, recognising existing workflows and repositories and connecting to them through a <strong>modular, scalable</strong> architecture designed to last beyond the project horizon and co‑created with stakeholders.<sup id="fnref:1:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup><sup id="fnref:2:1"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup></p>
+
+<h2 id="why-geopackagesqlite">Why GeoPackage/SQLite</h2>
+
+<p><strong>GeoPackage</strong> is an <strong>OGC</strong> open, portable, self‑contained standard for geospatial data. Being an SQLite container, it allows <strong>direct</strong> use of vector features, rasters/tiles and attribute data in a <strong>single file</strong>, without intermediate format translations. This makes it ideal for GIS environments and for constrained connectivity scenarios.<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup><sup id="fnref:4"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup><br />
+Within the INSPIRE ecosystem, an <strong>endorsed Good Practice</strong> describes how to design and publish <strong>INSPIRE datasets encoded as GeoPackage</strong>, while preserving legal and technical compliance with the Implementing Rules (with technical conformity demonstrable through transformation to the default encoding, <strong>GML</strong>). The Good Practice promotes logical models <strong>optimised for GIS usability</strong>, with explicit mapping rules from the INSPIRE conceptual model.<sup id="fnref:5"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup><sup id="fnref:6"><a href="#fn:6" class="footnote" rel="footnote" role="doc-noteref">6</a></sup></p>
+
+<h2 id="continuity-with-inspire-from-ejp-soil-to-soilwise">Continuity with INSPIRE: from EJP SOIL to <strong>Soilwise</strong></h2>
+
+<p>The <strong>Soilwise</strong> database builds upon—and updates—the work carried out around INSPIRE, including the <strong>EJP SOIL</strong> GeoPackage template for the <strong>Soil (SO)</strong> theme. That template focused on <strong>semantic harmonisation</strong>, <strong>code‑list management</strong>, and <strong>repeatable transformations</strong>, and is a relevant baseline for Soilwise’s relational modelling approach.<sup id="fnref:7"><a href="#fn:7" class="footnote" rel="footnote" role="doc-noteref">7</a></sup> This direction aligns with community guidance on publishing INSPIRE data as a <strong>relational database</strong> (GeoPackage as a specialisation of SQLite), including recipes and patterns for harmonisation and publication.<sup id="fnref:8"><a href="#fn:8" class="footnote" rel="footnote" role="doc-noteref">8</a></sup></p>
+
+<h2 id="data-architecture-and-governance">Data architecture and governance</h2>
+
+<p>In line with the <strong>INSPIRE Good Practice</strong>, each GeoPackage logical schema should be accompanied by:</p>
+<ul>
+  <li>a <strong>model description</strong> (including benefits and limitations compared to the default encoding);</li>
+  <li>an <strong>empty GeoPackage template</strong> for distribution;</li>
+  <li>an <strong>executable specification</strong> for model transformation (<strong>UML→GPKG</strong> or <strong>GML→GPKG</strong>), aligned with the generic INSPIRE transformation rules.<sup id="fnref:5:1"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup></li>
+</ul>
+
+<p>This approach ensures <strong>traceable compliance</strong>, supports reuse across thematic communities, and allows <strong>use‑case‑specific</strong> logical models while preserving a coherent methodological and semantic framework.<sup id="fnref:5:2"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup></p>
+
+<h2 id="integration-with-ogc-sensorthings-api-20-sta2">Integration with <strong>OGC SensorThings API 2.0 (STA2)</strong></h2>
+
+<p>Within SoilWise, an implementation of <strong>OGC SensorThings API 2.0 (STA2)</strong> is used to expose <strong>observations</strong> and <strong>metadata</strong> as <strong>interoperable time series</strong> via HTTP and MQTT, consistent with <strong>O&amp;M / ISO 19156:2023</strong>. The <strong>STA2</strong> draft (OGC document <strong>23‑019</strong>) updates the data model and bindings (e.g., OData 4.01 alignment), strengthening the API’s role as a standards‑based <strong>“data‑in‑motion”</strong> complement to the GeoPackage’s <strong>“data‑at‑rest”</strong> layer.<sup id="fnref:9"><a href="#fn:9" class="footnote" rel="footnote" role="doc-noteref">9</a></sup><sup id="fnref:10"><a href="#fn:10" class="footnote" rel="footnote" role="doc-noteref">10</a></sup><br />
+The growing adoption of SensorThings for observational data (well beyond narrow IoT use) is documented by OGC/WMO community materials, which highlight alignment with the renewed <strong>OMS/ISO 19156:2023</strong> standard and integration with GIS tools.<sup id="fnref:11"><a href="#fn:11" class="footnote" rel="footnote" role="doc-noteref">11</a></sup><sup id="fnref:12"><a href="#fn:12" class="footnote" rel="footnote" role="doc-noteref">12</a></sup></p>
+
+<h2 id="qgis-usage-and-custom-forms">QGIS usage and custom forms</h2>
+
+<p>The <strong>Soilwise</strong> GeoPackage is <strong>natively supported by QGIS</strong>, enabling editing, styling, and map production with no format conversion. To improve data‑entry quality and speed, we recommend configuring <strong>custom attribute forms</strong> (widgets, value map/relation, constraints and expressions) and adopting a <strong>design of tabs and groups</strong> aligned with project code lists and validation processes.<sup id="fnref:13"><a href="#fn:13" class="footnote" rel="footnote" role="doc-noteref">13</a></sup><sup id="fnref:14"><a href="#fn:14" class="footnote" rel="footnote" role="doc-noteref">14</a></sup></p>
+
+<h1 id="relational-structure-of-the-geopackage-inspire-uml--sta2-transposition">Relational Structure of the GeoPackage (INSPIRE UML + STA2 Transposition)</h1>
+
+<p>
+  <a href="assets/db_structure.webp" target="_blank">
+    <img src="assets/db_structure.webp" alt="Fig.1" style="width: 100%; height: auto; display: block;" />
+  </a>
+</p>
+
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg> Tip</p><p>Click the image to see it full‑size for better viewing.</p>
+</div>
+
+<h2 id="purpose-and-framing">Purpose and framing</h2>
+
+<p>This GeoPackage implements a <strong>relational schema</strong> that is a <strong>faithful transposition</strong> of the <strong>INSPIRE Soil conceptual model (UML)</strong> and its classes/associations, as described in the <strong>INSPIRE Soil Technical Guidelines</strong> and Feature Catalogue. It also integrates the <strong>OGC SensorThings API 2.0 (STA2)</strong> model for the management and exposure of <strong>observations</strong> (time‑series and observation metadata).<sup id="fnref:5:3"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup><sup id="fnref:9:1"><a href="#fn:9" class="footnote" rel="footnote" role="doc-noteref">9</a></sup><sup id="fnref:10:1"><a href="#fn:10" class="footnote" rel="footnote" role="doc-noteref">10</a></sup></p>
+
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> Note</p><p>The Soil Technical Guidelines provide the authoritative description of the Soil theme, including the Feature Catalogue and the UML‑based relationships among elements (which underpin any encoding, such as GML or GeoPackage).[^5]</p>
+</div>
+
+<h2 id="sources-of-the-model-normative-and-technical">Sources of the model (normative and technical)</h2>
+
+<ul>
+  <li><strong>INSPIRE Soil – Technical Guidelines</strong>: define the content, the Feature Catalogue and the UML elements of the Soil theme, plus implementation recommendations.<sup id="fnref:5:4"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup><sup id="fnref:15"><a href="#fn:15" class="footnote" rel="footnote" role="doc-noteref">15</a></sup></li>
+  <li><strong>INSPIRE Good Practice – GeoPackage encoding</strong>: describes how to publish INSPIRE datasets using the OGC GeoPackage standard, while preserving legal and technical compliance; it promotes GIS‑oriented logical models and executable mappings from the conceptual model.<sup id="fnref:5:5"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup><sup id="fnref:6:1"><a href="#fn:6" class="footnote" rel="footnote" role="doc-noteref">6</a></sup><sup id="fnref:15:1"><a href="#fn:15" class="footnote" rel="footnote" role="doc-noteref">15</a></sup></li>
+  <li><strong>OGC SensorThings API 2.0 (STA2)</strong>: provides the data model and API for <strong>Things, Datastreams, Observations, Sensors, ObservedProperties</strong>, including HTTP/MQTT bindings and alignment with <strong>O&amp;M / ISO 19156:2023</strong>.<sup id="fnref:9:2"><a href="#fn:9" class="footnote" rel="footnote" role="doc-noteref">9</a></sup><sup id="fnref:10:2"><a href="#fn:10" class="footnote" rel="footnote" role="doc-noteref">10</a></sup></li>
+</ul>
+
+<h2 id="from-uml-to-a-relational-geopackage-sqlite">From UML to a relational GeoPackage (SQLite)</h2>
+
+<p>The translation into GeoPackage follows widely adopted relational design rules, consistent with INSPIRE/OGC guidance:</p>
+
+<ol>
+  <li>
+    <p><strong>UML Classes → Tables</strong><br />
+Each INSPIRE <em>Feature Type</em> (e.g., <em>SoilSite</em>, <em>SoilPlot</em>, <em>SoilProfile</em>, <em>ProfileElement</em>) becomes a table; <strong>attributes</strong> map to typed columns; spatial attributes are stored in <code class="language-plaintext highlighter-rouge">geometry</code> columns as per GeoPackage.<sup id="fnref:3:1"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup><sup id="fnref:4:1"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup><sup id="fnref:5:6"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup><sup id="fnref:15:2"><a href="#fn:15" class="footnote" rel="footnote" role="doc-noteref">15</a></sup></p>
+  </li>
+  <li>
+    <p><strong>UML Associations → Foreign Keys</strong><br />
+UML cardinalities are enforced through <strong>foreign keys</strong> and (where required) <strong>link tables</strong> for <em>1:N</em> / <em>N:M</em> relationships, preserving the Soil chain <em>Site → Plot → Profile → ProfileElement</em> defined at the conceptual level.<sup id="fnref:5:7"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup><sup id="fnref:15:3"><a href="#fn:15" class="footnote" rel="footnote" role="doc-noteref">15</a></sup></p>
+  </li>
+  <li>
+    <p><strong>Code lists → Reference tables</strong><br />
+Controlled vocabularies (INSPIRE and other allowed authorities) are materialized as <strong>code‑list tables</strong>, typically keeping <strong>URI / notation / label / authority / version</strong> to ensure <strong>semantic interoperability</strong>.<sup id="fnref:5:8"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup><sup id="fnref:15:4"><a href="#fn:15" class="footnote" rel="footnote" role="doc-noteref">15</a></sup></p>
+  </li>
+  <li>
+    <p><strong>Observational component (STA2)</strong><br />
+STA2 entities <strong>Thing / Datastream / Observation / Sensor / ObservedProperty</strong> are mapped to dedicated tables. <strong>Observation</strong> rows reference their <strong>Datastream</strong>, keep temporal attributes (<code class="language-plaintext highlighter-rouge">phenomenonTime</code>, <code class="language-plaintext highlighter-rouge">resultTime</code>), and a <strong>result</strong> (numeric or textual) according to STA2. This design makes the observational layer complementary to the core INSPIRE Soil features, and ready for standards‑based exposure via the STA2 API.<sup id="fnref:9:3"><a href="#fn:9" class="footnote" rel="footnote" role="doc-noteref">9</a></sup><sup id="fnref:10:3"><a href="#fn:10" class="footnote" rel="footnote" role="doc-noteref">10</a></sup></p>
+  </li>
+</ol>
+
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> Note</p><p>GeoPackage is an OGC open, portable and self‑contained standard (an SQLite container) that supports <strong>direct use</strong> of vector/raster/attribute data in a <strong>single file</strong>, without intermediate format translations—ideal for GIS tools and constrained‑connectivity scenarios.[^3][^4]<br />
+The INSPIRE Good Practice recognises GeoPackage as <strong>additional/alternative encoding</strong> to the default, with conformity demonstrable via transformation to GML.[^5]</p>
+</div>
+
+<h2 id="key-inspire-soil-features-concise-overview">Key INSPIRE Soil features (concise overview)</h2>
+
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> Note</p><p>The short summaries below are aligned with the Soil Feature Catalogue; full definitions, attributes, multiplicities and constraints are given in the official Technical Guidelines.[^5]</p>
+</div>
+
+<ul>
+  <li>
+    <p><strong>SoilSite</strong> — <em>Context/area of investigation</em>: an area (often polygonal) providing the context within which one or more specific investigations are carried out; it acts as a logical container to <strong>combine or compare</strong> investigations performed at nearby points/times.<sup id="fnref:5:9"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup></p>
+  </li>
+  <li>
+    <p><strong>SoilPlot</strong> — <em>Investigation point/portion</em>: a point or area where a specific investigation is performed (e.g., pit, borehole, sample location); it is <strong>contained</strong> in a <em>SoilSite</em> and is the operational focus of many descriptions and measurements.<sup id="fnref:5:10"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup></p>
+  </li>
+  <li>
+    <p><strong>SoilProfile</strong> — <em>Vertical cross‑section</em>: the section from ground surface down to material not modified by pedogenesis; it is the basis for describing <strong>horizons</strong> or <strong>layers</strong> (modelled as <em>ProfileElement</em>).<sup id="fnref:5:11"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup></p>
+  </li>
+  <li>
+    <p><strong>ProfileElement</strong> — <em>Horizon or layer</em>: either a <strong>SoilHorizon</strong> (a pedogenetic horizon homogeneous by physical/chemical/biological properties) or a <strong>SoilLayer</strong> (a depth‑defined layer, not necessarily equal to a horizon).<sup id="fnref:5:12"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup></p>
+  </li>
+  <li>
+    <p><strong>SoilBody</strong> — <em>Mapping unit</em>: an association of co‑occurring soils in an area (conceptually similar to a <strong>Soil Mapping Unit</strong>), typically linked to one or more representative <strong>SoilProfile(s)</strong>.<sup id="fnref:5:13"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup></p>
+  </li>
+</ul>
+
+<h2 id="data-loading--modelling-guide">Data Loading &amp; Modelling Guide</h2>
+<p><a href="/Geopackage-so/data_loading.html">Data Loading &amp; Modelling Guide</a> document  is the practical guide for <strong>populating (loading)</strong> the GeoPackage.<br />
+It explains, clearly and in sequence:</p>
+<ul>
+  <li>the <strong>order</strong> in which datasets must be loaded and their <strong>dependencies</strong>;</li>
+  <li>the <strong>constraints</strong> to respect (e.g., required fields, minimum cross-table consistency);</li>
+  <li>what to <strong>verify before/after loading</strong> to ensure a correct result.</li>
+</ul>
+
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-report" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Important</p><p>In short: if you need to <strong>populate or update</strong> the GeoPackage, <strong>start here</strong>.</p>
+</div>
+
+<h2 id="qgis-manual">QGIS Manual</h2>
+
+<p><a href="/Geopackage-so/qgis/">A practical guide</a> to using QGIS to <strong>read from and write to</strong> the database (GeoPackage), supported by <strong>custom Forms</strong> that simplify data entry and updates.</p>
+
+<h3 id="custom-forms">Custom Forms</h3>
+<p>The Forms are designed to guide users in filling fields correctly:</p>
+<ul>
+  <li>Guided fields with <strong>drop-down menus</strong>, <strong>default values</strong>, and <strong>contextual help</strong>.</li>
+  <li><strong>Validation checks</strong> to flag incomplete forms or inconsistent values.</li>
+  <li><strong>Sections</strong> that group the most used fields and hide technical fields.</li>
+  <li><strong>Actions</strong> (where available) for automatic completion or quick checks.</li>
+</ul>
+
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg> Warning</p><p>QGIS version <strong>3.44.0 – Solothurn</strong> or higher is required.</p>
+</div>
+
+<h2 id="database-tables">Database Tables</h2>
+
+<p>This chapter provides the <strong>detailed description of all database tables</strong>.<br />
+For each table, you will find its <strong>purpose</strong>, <strong>key fields</strong>, any <strong>geometry</strong>, the most relevant <strong>relationships</strong>, and <strong>usage notes</strong>.</p>
+
+<ul>
+  <li><a href="/Geopackage-so/tables/codelist.html">codelist</a></li>
+  <li><a href="/Geopackage-so/tables/datastream.html">datastream</a></li>
+  <li><a href="/Geopackage-so/tables/derivedprofilepresenceinsoilbody.html">derivedprofilepresenceinsoilbody</a></li>
+  <li><a href="/Geopackage-so/tables/faohorizonnotationtype.html">faohorizonnotationtype</a></li>
+  <li><a href="/Geopackage-so/tables/isbasedonobservedsoilprofile.html">isbasedonobservedsoilprofile</a></li>
+  <li><a href="/Geopackage-so/tables/isbasedonsoilbody.html">isbasedonsoilbody</a></li>
+  <li><a href="/Geopackage-so/tables/isbasedonsoilderivedobject.html">isbasedonsoilderivedobject</a></li>
+  <li><a href="/Geopackage-so/tables/isderivedfrom.html">isderivedfrom</a></li>
+  <li><a href="/Geopackage-so/tables/observation.html">observation</a></li>
+  <li><a href="/Geopackage-so/tables/observedproperty.html">observedproperty</a></li>
+  <li><a href="/Geopackage-so/tables/observingprocedure.html">observingprocedure</a></li>
+  <li><a href="/Geopackage-so/tables/obsprocedure_obsdproperty.html">obsprocedure_obsdproperty</a></li>
+  <li><a href="/Geopackage-so/tables/obsprocedure_sensor.html">obsprocedure_sensor</a></li>
+  <li><a href="/Geopackage-so/tables/otherhorizon_profileelement.html">otherhorizon_profileelement</a></li>
+  <li><a href="/Geopackage-so/tables/otherhorizonnotationtype.html">otherhorizonnotationtype</a></li>
+  <li><a href="/Geopackage-so/tables/othersoilnametype.html">othersoilnametype</a></li>
+  <li><a href="/Geopackage-so/tables/profileelement.html">profileelement</a></li>
+  <li><a href="/Geopackage-so/tables/sensor.html">sensor</a></li>
+  <li><a href="/Geopackage-so/tables/soilbody.html">soilbody</a></li>
+  <li><a href="/Geopackage-so/tables/soilbody_geom.html">soilbody_geom</a></li>
+  <li><a href="/Geopackage-so/tables/soilderivedobject.html">soilderivedobject</a></li>
+  <li><a href="/Geopackage-so/tables/soilplot.html">soilplot</a></li>
+  <li><a href="/Geopackage-so/tables/soilprofile.html">soilprofile</a></li>
+  <li><a href="/Geopackage-so/tables/soilsite.html">soilsite</a></li>
+  <li><a href="/Geopackage-so/tables/thing.html">thing</a></li>
+  <li><a href="/Geopackage-so/tables/unitofmeasure.html">unitofmeasure</a></li>
+  <li><a href="/Geopackage-so/tables/wrbqualifiergroup_profile.html">wrbqualifiergroup_profile</a></li>
+  <li><a href="/Geopackage-so/tables/wrbqualifiergrouptype.html">wrbqualifiergrouptype</a></li>
+</ul>
+
+<h2 id="relationship-summary">Relationship Summary</h2>
+<p><a href="/Geopackage-so/relationships_summary.html">This document</a> helps you understand <strong>how tables are connected</strong>.<br />
+It highlights the most relevant links and suggests when tables should be used together—useful to navigate between <strong>core entities</strong> and <strong>supporting tables</strong>.</p>
+
+<h2 id="cascade-summary">Cascade Summary</h2>
+<p><a href="/Geopackage-so/cascade_summary.html">This document</a> explains how the system manages the <strong>consequences</strong> of updates and deletions across related tables.<br />
+It clarifies what happens to <strong>related records</strong> and how to keep data <strong>consistent</strong> when modifying “parent” or “child” data.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="https://soilwise-he.eu/"><strong>SoilWise – project website</strong> (Horizon Europe – Mission Soil).</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://mission-soil-platform.ec.europa.eu/project-hub/soilwise"><strong>Mission Soil Platform (EC) – SoilWise project page</strong>.</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:3">
+      <p><a href="https://www.geopackage.org/"><strong>GeoPackage.org</strong> – Overview and resources.</a> <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:3:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:4">
+      <p><a href="https://www.ogc.org/standards/geopackage/"><strong>OGC – GeoPackage Standard</strong> (publications page).</a> <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:4:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:5">
+      <p><a href="https://knowledge-base.inspire.ec.europa.eu/geopackage-encoding-inspire-datasets_en"><strong>INSPIRE Knowledge Base</strong> – <em>GeoPackage encoding of INSPIRE datasets</em> (Good Practice).</a> <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:5:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a> <a href="#fnref:5:2" class="reversefootnote" role="doc-backlink">&#8617;<sup>3</sup></a> <a href="#fnref:5:3" class="reversefootnote" role="doc-backlink">&#8617;<sup>4</sup></a> <a href="#fnref:5:4" class="reversefootnote" role="doc-backlink">&#8617;<sup>5</sup></a> <a href="#fnref:5:5" class="reversefootnote" role="doc-backlink">&#8617;<sup>6</sup></a> <a href="#fnref:5:6" class="reversefootnote" role="doc-backlink">&#8617;<sup>7</sup></a> <a href="#fnref:5:7" class="reversefootnote" role="doc-backlink">&#8617;<sup>8</sup></a> <a href="#fnref:5:8" class="reversefootnote" role="doc-backlink">&#8617;<sup>9</sup></a> <a href="#fnref:5:9" class="reversefootnote" role="doc-backlink">&#8617;<sup>10</sup></a> <a href="#fnref:5:10" class="reversefootnote" role="doc-backlink">&#8617;<sup>11</sup></a> <a href="#fnref:5:11" class="reversefootnote" role="doc-backlink">&#8617;<sup>12</sup></a> <a href="#fnref:5:12" class="reversefootnote" role="doc-backlink">&#8617;<sup>13</sup></a> <a href="#fnref:5:13" class="reversefootnote" role="doc-backlink">&#8617;<sup>14</sup></a></p>
+    </li>
+    <li id="fn:6">
+      <p><a href="https://github.com/INSPIRE-MIF/gp-geopackage-encodings"><strong>INSPIRE‑MIF – gp‑geopackage‑encodings</strong> (Good Practice repository).</a> <a href="#fnref:6" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:6:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:7">
+      <p><a href="https://github.com/ejpsoil/inspire_soil_gpkg_template"><strong>EJP SOIL – INSPIRE Soil GeoPackage template</strong> (GitHub).</a> <a href="#fnref:7" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p><a href="https://ejpsoil.github.io/soildata-assimilation-guidance/cookbook/glosis-db.html"><strong>Soil data guidance</strong> – <em>INSPIRE Soil in a relational database</em> (recipe &amp; workflow).</a> <a href="#fnref:8" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p><a href="https://hylkevds.github.io/23-019/23-019.html"><strong>OGC – SensorThings API 2.0 (draft 23‑019)</strong>.</a> <a href="#fnref:9" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:9:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a> <a href="#fnref:9:2" class="reversefootnote" role="doc-backlink">&#8617;<sup>3</sup></a> <a href="#fnref:9:3" class="reversefootnote" role="doc-backlink">&#8617;<sup>4</sup></a></p>
+    </li>
+    <li id="fn:10">
+      <p><a href="https://www.ogc.org/standards/sensorthings/"><strong>OGC Publications – SensorThings API</strong> (Part 1/1.1 Sensing, Part 2 Tasking Core, STAplus).</a> <a href="#fnref:10" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:10:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a> <a href="#fnref:10:2" class="reversefootnote" role="doc-backlink">&#8617;<sup>3</sup></a> <a href="#fnref:10:3" class="reversefootnote" role="doc-backlink">&#8617;<sup>4</sup></a></p>
+    </li>
+    <li id="fn:11">
+      <p><a href="https://wmo.int/sites/default/files/2024-02/Integration%20of%20new%20OGC%20Standards%20e.g%20SensorThings%20API.pdf"><strong>WMO/OGC</strong> – <em>Integrating new OGC Standards</em> (slides).</a> <a href="#fnref:11" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:12">
+      <p><a href="https://brgm.hal.science/hal-04456540v2/file/SensorThings%20API%20and%20%20WaterML2.0%20.pdf"><strong>BRGM HAL</strong> – <em>SensorThings API and WaterML2.0</em> (slides).</a> <a href="#fnref:12" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:13">
+      <p><a href="https://docs.qgis.org/latest/en/docs/training_manual/create_vector_data/forms.html"><strong>QGIS Training Manual</strong> – <em>Forms / Attribute Forms</em>.</a> <a href="#fnref:13" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:14">
+      <p><a href="https://docs.qfield.org/how-to/project-setup/attributes-form/"><strong>QField Documentation</strong> – <em>Simple attribute form configuration</em>.</a> <a href="#fnref:14" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:15">
+      <p><a href="https://inspire-mif.github.io/uml-models/approved/"><strong>INSPIRE UML models — Approved (HTML view).</strong></a> <a href="#fnref:15" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:15:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a> <a href="#fnref:15:2" class="reversefootnote" role="doc-backlink">&#8617;<sup>3</sup></a> <a href="#fnref:15:3" class="reversefootnote" role="doc-backlink">&#8617;<sup>4</sup></a> <a href="#fnref:15:4" class="reversefootnote" role="doc-backlink">&#8617;<sup>5</sup></a></p>
+    </li>
+  </ol>
+</div>
+
+        </section>
+
+        
+          <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+            This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/index.md">Improve this page</a>.
+          </div>
+        
+      </div>
+    </div>
+    <!-- ▲▲▲ Fine blocco centrale ▲▲▲ -->
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/soilwise-he/Geopackage-so/edit/gh-pages/index.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js"
+            integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg="
+            crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
