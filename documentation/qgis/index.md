@@ -23,21 +23,21 @@ For a complete understanding of the database structure, its constraints, relatio
 
 Below is the index of the technical documentation available in this repository:
 
-[Open the Soilwise Geopackage in QGIS](./open_geopackage.md)  
-[Renaming the Soilwise GeoPackage](./rename_geopackage.md)  
-[Customized Attribute Forms in QGIS](./custom_form.md)  
-[Navigating GeoPackage Tables via Forms](./navigating_via_form.md)  
-[Importing Geometric Features](./importing_geometric_features.md)  
-[Editing Records Through a QGIS Form](./edit_form.md)  
-[Saving Edits in QGIS Forms](./save_form.md)  
-[Export a Layer as an Excel File](./export_to_excel.md)  
-[Soil Site Form](./soilsite.md)  
-[Soil Plot Form](./soilplot.md)  
-[Soil Profile Form](./soilprofile.md)  
-[WRB Classification in the Soilwise GeoPackage](./wrb_classification.md)  
-[Profile Element Form](./profileelement.md)  
-[Datastream Form](./datastream.md)  
-[Observation Form](./observation.md)
+[Open the Soilwise Geopackage in QGIS](./open_geopackage.md) <br>
+[Renaming the Soilwise GeoPackage](./rename_geopackage.md)  <br>
+[Customized Attribute Forms in QGIS](./custom_form.md) <br> 
+[Navigating GeoPackage Tables via Forms](./navigating_via_form.md)  <br>
+[Importing Geometric Features](./importing_geometric_features.md)  <br>
+[Editing Records Through a QGIS Form](./edit_form.md)  <br>
+[Saving Edits in QGIS Forms](./save_form.md)  <br>
+[Export a Layer as an Excel File](./export_to_excel.md)  <br>
+[Soil Site Form](./soilsite.md) <br> 
+[Soil Plot Form](./soilplot.md) <br>  
+[Soil Profile Form](./soilprofile.md)  <br>
+[WRB Classification in the Soilwise GeoPackage](./wrb_classification.md)  <br>
+[Profile Element Form](./profileelement.md) <br> 
+[Datastream Form](./datastream.md)  <br>
+[Observation Form](./observation.md)<br>
 [Observation View](./view_observation.md)  
  
 
@@ -46,7 +46,7 @@ Below is the index of the technical documentation available in this repository:
 A collection of **ready-to-use QGIS models** for processing, analysing, and transferring GeoPackage data with just a few clicks. <br>
 The toolkit includes compact and reproducible workflows for data transformations, joins, statistical summaries, and the selective transfer of missing records between source and target GeoPackages.
 
-[How to Use Processing Models in QGIS](./how_to_use_models.md)
-[Incremental GeoPackage Data Transfer](./gpkg_to_gpkg_tool.md)  
-[Mean Profile pH](./ph.md)  
+[How to Use Processing Models in QGIS](./how_to_use_models.md) <br>
+[Incremental GeoPackage Data Transfer](./gpkg_to_gpkg_tool.md)  <br>
+[Mean Profile pH](./ph.md)  <br>
 [Soil Organic Carbon (SOC) 0–30 cm](./soc.md)  
