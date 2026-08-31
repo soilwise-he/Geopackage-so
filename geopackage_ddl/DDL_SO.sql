@@ -4113,18 +4113,3 @@ LEFT JOIN soilsite AS pe_parent_site
 
 LEFT JOIN soilsite AS sp_parent_site
      ON sp_parent_plot.locatedon = sp_parent_site.guid;
-
-
-INSERT INTO gpkg_contents (
-  table_name,
-  data_type,
-  identifier,
-  description,
-  last_change
-) VALUES (
-  'view_observation',
-  'attributes',
-  'v_obs',
-  'View_Observation',
-  strftime('%Y-%m-%dT%H:%M:%fZ','now')
-);
