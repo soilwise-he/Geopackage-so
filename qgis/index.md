@@ -1,0 +1,52 @@
+# Introduction to the Custom Forms for Geopackage Data Entry in QGIS
+
+**QGIS** is a fully **Open Source** Geographic Information System designed for the visualization, editing, and analysis of both spatial and non‑spatial data. One of its most relevant capabilities is the ability to display **geometries and attribute tables together**, leveraging **customizable attribute forms** that can be tailored to project‑specific data‑entry workflows.
+
+These features make QGIS an excellent choice as the **primary user-facing environment**  for consulting and updating the contents of the Geopackage. Custom forms provide a controlled, guided interface for data entry, ensuring consistency with the underlying data model and validation rules.
+
+## Alternative Access and Data Processing Tools
+
+While QGIS serves as the main interface for interactive data inspection and editing, it is **not the only tool** capable of interacting with the Geopackage. The database structure can also be accessed, queried, or transformed through:
+
+- **RDBMS systems** that support the Geopackage standard  
+- **R**, for statistical analysis and data manipulation  
+- **Python**, which enables full **CRUD (Create, Read, Update, Delete)** workflows and automated data-processing pipelines  
+- **ETL (Extract, Transform, Load) tools**, such as **HALE Studio**, **KNIME**, and other similar platforms, which provide controlled transformation logic, conceptual schema mapping, validation workflows, and repeatable integration pipelines
+
+These complementary tools support more complex data‑processing scenarios such as bulk imports, schema transformations, QC procedures, and integration with external systems.
+
+For a complete understanding of the database structure, its constraints, relationships, and the required loading logic, users should refer to the [**Data Loading & Modelling Guide**](../data_loading.md) , which defines the conceptual and structural foundations of the Geopackage.
+
+
+
+# Documentation Index
+
+Below is the index of the technical documentation available in this repository:
+
+[Open the Soilwise Geopackage in QGIS](./open_geopackage.md) <br>
+[Renaming the Soilwise GeoPackage](./rename_geopackage.md)  <br>
+[Customized Attribute Forms in QGIS](./custom_form.md) <br> 
+[Navigating GeoPackage Tables via Forms](./navigating_via_form.md)  <br>
+[Importing Geometric Features](./importing_geometric_features.md)  <br>
+[Editing Records Through a QGIS Form](./edit_form.md)  <br>
+[Saving Edits in QGIS Forms](./save_form.md)  <br>
+[Export a Layer as an Excel File](./export_to_excel.md)  <br>
+[Soil Site Form](./soilsite.md) <br> 
+[Soil Plot Form](./soilplot.md) <br>
+[Soil Profile Form](./soilprofile.md) <br>
+[WRB Classification in the Soilwise GeoPackage](./wrb_classification.md)  <br>
+[Profile Element Form](./profileelement.md) <br> 
+[Datastream Form](./datastream.md)  <br>
+[Observation Form](./observation.md)<br>
+[Observation View](./view_observation.md)  
+ 
+
+# QGIS Model Designer: GeoPackage Toolkit
+
+A collection of **ready-to-use QGIS models** for processing, analysing, and transferring GeoPackage data with just a few clicks. <br>
+The toolkit includes compact and reproducible workflows for data transformations, joins, statistical summaries, and the selective transfer of missing records between source and target GeoPackages.
+
+[How to Use Processing Models in QGIS](./how_to_use_models.md) <br>
+[Incremental GeoPackage Data Transfer](./gpkg_to_gpkg_tool.md)  <br>
+[Mean Profile pH](./ph.md)  <br>
+[Soil Organic Carbon (SOC) 0–30 cm](./soc.md)  
